@@ -63,7 +63,7 @@
         <!-- <script type="text/javascript" src="js/my-vis.js"></script> -->
         <script type="text/javascript">
 
-            d3.csv('./covid.csv', function loadCallback(error, data) {
+            d3.csv('https://raw.githubusercontent.com/gcdean38/maneater/master/covid.csv', function loadCallback(error, data) {
                 data.forEach(function(d) { // convert strings to numbers
                     d.schoolCPD = +d.schoolCPD;
                     d.quarantineCPD = +d.quarantineCPD;
