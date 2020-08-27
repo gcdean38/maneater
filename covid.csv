@@ -1,0 +1,7 @@
+﻿school,county,daysSinceFirstTracked,start date,days since start,start cases,todaycases,difference,schoolCPD,quarantineCPD,change,color,status,source
+University of Missouri,"Boone, MO",161,12,14,1462,2152,690,49.28571429,9.080745342,5.42749658,gold,Hybrid on-campus,http://gocolumbiamo.maps.arcgis.com/apps/MapSeries/index.html?appid=478880b83d5e4d35b646d80fe6f2c2f6
+University of Notre Dame,"St. Joseph's, IN",167,3,23,3154,4693,1539,66.91304348,18.88622754,3.542954426,green,14-day online hiatus,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/indiana/county/st.-joseph-county
+UNC-Chapel Hill,"Orange, NC",160,3,23,1403,2068,665,28.91304348,8.76875,3.297282221,skyblue,Transitioned to fully remote,https://www.orangecountync.gov/2332/Coronavirus-COVID-19
+Harvard University,"Suffolk, MA",207,23,3,22706,22973,267,89,109.6908213,0.811371444,maroon,Started fully online,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/massachusetts/county/suffolk-county
+University of Arizona,"Pima, AZ",168,24,2,20535,20919,384,192,122.2321429,1.570781592,red,Hybrid on-campus,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/arizona/county/pima-county
+University of Alabama,"Tuscaloosa, AL",167,4,22,4065,5178,1113,50.59090909,24.34131737,2.078396511,crimson,Fully in-person,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/alabama/county/tuscaloosa-county
