@@ -1,7 +1,7 @@
 ﻿school,county,preCPD,postCPD,change,color,testing,status,source
 University of Missouri,"Boone, MO",26.8,46,1.71641791,gold,None,Hybrid on-campus,http://gocolumbiamo.maps.arcgis.com/apps/MapSeries/index.html?appid=478880b83d5e4d35b646d80fe6f2c2f6
 University of Notre Dame,"St. Joseph's, IN",45.818,71.917,1.569623292,green,Full,14-day online hiatus,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/indiana/county/st.-joseph-county
-UNC-Chapel Hill,"Orange, NC",16.045,33.5,2.087877844,skyblue,,Transitioned to fully remote,https://www.orangecountync.gov/2332/Coronavirus-COVID-19
+UNC-Chapel Hill,"Orange, NC",16.045,33.5,2.087877844,skyblue,None,Transitioned to fully remote,https://www.orangecountync.gov/2332/Coronavirus-COVID-19
 University of Alabama,"Tuscaloosa, AL",61.15,55.96,0.915126738,crimson,Partial,Fully in-person,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/alabama/county/tuscaloosa-county
 The Ohio State University,"Franklin, OH",160.143,142,0.886707505,grey,Partial,,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/ohio/county/franklin-county
 University of Illinois,"Champaign, IL",14.2857,49.25,3.447503448,orange,Full,,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/illinois/county/champaign-county
