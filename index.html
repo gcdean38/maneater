@@ -144,7 +144,7 @@ var changeFmt = d3.format("0.2%")
                   var html  = "<b><u>School:</b></u> "+d.school + "<br/>" + 
                 "<b><u>County:</b></u> "+d.county + "<br/>"+
                 "<b><u>Pre-Matriculation Testing:</b></u> "+d.testing+"<br/>"+
-                              "<b><u>Percent Change:</b></u> "+changeFmt(d.change) + "<br/>" 
+                              "<b><u>Percent Change:</b></u> "+changeFmt(d.change) + "of pre-reopening cases<br/>" 
 
                   tooltip.html(html)
                       .style("left", (d3.event.pageX + 15) + "px")
