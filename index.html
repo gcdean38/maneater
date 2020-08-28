@@ -143,7 +143,7 @@ var changeFmt = d3.format("0.2%")
                   var color = colorScale(d.manufacturer);
                   var html  = "<b><u>School:</b></u> "+d.school + "<br/>" + 
                 "<b><u>County:</b></u> "+d.county + "<br/>"+
-                "<b><u>Status:</b></u> "+d.status+"<br/>"+
+                "<b><u>Pre-Matriculation Testing:</b></u> "+d.testing+"<br/>"+
                               "<b><u>Percent Change:</b></u> "+changeFmt(d.change) + "<br/>" 
 
                   tooltip.html(html)
