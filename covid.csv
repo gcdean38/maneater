@@ -1,7 +1,8 @@
-﻿school,county,daysSinceFirstTracked,start date,days since start,start cases,todaycases,difference,schoolCPD,quarantineCPD,change,color,status,source
-University of Missouri,"Boone, MO",161,12,14,1462,2152,690,49.28571429,9.080745342,5.42749658,gold,Hybrid on-campus,http://gocolumbiamo.maps.arcgis.com/apps/MapSeries/index.html?appid=478880b83d5e4d35b646d80fe6f2c2f6
-University of Notre Dame,"St. Joseph's, IN",167,3,23,3154,4693,1539,66.91304348,18.88622754,3.542954426,green,14-day online hiatus,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/indiana/county/st.-joseph-county
-UNC-Chapel Hill,"Orange, NC",160,3,23,1403,2068,665,28.91304348,8.76875,3.297282221,skyblue,Transitioned to fully remote,https://www.orangecountync.gov/2332/Coronavirus-COVID-19
-Harvard University,"Suffolk, MA",207,23,3,22706,22973,267,89,109.6908213,0.811371444,maroon,Started fully online,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/massachusetts/county/suffolk-county
-University of Arizona,"Pima, AZ",168,24,2,20535,20919,384,192,122.2321429,1.570781592,red,Hybrid on-campus,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/arizona/county/pima-county
-University of Alabama,"Tuscaloosa, AL",167,4,22,4065,5178,1113,50.59090909,24.34131737,2.078396511,crimson,Fully in-person,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/alabama/county/tuscaloosa-county
+﻿school,county,preCPD,postCPD,change,color,testing,status,source
+University of Missouri,"Boone, MO",26.8,46,1.71641791,gold,no pre-matriculation testing,Hybrid on-campus,http://gocolumbiamo.maps.arcgis.com/apps/MapSeries/index.html?appid=478880b83d5e4d35b646d80fe6f2c2f6
+University of Notre Dame,"St. Joseph's, IN",45.818,71.917,1.569623292,green,full Pre-matriculation testing,14-day online hiatus,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/indiana/county/st.-joseph-county
+UNC-Chapel Hill,"Orange, NC",16.045,33.5,2.087877844,skyblue,,Transitioned to fully remote,https://www.orangecountync.gov/2332/Coronavirus-COVID-19
+University of Alabama,"Tuscaloosa, AL",61.15,55.96,0.915126738,crimson,partial pre-matriculation testing,Fully in-person,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/alabama/county/tuscaloosa-county
+The Ohio State University,"Franklin, OH",160.143,142,0.886707505,grey,partial pre-matriculation testing,,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/ohio/county/franklin-county
+University of Illinois,"Champaign, IL",14.2857,49.25,3.447503448,orange,full Pre-matriculation testing,,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/illinois/county/champaign-county
+University of Georgia,"Clarke, GA",38.461,35.538,0.924000936,red,partial pre-matriculation testing,,https://usafacts.org/visualizations/coronavirus-covid-19-spread-map/state/georgia/county/clarke-county

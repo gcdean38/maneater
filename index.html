@@ -66,10 +66,10 @@
         <!-- <script type="text/javascript" src="js/my-vis.js"></script> -->
         <script type="text/javascript">
 
-            d3.csv('https://raw.githubusercontent.com/gcdean38/maneater/master/covid.csv', function loadCallback(error, data) {
+            d3.csv('covid.csv', function loadCallback(error, data) {
                 data.forEach(function(d) { // convert strings to numbers
-                    d.schoolCPD = +d.schoolCPD;
-                    d.quarantineCPD = +d.quarantineCPD;
+                    d.preCPD = +d.preCPD;
+                    d.postCPD = +d.postCPD;
                     d.change = +d.change;
                 });
                 makeVis(data);
@@ -200,8 +200,8 @@ var changeFmt = d3.format("0.2%")
               .enter().append("circle")
                 .attr("class", "dot")
                 .attr("r",function(d){return +d.change*5}) // radius size, could map to another data dimension
-                .attr("cx", function(d) { return xScale( d.quarantineCPD ); })     // x position
-                .attr("cy", function(d) { return yScale( d.schoolCPD ); })  // y position
+                .attr("cx", function(d) { return xScale( +d.preCPD ); })     // x position
+                .attr("cy", function(d) { return yScale( +d.postCPD ); })  // y position
                 .style("fill", function(d) { return d.color})
                 .on("mouseover", tipMouseover)
                 .on("mouseout", tipMouseout);
