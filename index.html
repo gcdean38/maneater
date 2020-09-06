@@ -65,24 +65,23 @@ text.source {
         }
 
 /* Creates a small triangle extender for the tooltip */
-.d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  width: 100%;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.8);
-  content: "\25BC";
-  position: absolute;
-  text-align: center;
-}
+.tooltip{
+      position      : absolute;
+      text-align    : center;
+      max-width     : 70px;
+      max-height    : 30px;
+      padding       : 8px;
+      border        : none;
+      border-radius : 8px;
+      margin-top    : -30px;
+      font          : 10px sans-serif;
+      background    : black;
+      color         : white;
+      pointer-events: none;
+  }
 
 /* Style northward tooltips differently */
-.d3-tip.n:after {
-  margin: -1px 0 0 0;
-  top: 100%;
-  left: 0;
-}
+
 </style>
 <body>
 <script src="https://d3js.org/d3.v3.js"></script>
@@ -112,13 +111,15 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
     .tickFormat(formatPercent);
-
+////////////////////
+/*
 var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
     return "<strong>"+(d.ageRange)+ " positivity rate:</strong> <span style='color:"+(d.font)+"'>" + tipPercent(d.value) + "</span>";
   })
+*/////////////////////////////
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -126,8 +127,25 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-svg.call(tip);
-
+//svg.call(tip);
+////////////////////////////
+var div = d3.select('body').append('div')
+        .attr('class', 'tooltip')
+        .style('display', 'none');
+    function mouseover(){
+        div.style('display', 'inline');
+    }
+    function mousemove(){
+        var d = d3.select(this).data()[0]
+        div
+            .html("<strong>"+(d.ageRange)+ " positivity rate:</strong> <span style='color:"+(d.font)+"'><b>" + tipPercent(d.value) + "</b></span>")
+            .style('left', (d3.event.pageX - 34) + 'px')
+            .style('top', (d3.event.pageY - 12) + 'px');
+    }
+    function mouseout(){
+        div.style('display', 'none');
+    }
+/////////////////////
 d3.csv("covid.csv", type, function(error, data) {
   x.domain(data.map(function(d) { return d.area; }));
   y.domain([0, .75]);
@@ -158,8 +176,9 @@ d3.csv("covid.csv", type, function(error, data) {
       .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); })
       .style("fill",function(d) { return (d.color); })
-      .on('mouseover', tip.show)
-      .on('mouseout', tip.hide)
+      .on('mouseover', mouseover)
+      .on('mouseout', mouseout)
+      .on("mousemove",mousemove)
 
 svg.append("text")
 .attr("class","labels")
