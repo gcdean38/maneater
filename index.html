@@ -1,212 +1,297 @@
+
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>d3 Scatter Plot</title>
-        <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-        <!-- Styles for our vis  -->
-        <style>
-        body {
-            font: 14px sans-serif;
+<meta charset="utf-8">
+<style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered ;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #000;
-            shape-rendering: crispEdges;
-        }
-
-        text.title{
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            stroke: black;
-            font-size: 30px;
+        text.title {
+            font-size: 24px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
             text-decoration: underline;
+            font-weight: bold;
             text-anchor: middle;
         }
         text.subtitle {
-            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            stroke: lightgrey;
             font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-style: italic;
-            text-anchor: middle;            
-        }
-        text.byline{
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 10px;
-            font-style: italic;
-            text-anchor:middle;
+            text-anchor: middle;
+
         }
 
-        text.source{
-            font-family: 'Times New Roman', Times, serif;
-            font-size: 10px;
-            text-anchor:middle;
-        }
-        .dot {
-            stroke: none;
-        }
-        .tooltip {
-            position: absolute;
-            font-size: 12px;
-            width:  auto;
-            height: auto;
-            pointer-events: none;
-            background-color: lightgrey;
-            border-style: solid;
-            border-color: black;
-            padding: 4px;
-        }
-         </style>
-    </head>
-    <body>
-        <div id="vis-container"></div>
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
 
-        <!-- Optionally reference your vis JS file here, or define in a script tag -->
-        <!-- <script type="text/javascript" src="js/my-vis.js"></script> -->
-        <script type="text/javascript">
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+<script>
 
-            d3.csv('covid.csv', function loadCallback(error, data) {
-                data.forEach(function(d) { // convert strings to numbers
-                    d.preCPD = +d.preCPD;
-                    d.postCPD = +d.postCPD;
-                    d.change = +d.change;
-                });
-                makeVis(data);
-            });
+var margin = {top: 40, right: 20, bottom: 60, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-          var makeVis = function(data) {
-              // Common pattern for defining vis size and margins
-              var margin = { top: 100, right: 20, bottom: 100, left: 40 },
-                  width  = 500 - margin.left - margin.right,
-                  height = 600 - margin.top - margin.bottom;
+var formatPercent = d3.format(".0%");
+var tipPercent = d3.format(".1%");
 
-              // Add the visualization svg canvas to the vis-container <div>
-              var canvas = d3.select("#vis-container").append("svg")
-                  .attr("width",  width  + margin.left + margin.right)
-                  .attr("height", height + margin.top  + margin.bottom)
-                .append("g")
-                  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-              // Define our scales
-              var colorScale = d3.scale.category10();
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1)
 
-              var xScale = d3.scale.linear()
-                  .domain([ 0,200])
-                  .range([0, width]);
 
-              var yScale = d3.scale.linear()
-                  .domain([ 0,200])
-                  .range([height, 0]); // flip order because y-axis origin is upper LEFT
+var y = d3.scale.linear()
+    .range([height, 0]);
 
-              // Define our axes
-              var xAxis = d3.svg.axis()
-                  .scale(xScale)
-                  .orient('bottom');
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
 
-              var yAxis = d3.svg.axis()
-                  .scale(yScale)
-                  .orient('left');
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(formatPercent);
 
-              // Add x-axis to the canvas
-              canvas.append("g")
-                  .attr("class", "x axis")
-                  .attr("transform", "translate(0," + height + ")") // move axis to the bottom of the canvas
-                  .call(xAxis)
-                .append("text")
-                  .attr("class", "label")
-                  .attr("x", width) // x-offset from the xAxis, move label all the way to the right
-                  .attr("y", -6)    // y-offset from the xAxis, moves text UPWARD!
-                  .style("text-anchor", "end") // right-justify text
-                  .text("Cases Per Day Prior to Start of School");
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>"+(d.ageRange)+ " positivity rate:</strong> <span style='color:"+(d.font)+"'>" + tipPercent(d.value) + "</span>";
+  })
 
-              // Add y-axis to the canvas
-              canvas.append("g")
-                  .attr("class", "y axis") // .orient('left') took care of axis positioning for us
-                  .call(yAxis)
-                .append("text")
-                  .attr("class", "label")
-                  .attr("transform", "rotate(-90)") // although axis is rotated, text is not
-                  .attr("y", 15) // y-offset from yAxis, moves text to the RIGHT because it's rotated, and positive y is DOWN
-                  .style("text-anchor", "end")
-                  .text("Cases Per Day After Start of School");
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-              // Add the tooltip container to the vis container
-              // it's invisible and its position/contents are defined during mouseover
-              var tooltip = d3.select("#vis-container").append("div")
-                  .attr("class", "tooltip")
-                  .style("opacity", 0)
-                  //.attr("fill","grey")
-var changeFmt = d3.format("0.2%")
-              // tooltip mouseover event handler
-              var tipMouseover = function(d) {
-                  var color = colorScale(d.manufacturer);
-                  var html  = "<b><u>School:</b></u> "+d.school + "<br/>" + 
-                "<b><u>County:</b></u> "+d.county + "<br/>"+
-                "<b><u>Pre-Matriculation Testing:</b></u> "+d.testing+"<br/>"+
-                              "<b><u>Percent Change:</b></u> "+changeFmt(d.change) + " of pre-reopening cases<br/>" 
+svg.call(tip);
 
-                  tooltip.html(html)
-                      .style("left", (d3.event.pageX + 15) + "px")
-                      .style("top", (d3.event.pageY - 28) + "px")
-                    .transition()
-                      .duration(200) // ms
-                      .style("opacity", .9) // started as 0!
+d3.csv("covid.csv", type, function(error, data) {
+  x.domain(data.map(function(d) { return d.area; }));
+  y.domain([0, .75]);
 
-              };
-              // tooltip mouseout event handler
-              var tipMouseout = function(d) {
-                  tooltip.transition()
-                      .duration(300) // ms
-                      .style("opacity", 0); // don't care about position!
-              };
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      //.call(xAxis)
+      .attr("fill","none");
+;
 
-              canvas.append("text")
-              .attr("x",width/2)
-              .attr("y",-60)
-              .attr("class","title")
-              .text("Reopening Struggles")
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Positivity Rate");
 
-              canvas.append("text")
-              .attr("x",width/2)
-              .attr("y",-35)
-              .attr("class","subtitle")
-              .text("Comparing COVID-19 cases before and after select universities reopened")
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.area); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.value); })
+      .attr("height", function(d) { return height - y(d.value); })
+      .style("fill",function(d) { return (d.color); })
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
 
-              canvas.append("text")
-              .attr("class","byline")
-              .attr("x",width*.05)
-              .attr("y",height*1.1)
-              .text("Geoffrey C. Dean")
+svg.append("text")
+.attr("class","labels")
+.attr("x",width*.15)
+.attr("y", height*1.05)
+.style("font-size","14px")
+.style("fill","black")
+.text("August 14-20")
+svg.append("text")
+.attr("class","labels")
+.attr("x",width*.7)
+.attr("y", height*1.05)
+.style("font-size","14px")
+.style("fill","black")
+.text("August 21-27")
 
-              canvas.append('text')
-              .attr("class",'source')
-              .attr("x",width*.85)
-              .attr("y",height*1.1)
-              .text('Sources: usafacts.org, County dashboards')
+svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr("y1",height*1.07)
+.attr("y2",height*1.07)
+.attr("stroke","black")
+.attr("stroke-width","1px")
 
-              canvas.append("line")
-              .attr("x1",function(d) { return xScale(0); })
-              .attr("x2",function(d) { return xScale( width); })
-              .attr("y1",function(d) { return yScale( 0); })
-              .attr("y2",function(d) { return yScale( height); })
-              .attr("stroke","black")
-              .style("stroke-dasharray",("3,3"))
-              
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.1)
+		.attr('x', width*.00)
+		.attr('text-anchor', 'start')
+		.text('Sources: ')
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.1)
+		.attr('x', width*.08)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Boone County COVID-19 dashboard,')
 
-              // Add data points!
-              canvas.selectAll(".dot")
-                .data(data)
-              .enter().append("circle")
-                .attr("class", "dot")
-                .attr("r",function(d){return +d.change*5}) // radius size, could map to another data dimension
-                .attr("cx", function(d) { return xScale( +d.preCPD ); })     // x position
-                .attr("cy", function(d) { return yScale( +d.postCPD ); })  // y position
-                .style("fill", function(d) { return d.color})
-                .on("mouseover", tipMouseover)
-                .on("mouseout", tipMouseout);
-          };
+svg.append('text')
+		.attr('class', 'source')
+		.attr('y', height*1.125)
+		.attr('x', width*.0)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Scott Clardy (BCHHS),')
+        svg.append('text')
+		.attr('class', 'source')
+		.attr('y', height*1.125)
+		.attr('x', width*.19)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('2020')
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.1)
+		.attr('x', width*.575)
+		.attr('text-anchor', 'start')
+		.text('GEOFFREY DEAN/GRAPHIC DESIGNER')
 
-        </script>
-    </body>
-</html>
+svg.append("rect")
+.attr("x",width*.1)
+.attr("y",height*.01)
+.attr("height",20)
+.attr("width",20)
+.attr("fill","#1f5ba6")
+
+svg.append("rect")
+.attr("x",width*.1)
+.attr("y",height*.085)
+.attr("height",20)
+.attr("width",20)
+.attr("fill","#C69214")
+
+
+svg.append("text")
+.attr("x",width*.15)
+.attr("y",height*.045)
+.attr("fill","black")
+.text("Boone County Total")
+
+svg.append("text")
+.attr("x",width*.15)
+.attr("y",height*.1175)
+.attr("fill","black")
+.text("Boone County 18-22 Year Olds")
+
+svg.append("text")
+.attr("class","title")
+.attr("x",width/2)
+.attr("y",height*-.02)
+.attr("fill","black")
+.text("POSITIVITY RATES FOR BOONE COUNTY")
+
+svg.append("text")
+.attr("class","subtitle")
+.attr("x",width/2)
+.attr("y",height*.03)
+.attr("fill","black")
+.text("August 14-August 27, 2020")
+
+// draw a rectangle
+svg.append("a")
+    .attr("xlink:href", "http://gocolumbiamo.maps.arcgis.com/apps/MapSeries/index.html?appid=478880b83d5e4d35b646d80fe6f2c2f6")
+    .append("rect")  
+    .attr('y', height*1.08)
+	.attr('x', width*.08)
+    .attr("height", 9)
+    .attr("width", 145)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
+
+    svg.append("a")
+    .attr("xlink:href", "https://www.como.gov/health/contact-us/")
+    .append("rect")  
+    .attr('y', height*1.11)
+	.attr('x', width*.0)
+    .attr("height", 9)
+    .attr("width", 125)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
+
+});
+
+
+function type(d) {
+  d.value = +d.value;
+  return d;
+}
+
+</script>
