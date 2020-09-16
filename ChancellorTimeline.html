@@ -23,18 +23,25 @@
               "translate(" + margin.left + "," + margin.top + ")");
     
     //Read the data
-    d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/ChancellorTimeline.csv", function(data) {
-    
-      // Add X axis
+    d3.csv("ChancellorTimeline.csv",
+      // When reading the csv, I must format variables:
+      function(d){
+        return { date : d3.timeParse("%Y-%m-%d")(d.date), cat : d.cat, event : d.event, year: d.year }
+      },
+      // Now I can use this dataset:
+      function(data) { // Add X axis
+      
+      var parse = d3.timeFormat("%B %e")
+
    //   var formatTime = d3.timeFormat("%e-%b");
       var x = d3.scaleTime()
-        .domain([new Date (2020,7,1), new Date (2020,10,1)])
+        .domain(d3.extent(data, function(d) { return d.date; }))
         .range([ 0, width ]);
         //x.domain(d3.extent(data, function(d) { return d.date; }));
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x).ticks(5)
-        .tickFormat(d3.timeFormat("%Y-%m-%d")))
+        .tickFormat(d3.timeFormat("%B %e")))
 
 
     
@@ -71,7 +78,7 @@
     
       var mousemove = function(d) {
         tooltip
-          .html(d.event)
+          .html(parse(d.date)+", "+(d.year) +"<br>"+d.event)
           .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]) + "px")
       }
@@ -84,13 +91,12 @@
           .style("opacity", 0)
       }
       // Add dots
-      var time = d =>{ d.date = new Date(d.date); return d}
       svg.append('g')
     .selectAll("dot")
     .data(data) // the .filter part is just to keep a few dots on the chart, not all of them
     .enter()
     .append("circle")
-      .attr("cx", function (d) { return x(time(d.date)); } )
+      .attr("cx", function (d) { return x((d.date)); } )
       .attr("cy", function (d) { return y(d.cat); } )
       .attr("r", 7)
       .style("fill", "#69b3a2")
