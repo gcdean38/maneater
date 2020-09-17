@@ -103,7 +103,7 @@ body {
               "translate(" + margin.left + "," + margin.top + ")");
     
     //Read the data
-    d3.csv("ChancellorTimeline.csv",
+    d3.csv("PresidentTimeline.csv",
       // When reading the csv, I must format variables:
       function(d){
         return { date : d3.timeParse("%Y-%m-%d")(d.date), cat : d.cat, event : d.event, year: d.year }
@@ -203,7 +203,7 @@ body {
       .attr("r", 10)
       .style("fill", "#C69214")
       .style("stroke", "white")
-    //.on("mouseover", mouseover )
+    .on("mouseover", mouseover )
     .on("click",mouseover)
     //.on("mousemove", mousemove )
     .on("mouseleave", mouseleave )
