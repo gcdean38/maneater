@@ -91,7 +91,7 @@ body {
     // set the dimensions and margins of the graph
     var margin = {top: 30, right: 30, bottom: 50, left: 100},
         width = 550 - margin.left - margin.right,
-        height = 170 - margin.top - margin.bottom;
+        height = 200 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -128,6 +128,9 @@ body {
         .attr("class","axis")
         .call(d3.axisBottom(x).ticks(5)
         .tickFormat(d3.timeFormat("%B")).tickSize(-5,-5).tickPadding(-10))
+        .selectAll("text")	
+        .style("text-anchor", "start")
+        .attr("dx", ".3em")
 
     
     
@@ -145,12 +148,14 @@ body {
     .attr("y",height*.2)
     .text("Tim Wolfe ('15)")
     .attr("text-anchor","end")
+    .attr("dy","0.25em")
 
     svg.append("text")
     .attr("x",width*-.03)
     .attr("y",height*.7)
     .text("Mun Choi ('20)")    
     .attr("text-anchor","end")
+    .attr("dy",".25em")
 
       // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
       // Its opacity is set to 0: we don't see it by default.
