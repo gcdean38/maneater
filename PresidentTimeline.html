@@ -124,7 +124,7 @@ body {
         return { year : d.year, event : d.event}
       },
       // Now I can use this dataset:
-      function(data) { // Add X axis
+      function(ddata) { // Add X axis
       
       
 
@@ -142,7 +142,7 @@ body {
    // .attr("stroke-dasharray","(3,3)")
         
 
-    console.log(data)
+    console.log(ddata)
       // Add Y axis
       
       /*svg.append("g")
@@ -163,7 +163,7 @@ body {
     
       // A function that change this tooltip when the user hover a point.
       // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
-      var dmouseover = function(d) {
+      var mouseover = function(d) {
         dtooltip
           .style("opacity", 1)
           .html("<u><b>"+(d.year)+":</u></b><br><i>"+d.event)
@@ -171,11 +171,16 @@ body {
           .style("top", (d3.mouse(this)[1]+50) + "px")
       }
 
-      
+      var mouseleave = function(d) {
+       dtooltip
+       .transition()
+          .duration(200)
+          .style("opacity", 0)
+      }
 
       dsvg.append('g')
     .selectAll("dot")
-    .data(data) // the .filter part is just to keep a few dots on the chart, not all of them
+    .data(ddata) // the .filter part is just to keep a few dots on the chart, not all of them
     .enter()
     .append("circle")
       .attr("cx", function (d) { return dx((d.year)); } )
@@ -183,35 +188,32 @@ body {
       .attr("r", 10)
       .style("fill", "#C69214")
       .style("stroke", "white")
-    .on("mouseover", dmouseover )
-    .on("click",dmouseover)
-   // .on("mousemove", dmousemove )
-    .on("mouseleave", dmouseleave )
+    .on("mouseover", mouseover )
+    .on("click",mouseover)
+    //.on("mousemove", mousemove )
+    .on("mouseleave", mouseleave )
     
-      var dmousemove = function(d) {
+      var mousemove = function(d) {
         dtooltip
-        
-          .style("opacity", 0)
+        .transition()
+          .duration(200)
+          .style("opacity", 1)
       }
     
       // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
-      var dmouseleave = function(d) {
-       dtooltip
-          
-          .style("opacity", 0)
-      }
+      
 
 
     dsvg.append("text")
     .attr("class","title")
-    .attr("x",width/2)
+    .attr("x",width*.33)
     .attr("y",height*-.1)
     .text("Then...")
     dsvg.append("text")
     .attr("class","subtitle")
     .attr("x",width/2)
     .attr("y",height*.05)
-    .text("Comparison of the criticisms of Tim Wolfe and Mun Choi")
+    .text("(1950-1980)")
 
     
   
@@ -255,9 +257,14 @@ body {
 
     svg.append("text")
     .attr("class","title")
-    .attr("x",width/2)
+    .attr("x",width*.67)
     .attr("y",height*-.1)
     .text("...and Now")
+    svg.append("text")
+    .attr("class","subtitle")
+    .attr("x",width/2)
+    .attr("y",height*.05)
+    .text("(2015-2020)")
    //   var formatTime = d3.timeFormat("%e-%b");
       var x = d3.scaleTime()
         .domain(d3.extent(data, function(d) { return d.date; }))
