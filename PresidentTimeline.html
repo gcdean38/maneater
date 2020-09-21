@@ -65,8 +65,26 @@ body {
       text-anchor: start;
      
     }
+
+   .dashline {
+     stroke-dasharray: 3,3;
+   }
   /* Creates a small triangle extender for the tooltip */
   .tooltip{
+        position      : absolute;
+        text-align    : left;
+        max-width     : 120px;
+        max-height    : 150px;
+        padding       :5px;
+        border        : none;
+        border-radius : 8px;
+        
+        font          : 10px sans-serif;
+        background    : black;
+        color         : white;
+        pointer-events: none;
+    }
+    .dtooltip{
         position      : absolute;
         text-align    : left;
         max-width     : 120px;
@@ -85,11 +103,124 @@ body {
   
   </style>
 <!-- Create a div where the graph will take place -->
+<div id="new_dataviz"></div>
 <div id="my_dataviz"></div>
+<script>
+   var margin = {top: 40, right: 30, bottom: 0, left: 100},
+        width = 550 - margin.left - margin.right,
+        height = 100 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var dsvg = d3.select("#new_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+              d3.csv("prePresidentTimeline.csv",
+      // When reading the csv, I must format variables:
+      function(d){
+        return { year : d.year, event : d.event}
+      },
+      // Now I can use this dataset:
+      function(data) { // Add X axis
+      
+      
+
+   //   var formatTime = d3.timeFormat("%e-%b");
+      var dx = d3.scaleLinear()
+        .domain([1955,1980])
+        .range([ 0, width ]);
+        //x.domain(d3.extent(data, function(d) { return d.date; }));
+      dsvg.append("g")
+        .attr("transform", "translate(0,45)")
+        .call(d3.axisBottom(dx).ticks(5).tickSize(-5,0).tickFormat(d3.format("d"))
+        )
+
+    
+   // .attr("stroke-dasharray","(3,3)")
+        
+
+    console.log(data)
+      // Add Y axis
+      
+      /*svg.append("g")
+        
+        .call(d3.axisLeft(y).tickSize(0,0)).attr("transform","translate(-10,0)");*/
+
+
+      // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
+      // Its opacity is set to 0: we don't see it by default.
+      var dtooltip = d3.select("#new_dataviz")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "dtooltip")
+        //.style("background-color", "white")
+       
+    
+    
+    
+      // A function that change this tooltip when the user hover a point.
+      // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+      var dmouseover = function(d) {
+        dtooltip
+          .style("opacity", 1)
+          .html("<u><b>"+(d.year)+":</u></b><br><i>"+d.event)
+          .style("left", (d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", (d3.mouse(this)[1]+50) + "px")
+      }
+
+      
+
+      dsvg.append('g')
+    .selectAll("dot")
+    .data(data) // the .filter part is just to keep a few dots on the chart, not all of them
+    .enter()
+    .append("circle")
+      .attr("cx", function (d) { return dx((d.year)); } )
+      .attr("cy", 25)
+      .attr("r", 10)
+      .style("fill", "#C69214")
+      .style("stroke", "white")
+    .on("mouseover", dmouseover )
+    .on("click",dmouseover)
+   // .on("mousemove", dmousemove )
+    .on("mouseleave", dmouseleave )
+    
+      var dmousemove = function(d) {
+        dtooltip
+        
+          .style("opacity", 0)
+      }
+    
+      // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+      var dmouseleave = function(d) {
+       dtooltip
+          
+          .style("opacity", 0)
+      }
+
+
+    dsvg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*-.1)
+    .text("Then...")
+    dsvg.append("text")
+    .attr("class","subtitle")
+    .attr("x",width/2)
+    .attr("y",height*.05)
+    .text("Comparison of the criticisms of Tim Wolfe and Mun Choi")
+
+    
+  
+      })
+</script>
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 30, right: 30, bottom: 50, left: 100},
+    var margin = {top: 40, right: 30, bottom: 50, left: 100},
         width = 550 - margin.left - margin.right,
         height = 200 - margin.top - margin.bottom;
     
@@ -106,13 +237,27 @@ body {
     d3.csv("PresidentTimeline.csv",
       // When reading the csv, I must format variables:
       function(d){
-        return { date : d3.timeParse("%Y-%m-%d")(d.date), cat : d.cat, event : d.event, year: d.year }
+        return { date : d3.timeParse("%Y-%m-%d")(d.date), cat : d.cat, event : d.event, year: d.year, addition: d.addition }
       },
       // Now I can use this dataset:
       function(data) { // Add X axis
       
       var parse = d3.timeFormat("%B %e")
 
+      svg.append("line")
+    .attr("class","dashline")
+    .attr("x1",width*-.25)
+    .attr("x2",width)
+    .attr("y1",height*-.35)
+    .attr("y2",height*-.35)
+    .attr("stroke","black")
+    .attr("stroke-width","2px")
+
+    svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*-.1)
+    .text("...and Now")
    //   var formatTime = d3.timeFormat("%e-%b");
       var x = d3.scaleTime()
         .domain(d3.extent(data, function(d) { return d.date; }))
@@ -175,7 +320,7 @@ body {
           .style("opacity", 1)
           .html("<u><b>"+parse(d.date)+", "+(d.year) +":</u></b><br><i>"+d.event)
           .style("left", (d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", (d3.mouse(this)[1]+50) + "px")
+          .style("top", (d3.mouse(this)[1]+130) + "px")
       }
     
      /* var mousemove = function(d) {
@@ -194,14 +339,14 @@ body {
       }
       // Add dots
 
-      var jitterWidth = 40
+      var jitterWidth = 10
       svg.append('g')
     .selectAll("dot")
     .data(data) // the .filter part is just to keep a few dots on the chart, not all of them
     .enter()
     .append("circle")
       .attr("cx", function (d) { return x((d.date)); } )
-      .attr("cy", function (d) { return y(d.cat) - Math.random()*jitterWidth } )
+      .attr("cy", function (d) { return y(d.cat) + (+d.addition) } )
       .attr("r", 10)
       .style("fill", "#C69214")
       .style("stroke", "white")
@@ -217,16 +362,6 @@ body {
     .attr("y2",height*.85)
     .attr("stroke","black")
 
-    svg.append("text")
-    .attr("class","title")
-    .attr("x",width/2)
-    .attr("y",height*-.1)
-    .text("Then and Now")
-    svg.append("text")
-    .attr("class","subtitle")
-    .attr("x",width/2)
-    .attr("y",height*.05)
-    .text("Comparison of the criticisms of Tim Wolfe and Mun Choi")
 
     svg.append("text")
 		.attr('class', 'byline')
