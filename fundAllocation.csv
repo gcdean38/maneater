@@ -1,6 +1,6 @@
-﻿category,amount,percent
-athletics,500,0.5
-salary,200,0.2
-randomStuff,100,0.1
-food,150,0.15
-amenities,50,0.05
+﻿category,amount,percent,total
+athletics,500,0.5,0
+salary,200,0.2,500
+randomStuff,100,0.1,700
+food,150,0.15,800
+amenities,50,0.05,950
