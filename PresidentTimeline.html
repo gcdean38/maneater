@@ -193,13 +193,15 @@ body {
           .style("opacity", 0)
       }
       // Add dots
+
+      var jitterWidth = 40
       svg.append('g')
     .selectAll("dot")
     .data(data) // the .filter part is just to keep a few dots on the chart, not all of them
     .enter()
     .append("circle")
       .attr("cx", function (d) { return x((d.date)); } )
-      .attr("cy", function (d) { return y(d.cat); } )
+      .attr("cy", function (d) { return y(d.cat) - Math.random()*jitterWidth } )
       .attr("r", 10)
       .style("fill", "#C69214")
       .style("stroke", "white")
