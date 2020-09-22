@@ -81,7 +81,7 @@ text.source {
           svg.append('image')
           .attr("xlink:href","https://cdn.pixabay.com/photo/2015/09/05/23/49/dollar-926397__340.jpg")
           .attr("x",0)
-          .attr("y",50)
+          .attr("y",45)
           .attr("height",300)
           .attr("width",500)
 
@@ -119,7 +119,7 @@ text.source {
  
           var rectanglesStyle = rectangles
           .attr("x",function(d){return d.total*500})
-          .attr("y",95)
+          .attr("y",90)
           .attr("height",210)
           .attr("width",function(d){return d.percent*500})
           .style("fill",function(d){return d.color})
@@ -150,7 +150,13 @@ text.source {
 		.attr('y', height*.905)
 		.attr('x', width)
 		.attr('text-anchor', "end")
-		.text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+    .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+    
+    svg.append("text")
+    .attr("class","subtitle")
+    .attr("y",height*.15)
+    .attr("x",width/2)
+    .text("THIS WILL BE THE SUBTITLE")
 
     })
     
