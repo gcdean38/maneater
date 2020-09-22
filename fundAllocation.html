@@ -136,19 +136,20 @@ text.source {
     .attr('text-anchor',"middle")
     .text("How is MU Spending Their Money?")
 
+
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr("y1",height*.875)
+.attr("y2",height*.875)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
     svg.append("text")
 		.attr('class', 'byline')
-		.attr('y', height)
+		.attr('y', height*.905)
 		.attr('x', width)
-    .attr('text-anchor', 'end')
-    .attr("opacity",0)
-    .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
-    
-    svg.append("text")
-		.attr('class', 'byline')
-		.attr('y', height*.9)
-		.attr('x', width*.575)
-		.attr('text-anchor', 'beginning')
+		.attr('text-anchor', "end")
 		.text('GEOFFREY DEAN/GRAPHIC DESIGNER')
 
     })
