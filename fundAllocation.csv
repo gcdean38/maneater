@@ -1,6 +1,6 @@
 ﻿category,amount,percent,total,color
 athletics,500,0.5,0,blue
-salary,200,0.2,500,red
-randomStuff,100,0.1,700,green
-food,150,0.15,800,orange
-amenities,50,0.05,950,yellow
+salary,200,0.2,0.5,red
+randomStuff,100,0.1,0.7,green
+food,150,0.15,0.8,orange
+amenities,50,0.05,0.95,yellow
