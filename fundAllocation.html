@@ -8,7 +8,7 @@
    .tooltip{
         position      : absolute;
         text-align    : left;
-        max-width     : 120px;
+        max-width     : 150px;
         max-height    : 150px;
         padding       :5px;
         border        : none;
@@ -90,15 +90,23 @@ text.source {
           .enter()
           .append('rect')
 
+svg.append("text")
+.attr("x",width/2)
+.attr("y",height*.225)
+.attr("font-size","12px")
+.text("Amounts in Thousands of US Dollars")
+.attr("text-anchor","middle")
+
           var tooltip = d3.select("#my_dataviz")
         .append("div")
         .style("opacity", 0)
         .attr("class", "tooltip")
-
+var commaFormat = d3.format(",")
+var formatPercent = d3.format(".2%")
  var mousemove = function(d){
   tooltip
           .style("opacity", 1)
-          .html("<u><b>"+(d.category)+":</u></b><br><i>$"+d.amount)
+          .html("<u><b>"+(d.category)+":</u></b><br><i>$"+commaFormat(d.amount)+" ("+formatPercent(d.percent)+")")
           .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]-30) + "px")
  }
@@ -116,7 +124,61 @@ text.source {
    .duration(200)
    .style("opacity",1)
  }
- 
+
+svg.append('rect')
+.attr("x",width*.0)
+.attr("y",height*.835)
+.attr("width",15)
+.attr("height",15)
+.attr("fill","blue")
+svg.append("text")
+.attr("x",width*.04)
+.attr("y",height*.835+12)
+.attr("text-anchor","beginning")
+.text("Salaries and Wages")
+.attr("font-size","12px")
+
+svg.append('rect')
+.attr("x",width*.24)
+.attr("y",height*.835)
+.attr("width",15)
+.attr("height",15)
+.attr("fill","red")
+svg.append("text")
+.attr("x",width*.28)
+.attr("y",height*.835+12)
+.attr("text-anchor","beginning")
+.text("Benefits")
+.attr("font-size","12px")
+
+svg.append('rect')
+.attr("x",width*.37)
+.attr("y",height*.835)
+.attr("width",15)
+.attr("height",15)
+.attr("fill","green")
+svg.append("text")
+.attr("x",width*.41)
+.attr("y",height*.835+12)
+.attr("text-anchor","beginning")
+.text("Supplies, Services and Other Operations")
+.attr("font-size","12px")
+
+svg.append('rect')
+.attr("x",width*.0)
+.attr("y",height*.835)
+.attr("width",15)
+.attr("height",15)
+.attr("fill","orange")
+svg.append("text")
+.attr("x",width*.70)
+.attr("y",height*.835+12)
+.attr("text-anchor","beginning")
+.text("Depreciation")
+.attr("font-size","12px")
+
+
+
           var rectanglesStyle = rectangles
           .attr("x",function(d){return d.total*500})
           .attr("y",90)
@@ -140,14 +202,14 @@ text.source {
     svg.append("line")
 .attr("x1",0)
 .attr("x2",width)
-.attr("y1",height*.875)
-.attr("y2",height*.875)
+.attr("y1",height*.92)
+.attr("y2",height*.92)
 .attr("stroke","black")
 .attr("stroke-width","1px")
 
     svg.append("text")
 		.attr('class', 'byline')
-		.attr('y', height*.905)
+		.attr('y', height*.95)
 		.attr('x', width)
 		.attr('text-anchor', "end")
     .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
