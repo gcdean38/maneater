@@ -79,15 +79,16 @@ var svg = d3.select("body")
 			.attr("height", height);
         
 // Append Div for tooltip to SVG
-var div = d3.select("body")
+var tooltip = d3.select("body")
 		    .append("div")   
     		.attr("class", "tooltip")               
     		.style("opacity", 0);
 
 // Load in my states data!
-d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/abortionMap.csv", function(data) {
+d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/abortionMap.csv", function(d) {
 color.domain([0,1,2,3]); // setting the range of the input data
-
+return { state: d.state, value: +d.value}
+      },function(data) {
 // Load GeoJSON data and merge with states data
 d3.json("https://gist.githubusercontent.com/michellechandra/0b2ce4923dc9b5809922/raw/a476b9098ba0244718b496697c5b350460d32f99/us-states.json", function(json) {
 
@@ -114,7 +115,33 @@ for (var i = 0; i < data.length; i++) {
 		}
 	}
 }
-		
+var status = function(d){
+	if (d.properties.value = 2) {return "Access to an abortion is guaranteed"}
+	else if (d.properties.value = 1) {return "Access to an abortion is restricted"}
+	else {return "No laws regarding access to an abortion"}
+}
+console.log(data)
+var mousemove = function(d){
+  tooltip
+          .style("opacity", 1)
+          .html("<u><b>"+(d.properties.name)+":</u></b><br><i>"+status(d.properties.value))
+          .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", (d3.mouse(this)[1]-30) + "px")
+ }
+
+ var mouseout = function(d){
+   tooltip
+   .transition()
+   .duration(200)
+   .style("opacity",0)
+ }
+
+ var mouseover = function(d){
+   tooltip
+   .transition()
+   .duration(200)
+   .style("opacity",1)
+ }		
 // Bind the data to the SVG and create one path per GeoJSON feature
 svg.selectAll("path")
 	.data(json.features)
@@ -136,22 +163,11 @@ svg.selectAll("path")
 	return "rgb(213,222,217)";
 	}
 })
-.on("mouseover", function(d) {      
-    	div.transition()        
-      	   .duration(200)      
-           .style("opacity", .9);      
-           div.text(d.state)
-           .style("left", (d3.event.pageX) + "px")     
-           .style("top", (d3.event.pageY - 28) + "px")
-           .style("stroke","black");    
-	})   
-
+.on("mouseover", mouseover)   
+.on("mousemove",mousemove)
     // fade out tooltip on mouse out               
-    .on("mouseout", function(d) {       
-        div.transition()        
-           .duration(500)      
-           .style("opacity", 0);   
-    });;
+    .on("mouseout",mouseout)
+	.on("click",mousemove);;
 
 		 
 // Map the cities I have lived in!
