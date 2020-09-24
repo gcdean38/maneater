@@ -9,7 +9,35 @@
 path:hover {
 	fill-opacity: .7;
 }
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
+        text.title {
+            font-size: 24px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
 /* Style for Custom Tooltip */
 div.tooltip {   
  	position: absolute;           
@@ -54,8 +82,8 @@ http://bl.ocks.org/mbostock/3888852  */
 
 		
 //Width and height of map
-var width = 960;
-var height = 500;
+var width = 900;
+var height = 520;
 
 // D3 Projection
 var projection = d3.geo.albersUsa()
@@ -193,7 +221,62 @@ var legend = d3.select("body").append("svg")
       	  .attr("dy", ".35em")
       	  .text(function(d) { return d; });
 	});
+	svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.05)
+    .attr('text-anchor',"middle")
+    .text("Abortion Acces in the United States")
 
+
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr("y1",height*.95)
+.attr("y2",height*.95)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+svg.append("text")
+.attr("class","source")
+.attr("y",height*.98)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*.98)
+		.attr('x', width*.04)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Business Insider')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*.98)
+		.attr('x', width*.12)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+
+	svg.append("a")
+    .attr("xlink:href", "http://gocolumbiamo.maps.arcgis.com/apps/MapSeries/index.html?appid=478880b83d5e4d35b646d80fe6f2c2f6")
+    .append("rect")  
+    .attr('y', height*.98-9)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.12- width*.04)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
+
+    svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*.98)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
 });
 </script>
 </body>
