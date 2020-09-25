@@ -46,8 +46,8 @@ div.tooltip {
 	max-height: 80px;                 
 	padding: 4px;             
 	font: 12px sans-serif;        
-	background: white;   
-	stroke: black;    
+	background: lightgray;   
+	border-top: black;
 	border-color: black;  
 	border-radius: 8px;           
 	pointer-events: none;         
@@ -62,7 +62,7 @@ body {
 /* Legend Position Style */
 .legend {
 	position:absolute;
-	left:675px;
+	left:630px;
 	top:350px;
 }
 
@@ -82,7 +82,7 @@ http://bl.ocks.org/mbostock/3888852  */
 
 		
 //Width and height of map
-var width = 800;
+var width = 730;
 var height = 520;
 
 // D3 Projection
@@ -108,10 +108,7 @@ var svg = d3.select("body")
 			.attr("height", height);
         
 // Append Div for tooltip to SVG
-var tooltip = d3.select("body")
-		    .append("div")   
-    		.attr("class", "tooltip")               
-    		.style("opacity", 0);
+
 
 // Load in my states data!
 d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/abortionMap.csv", function(d) {
@@ -158,7 +155,8 @@ var legend = d3.select("body").append("svg")
   	legend.append("rect")
    		  .attr("width", 18)
    		  .attr("height", 18)
-   		  .style("fill", color);
+   		  .style("fill", color)
+			;
 
   	legend.append("text")
   		  .data(legendText.slice(1))
@@ -167,6 +165,12 @@ var legend = d3.select("body").append("svg")
       	  .attr("dy", ".35em")
       	  .text(function(d) { return d; });
 
+			var tooltip = d3.select("body")
+		    .append("div")   
+    		.attr("class", "tooltip") 
+			.style("stroke","black") 
+			.style("stroke-width","2px")             
+    		.style("opacity", 0);
 console.log(data)
 var mousemove = function(d){
   tooltip
@@ -247,7 +251,7 @@ svg.append("text")
 svg.append('text')
 		.attr('class', 'sources')
 		.attr('y', height*.98)
-		.attr('x', width*.045)
+		.attr('x', width*.05)
 		.attr('text-anchor', 'start')
         .style("fill","blue")
         .style("text-decoration","underline")
@@ -256,7 +260,7 @@ svg.append('text')
 		svg.append('text')
 		.attr('class', 'sources')
 		.attr('y', height*.98)
-		.attr('x', width*.135)
+		.attr('x', width*.15)
 		.attr('text-anchor', 'start')
         .style("fill","black")
 		.text(', 2020.')
