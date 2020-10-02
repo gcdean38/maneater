@@ -114,7 +114,7 @@ var svg = d3.select("body")
 // Load in my states data!
 d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/ElectoralCollege.csv", function(d) {
 color.domain([0.75,3.25]); // setting the range of the input data
-return { state: d.state, ppv: +d.ppv, strength: d.strength}
+return { state: d.state, ppv: +d.ppv, strength: +d.strength}
       },function(data) {
 // Load GeoJSON data and merge with states data
 d3.json("https://gist.githubusercontent.com/michellechandra/0b2ce4923dc9b5809922/raw/a476b9098ba0244718b496697c5b350460d32f99/us-states.json", function(json) {
@@ -173,10 +173,11 @@ var legend = d3.select("body").append("svg")
 			.style("stroke-width","2px")             
     		.style("opacity", 0);
 console.log(data)
+formatPct = d3.format(".2%")
 var mousemove = function(d){
   tooltip
           .style("opacity", 1)
-          .html("<b>"+(d.properties.name)+"</b>: "+(d.properties.status)+".")
+          .html("<b>"+(d.properties.name)+"</b>: <br>"+formatPct(d.properties.strength)+".")
           .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]-30) + "px")
  }
@@ -232,7 +233,7 @@ svg.selectAll("path")
     .attr("x",width/2)
     .attr("y",height*.05)
     .attr('text-anchor',"middle")
-    .text("Abortion Access in the United States")
+    .text("Strength of Vote by State")
 
 
     svg.append("line")
