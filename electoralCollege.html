@@ -3,11 +3,17 @@
 <head>
 <meta charset="utf-8">
 <script src="https://d3js.org/d3.v3.min.js"></script>
+
 <style type="text/css">
 
 /* On mouse hover, lighten state color */
 path:hover {
 	fill-opacity: .7;
+}
+
+.legend-axis path{
+    stroke: black;
+    display: none;
 }
 text.source {
             font-size: 10px;
@@ -60,11 +66,7 @@ body {
 }
         
 /* Legend Position Style */
-.legend {
-	position:absolute;
-	left:630px;
-	top:350px;
-}
+
 
 </style>
 </head>
@@ -202,7 +204,21 @@ svg.selectAll("path")
 
 		 
 // Map the cities I have lived in!
+var x = d3.scale.linear()
+    .range([width*.85, width*.85+100])
+    .domain([0.75,3.25])
 
+    var xAxis = d3.svg.axis()
+    .ticks(5)
+    .tickSize(-5)
+    .orient("bottom")
+    .scale(x)
+    
+    svg.append("g")
+    .attr("class","legend-axis")
+    .attr("transform","translate(0,"+height*.75+")")
+    .attr("stroke","black")
+    .call(xAxis)
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 var defs = svg.append("defs");
 
@@ -231,7 +247,10 @@ gradient.append("stop")
               .attr("height",20)
               .attr("width",100)
               .attr("fill", "url(#svgGradient)");
-	});
+	
+    
+    
+    });
 
    /* */
 
