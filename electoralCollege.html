@@ -89,7 +89,7 @@ var height = 520;
 
 // D3 Projection
 var projection = d3.geo.albersUsa()
-				   .translate([width/2, height/2])    // translate to center of screen
+				   .translate([width/2, height/2-20])    // translate to center of screen
 				   .scale([1000]);          // scale things down so see entire US
         
 // Define path generator
@@ -205,18 +205,20 @@ svg.selectAll("path")
 		 
 // Map the cities I have lived in!
 var x = d3.scale.linear()
-    .range([width*.85, width*.85+100])
+    .range([width*.55, width*.55+150])
     .domain([0.75,3.25])
 
+    
+    let tickLabels = ['1x',"1.5x","2x","2.5x","3x"]
     var xAxis = d3.svg.axis()
     .ticks(5)
     .tickSize(-5)
     .orient("bottom")
     .scale(x)
-    
+    .tickFormat((d,i)=> tickLabels[i])
     svg.append("g")
     .attr("class","legend-axis")
-    .attr("transform","translate(0,"+height*.75+")")
+    .attr("transform","translate(0,"+height*.9+")")
     .attr("stroke","black")
     .call(xAxis)
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
@@ -242,10 +244,10 @@ gradient.append("stop")
    .attr("stop-opacity", 1);
 
    var legend = svg.append("rect")
-              .attr("x", width*.85)
-              .attr('y',height*.7)
+              .attr("x", width*.55)
+              .attr('y',height*.85)
               .attr("height",20)
-              .attr("width",100)
+              .attr("width",150)
               .attr("fill", "url(#svgGradient)");
 	
     
@@ -253,13 +255,17 @@ gradient.append("stop")
     });
 
    /* */
-
+svg.append("text")
+.text("Strength Compared to National Average")
+.attr("x",width*.55+75)
+.attr("y",height*.83)
+.attr("text-anchor","middle")
 	svg.append("text")
     .attr("class","title")
     .attr("x",width/2)
     .attr("y",height*.05)
     .attr('text-anchor',"middle")
-    .text("Strength of Vote by State")
+    .text("Value of Vote by State")
 
 
     svg.append("line")
@@ -269,40 +275,7 @@ gradient.append("stop")
 .attr("y2",height*.95)
 .attr("stroke","black")
 .attr("stroke-width","1px")
-svg.append("text")
-.attr("class","source")
-.attr("y",height*.98)
-.attr("x",0)
-.attr('text-anchor',"start")
-.text("Source: ")
 
-svg.append('text')
-		.attr('class', 'sources')
-		.attr('y', height*.98)
-		.attr('x', width*.05)
-		.attr('text-anchor', 'start')
-        .style("fill","blue")
-        .style("text-decoration","underline")
-		.text('Business Insider')
-
-		svg.append('text')
-		.attr('class', 'sources')
-		.attr('y', height*.98)
-		.attr('x', width*.15)
-		.attr('text-anchor', 'start')
-        .style("fill","black")
-		.text(', 2020.')
-
-	svg.append("a")
-    .attr("xlink:href", "http://gocolumbiamo.maps.arcgis.com/apps/MapSeries/index.html?appid=478880b83d5e4d35b646d80fe6f2c2f6")
-    .append("rect")  
-    .attr('y', height*.98-9)
-	.attr('x', width*.04)
-    .attr("height", 9)
-    .attr("width",width*.12- width*.04)
-    .style("fill", "white")
-    .style("opacity",.0)
-    .style("stroke","black")
 
     svg.append("text")
 		.attr('class', 'byline')
