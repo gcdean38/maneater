@@ -8,7 +8,7 @@
 
 /* On mouse hover, lighten state color */
 path:hover {
-	fill-opacity: .7;
+	stroke-width: 4px;
 }
 
 .legend-axis path{
@@ -48,8 +48,8 @@ text.source {
 div.tooltip {   
  	position: absolute;           
 	text-align: left;           
-	max-width: 100px;                  
-	max-height: 80px;                 
+	max-width: 160px;                  
+	max-height: 100px;                 
 	padding: 4px;             
 	font: 12px sans-serif;        
 	background: lightgray;   
@@ -89,7 +89,7 @@ var height = 520;
 
 // D3 Projection
 var projection = d3.geo.albersUsa()
-				   .translate([width/2, height/2-20])    // translate to center of screen
+				   .translate([width/2, height/2])    // translate to center of screen
 				   .scale([1000]);          // scale things down so see entire US
         
 // Define path generator
@@ -100,22 +100,25 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 // Define linear scale for output
 var color = d3.scale.linear()
 .interpolate(d3.interpolateHcl)
-      .range([d3.rgb("lightblue"), d3.rgb('navy')]);
+      .range([d3.rgb("white"), d3.rgb('black')]);
+
+
 
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")
 			.append("svg")
 			.attr("width", width)
-			.attr("height", height);
+			.attr("height", height)
+           // .attr("fill","lightblue")
         
 // Append Div for tooltip to SVG
 
 
 // Load in my states data!
 d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/ElectoralCollege.csv", function(d) {
-color.domain([0.75,3.25]); // setting the range of the input data
-return { state: d.state, ppv: +d.ppv, strength: +d.strength}
+; // setting the range of the input data
+return { state: d.state, ppv: +d.ppv, strength: +d.strength, cat: d.cat}
       },function(data) {
 // Load GeoJSON data and merge with states data
 d3.json("https://gist.githubusercontent.com/michellechandra/0b2ce4923dc9b5809922/raw/a476b9098ba0244718b496697c5b350460d32f99/us-states.json", function(json) {
@@ -153,11 +156,13 @@ for (var i = 0; i < data.length; i++) {
 			.style("stroke-width","2px")             
     		.style("opacity", 0);
 console.log(data)
+color.domain([0.75,3.25])
+formatNum = d3.format(",.2f")
 formatPct = d3.format(".2%")
 var mousemove = function(d){
   tooltip
           .style("opacity", 1)
-          .html("<b>"+(d.properties.name)+"</b>: <br>"+formatPct(d.properties.strength)+".")
+          .html("<b>"+(d.properties.name)+"</b>: <br>"+formatNum(d.properties.ppv)+" People / EV <br> Percent of average: "+formatPct(d.properties.strength)+"")
           .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]-30) + "px")
  }
@@ -181,19 +186,20 @@ svg.selectAll("path")
 	.enter()
 	.append("path")
 	.attr("d", path)
-	.style("stroke", "#fff")
+	.style("stroke", "black")
 	.style("stroke-width", "1")
 	.style("fill", function(d) {
 
 	// Get data value
 	var strength = d.properties.strength;
+//var cat = d.properties.cat;
 
 	if (strength) {
 	//If value exists…
 	return color(strength);
 	} else {
 	//If value is undefined…
-	return "rgb(213,222,217)";
+	return "lightgrey";
 	}
 })
 .on("mouseover", mouseover)   
@@ -218,7 +224,7 @@ var x = d3.scale.linear()
     .tickFormat((d,i)=> tickLabels[i])
     svg.append("g")
     .attr("class","legend-axis")
-    .attr("transform","translate(0,"+height*.9+")")
+    .attr("transform","translate(0,"+height*.935+")")
     .attr("stroke","black")
     .call(xAxis)
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
@@ -234,31 +240,28 @@ var gradient = defs.append("linearGradient")
 gradient.append("stop")
    .attr('class', 'start')
    .attr("offset", "0%")
-   .attr("stop-color", "lightblue")
+   .attr("stop-color", "white")
    .attr("stop-opacity", 1);
 
 gradient.append("stop")
    .attr('class', 'end')
    .attr("offset", "100%")
-   .attr("stop-color", "navy")
+   .attr("stop-color", "black")
    .attr("stop-opacity", 1);
 
    var legend = svg.append("rect")
               .attr("x", width*.55)
-              .attr('y',height*.85)
+              .attr('y',height*.885)
               .attr("height",20)
               .attr("width",150)
               .attr("fill", "url(#svgGradient)");
-	
-    
-    
     });
 
    /* */
 svg.append("text")
 .text("Strength Compared to National Average")
 .attr("x",width*.55+75)
-.attr("y",height*.83)
+.attr("y",height*.86)
 .attr("text-anchor","middle")
 	svg.append("text")
     .attr("class","title")
@@ -267,19 +270,24 @@ svg.append("text")
     .attr('text-anchor',"middle")
     .text("Value of Vote by State")
 
+svg.append("text")
+.attr("class","subtitle")
+.attr("x",width/2)
+.attr("y",height*.08)
+.text("Average People per Electoral Vote: 514,935.45")
 
     svg.append("line")
 .attr("x1",0)
 .attr("x2",width)
-.attr("y1",height*.95)
-.attr("y2",height*.95)
+.attr("y1",height*.97)
+.attr("y2",height*.97)
 .attr("stroke","black")
 .attr("stroke-width","1px")
 
 
     svg.append("text")
 		.attr('class', 'byline')
-		.attr('y', height*.98)
+		.attr('y', height)
 		.attr('x', width)
 		.attr('text-anchor', "end")
     .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
