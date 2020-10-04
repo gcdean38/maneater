@@ -1,0 +1,52 @@
+﻿state,link
+New York,https://absenteeballot.elections.ny.gov/Home/Search?aspxerrorpath=/%e2%80%8b
+Alaska,https://absenteeballotapplication.alaska.gov/
+Maine,https://apps.web.maine.gov/cgi-bin/online/AbsenteeBallot/index.pl
+Georgia,https://ballotrequest.sos.ga.gov/
+District of Columbia,https://dcboe.org/Data-Resources-Forms/Forms-and-Resources/AbsenteeBallotRequestForm.aspx
+Florida,https://dos.elections.myflorida.com/supervisors/
+Kentucky,https://elect.ky.gov/About-Us/Pages/County-Clerks.aspx
+California,https://elections.cdn.sos.ca.gov/vote-by-mail/pdf/vote-by-mail-application.pdf
+Hawaii,https://elections.hawaii.gov/wp-content/uploads/2015/03/AB-Form-English-20191211-website.pdf
+Rhode Island,https://elections.ri.gov/publications/Election_Publications/Election_Info/General%20Mail%20Ballot%20Application%2011-3-2020.pdf
+Indiana,https://indianavoters.in.gov/MVPHome/PrintDocuments
+South Carolina,https://info.scvotes.sc.gov/eng/voterinquiry/VoterInformationRequest.aspx?PageMode=AbsenteeRequest
+Delaware,https://ivote.de.gov/VoterView
+Minnesota,https://mnvotes.sos.state.mn.us/ABRegistration/ABRegistrationStep1.aspx
+Michigan,https://mvic.sos.state.mi.us/avapplication
+Vermont,https://mvp.vermont.gov/
+Arizona,https://my.arizona.vote/Early/ApplicationLogin.aspx
+Wisconsin,https://myvote.wi.gov/en-US/VoteAbsentee
+Oklahoma,https://okvoterportal.okelections.us/
+Connecticut,https://portal.ct.gov/-/media/SOTS/ElectionServices/Absentee-Ballot-Application-ED-3/ED-3-Rev-20-Final.pdf
+New Mexico,https://portal.sos.state.nm.us/OVR/WebPages/AbsenteeApplication.aspx?AspxAutoDetectCookieSupport=1
+South Dakota,https://sdsos.gov/elections-voting/assets/AbsenteeBallotApplicationFillable.pdf
+Utah,https://secure.utah.gov/voterreg/index.html
+West Virginia,https://sites.omniballot.us/54/absentee/app/home
+Tennessee,https://sos-tn-gov-files.tnsosfiles.com/5%20Request%20for%20Absentee%20Ballot.pdf?S4vtTZYExu0RGPGsQSHS_Hr2L4yd6ai1
+Idaho,https://sos.idaho.gov/elect/clerk/forms/Absentee_Ballot_Request.pdf
+Iowa,https://sos.iowa.gov/elections/pdf/absenteeballotapp.pdf
+Nebraska,https://sos.nebraska.gov/sites/sos.nebraska.gov/files/doc/elections/earlyvote_app_fill.pdf
+New Hampshire,https://sos.nh.gov/elections/voters/absentee-ballots/request-an-absentee-ballot/
+Oregon,https://sos.oregon.gov/elections/Documents/SEL111.pdf
+Wyoming,https://sos.wyo.gov/Forms/Elections/General/AbsenteeRequestForm-Standard.pdf
+Montana,https://sosmt.gov/Portals/142/Elections/Forms/Application-for-Absentee-Ballot.pdf
+Virginia,https://vote.elections.virginia.gov/VoterInformation/Lookup/absentee
+North Carolina,https://votebymail.ncsbe.gov/app/home
+Louisiana,https://voterportal.sos.la.gov/
+Maryland,https://voterservices.elections.maryland.gov/OnlineVoterRegistration/InstructionsStep1
+Texas,https://webservices.sos.state.tx.us/vrrequest/bbm.asp
+Illinois,https://www.elections.il.gov/ElectionOperations/VotingByMailAgreement.aspx
+North Dakota,https://www.nd.gov/eforms/Doc/sfn51468.pdf
+Nevada,https://www.nvsos.gov/ease/easepages/overview.aspx
+Ohio,https://www.ohiosos.gov/globalassets/elections/forms/11-a_english.pdf
+Pennsylvania,https://www.pavoterservices.pa.gov/OnlineAbsenteeApplication/#/OnlineAbsenteeBegin
+Massachusetts,https://www.sec.state.ma.us/ele/eleabsentee/absidx.htm
+Alabama,https://www.sos.alabama.gov/alabama-votes/absentee-ballot-applications
+Arkansas,https://www.sos.arkansas.gov/uploads/elections/Absentee_Ballot_Application_1.pdf
+Kansas,https://www.sos.ks.gov/forms//elections/AV1.pdf
+Missouri,https://www.sos.mo.gov/CMSImages/ElectionGoVoteMissouri/2020FillableBallotApplication-GeneralElection.pdf
+Mississippi,https://www.sos.ms.gov/Elections-Voting/Pages/County-Election-Info.aspx
+Colorado,https://www.sos.state.co.us/voter/pages/pub/olvr/verifyNewVoter.xhtml
+Washington,https://www.sos.wa.gov/_assets/elections/specialabsenteeballotapp.pdf
+New Jersey,https://www.state.nj.us/state/elections/vote-by-mail.shtml
