@@ -1,4 +1,4 @@
-﻿candidate,percent
-trump,0.52
-clinton,0.4
-other,0.08
+﻿candidate,percent,total
+trump,0.52,0
+clinton,0.4,0.52
+other,0.08,0.92
