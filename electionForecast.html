@@ -64,7 +64,10 @@ div.resultsD {
  	position: absolute;  
     text-anchor: start;         	     
 }
-
+div.info{
+    position: absolute;
+    text-anchor: middle;
+}
 div.resultsR {
     position: absolute;
 }
@@ -183,6 +186,12 @@ for (var i = 0; i < data.length; i++) {
             .style("opacity",1)
             .style("stroke","black")
 
+            var info = d3.select("body")
+            .append("div")
+            .attr("class","info")
+            .style("opacity",1)
+            .style("stroke","black")
+
             /*var mousemoveRes = function(d){
   results
           .style("opacity", 1)
@@ -207,48 +216,12 @@ var mouseover = function(d){
    .transition()
    .duration(200)
    .style("opacity",1)
-
-
-   resultsD
+   info
           .style("opacity", 1)
           .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", "250px")
-          .style("width",(d.properties.demEstimate)*2+"px")
-          .style("stroke","black")
-          .style("background","blue")
-          .style("height","30px")
-          .html("BIDEN")
-
-          resultsR
-          .style("opacity", 1)
-          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", "290px")
-          .style("width",(d.properties.repEstimate)*2+"px")
-          .style("stroke","black")
-          .style("background","red")
-          .style("height","30px")
-          .html("TRUMP")
-        
-          resultsO
-          .style("opacity", 1)
-          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", "330px")
-          .style("width",200-((d.properties.repEstimate)*2)-((d.properties.demEstimate)*2)+"px")
-          .style("stroke","black")
-          .style("background","grey")
-          .style("height","30px")
-          .html("<br>OTHER")
-          
- }
-var mousemove = function(d){
-    
-  tooltip
-          .style("opacity", 1)
-        
-          .html("<b><u>"+(d.properties.name)+":</b></u> <br><u><i>Estimated Vote Total:</u><i/><br> Biden: "+formatNum(d.properties.demEstimate)+"%</i><br>Trump: "+formatNum(d.properties.repEstimate)+"%")
-          .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", (d3.mouse(this)[1]-30) + "px")
-         
+          .style("top", "220px")        
+          .style("text-anchor","middle")       
+          .html("Projected Vote Share for<br><b>"+(d.properties.name))
           resultsD
           .style("opacity", 1)
           .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
@@ -267,7 +240,7 @@ var mousemove = function(d){
           .style("stroke","black")
           .style("background","red")
           .style("height","30px")
-          .html("TRUMP: "+formatNum(d.properties.demEstimate))
+          .html("TRUMP: "+formatNum(d.properties.repEstimate))
         
           resultsO
           .style("opacity", 1)
@@ -277,7 +250,52 @@ var mousemove = function(d){
           .style("stroke","black")
           .style("background","grey")
           .style("height","30px")
-          .html("OTHER: "+formatNum(d.properties.demEstimate))
+          .html("OTHER: "+formatNum(100-(d.properties.repEstimate)-(d.properties.demEstimate)))
+          
+ }
+var mousemove = function(d){
+    
+  tooltip
+          .style("opacity", 1)
+        
+          .html("<b><u>"+(d.properties.name)+":</b></u> <br><u><i>Estimated Vote Total:</u><i/><br> Biden: "+formatNum(d.properties.demEstimate)+"%</i><br>Trump: "+formatNum(d.properties.repEstimate)+"%")
+          .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", (d3.mouse(this)[1]-30) + "px")
+          info
+          .style("opacity", 1)
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "220px")        
+          .attr("text-anchor","middle")
+          .html("Projected Vote Share for<br><b>"+(d.properties.name))
+          resultsD
+          .style("opacity", 1)
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "250px")
+          .style("width",(d.properties.demEstimate)*2+"px")
+          .style("stroke","black")
+          .style("background","blue")
+          .style("height","30px")
+          .html("BIDEN: "+formatNum(d.properties.demEstimate))
+
+          resultsR
+          .style("opacity", 1)
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "290px")
+          .style("width",(d.properties.repEstimate)*2+"px")
+          .style("stroke","black")
+          .style("background","red")
+          .style("height","30px")
+          .html("TRUMP: "+formatNum(d.properties.repEstimate))
+        
+          resultsO
+          .style("opacity", 1)
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "330px")
+          .style("width",200-((d.properties.repEstimate)*2)-((d.properties.demEstimate)*2)+"px")
+          .style("stroke","black")
+          .style("background","grey")
+          .style("height","30px")
+          .html("OTHER: "+formatNum(100-(d.properties.repEstimate)-(d.properties.demEstimate)))
  }
 
  var mouseout = function(d){
