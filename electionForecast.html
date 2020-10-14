@@ -61,7 +61,8 @@ div.tooltip {
 }
 
 div.resultsD {   
- 	position: absolute;           	     
+ 	position: absolute;  
+    text-anchor: start;         	     
 }
 
 div.resultsR {
@@ -207,32 +208,36 @@ var mouseover = function(d){
    .duration(200)
    .style("opacity",1)
 
+
    resultsD
           .style("opacity", 1)
-          .style("left", 700+(d.properties.repEstimate)*2+"px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", "250px")
           .style("width",(d.properties.demEstimate)*2+"px")
           .style("stroke","black")
           .style("background","blue")
-          .style("height","50px")
+          .style("height","30px")
+          .html("BIDEN")
+
           resultsR
           .style("opacity", 1)
-          .style("left", "700px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", "250px")
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "290px")
           .style("width",(d.properties.repEstimate)*2+"px")
           .style("stroke","black")
           .style("background","red")
-          .style("height","50px")
-          
-
+          .style("height","30px")
+          .html("TRUMP")
+        
           resultsO
           .style("opacity", 1)
-          .style("left", 700+((d.properties.repEstimate)*2)+((d.properties.repEstimate)*2)+"px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", "250px")
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "330px")
           .style("width",200-((d.properties.repEstimate)*2)-((d.properties.demEstimate)*2)+"px")
           .style("stroke","black")
           .style("background","grey")
-          .style("height","50px")
+          .style("height","30px")
+          .html("<br>OTHER")
           
  }
 var mousemove = function(d){
@@ -244,7 +249,35 @@ var mousemove = function(d){
           .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]-30) + "px")
          
-          
+          resultsD
+          .style("opacity", 1)
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "250px")
+          .style("width",(d.properties.demEstimate)*2+"px")
+          .style("stroke","black")
+          .style("background","blue")
+          .style("height","30px")
+          .html("BIDEN: "+formatNum(d.properties.demEstimate))
+
+          resultsR
+          .style("opacity", 1)
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "290px")
+          .style("width",(d.properties.repEstimate)*2+"px")
+          .style("stroke","black")
+          .style("background","red")
+          .style("height","30px")
+          .html("TRUMP: "+formatNum(d.properties.demEstimate))
+        
+          resultsO
+          .style("opacity", 1)
+          .style("left", "750px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "330px")
+          .style("width",200-((d.properties.repEstimate)*2)-((d.properties.demEstimate)*2)+"px")
+          .style("stroke","black")
+          .style("background","grey")
+          .style("height","30px")
+          .html("OTHER: "+formatNum(d.properties.demEstimate))
  }
 
  var mouseout = function(d){
