@@ -6,11 +6,68 @@
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
+<style>
+    div.tooltip {
+        position: absolute;
+        max-width: 160px;                  
+	max-height: 100px;  
+    padding: 5px;
+            border: 3px solid black;
+            border-radius: 5px;
+            text-anchor: middle;
+    }
+    body {
+            font: 10px sans-serif;
+        }
+        select {
+            display: block;
+        }
+        .bar {
+            
+            opacity: 0.8;
+        }
 
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+</style>
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 30, bottom: 20, left: 50},
+    var margin = {top: 30, right: 30, bottom: 50, left: 50},
         width = 460 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
     
@@ -25,9 +82,9 @@
     
     // Parse the Data
     d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/ballotRequests.csv", function(data) {
-    
+    var race = function(d){return d.race}
       // List of subgroups = header of the csv files = soil condition here
-      var subgroups = data.columns.slice(1)
+      var subgroups = data.columns.slice(1,3)
     
       // List of groups = species here = value of the first column called group -> I show them on the X axis
       var groups = d3.map(data, function(d){return(d.race)}).keys()
@@ -44,7 +101,7 @@
       // Add Y axis
       var y = d3.scaleLinear()
         .domain([0, 17500])
-        .range([ height, 0 ]);
+        .range([ height, 10 ]);
       svg.append("g")
         .call(d3.axisLeft(y));
     
@@ -58,7 +115,37 @@
       var color = d3.scaleOrdinal()
         .domain(subgroups)
         .range(['#e41a1c','#377eb8','#4daf4a'])
-    
+        var numFormat = d3.format(",.0f")
+        console.log(data)
+//var ballots = function(d){return d.ballots}
+    var tooltip = d3.select('body')
+    .append("div")
+    .attr("class","tooltip")
+    .style("opacity",1)
+    .style("stroke","black")
+    .html("<i>Hover over bars for more information")
+    .style("left", "300px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "50px")
+
+   // console.log(d.groups)
+
+    var mouseover = function(d){
+       // console.log(data)
+        tooltip.attr("opacity",1)
+        .html("<u>"+(d.key)+" "+(d.race)+" Election</u><br><b>"+numFormat(d.ballots)+"</b> ballots requested")
+        .style("stroke","black")
+        .transition()
+   .duration(200)
+        .style("left", "300px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "50px")
+    }
+    var mousemove = function(d){
+        tooltip.attr("opacity",1)
+    }
+    var mouseout = function(d){
+        tooltip.transition()
+   .duration(200).style("opacity",0)
+    }
       // Show the bars
       svg.append("g")
         .selectAll("g")
@@ -74,8 +161,55 @@
           .attr("y", function(d) { return y(d.ballots); })
           .attr("width", xSubgroup.bandwidth())
           .attr("height", function(d) { return height - y(d.ballots); })
-          .attr("fill", function(d) { return color(d.key); });
-    
+          .attr("fill", function(d) { return color(d.key); })
+          .on("mouseover",mouseover)
+          .on("mousemove",mousemove)
+         // .on("mouseout",mouseout)
+         svg.append("text")
+                .attr("class","title")
+                .attr("x",width/2)
+                .attr("y",0)
+                .attr("text-anchor","middle")
+                .text("Americans' Trust in Mass Media")
+
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.1)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.1)
+		.attr('x', width*.1)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+        //.style("text-decoration","underline")
+		.text('Brianna Lennon')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.1)
+		.attr('x', width*.285)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+        svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr("y1",height*1.05)
+.attr("y2",height*1.05)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+    svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.1)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
     })
     
     </script>
