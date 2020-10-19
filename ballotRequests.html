@@ -10,12 +10,15 @@
 <style>
     div.tooltip {
         position: absolute;
-        max-width: 160px;                  
+        width: 160px;                  
 	max-height: 100px;  
     padding: 5px;
             border: 3px solid black;
             border-radius: 5px;
-            text-anchor: middle;
+            text-align: center;
+    }
+    .legend {
+        position: absolute;
     }
     body {
             font: 10px sans-serif;
@@ -64,6 +67,7 @@
             text-anchor: middle;
 
         }
+
 </style>
 <script>
 
@@ -118,6 +122,33 @@
         .range(['#e41a1c','#377eb8','#4daf4a'])
         var numFormat = d3.format(",.0f")
         console.log(data)
+var legendText = ["2016 Election Cycle","2020 Election Cycle"]
+        var legend = d3.select("body").append("svg")
+      			.attr("class", "legend")
+     			.attr("width", 200)
+    			.attr("height", 100)
+                .style("left","330px")
+                .style("top","100px")
+                
+   				.selectAll("g")
+   				.data(color.domain().slice(0))
+   				.enter()
+   				.append("g")
+     			.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+  	legend.append("rect")
+   		  .attr("width", 18)
+   		  .attr("height", 18)
+   		  .style("fill", color)
+			;
+
+  	legend.append("text")
+  		  .data(legendText.slice(0))
+      	  .attr("x", 24)
+       // .attr('text-anchor',"middle")
+      	  .attr("y", 9)
+      	  .attr("dy", ".35em")
+      	  .text(function(d) { return d; });
 //var ballots = function(d){return d.ballots}
     var tooltip = d3.select('body')
     .append("div")
