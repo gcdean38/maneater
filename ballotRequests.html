@@ -54,7 +54,7 @@
         }
 
         text.title {
-            font-size: 24px;
+            font-size: 18.5px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             text-decoration: underline;
             font-weight: bold;
@@ -196,13 +196,13 @@ var legendText = ["2016 Election Cycle","2020 Election Cycle"]
           .attr("fill", function(d) { return color(d.key); })
           .on("mouseover",mouseover)
           .on("mousemove",mousemove)
-         // .on("mouseout",mouseout)
+         .on("click",mouseover)
          svg.append("text")
                 .attr("class","title")
                 .attr("x",width/2)
                 .attr("y",0)
                 .attr("text-anchor","middle")
-                .text("Americans' Trust in Mass Media")
+                .text("Absentee Ballot Requests in Boone County")
 
 svg.append("text")
 .attr("class","source")
