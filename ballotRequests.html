@@ -90,7 +90,6 @@
     var race = function(d){return d.race}
       // List of subgroups = header of the csv files = soil condition here
       var subgroups = data.columns.slice(1,3)
-    
       // List of groups = species here = value of the first column called group -> I show them on the X axis
       var groups = d3.map(data, function(d){return(d.race)}).keys()
     
@@ -102,7 +101,7 @@
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x).tickSize(0));
-    
+    console.log(groups[0])
       // Add Y axis
       var y = d3.scaleLinear()
         .domain([0, 17500])
@@ -121,7 +120,8 @@
         .domain(subgroups)
         .range(['green','orange'])
         var numFormat = d3.format(",.0f")
-        console.log(data)
+        console.log()
+
 var legendText = ["2016 Election Cycle","2020 Election Cycle"]
         var legend = d3.select("body").append("svg")
       			.attr("class", "legend")
@@ -160,11 +160,11 @@ var legendText = ["2016 Election Cycle","2020 Election Cycle"]
           .style("top", "50px")
 
    // console.log(d.groups)
+   //console.log(function(d){return election(+d.ballots)})
 
     var mouseover = function(d){
-       // console.log(data)
         tooltip.attr("opacity",1)
-        .html("<u>"+(d.key)+" "+(d.race)+" Election</u><br><b>"+numFormat(d.ballots)+"</b> ballots requested")
+        .html("<u>"+(d.key)+" "+(groups[0,1])+" Election</u><br><b>"+numFormat(d.ballots)+"</b> ballots requested")
         .style("stroke","black")
         .transition()
    .duration(200)
@@ -178,6 +178,9 @@ var legendText = ["2016 Election Cycle","2020 Election Cycle"]
         tooltip.transition()
    .duration(200).style("opacity",0)
     }
+
+    
+
       // Show the bars
       svg.append("g")
         .selectAll("g")
@@ -187,7 +190,7 @@ var legendText = ["2016 Election Cycle","2020 Election Cycle"]
         .append("g")
           .attr("transform", function(d) { return "translate(" + x(d.race) + ",0)"; })
         .selectAll("rect")
-        .data(function(d) { return subgroups.map(function(key) { return {key: key, ballots: d[key]}; }); })
+        .data(function(d) { return subgroups.map(function(key) { return {key: key, ballots: +d[key]}; }); })
         .enter().append("rect")
           .attr("x", function(d) { return xSubgroup(d.key); })
           .attr("y", function(d) { return y(d.ballots); })
