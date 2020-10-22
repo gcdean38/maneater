@@ -4,9 +4,7 @@
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 <style>
-body {
-    font: 12px sans-serif;
-  }
+
   
 
   
@@ -69,36 +67,118 @@ body {
    .dashline {
      stroke-dasharray: 3,3;
    }
+   text.tooltip {
+       font-size: 14px;
+   }
   /* Creates a small triangle extender for the tooltip */
-  .tooltip{
+  .top{
         position      : absolute;
         text-align    : left;
-        max-width     : 120px;
-        max-height    : 150px;
-        padding       :5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom :0px;
         border        : none;
-        border-radius : 8px;
         
+        font-size: 24px;
         font          : 10px sans-serif;
-        background    : black;
-        color         : white;
+        background    : none;
+        color         : black;
         pointer-events: none;
     }
-    .dtooltip{
+    .description{
         position      : absolute;
         text-align    : left;
-        max-width     : 120px;
-        max-height    : 150px;
-        padding       :5px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom :0px;
         border        : none;
-        border-radius : 8px;
         
+        font-size: 24px;
         font          : 10px sans-serif;
-        background    : black;
-        color         : white;
+        background    : none;
+        color         : black;
         pointer-events: none;
     }
-  
+    .people{
+        position      : absolute;
+        text-align    : left;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom :0px;
+        border        : none;
+        
+        font-size: 24px;
+        font          : 10px sans-serif;
+        background    : none;
+        color         : black;
+        pointer-events: none;
+    }
+    .events{
+        position      : absolute;
+        text-align    : left;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom :0px;
+        border        : none;
+        
+        font-size: 24px;
+        font          : 10px sans-serif;
+        background    : none;
+        color         : black;
+        pointer-events: none;
+    }
+    .goals{
+        position      : absolute;
+        text-align    : left;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom :0px;
+        border        : none;
+        
+        font-size: 24px;
+        font          : 10px sans-serif;
+        background    : none;
+        color         : black;
+        pointer-events: none;
+    }
+    .chars{
+        position      : absolute;
+        text-align    : left;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom :0px;
+        border        : none;
+        
+        font-size: 24px;
+        font          : 10px sans-serif;
+        background    : none;
+        color         : black;
+        pointer-events: none;
+    }
+
+    .background{
+        position      : absolute;
+        text-align    : left;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-top: 5px;
+        padding-bottom :0px;
+        border        : none;
+        
+        font-size: 24px;
+        font          : 10px sans-serif;
+        background    : lightseagreen;
+        
+        color         : black;
+        pointer-events: none;
+    }
+    
   /* Style northward tooltips differently */
   
   </style>
@@ -126,15 +206,13 @@ body {
       // When reading the csv, I must format variables:
       function(d){
         return { startYear : +d.startYear, endYear : +d.endYear, wave : d.wave,
-         person1: d.person1, person2: d.person2, person3: d.person3}
+         person1: d.person1, person2: d.person2, person3: d.person3, person4: d.person4,
+         description: d.description, events: d.events, goals: d.goals, characteristics: d.characteristics,
+         event1: d.event1, event2: d.event2, event3: d.event3, event4: d.event4}
       },
       // Now I can use this dataset:
       function(data) { // Add X axis
       
-
-
-  
-    
    //   var formatTime = d3.timeFormat("%e-%b");
       var x = d3.scaleLinear()
         .domain([1800,2030])
@@ -144,41 +222,103 @@ body {
         .attr("transform", "translate(0," + height*.45 + ")")
         .call(d3.axisBottom(x).ticks(5)
       .tickSize(5,0))
-        
-        
-
-    
-    
 
     console.log(data)
-      // Add Y axis
-    /*  var y = d3.scaleOrdinal()
-        .domain(["Choi","Wolfe"])
-        .range([ height*.7, height*.2]);
-      /*svg.append("g")
-        
-        .call(d3.axisLeft(y).tickSize(0,0)).attr("transform","translate(-10,0)");*/
-    
-
+    var background = d3.select("#my_dataviz")
+       .append("div")
+       .style("opacity",0)
+       .attr("class","background")
       // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
       // Its opacity is set to 0: we don't see it by default.
-      var tooltip = d3.select("#my_dataviz")
+      var people = d3.select("#my_dataviz")
         .append("div")
         .style("opacity", 0)
-        .attr("class", "tooltip")
-        //.style("background-color", "white")
+        .attr("class", "people")
+        var description = d3.select("#my_dataviz")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "description")
+        var events = d3.select("#my_dataviz")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "events")
+
+        var goals = d3.select("#my_dataviz")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "goals")
+
+        var characteristics = d3.select("#my_dataviz")
+        .append("div")
+        .style("opacity",0)
+        .attr("class","chars")
+
+        var top = d3.select("#my_dataviz")
+        .append("div")
+        .style("opacity",0)
+        .attr("class","top")
+
        
-    
-    
-    
       // A function that change this tooltip when the user hover a point.
       // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
       var mouseover = function(d) {
-        tooltip
+        background.style("opacity",1)
+        .style("left","0px")
+        .style("top","0px")
+        .style("width","370px")
+        .style("height","245px")
+        .style("fill","grey")
+
+        top.style("opacity",1)
+          .html("<u><b>"+(d.wave)+" Wave of Feminism</u></b><i><br>("+(d.startYear) +"-"+d.endYear+
+          ")</i>")
+          .style("left", "0px")//(d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top","0px")
+          .style("font-size","20px")
+          .style("height","50px")
+          .style("width","260px")
+
+        description
+          .style("opacity",1)
+          .html("<u><b>Description:</b></u><br>"+d.description)
+          .style("left", "0px")// (d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top","55px")
+          .style("height","100px")
+          .style("width","150px")
+    
+        people
           .style("opacity", 1)
-          .html("<u><b>"+(d.wave)+" Wave of Feminism </u></b><br>"+(d.startYear) +"-"+d.endYear)
-          .style("left", (d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", (d3.mouse(this)[1]+60) + "px")
+          .html("<u><b>Key People:</b></u><br>"+(d.person1)+"<br>"+(d.person2)+"<br>"+(d.person3)+"<br>"+(d.person4))
+          .style("left", "210px")//(d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", "175px")
+          .style("height","70px")
+          .style("width","160px")
+
+          events
+          .style("opacity",1)
+          .html("<u><b>Key Events:</b></u><br>"+(d.event1)+"<br>"+(d.event2)+"<br>"+(d.event3)+"<br>"+(d.event4))
+          .style('left',"270px")//(d3.mouse(this)[0]+40) + "px")
+          .style("top","0px")
+          .style("height","175px")
+          .style("width","100px")
+
+          goals
+          .style("opacity",1)
+          .html("<u><b>Goals:</u></b><br>"+d.goals)
+          .style('left',"160px")//(d3.mouse(this)[0]+145) + "px")
+          .style("top","55px")
+          .style("height","115px")
+          .style("width","100px")
+
+          characteristics
+          .style("opacity",1)
+          .html("<u><b>Characteristics:</u></b><br>"+d.characteristics)
+          .style('left',"0px")//(d3.mouse(this)[0]+40) + "px")
+          .style("top","150px")
+          .style("height","95px")
+          .style("width","200px")
+
+
       }
     
      /* var mousemove = function(d) {
@@ -190,7 +330,37 @@ body {
     
       // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
       var mouseleave = function(d) {
-        tooltip
+
+        background
+        .transition()
+        .duration(200)
+        .style("opacity",0)
+        people
+          .transition()
+          .duration(200)
+          .style("opacity", 0)
+
+          top
+          .transition()
+          .duration(200)
+          .style("opacity", 0)
+
+          description
+          .transition()
+          .duration(200)
+          .style("opacity", 0)
+
+          events
+          .transition()
+          .duration(200)
+          .style("opacity", 0)
+
+          goals
+          .transition()
+          .duration(200)
+          .style("opacity", 0)
+
+          characteristics
           .transition()
           .duration(200)
           .style("opacity", 0)
