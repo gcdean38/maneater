@@ -219,7 +219,25 @@ var wmouseover = function(d){
             .on('mousemove',wmousemove)
             .on("mouseleave",wmouseleave)
             .on("click",wmouseover)
-var colors = ["#006400","#228B22","grey"]
+var levels = ["mAgree","mDisagree","mOther","wAgree","wDisagree","wOther"]
+var level = ["Describes","Does Not Describe","Other"]
+var color = d3.scaleOrdinal()
+        .domain(levels)
+        .range(["grey","#228B22","#006400","#4B0082","#9400D3","black"] )
+        
+svg.append("g")
+        .selectAll('g').data(levels)
+          .enter().append("rect")
+          .attr("fill",function(d){return color(d)})
+          .attr("stroke","black")
+            .attr("x", function(d,i){return Math.abs(i-2.5)*25+10})
+            .attr("y", function(d,i){
+              if((i-2.5)>=0){return height/2+10}
+              else {return height/2-10}})
+            .attr("height", 15)
+            .attr("width",15)
+            .attr("transform","translate(220,0)")
+            
     
     })
     
