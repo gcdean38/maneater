@@ -94,7 +94,8 @@
         padding-top: 5px;
         padding-bottom :0px;
         border        : none;
-        
+        border-top: solid black 2px;
+        border-bottom: solid black 2px;
         font-size: 24px;
         font          : 10px sans-serif;
         background    : none;
@@ -173,10 +174,13 @@
         
         font-size: 24px;
         font          : 10px sans-serif;
-        background    : lightseagreen;
-        
-        color         : black;
+        background    : #194F21;
+        font-style: white;
+        color         : white;
         pointer-events: none;
+    }
+    text.background{
+      color:white;
     }
     
   /* Style northward tooltips differently */
@@ -218,10 +222,7 @@
         .domain([1800,2030])
         .range([ 0, width ]);
         //x.domain(d3.extent(data, function(d) { return d.date; }));
-      svg.append("g")
-        .attr("transform", "translate(0," + height*.45 + ")")
-        .call(d3.axisBottom(x).ticks(5)
-      .tickSize(5,0))
+     
 
     console.log(data)
     var background = d3.select("#my_dataviz")
@@ -230,10 +231,7 @@
        .attr("class","background")
       // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
       // Its opacity is set to 0: we don't see it by default.
-      var people = d3.select("#my_dataviz")
-        .append("div")
-        .style("opacity", 0)
-        .attr("class", "people")
+     
         var description = d3.select("#my_dataviz")
         .append("div")
         .style("opacity", 0)
@@ -265,8 +263,8 @@
         background.style("opacity",1)
         .style("left","0px")
         .style("top","0px")
-        .style("width","370px")
-        .style("height","245px")
+        .style("width","350px")
+        .style("height","275px")
         .style("fill","grey")
 
         top.style("opacity",1)
@@ -280,40 +278,33 @@
 
         description
           .style("opacity",1)
-          .html("<u><b>Description:</b></u><br>"+d.description)
+          .html(d.description)
           .style("left", "0px")// (d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top","55px")
-          .style("height","100px")
-          .style("width","150px")
+          .style("height","30px")
+          .style("width","350px")
     
-        people
-          .style("opacity", 1)
-          .html("<u><b>Key People:</b></u><br>"+(d.person1)+"<br>"+(d.person2)+"<br>"+(d.person3)+"<br>"+(d.person4))
-          .style("left", "210px")//(d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", "175px")
-          .style("height","70px")
-          .style("width","160px")
 
           events
           .style("opacity",1)
           .html("<u><b>Key Events:</b></u><br>"+(d.event1)+"<br>"+(d.event2)+"<br>"+(d.event3)+"<br>"+(d.event4))
-          .style('left',"270px")//(d3.mouse(this)[0]+40) + "px")
-          .style("top","0px")
-          .style("height","175px")
+          .style('left',"0px")//(d3.mouse(this)[0]+40) + "px")
+          .style("top","90px")
+          .style("height","230px")
           .style("width","100px")
 
           goals
           .style("opacity",1)
           .html("<u><b>Goals:</u></b><br>"+d.goals)
-          .style('left',"160px")//(d3.mouse(this)[0]+145) + "px")
-          .style("top","55px")
+          .style('left',"130px")//(d3.mouse(this)[0]+145) + "px")
+          .style("top","90px")
           .style("height","115px")
-          .style("width","100px")
+          .style("width","200px")
 
           characteristics
           .style("opacity",1)
           .html("<u><b>Characteristics:</u></b><br>"+d.characteristics)
-          .style('left',"0px")//(d3.mouse(this)[0]+40) + "px")
+          .style('left',"130px")//(d3.mouse(this)[0]+40) + "px")
           .style("top","150px")
           .style("height","95px")
           .style("width","200px")
@@ -335,10 +326,7 @@
         .transition()
         .duration(200)
         .style("opacity",0)
-        people
-          .transition()
-          .duration(200)
-          .style("opacity", 0)
+     
 
           top
           .transition()
@@ -366,7 +354,10 @@
           .style("opacity", 0)
       }
       // Add dots
-
+      svg.append("g")
+        .attr("transform", "translate(0," + height*.45 + ")")
+        .call(d3.axisBottom(x).ticks(5)
+      .tickSize(5,0).tickPadding(5).tickFormat(d3.format('d')))
       var jitterWidth = 10
       svg.append('g')
     .selectAll("dot")
@@ -377,12 +368,15 @@
       .attr("y", 0)
       .attr("height", 50)
       .attr("width",function(d){return x(d.endYear)-x(d.startYear)})
-      .style("fill", "#C69214")
-      .style("stroke", "white")
+      .style("fill", "#A1E393")
+      .style("stroke", "black")
+      .style("opacity",1)
     .on("mouseover", mouseover )
     .on("click",mouseover)
     //.on("mousemove", mousemove )
     .on("mouseleave", mouseleave )
+
+    
 
     svg.append("line")
     .attr("x1",width*-.25)
