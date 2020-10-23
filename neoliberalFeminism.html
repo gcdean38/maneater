@@ -16,13 +16,19 @@
         padding: 5px;
         border-radius: 5px;
     }
+    path.domain{
+      stroke: white;
+    }
+    hr.tooltip{
+      stroke-width:2px;
+    }
 </style>
 <script>
 
     // set the dimensions and margins of the graph
     var margin = {top: 10, right: 30, bottom: 20, left: 60},
         width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        height = 250 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -53,11 +59,12 @@
     var words = ["Empowering","Outdated","Inclusive","Polarizing"]
     var word = ["empowering","outdated","inclusive","polarizing"]
       // Add Y axis
+
       var y = d3.scaleBand()
         .domain(words)
         .range([ height, 0 ]);
       svg.append("g")
-        .call(d3.axisLeft(y)).attr("transform","translate(10,0)");
+        .call(d3.axisLeft(y).tickSize(0,0).tickPadding(0)).attr("transform","translate(5,0)");
     
       /*// color palette = one color per subgroup
       var color = d3.scaleOrdinal()
@@ -83,7 +90,7 @@
 var formatPct = d3.format(".0%")
       var mmouseover = function(d){
           men.style("opacity",1)
-          .html("<b><i>Men view on <u>"+(d.word)+"</u> as a descriptor of feminism in the US</b></i><br>Describes feminism: "+formatPct(d.menYes/100)+"<br>Does not describe feminism: "+formatPct(d.menNo/100)
+          .html("<b><i>Male views on <u>"+(d.word).toLowerCase()+"</u> as a descriptor of feminism in the US<hr style='padding: none'></b></i>Describes feminism: "+formatPct(d.menYes/100)+"<br>Does not describe feminism: "+formatPct(d.menNo/100)
           +"<br>Other: "+formatPct((100-(+d.menNo+(+d.menYes)))/100))
           .style("left", (d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]+60) + "px")
@@ -92,14 +99,14 @@ var formatPct = d3.format(".0%")
       }
 var wmouseover = function(d){
     women.style("opacity",1)
-          .html("<b><i>Women view on <u>"+(d.word)+"</u> as a descriptor of feminism in the US</b></i><br>Describes feminism: "+formatPct(d.womenYes/100)+"<br>Does not describe feminism: "+formatPct(d.womenNo/100)
+          .html("<b><i>Female views on <u>"+(d.word).toLowerCase()+"</u> as a descriptor of feminism in the US<hr style='padding: none'></b></i>Describes feminism: "+formatPct(d.womenYes/100)+"<br>Does not describe feminism: "+formatPct(d.womenNo/100)
           +"<br>Other: "+formatPct((100-(+d.womenNo+(+d.womenYes)))/100))
           .style("left", (d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]+60) + "px")
           }
       var mmousemove = function(d) {
         men
-          .html("<b><i>Men view on <u>"+(d.word)+"</u> as a descriptor of feminism in the US</b></i><br>Describes feminism: "+formatPct(d.menYes/100)+"<br>Does not describe feminism: "+formatPct(d.menNo/100)
+          .html("<b><i>Male views on <u>"+(d.word).toLowerCase()+"</u> as a descriptor of feminism in the US<hr style='padding: none'></b></i>Describes feminism: "+formatPct(d.menYes/100)+"<br>Does not describe feminism: "+formatPct(d.menNo/100)
           +"<br>Other: "+formatPct((100-(+d.menNo+(+d.menYes)))/100))
           .style("left", (d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]+60) + "px")
@@ -108,7 +115,7 @@ var wmouseover = function(d){
       var wmousemove = function(d){
 
         women
-          .html("<b><i>Women view on <u>"+(d.word)+"</u> as a descriptor of feminism in the US</b></i><br>Describes feminism: "+formatPct(d.womenYes/100)+"<br>Does not describe feminism: "+formatPct(d.womenNo/100)
+          .html("<b><i>Female views on <u>"+(d.word).toLowerCase()+"</u> as a descriptor of feminism in the US<hr style='padding: none'></b></i>Describes feminism: "+formatPct(d.womenYes/100)+"<br>Does not describe feminism: "+formatPct(d.womenNo/100)
           +"<br>Other: "+formatPct((100-(+d.womenNo+(+d.womenYes)))/100))
           .style("left", (d3.mouse(this)[0]+40) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]+60) + "px")
@@ -125,14 +132,16 @@ var wmouseover = function(d){
           //.duration(0)
           .style("opacity", 0)
       }
+
+      //men
       svg.append("g")
         .selectAll("g")
           .data(data)
           .enter().append("rect")
-          .attr("fill","blue")
+          .attr("fill","#006400")
           .attr("stroke","black")
             .attr("x", 10)
-            .attr("y", function(d){return y(d.word)+25})
+            .attr("y", function(d){return y(d.word)+7.5})
             .attr("height", 20)
             .attr("width",function(d){return d.menYes*2})
             .on("mouseover",mmouseover)
@@ -143,10 +152,10 @@ var wmouseover = function(d){
         svg.append("g")
         .selectAll('g').data(data)
           .enter().append("rect")
-          .attr("fill","orange")
+          .attr("fill","#228B22")
           .attr("stroke","black")
             .attr("x", function(d){return d.menYes*2+10})
-            .attr("y", function(d){return y(d.word)+25})
+            .attr("y", function(d){return y(d.word)+7.5})
             .attr("height", 20)
             .attr("width",function(d){return d.menNo*2})
             .on("mouseover",mmouseover)
@@ -160,7 +169,7 @@ var wmouseover = function(d){
           .attr("fill","grey")
           .attr("stroke","black")
             .attr("x", function(d){return d.menYes*2+d.menNo*2+10})
-            .attr("y", function(d){return y(d.word)+25})
+            .attr("y", function(d){return y(d.word)+7.5})
             .attr("height", 20)
             .attr("width",function(d){return 200-(d.menNo*2+d.menYes*2)})
             .on("mouseover",mmouseover)
@@ -172,10 +181,10 @@ var wmouseover = function(d){
             svg.append("g")
         .selectAll('g').data(data)
           .enter().append("rect")
-          .attr("fill","purple")
+          .attr("fill","#4B0082")
           .attr("stroke","black")
             .attr("x", 10)
-            .attr("y", function(d){return y(d.word)+45})
+            .attr("y", function(d){return y(d.word)+27.7})
             .attr("height", 20)
             .attr("width",function(d){return d.womenYes*2})
             .on("mouseover",wmouseover)
@@ -186,10 +195,10 @@ var wmouseover = function(d){
             svg.append("g")
         .selectAll('g').data(data)
           .enter().append("rect")
-          .attr("fill","yellow")
+          .attr("fill","#9400D3")
           .attr("stroke","black")
             .attr("x", function(d){return d.womenYes*2+10})
-            .attr("y", function(d){return y(d.word)+45})
+            .attr("y", function(d){return y(d.word)+27.5})
             .attr("height", 20)
             .attr("width",function(d){return d.womenNo*2})
             .on("mouseover",wmouseover)
@@ -203,14 +212,14 @@ var wmouseover = function(d){
           .attr("fill","black")
           .attr("stroke","black")
             .attr("x", function(d){return d.womenYes*2+d.womenNo*2+10})
-            .attr("y", function(d){return y(d.word)+45})
+            .attr("y", function(d){return y(d.word)+27.5})
             .attr("height", 20)
             .attr("width",function(d){return 200-(d.womenNo*2+d.womenYes*2)})
             .on("mouseover",wmouseover)
             .on('mousemove',wmousemove)
             .on("mouseleave",wmouseleave)
             .on("click",wmouseover)
-
+var colors = ["#006400","#228B22","grey"]
     
     })
     
