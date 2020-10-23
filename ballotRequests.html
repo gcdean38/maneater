@@ -92,7 +92,7 @@
       var subgroups = data.columns.slice(1,3)
       // List of groups = species here = value of the first column called group -> I show them on the X axis
       var groups = d3.map(data, function(d){return(d.race)}).keys()
-    
+    var election = function(d){return +d.election};
       // Add X axis
       var x = d3.scaleBand()
           .domain(groups)
@@ -101,14 +101,18 @@
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x).tickSize(0));
-    console.log(groups[0])
+    console.log(data)
       // Add Y axis
       var y = d3.scaleLinear()
         .domain([0, 17500])
         .range([ height, 10 ]);
       svg.append("g")
         .call(d3.axisLeft(y));
-    
+    var elections = d3.scaleOrdinal()
+    .domain([0,2])
+    .range(groups)
+
+    console.log(elections(0))
       // Another scale for subgroup position?
       var xSubgroup = d3.scaleBand()
         .domain(subgroups)
@@ -149,9 +153,12 @@ var legendText = ["2016 Election Cycle","2020 Election Cycle"]
       	  .attr("y", 9)
       	  .attr("dy", ".35em")
       	  .text(function(d) { return d; });
+
+//console.log(electionType)
 //var ballots = function(d){return d.ballots}
     var tooltip = d3.select('body')
     .append("div")
+    //.data(electionType)
     .attr("class","tooltip")
     .style("opacity",1)
     .style("stroke","black")
@@ -164,7 +171,7 @@ var legendText = ["2016 Election Cycle","2020 Election Cycle"]
 
     var mouseover = function(d){
         tooltip.attr("opacity",1)
-        .html("<u>"+(d.key)+" "+(groups[0,1])+" Election</u><br><b>"+numFormat(d.ballots)+"</b> ballots requested")
+        .html("<u>"+(d.key)+" "+(elections(+d.election))+" Election</u><br><b>"+numFormat(d.ballots)+"</b> ballots requested")
         .style("stroke","black")
         .transition()
    .duration(200)
