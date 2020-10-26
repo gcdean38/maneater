@@ -21,11 +21,11 @@
           }
   
           text.title {
-              font-size: 24px;
+              font-size: 18px;
               font-family: Verdana, Geneva, Tahoma, sans-serif;
               text-decoration: underline;
               font-weight: bold;
-              /*text-anchor: middle;*/
+              text-anchor: middle;
           }
           text.subtitle {
               font-size: 12px;
@@ -71,7 +71,7 @@
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 40, right: 20, bottom: 20, left: 60},
+    var margin = {top: 40, right: 30, bottom: 20, left: 60},
         width = 400 - margin.left - margin.right,
         height = 550 - margin.top - margin.bottom;
     
@@ -301,7 +301,7 @@ svg.append("g")
           .attr("fill",function(d){return color(d)})
           .attr("stroke","black")
             .attr("x", function(d,i){return i*(width/3)+(width/3)-10})
-            .attr("y", 0)
+            .attr("y", 10)
             .attr("height", 15)
             .attr("width",15)
             //.attr("transform","translate(0,50)")
@@ -315,19 +315,18 @@ svg.append("g")
   //.attr("fill",function(d){return color(d)})
   .attr("fill","black")
     .attr("x", function(d,i){return i*(width/3)+(width/3+10)})
-    .attr("y", 10)
+    .attr("y", 20)
     .text(function(d){return d})
     .attr("transform","translate(0,0)")
     .attr("class","legend")
 
 
     svg.append("g")
-        .selectAll('g').data(levels)
-          .enter().append("rect")
+        .append("rect")
           .attr("fill","#4B0082")
           .attr("stroke","black")
             .attr("x", width*.18-30)
-            .attr("y", 0)
+            .attr("y", 10)
             .attr("height", 15)
             .attr("width",15)
             //.attr("transform","translate(0,50)")
@@ -336,23 +335,29 @@ svg.append("g")
 
 
 svg.append("g")
-.selectAll('g').data(level)
-.enter().append("text")
+.append("text")
 //.attr("fill",function(d){return color(d)})
-.attr("fill","black")
+//.attr("fill","black")
 .attr("x", width*.18-10)
-.attr("y", 10)
+.attr("y", 20)
 .text("Describes")
-.attr("font-weight","normal")
+
 .attr("transform","translate(0,0)")
 .attr("class","legend")
-  
+
 svg.append("text")
 .attr("class","title")
 .attr("y",-20)
-.attr("x",width/2)
+.attr("x",width*.4)
 .attr("text-anchor","middle")
-.text("How Men and Women View Feminism")
+.text("Male and Female")
+
+svg.append("text")
+.attr("class","title")
+.attr("y",0)
+.attr("x",width*.4)
+.attr("text-anchor","middle")
+.text("Views on Feminism")
 
     svg.append("text")
 		.attr('class', 'byline')
