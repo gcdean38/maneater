@@ -36,7 +36,7 @@
           text.legend {
       font-size: 10px;
       text-align: right;
-      font-weight:normal;
+      font-weight: normal;
           
             text-anchor: start;
           }
@@ -48,12 +48,13 @@
   }
     .tooltip{
         position: absolute;
-        background-color: plum;
-        color: white;
+        background-color: lavender;
+        color: black;
         max-width: 250px;
         max-height: 150px;
         padding: 5px;
         border-radius: 5px;
+        
     }
     path.domain{
       stroke: white;
@@ -108,7 +109,7 @@
         .domain(words)
         .range([ height, 40 ]);
       svg.append("g")
-        .call(d3.axisLeft(y).tickSize(0,0).tickPadding(0)).attr("transform","translate("+width*.33+",-60)").attr("class","axis");
+        .call(d3.axisLeft(y).tickSize(0,0).tickPadding(0)).attr("transform","translate("+width*.4+",-60)").attr("class","axis");
     
       /*// color palette = one color per subgroup
       var color = d3.scaleOrdinal()
@@ -265,11 +266,11 @@ var wmouseover = function(d){
             .on('mousemove',wmousemove)
             .on("mouseleave",wmouseleave)
             .on("click",wmouseover)
-var levels = ["wAgree","wDisagree","wOther"]
-var level = ["Describes","Does Not Describe","Other"]
+var levels = ["wDisagree","wOther"]
+var level = ["Does Not Describe","Other"]
 var color = d3.scaleOrdinal()
         .domain(levels)
-        .range(["#4B0082","#9400D3","grey"] )
+        .range(["#9400D3","grey"] )
 var male = ["Male","Male","Male","Male"]
 var female = ["Female","Female","Female","Female"]
 
@@ -279,7 +280,7 @@ svg.append("g")
           //.attr("fill",function(d){return color(d)})
           //.attr("stroke","black")
             .attr("x", 0)
-            .attr("y", function(d,i){return i*110+75})
+            .attr("y", function(d,i){return i*112.5+75})
             .text(function(d){return d})
             .attr("class","key")
 
@@ -289,7 +290,7 @@ svg.append("g")
           //.attr("fill",function(d){return color(d)})
           //.attr("stroke","black")
             .attr("x", 0)
-            .attr("y", function(d,i){return i*110+110})
+            .attr("y", function(d,i){return i*112.5+110})
             .text(function(d){return d})
             .attr("class","key")
             
@@ -299,7 +300,7 @@ svg.append("g")
           .enter().append("rect")
           .attr("fill",function(d){return color(d)})
           .attr("stroke","black")
-            .attr("x", function(d,i){return i*(width/3)})
+            .attr("x", function(d,i){return i*(width/3)+(width/3)-10})
             .attr("y", 0)
             .attr("height", 15)
             .attr("width",15)
@@ -313,13 +314,38 @@ svg.append("g")
   .enter().append("text")
   //.attr("fill",function(d){return color(d)})
   .attr("fill","black")
-    .attr("x", function(d,i){return i*(width/3)+20})
+    .attr("x", function(d,i){return i*(width/3)+(width/3+10)})
     .attr("y", 10)
     .text(function(d){return d})
     .attr("transform","translate(0,0)")
     .attr("class","legend")
 
 
+    svg.append("g")
+        .selectAll('g').data(levels)
+          .enter().append("rect")
+          .attr("fill","#4B0082")
+          .attr("stroke","black")
+            .attr("x", width*.18-30)
+            .attr("y", 0)
+            .attr("height", 15)
+            .attr("width",15)
+            //.attr("transform","translate(0,50)")
+            .attr("class","legend")
+            .attr("text-anchor","start")
+
+
+svg.append("g")
+.selectAll('g').data(level)
+.enter().append("text")
+//.attr("fill",function(d){return color(d)})
+.attr("fill","black")
+.attr("x", width*.18-10)
+.attr("y", 10)
+.text("Describes")
+.attr("font-weight","normal")
+.attr("transform","translate(0,0)")
+.attr("class","legend")
   
 svg.append("text")
 .attr("class","title")
