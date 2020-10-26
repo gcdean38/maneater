@@ -7,9 +7,48 @@
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 <style>
+  text.sources {
+              font-size: 10px;
+              font-style: italic;
+          }
+          
+          text.byline {
+              font-size: 12px;
+              font-style: italic;
+              font-family: Arial, Helvetica, sans-serif;
+              text-anchor: end;
+              font-weight: normal;
+          }
+  
+          text.title {
+              font-size: 24px;
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+              text-decoration: underline;
+              font-weight: bold;
+              /*text-anchor: middle;*/
+          }
+          text.subtitle {
+              font-size: 12px;
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+              font-style: italic;
+              text-anchor: middle;
+          }
+          text.legend {
+      font-size: 10px;
+      text-align: right;
+      font-weight:normal;
+          
+            text-anchor: start;
+          }
+  text {
+    font-family: 'Times New Roman', Times, serif;
+    text-anchor: middle;
+    font-size: 14px;
+    font-weight: bold;
+  }
     .tooltip{
         position: absolute;
-        background-color: tomato;
+        background-color: plum;
         color: white;
         max-width: 250px;
         max-height: 150px;
@@ -22,13 +61,18 @@
     hr.tooltip{
       stroke-width:2px;
     }
+    
+    
+    text.key {
+      text-anchor: end;
+    }
 </style>
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 30, bottom: 20, left: 60},
-        width = 460 - margin.left - margin.right,
-        height = 250 - margin.top - margin.bottom;
+    var margin = {top: 40, right: 20, bottom: 20, left: 60},
+        width = 400 - margin.left - margin.right,
+        height = 550 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -62,9 +106,9 @@
 
       var y = d3.scaleBand()
         .domain(words)
-        .range([ height, 0 ]);
+        .range([ height, 40 ]);
       svg.append("g")
-        .call(d3.axisLeft(y).tickSize(0,0).tickPadding(0)).attr("transform","translate(5,0)");
+        .call(d3.axisLeft(y).tickSize(0,0).tickPadding(0)).attr("transform","translate("+width*.33+",-60)").attr("class","axis");
     
       /*// color palette = one color per subgroup
       var color = d3.scaleOrdinal()
@@ -138,26 +182,28 @@ var wmouseover = function(d){
         .selectAll("g")
           .data(data)
           .enter().append("rect")
-          .attr("fill","#006400")
-          .attr("stroke","black")
+          .attr("fill","#4B0082")
+          .attr("stroke","white")
             .attr("x", 10)
             .attr("y", function(d){return y(d.word)+7.5})
-            .attr("height", 20)
-            .attr("width",function(d){return d.menYes*2})
+            .attr("height", 40)
+            .attr("width",function(d){return d.menYes*2.5})
             .on("mouseover",mmouseover)
             .on("click",mmouseover)
             .on('mousemove',mmousemove)
             .on("mouseleave",mmouseleave)
+
+            
         
         svg.append("g")
         .selectAll('g').data(data)
           .enter().append("rect")
-          .attr("fill","#228B22")
-          .attr("stroke","black")
-            .attr("x", function(d){return d.menYes*2+10})
+          .attr("fill","#9400D3")
+          .attr("stroke","white")
+            .attr("x", function(d){return d.menYes*2.5+10})
             .attr("y", function(d){return y(d.word)+7.5})
-            .attr("height", 20)
-            .attr("width",function(d){return d.menNo*2})
+            .attr("height", 40)
+            .attr("width",function(d){return d.menNo*2.5})
             .on("mouseover",mmouseover)
             .on("click",mmouseover)
             .on('mousemove',mmousemove)
@@ -167,11 +213,11 @@ var wmouseover = function(d){
         .selectAll('g').data(data)
           .enter().append("rect")
           .attr("fill","grey")
-          .attr("stroke","black")
-            .attr("x", function(d){return d.menYes*2+d.menNo*2+10})
+          .attr("stroke","white")
+            .attr("x", function(d){return d.menYes*2.5+d.menNo*2.5+10})
             .attr("y", function(d){return y(d.word)+7.5})
-            .attr("height", 20)
-            .attr("width",function(d){return 200-(d.menNo*2+d.menYes*2)})
+            .attr("height", 40)
+            .attr("width",function(d){return 250-(d.menNo*2.5+d.menYes*2.5)})
             .on("mouseover",mmouseover)
             .on('mousemove',mmousemove)
             .on("click",mmouseover)
@@ -182,11 +228,11 @@ var wmouseover = function(d){
         .selectAll('g').data(data)
           .enter().append("rect")
           .attr("fill","#4B0082")
-          .attr("stroke","black")
+          .attr("stroke","white")
             .attr("x", 10)
-            .attr("y", function(d){return y(d.word)+27.7})
-            .attr("height", 20)
-            .attr("width",function(d){return d.womenYes*2})
+            .attr("y", function(d){return y(d.word)+47.7})
+            .attr("height", 40)
+            .attr("width",function(d){return d.womenYes*2.5})
             .on("mouseover",wmouseover)
             .on('mousemove',wmousemove)
             .on("click",wmouseover)
@@ -196,11 +242,11 @@ var wmouseover = function(d){
         .selectAll('g').data(data)
           .enter().append("rect")
           .attr("fill","#9400D3")
-          .attr("stroke","black")
-            .attr("x", function(d){return d.womenYes*2+10})
-            .attr("y", function(d){return y(d.word)+27.5})
-            .attr("height", 20)
-            .attr("width",function(d){return d.womenNo*2})
+          .attr("stroke","white")
+            .attr("x", function(d){return d.womenYes*2.5+10})
+            .attr("y", function(d){return y(d.word)+47.5})
+            .attr("height", 40)
+            .attr("width",function(d){return d.womenNo*2.5})
             .on("mouseover",wmouseover)
             .on('mousemove',wmousemove)
             .on("mouseleave",wmouseleave)
@@ -209,35 +255,121 @@ var wmouseover = function(d){
             svg.append("g")
         .selectAll('g').data(data)
           .enter().append("rect")
-          .attr("fill","black")
-          .attr("stroke","black")
-            .attr("x", function(d){return d.womenYes*2+d.womenNo*2+10})
-            .attr("y", function(d){return y(d.word)+27.5})
-            .attr("height", 20)
-            .attr("width",function(d){return 200-(d.womenNo*2+d.womenYes*2)})
+          .attr("fill","grey")
+          .attr("stroke","white")
+            .attr("x", function(d){return d.womenYes*2.5+d.womenNo*2.5+10})
+            .attr("y", function(d){return y(d.word)+47.5})
+            .attr("height", 40)
+            .attr("width",function(d){return 250-(d.womenNo*2.5+d.womenYes*2.5)})
             .on("mouseover",wmouseover)
             .on('mousemove',wmousemove)
             .on("mouseleave",wmouseleave)
             .on("click",wmouseover)
-var levels = ["mAgree","mDisagree","mOther","wAgree","wDisagree","wOther"]
+var levels = ["wAgree","wDisagree","wOther"]
 var level = ["Describes","Does Not Describe","Other"]
 var color = d3.scaleOrdinal()
         .domain(levels)
-        .range(["grey","#228B22","#006400","#4B0082","#9400D3","black"] )
-        
+        .range(["#4B0082","#9400D3","grey"] )
+var male = ["Male","Male","Male","Male"]
+var female = ["Female","Female","Female","Female"]
+
+svg.append("g")
+        .selectAll('g').data(male)
+          .enter().append("text")
+          //.attr("fill",function(d){return color(d)})
+          //.attr("stroke","black")
+            .attr("x", 0)
+            .attr("y", function(d,i){return i*110+75})
+            .text(function(d){return d})
+            .attr("class","key")
+
+            svg.append("g")
+        .selectAll('g').data(female)
+          .enter().append("text")
+          //.attr("fill",function(d){return color(d)})
+          //.attr("stroke","black")
+            .attr("x", 0)
+            .attr("y", function(d,i){return i*110+110})
+            .text(function(d){return d})
+            .attr("class","key")
+            
+
 svg.append("g")
         .selectAll('g').data(levels)
           .enter().append("rect")
           .attr("fill",function(d){return color(d)})
           .attr("stroke","black")
-            .attr("x", function(d,i){return Math.abs(i-2.5)*25+10})
-            .attr("y", function(d,i){
-              if((i-2.5)>=0){return height/2+10}
-              else {return height/2-10}})
+            .attr("x", function(d,i){return i*(width/3)})
+            .attr("y", 0)
             .attr("height", 15)
             .attr("width",15)
-            .attr("transform","translate(220,0)")
+            //.attr("transform","translate(0,50)")
+            .attr("class","legend")
+            .attr("text-anchor","start")
+
+
+    svg.append("g")
+.selectAll('g').data(level)
+  .enter().append("text")
+  //.attr("fill",function(d){return color(d)})
+  .attr("fill","black")
+    .attr("x", function(d,i){return i*(width/3)+20})
+    .attr("y", 10)
+    .text(function(d){return d})
+    .attr("transform","translate(0,0)")
+    .attr("class","legend")
+
+
+  
+svg.append("text")
+.attr("class","title")
+.attr("y",-20)
+.attr("x",width/2)
+.attr("text-anchor","middle")
+.text("How Men and Women View Feminism")
+
+    svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height)
+		.attr('x', width)
+		.attr('text-anchor', 'end')
+		.text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+    //.style("text-align","right")
             
+    svg.append("text")
+.attr("class","sources")
+.attr("y",height)
+.attr("x",width*-.1)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height)
+		.attr('x', width*.05)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Pew Research')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height)
+		.attr('x', width*.19)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://www.pewresearch.org/wp-content/uploads/2020/07/Feminism-topline.pdf")
+    .append("rect")  
+    .attr('y', height-9)
+	.attr('x', width*-.03)
+    .attr("height", 9)
+    .attr("width",width*.12- width*-.05)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
     
     })
     
