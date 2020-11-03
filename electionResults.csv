@@ -1,5 +1,5 @@
 ﻿state,winner,final,ev,biden,trump
-Alabama,None,no,9,0,0
+Alabama,None,no,9,,
 Alaska,None,no,3,,
 Arizona,None,no,11,,
 Arkansas,None,no,6,,
@@ -13,10 +13,10 @@ Georgia,None,no,16,,
 Hawaii,None,no,4,,
 Idaho,None,no,4,,
 Illinois,None,no,20,,
-Indiana,None,no,11,,
+Indiana,Trump,no,11,18693,39624
 Iowa,None,no,6,,
 Kansas,None,no,6,,
-Kentucky,None,no,8,,
+Kentucky,Trump,no,8,19676,46741
 Louisiana,None,no,8,,
 Maine,None,no,4,,
 Maryland,None,no,10,,
