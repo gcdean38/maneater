@@ -1,8 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<title>2020 General Election Results</title>
+</head>
 <meta charset="utf-8">
 <script src="https://d3js.org/d3.v3.min.js"></script>
+<script>
+var biden = 0
+var trump = 0 
+</script>
 <style type="text/css">
 
 /* On mouse hover, lighten state color */
@@ -126,8 +132,7 @@ var svg = d3.select("body")
 // Append Div for tooltip to SVG
 
 ////////// ELECTORAL RESULTS \\\\\\\\\\
-var biden = 0
-var trump = 0 
+
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 // Load in my states data!
 d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionUpdate.csv", function(d) {
