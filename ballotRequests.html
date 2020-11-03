@@ -156,35 +156,12 @@ var legendText = ["2016 Election Cycle","2020 Election Cycle"]
 
 //console.log(electionType)
 //var ballots = function(d){return d.ballots}
-    var tooltip = d3.select('body')
-    .append("div")
-    //.data(electionType)
-    .attr("class","tooltip")
-    .style("opacity",1)
-    .style("stroke","black")
-    .html("<i>Hover over bars for more information")
-    .style("left", "300px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", "50px")
+   
 
    // console.log(d.groups)
    //console.log(function(d){return election(+d.ballots)})
 
-    var mouseover = function(d){
-        tooltip.attr("opacity",1)
-        .html("<u>"+(d.key)+" "+(elections(+d.election))+" Election</u><br><b>"+numFormat(d.ballots)+"</b> ballots requested")
-        .style("stroke","black")
-        .transition()
-   .duration(200)
-        .style("left", "300px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-          .style("top", "50px")
-    }
-    var mousemove = function(d){
-        tooltip.attr("opacity",1)
-    }
-    var mouseout = function(d){
-        tooltip.transition()
-   .duration(200).style("opacity",0)
-    }
+    
 
     
 
@@ -204,9 +181,7 @@ var legendText = ["2016 Election Cycle","2020 Election Cycle"]
           .attr("width", xSubgroup.bandwidth())
           .attr("height", function(d) { return height - y(d.ballots); })
           .attr("fill", function(d) { return color(d.key); })
-          .on("mouseover",mouseover)
-          .on("mousemove",mousemove)
-         .on("click",mouseover)
+          
          svg.append("text")
                 .attr("class","title")
                 .attr("x",width/2)
