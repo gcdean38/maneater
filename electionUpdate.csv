@@ -1,52 +1,52 @@
-﻿state,winner,final
-Alabama,None,no
-Alaska,None,no
-Arizona,None,no
-Arkansas,None,no
-California,None,no
-Colorado,None,no
-Connecticut,None,no
-Delaware,None,no
-District of Columbia,None,no
-Florida,None,no
-Georgia,None,no
-Hawaii,None,no
-Idaho,None,no
-Illinois,None,no
-Indiana,None,no
-Iowa,None,no
-Kansas,None,no
-Kentucky,None,no
-Louisiana,None,no
-Maine,None,no
-Maryland,None,no
-Massachusetts,None,no
-Michigan,None,no
-Minnesota,None,no
-Mississippi,None,no
-Missouri,None,no
-Montana,None,no
-Nebraska,None,no
-Nevada,None,no
-New Hampshire,None,no
-New Jersey,None,no
-New Mexico,None,no
-New York,None,no
-North Carolina,None,no
-North Dakota,None,no
-Ohio,None,no
-Oklahoma,None,no
-Oregon,None,no
-Pennsylvania,None,no
-Rhode Island,None,no
-South Carolina,None,no
-South Dakota,None,no
-Tennessee,None,no
-Texas,None,no
-Utah,None,no
-Vermont,None,no
-Virginia,None,no
-Washington,None,no
-West Virginia,None,no
-Wisconsin,None,no
-Wyoming,None,no
+﻿state,winner,final,ev,Biden,Trump
+Alabama,None,no,9,0,0
+Alaska,None,no,3,,
+Arizona,None,no,11,,
+Arkansas,None,no,6,,
+California,None,no,55,,
+Colorado,None,no,9,,
+Connecticut,None,no,7,,
+Delaware,None,no,3,,
+District of Columbia,None,no,3,,
+Florida,None,no,29,,
+Georgia,None,no,16,,
+Hawaii,None,no,4,,
+Idaho,None,no,4,,
+Illinois,None,no,20,,
+Indiana,None,no,11,,
+Iowa,None,no,6,,
+Kansas,None,no,6,,
+Kentucky,None,no,8,,
+Louisiana,None,no,8,,
+Maine,None,no,4,,
+Maryland,None,no,10,,
+Massachusetts,None,no,11,,
+Michigan,None,no,16,,
+Minnesota,None,no,10,,
+Mississippi,None,no,6,,
+Missouri,None,no,10,,
+Montana,None,no,3,,
+Nebraska,None,no,5,,
+Nevada,None,no,6,,
+New Hampshire,None,no,4,,
+New Jersey,None,no,14,,
+New Mexico,None,no,5,,
+New York,None,no,29,,
+North Carolina,None,no,15,,
+North Dakota,None,no,3,,
+Ohio,None,no,18,,
+Oklahoma,None,no,7,,
+Oregon,None,no,7,,
+Pennsylvania,None,no,20,,
+Rhode Island,None,no,4,,
+South Carolina,None,no,9,,
+South Dakota,None,no,3,,
+Tennessee,None,no,11,,
+Texas,None,no,38,,
+Utah,None,no,6,,
+Vermont,None,no,3,,
+Virginia,None,no,13,,
+Washington,None,no,12,,
+West Virginia,None,no,5,,
+Wisconsin,None,no,10,,
+Wyoming,None,no,3,,
