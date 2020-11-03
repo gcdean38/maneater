@@ -113,7 +113,7 @@ var svg = d3.select("body")
 // Load in my states data!
 d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionUpdate.csv", function(d) {
 color.domain(["Biden","Trump","None"]); // setting the range of the input data
-return { state: d.state, winner: d.winner, final: d.final}
+return { state: d.state, winner: d.winner, final: d.final, ev: +d.ev}
       },function(data) {
 // Load GeoJSON data and merge with states data
 d3.json("https://gist.githubusercontent.com/michellechandra/0b2ce4923dc9b5809922/raw/a476b9098ba0244718b496697c5b350460d32f99/us-states.json", function(json) {
@@ -137,11 +137,17 @@ for (var i = 0; i < data.length; i++) {
 		json.features[j].properties.winner = dataValue; 
 		json.features[j].properties.final = dataStatus
 
+
 		// Stop looking through the JSON
 		break;
 		}
 	}
 }
+
+
+
+ 
+
 var legend = d3.select("body").append("svg")
       			.attr("class", "legend")
      			.attr("width", 200)
@@ -230,6 +236,8 @@ svg.selectAll("path")
 // Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
 
 	});
+
+	
 	svg.append("text")
     .attr("class","title")
     .attr("x",width/2)
@@ -287,6 +295,18 @@ svg.append('text')
 		.attr('text-anchor', "end")
     .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
 });
+d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionResults.csv", function(d) {
+return { biden: +d.biden, trump: +d.trump}
+      },function(resultdata) {
+console.log(resultdata)
+var results = resultdata.slice(3)
+
+svg.append("text")
+.attr("x",width*.9)
+.attr("y",height/2)
+.text(function(d){return d.biden})
+
+	  })
 </script>
 </body>
 </html>
