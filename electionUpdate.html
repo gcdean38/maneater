@@ -9,6 +9,15 @@
 path:hover {
 	fill-opacity: .7;
 }
+text.results {
+	font-size: 30px;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-weight: bold;
+}
+text.resultnum {
+	font-size: 30px;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 text.source {
             font-size: 10px;
             font-style: italic;
@@ -97,7 +106,7 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 		
 // Define linear scale for output
 var color = d3.scale.ordinal()
-			  .range(["blue","red","grey"]);
+			  .range(["#0000ff","red","grey"]);
 
 var legendText = ["Biden","Trump","None"];
 
@@ -106,10 +115,19 @@ var svg = d3.select("body")
 			.append("svg")
 			.attr("width", width)
 			.attr("height", height);
+			var resultssvg = d3.select("body")
+			.append("svg")
+			.attr("width", 300)
+			.attr("height", 400)
+			.attr("x",730)
+			
         
 // Append Div for tooltip to SVG
 
-
+////////// ELECTORAL RESULTS \\\\\\\\\\
+var biden = 0
+var trump = 0 
+//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 // Load in my states data!
 d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionUpdate.csv", function(d) {
 color.domain(["Biden","Trump","None"]); // setting the range of the input data
@@ -217,7 +235,7 @@ svg.selectAll("path")
 	return color(winner);
 	} else {
 	//If value is undefined…
-	return "blue";
+	return "#0000ff";
 	}
 })
 .style("opacity",function(d){
@@ -294,18 +312,69 @@ svg.append('text')
 		.attr('x', width)
 		.attr('text-anchor', "end")
     .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
-});
-d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionResults.csv", function(d) {
-return { biden: +d.biden, trump: +d.trump}
-      },function(resultdata) {
-console.log(resultdata)
-var results = resultdata.slice(3)
 
-svg.append("text")
-.attr("x",width*.9)
-.attr("y",height/2)
-.text(function(d){return d.biden})
+resultssvg.append("text")
+.attr("x",50)
+.attr("y",75)
+.attr("text-anchor","middle")
+.attr("class","results")
+.text("BIDEN")
 
+resultssvg.append("text")
+.attr("class","resultnum")
+.attr("x",50)
+.attr("y",100)
+.attr("text-anchor","middle")
+.text(biden)
+
+resultssvg.append("text")
+.attr("x",250)
+.attr("y",75)
+.attr("text-anchor","middle")
+.attr("class","results")
+.text("TRUMP")
+
+resultssvg.append("text")
+.attr("x",250)
+.attr("y",100)
+.attr("text-anchor","middle")
+.attr("class","resultnum")
+.text(trump)
+
+xresults = d3.scale.linear()
+.range([0,300])
+.domain([0,538])
+
+resultssvg.append("rect")
+.attr("x",0)
+.attr("y",150)
+.attr('width',function(d){return xresults(biden)})
+.attr("height",20)
+.attr("fill","#0000ff")
+
+resultssvg.append("line")
+.attr("x1",150)
+.attr("x2",150)
+.attr('y1',140)
+.attr("y2",180)
+.attr("stroke-width","1px")
+.attr("stroke","black")
+
+resultssvg.append("text")
+.attr("x",150)
+.attr("y",135)
+.attr("text-anchor","middle")
+//.attr("class","results")
+.style("text-decoration","underline")
+.text("Winning Number: 270")
+
+
+var results = d3.select("#my_dataviz")
+        .append("div")
+        .style("opacity", 0)
+        .attr("class", "tooltip")
+
+	  
 	  })
 </script>
 </body>
