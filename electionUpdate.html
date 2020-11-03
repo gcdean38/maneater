@@ -120,13 +120,14 @@ var svg = d3.select("body")
 			.attr("width", 300)
 			.attr("height", 400)
 			.attr("x",730)
+			.attr("y",0)
 			
         
 // Append Div for tooltip to SVG
 
 ////////// ELECTORAL RESULTS \\\\\\\\\\
-var biden = 0
-var trump = 0 
+var biden = 300
+var trump = 238 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 // Load in my states data!
 d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionUpdate.csv", function(d) {
@@ -341,24 +342,58 @@ resultssvg.append("text")
 .attr("class","resultnum")
 .text(trump)
 
+resultssvg.append("image")
+.attr("x",230)
+.attr("y",0)
+.attr("height",40)
+.attr("width",40)
+//.attr("anchor","middle")
+.attr("xlink:href","trump.png")
+
+resultssvg.append("image")
+.attr("x",30)
+.attr("y",0)
+.attr("height",40)
+.attr("width",40)
+//.attr("anchor","middle")
+.attr("xlink:href","biden.png")
+
 xresults = d3.scale.linear()
 .range([0,300])
 .domain([0,538])
 
 resultssvg.append("rect")
 .attr("x",0)
-.attr("y",150)
+.attr("y",140)
 .attr('width',function(d){return xresults(biden)})
-.attr("height",20)
+.attr("height",40)
 .attr("fill","#0000ff")
+
+resultssvg.append("rect")
+.attr("x",function(d){return 300-xresults(trump)})
+.attr("y",140)
+.attr('width',function(d){return xresults(trump)})
+.attr("height",40)
+.attr("fill","#FF0000")
+
 
 resultssvg.append("line")
 .attr("x1",150)
 .attr("x2",150)
 .attr('y1',140)
 .attr("y2",180)
-.attr("stroke-width","1px")
+.attr("stroke-width","3px")
 .attr("stroke","black")
+.style("stroke-dasharray", ("3, 3"))
+
+resultssvg.append('rect')
+.attr("x",0)
+.attr("y",140)
+.attr("width",300)
+.attr("height",40)
+.attr("fill","none")
+.attr("stroke","black")
+.attr("stroke-width","3px")
 
 resultssvg.append("text")
 .attr("x",150)
