@@ -96,10 +96,10 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 
 		
 // Define linear scale for output
-var color = d3.scale.linear()
-			  .range(["grey","red","blue"]);
+var color = d3.scale.ordinal()
+			  .range(["blue","red","grey"]);
 
-var legendText = ["None","Trump", "Biden"];
+var legendText = ["Biden","Trump","None"];
 
 //Create SVG element and append map to the SVG
 var svg = d3.select("body")
@@ -112,7 +112,7 @@ var svg = d3.select("body")
 
 // Load in my states data!
 d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionUpdate.csv", function(d) {
-color.domain(["None","Trump","Biden"]); // setting the range of the input data
+color.domain(["Biden","Trump","None"]); // setting the range of the input data
 return { state: d.state, winner: d.winner, final: d.final}
       },function(data) {
 // Load GeoJSON data and merge with states data
@@ -204,15 +204,19 @@ svg.selectAll("path")
 	.style("fill", function(d) {
 
 	// Get data value
-	var value = d.properties.value;
+	var winner = d.properties.winner;
 
-	if (value) {
+	if (winner) {
 	//If value exists…
-	return color(value);
+	return color(winner);
 	} else {
 	//If value is undefined…
-	return "rgb(213,222,217)";
+	return "blue";
 	}
+})
+.style("opacity",function(d){
+    if (d.properties.final === "no"){return 0.5}
+    else {return 1}
 })
 .on("mouseover", mouseover)   
 .on("mousemove",mousemove)
@@ -231,7 +235,7 @@ svg.selectAll("path")
     .attr("x",width/2)
     .attr("y",height*.05)
     .attr('text-anchor',"middle")
-    .text("Abortion Access in the United States")
+    .text("2020 Election Results")
 
 
     svg.append("line")
@@ -241,7 +245,7 @@ svg.selectAll("path")
 .attr("y2",height*.95)
 .attr("stroke","black")
 .attr("stroke-width","1px")
-svg.append("text")
+/*svg.append("text")
 .attr("class","source")
 .attr("y",height*.98)
 .attr("x",0)
@@ -274,7 +278,7 @@ svg.append('text')
     .attr("width",width*.12- width*.04)
     .style("fill", "white")
     .style("opacity",.0)
-    .style("stroke","black")
+    .style("stroke","black")*/
 
     svg.append("text")
 		.attr('class', 'byline')
