@@ -130,7 +130,7 @@ var svg = d3.select("body")
 // Load in my states data!
 d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionMap.csv", function(d) {
 ; // setting the range of the input data
-return { state: d.state, demEstimate: +d.demEstimate, repEstimate: +d.repEstimate, margin: +d.margin}
+return { state: d.state, demEstimate: +d.demEstimate, repEstimate: +d.repEstimate, margin: +d.margin, projWin: d.projWin, ev: +d.ev }
       },function(data) {
 // Load GeoJSON data and merge with states data
 d3.json("https://gist.githubusercontent.com/michellechandra/0b2ce4923dc9b5809922/raw/a476b9098ba0244718b496697c5b350460d32f99/us-states.json", function(json) {
@@ -162,7 +162,11 @@ for (var i = 0; i < data.length; i++) {
 	}
 }
 
-
+demVotes = d3.sum(function(d){
+    if (d.properties.projWin=="D"){return (d.properties.ev)}
+   
+})
+console.log(demVotes)
 			var tooltip = d3.select("body")
 		    .append("div")   
     		.attr("class", "tooltip") 
@@ -212,7 +216,12 @@ var formatColor = function(d){
 }
 
 var mouseover = function(d){
-   tooltip
+    tooltip
+          .style("opacity", 1)
+        
+          .html("<b><u>"+(d.properties.name)+":</b></u> <br><u><i>Estimated Vote Total:</u><i/><br> Biden: "+formatNum(d.properties.demEstimate)+"%</i><br>Trump: "+formatNum(d.properties.repEstimate)+"%")
+          .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", (d3.mouse(this)[1]-30) + "px")
    .transition()
    .duration(200)
    .style("opacity",1)
@@ -330,7 +339,7 @@ svg.selectAll("path")
 	return "lightgrey";
 	}
 })
-.on("mouseover", mouseover)   
+//.on("mouseover", mouseover)   
 .on("mousemove",mousemove)
 //.on("mousemove",mousemoveRes)
     // fade out tooltip on mouse out               
