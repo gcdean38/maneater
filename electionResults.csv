@@ -1,7 +1,7 @@
 ﻿state,winner,final,ev
 Alabama,Trump,yes,9
-Alaska,None,no,3
-Arizona,Biden,no,11
+Alaska,Trump,no,3
+Arizona,Biden,yes,11
 Arkansas,Trump,yes,6
 California,Biden,yes,55
 Colorado,Biden,yes,9
@@ -21,13 +21,13 @@ Louisiana,Trump,yes,8
 Maine,Biden,no,4
 Maryland,Biden,yes,10
 Massachusetts,Biden,yes,11
-Michigan,Trump,no,16
+Michigan,Biden,no,16
 Minnesota,Biden,yes,10
 Mississippi,Trump,yes,6
 Missouri,Trump,yes,10
 Montana,Trump,yes,3
 Nebraska,Trump,yes,5
-Nevada,None,no,6
+Nevada,BIden,no,6
 New Hampshire,Biden,yes,4
 New Jersey,Biden,yes,14
 New Mexico,Biden,yes,5
@@ -42,11 +42,11 @@ Rhode Island,Biden,yes,4
 South Carolina,Trump,yes,9
 South Dakota,Trump,yes,3
 Tennessee,Trump,yes,11
-Texas,Trump,no,38
+Texas,Trump,yes,38
 Utah,Trump,yes,6
 Vermont,Biden,yes,3
 Virginia,Biden,yes,13
 Washington,Biden,yes,12
 West Virginia,Trump,yes,5
-Wisconsin,Trump,no,10
+Wisconsin,Biden,no,10
 Wyoming,Trump,yes,3
