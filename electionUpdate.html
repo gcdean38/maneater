@@ -135,9 +135,9 @@ var svg = d3.select("body")
 
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 // Load in my states data!
-d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionUpdate.csv", function(d) {
+d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/electionResults.csv", function(d) {
 color.domain(["Biden","Trump","None"]); // setting the range of the input data
-return { state: d.state, winner: d.winner, final: d.final, ev: +d.ev, biden: +d.biden, trump: +d.trump}
+return { state: d.state, winner: d.winner, final: d.final, ev: +d.ev}
       },function(data) {
 // Load GeoJSON data and merge with states data
 d3.json("https://gist.githubusercontent.com/michellechandra/0b2ce4923dc9b5809922/raw/a476b9098ba0244718b496697c5b350460d32f99/us-states.json", function(json) {
