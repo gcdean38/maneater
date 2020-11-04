@@ -15,7 +15,7 @@ Idaho,None,no,4
 Illinois,Biden,yes,20
 Indiana,Trump,yes,11
 Iowa,None,no,6
-Kansas,Biden,no,6
+Kansas,Trump,yes,6
 Kentucky,Trump,yes,8
 Louisiana,Trump,yes,8
 Maine,Trump,no,4
@@ -24,7 +24,7 @@ Massachusetts,Biden,yes,11
 Michigan,Trump,no,16
 Minnesota,Biden,no,10
 Mississippi,Trump,yes,6
-Missouri,Biden,no,10
+Missouri,Trump,no,10
 Montana,None,no,3
 Nebraska,Trump,yes,5
 Nevada,None,no,6
@@ -34,10 +34,10 @@ New Mexico,Biden,yes,5
 New York,Biden,yes,29
 North Carolina,Biden,no,15
 North Dakota,Trump,yes,3
-Ohio,Biden,no,18
+Ohio,Trump,no,18
 Oklahoma,Trump,yes,7
 Oregon,None,no,7
-Pennsylvania,Biden,no,20
+Pennsylvania,Trump,no,20
 Rhode Island,Biden,yes,4
 South Carolina,Trump,yes,9
 South Dakota,Trump,yes,3
