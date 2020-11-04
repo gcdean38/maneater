@@ -1,7 +1,7 @@
 ﻿state,winner,final,ev
 Alabama,Trump,yes,9
 Alaska,None,no,3
-Arizona,None,no,11
+Arizona,Biden,no,11
 Arkansas,Trump,yes,6
 California,None,no,55
 Colorado,Biden,yes,9
@@ -14,7 +14,7 @@ Hawaii,None,no,4
 Idaho,None,no,4
 Illinois,Biden,yes,20
 Indiana,Trump,yes,11
-Iowa,None,no,6
+Iowa,Trump,no,6
 Kansas,Trump,yes,6
 Kentucky,Trump,yes,8
 Louisiana,Trump,yes,8
@@ -43,7 +43,7 @@ South Carolina,Trump,yes,9
 South Dakota,Trump,yes,3
 Tennessee,Trump,yes,11
 Texas,Trump,no,38
-Utah,None,no,6
+Utah,Trump,no,6
 Vermont,Biden,yes,3
 Virginia,Biden,yes,13
 Washington,None,no,12
