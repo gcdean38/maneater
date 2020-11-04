@@ -8,23 +8,23 @@ Colorado,None,no,9
 Connecticut,Biden,yes,7
 Delaware,Biden,yes,3
 District of Columbia,Biden,yes,3
-Florida,Biden,no,29
+Florida,Trump,no,29
 Georgia,Trump,no,16
 Hawaii,None,no,4
 Idaho,None,no,4
 Illinois,None,no,20
 Indiana,Trump,no,11
 Iowa,None,no,6
-Kansas,None,no,6
+Kansas,Biden,no,6
 Kentucky,Trump,yes,8
 Louisiana,None,no,8
 Maine,None,no,4
 Maryland,Biden,yes,10
 Massachusetts,Biden,yes,11
-Michigan,None,no,16
+Michigan,Trump,no,16
 Minnesota,None,no,10
 Mississippi,None,no,6
-Missouri,None,no,10
+Missouri,Trump,no,10
 Montana,None,no,3
 Nebraska,None,no,5
 Nevada,None,no,6
@@ -38,7 +38,7 @@ Ohio,Biden,yes,18
 Oklahoma,Trump,yes,7
 Oregon,None,no,7
 Pennsylvania,None,no,20
-Rhode Island,None,no,4
+Rhode Island,Biden,yes,4
 South Carolina,Trump,yes,9
 South Dakota,None,no,3
 Tennessee,Trump,yes,11
