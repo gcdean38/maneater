@@ -9,9 +9,9 @@
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 30, bottom: 30, left: 60},
+    var margin = {top: 10, right: 30, bottom: 30, left: 100},
         width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        height = 1400 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -23,11 +23,11 @@
               "translate(" + margin.left + "," + margin.top + ")");
     
     //Read the data
-    d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv", function(data) {
+    d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/countyMO.csv", function(data) {
     
       // Add X axis
       var x = d3.scaleLinear()
-        .domain([0, 4000])
+        .domain([-1, 1])
         .range([ 0, width ]);
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
@@ -35,22 +35,69 @@
     
       // Add Y axis
       var y = d3.scaleLinear()
-        .domain([0, 500000])
-        .range([ height, 0]);
-      svg.append("g")
-        .call(d3.axisLeft(y));
-    
+        .domain([0, 116])
+        .range([ 0, height]);
+      
+        var demcolor = d3.scaleLinear()
+.interpolate(d3.interpolateHcl)
+      .range([d3.rgb("lightblue"), d3.rgb('navy')]);
+      demcolor.domain([0,-1])
+
+      var repcolor = d3.scaleLinear()
+.interpolate(d3.interpolateHcl)
+      .range([d3.rgb("salmon"), d3.rgb('maroon')]);
+      repcolor.domain([0,1])
       // Add dots
       svg.append('g')
         .selectAll("dot")
         .data(data)
         .enter()
         .append("circle")
-          .attr("cx", function (d) { return x(d.GrLivArea); } )
-          .attr("cy", function (d) { return y(d.SalePrice); } )
-          .attr("r", 1.5)
-          .style("fill", "#69b3a2")
-    
+          .attr("cx", function (d) { return x(d.Margin); } )
+          .attr("cy", function (d,i) { return y(i); } )
+          .attr("r", 5)
+          .style("fill", function(d){
+              if (d.Margin<=0){return demcolor(d.Margin)}
+              else {return repcolor(d.Margin)}
+          })
+
+          svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("line")
+          .attr("x1", 0)
+          .attr("x2", function (d) { return x(d.Margin); } )
+          .attr("y1", function (d,i) { return y(i); })
+          .attr("y2", function (d,i) { return y(i); })
+          .style("stroke", "red")
+
+          svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("text")
+          .attr("x", 0)
+          .attr("y", function (d,i) { return y(i)+4; } )
+          .text(function(d){return d.County})
+          .attr("text-anchor","end")
+          //.style("stroke", "black")
+
+    svg.append("line")
+    .attr("x1",function(d){return x(0.511371742)})
+    .attr("x2",function(d){return x(0.511371742)})
+    .attr("y1",0)
+    .attr("y2",height)
+    .attr("stroke","black")
+    .style("stroke-dasharray", ("3, 3"))
+
+    svg.append("line")
+    .attr("x1",function(d){return x(0)})
+    .attr("x2",function(d){return x(0)})
+    .attr("y1",0)
+    .attr("y2",height)
+    .attr("stroke","black")
+    .style("stroke-dasharray", ("3, 3"))
     })
     
     </script>
