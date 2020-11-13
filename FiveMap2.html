@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="refresh" content=".30"/>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 
 <style type="text/css">
@@ -221,12 +222,12 @@ svg.selectAll("path")
 // Map the cities I have lived in!
 var x = d3.scale.linear()
     .range([width*.55, width*.55+150])
-    .domain([0.75,3.25])
+    .domain([0,.15])
 
     
-    let tickLabels = ['<-- More R',"","More D -->"]
+    let tickLabels = ['0%',"5%","10%","15%"]
     var xAxis = d3.svg.axis()
-    .ticks(2)
+    .ticks(4)
     .tickSize(0)
     .orient("bottom")
     .scale(x)
@@ -268,7 +269,7 @@ gradient.append("stop")
 
    /* */
 svg.append("text")
-.text("Partisan Shift")
+.text("Turnout increase")
 .attr("x",width*.55+75)
 .attr("y",height*.88)
 .attr("text-anchor","middle")
