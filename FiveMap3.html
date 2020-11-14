@@ -203,7 +203,7 @@ svg.selectAll("path")
 	var DemMargin = d.properties.DemMargin;
 //var cat = d.properties.cat;
 
-	if (Math.abs(DemMargin) <= 0.25) {
+	if (DemMargin) {
 	//If value exists…
 	return color(DemMargin);
 	} else {
@@ -277,7 +277,7 @@ svg.append("text")
     .attr("x",width/2)
     .attr("y",height*.05)
     .attr('text-anchor',"middle")
-    .text("Change in Turnout from 2016 to 2020")
+    .text("Biden Performance compared to Dem Senate Candidates")
 
 
 
