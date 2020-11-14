@@ -203,7 +203,7 @@ svg.selectAll("path")
 	var DemMargin = d.properties.DemMargin;
 //var cat = d.properties.cat;
 
-	if (DemMargin) {
+	if (Math.abs(DemMargin) <= 0.25) {
 	//If value exists…
 	return color(DemMargin);
 	} else {
