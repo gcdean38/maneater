@@ -100,7 +100,7 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 // Define linear scale for output
 var color = d3.scale.linear()
 //.interpolate(d3.interpolateHcl)
-      .range([d3.rgb("white"), d3.rgb('green')]);
+      .range([d3.rgb("white"), d3.rgb('#005206')]);
 	  
 	  
 
@@ -255,7 +255,7 @@ gradient.append("stop")
 gradient.append("stop")
    .attr('class', 'end')
    .attr("offset", "100%")
-   .attr("stop-color", "green")
+   .attr("stop-color", "#005206")
    .attr("stop-opacity", 1);
 
    var legend = svg.append("rect")
