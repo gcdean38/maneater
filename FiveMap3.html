@@ -221,10 +221,10 @@ svg.selectAll("path")
 // Map the cities I have lived in!
 var x = d3.scale.linear()
     .range([width*.55, width*.55+150])
-    .domain([-.25,.25])
+    .domain([-.1,.25])
 
     
-    let tickLabels = ['0%',"5%","10%","15%"]
+    let tickLabels = ['-10%',"0%","+10%","+20%"]
     var xAxis = d3.svg.axis()
     .ticks(4)
     .tickSize(0)
