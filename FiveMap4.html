@@ -1,7 +1,20 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 h1 {
             font-size: 24px;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -9,7 +22,7 @@ h1 {
             font-weight: bold;
             text-anchor: middle;
             position: absolute;
-            left: 350px;
+            left: 300px;
             top: -15px;
         }
 div { float: left; }
@@ -29,7 +42,7 @@ div.tooltip {
 }
 </style>
 <body>
-    <h1>Polling Error in 2020</h1>
+    <h1>Accuracy of Polling in 2020 Election</h1>
 <div id="scatterplot"></div>
 <div id="choropleth"></div>
 <div id="footer"></div>
@@ -241,6 +254,7 @@ function choropleth(features) {
         .attr("tranform","translate(-20,20)")
     
             svg.append("text")
+            .attr("class","byline")
         .text("GEOFFREY DEAN/GRAPHIC DESIGNER")
         .attr("x",width)
         .attr("y",height-10)
