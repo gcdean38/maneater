@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
+
+h1 {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+            position: absolute;
+            left: 350px;
+            top: -15px;
+        }
 div { float: left; }
 
 div.tooltip {   
@@ -18,10 +29,14 @@ div.tooltip {
 }
 </style>
 <body>
+    <h1>Polling Error in 2020</h1>
 <div id="scatterplot"></div>
 <div id="choropleth"></div>
+<div id="footer"></div>
+
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script>
+    
 d3.queue()
     .defer(d3.csv, 'https://raw.githubusercontent.com/gcdean38/maneater/master/pollingAverages.csv', function (d) {
         return {
@@ -66,7 +81,7 @@ function initialize(error, results) {
 }
 
 function scatterplot(onBrush) {
-    var margin = { top: 10, right: 20, bottom: 40, left: 75 }
+    var margin = { top: 30, right: 20, bottom: 40, left: 75 }
     var width = 500 - margin.left - margin.right
     var height = 350 - margin.top - margin.bottom
 
@@ -75,9 +90,7 @@ function scatterplot(onBrush) {
     var y = d3.scaleLinear()
         .range([height, 0])
 
-        
-
-
+    
     var xAxis = d3.axisBottom()
         .scale(x)
         .tickFormat(d3.format('.0%'))
@@ -127,7 +140,7 @@ function scatterplot(onBrush) {
         .style('text-anchor', 'end')
         .style('fill', '#000')
         .style('font-weight', 'bold')
-        .text('Difference from Final Polling Average')
+        .text('Polling Average Compared to Final Vote')
 
         gy.append('text')
         .attr('transform', 'rotate(-90)')
@@ -136,7 +149,7 @@ function scatterplot(onBrush) {
         .style('text-anchor', 'middle')
         .style('fill', '#000')
         //.style('font-weight', 'bold')
-        .text('<--More Rep --- More Dem -->')
+        .text('<--Too Republican --- Too Democrat -->')
 
     svg.append('g')
         .attr('class', 'brush')
@@ -225,6 +238,14 @@ function choropleth(features) {
         .append('svg')
         .attr('width', width)
         .attr('height', height)
+        .attr("tranform","translate(-20,20)")
+    
+            svg.append("text")
+        .text("GEOFFREY DEAN/GRAPHIC DESIGNER")
+        .attr("x",width)
+        .attr("y",height-10)
+        .attr("fill","black")
+        .attr("text-anchor","end")
 
     svg.selectAll('path')
         .data(features)
@@ -240,6 +261,19 @@ function choropleth(features) {
             .data(data, function (d) { return d.name || d.properties.name })
             .style('fill', function (d) { return d.filtered ? 'lightgrey' : color(d.absDiff) })
     }
+    var svg = d3.select('#footer')
+        .append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr("y1",height*.97)
+.attr("y2",height*.97)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+   
 }
 </script>
 </body>
