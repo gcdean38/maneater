@@ -35,8 +35,8 @@ d3.queue()
     .awaitAll(initialize)
 
 var color = d3.scaleLinear()
-    .domain([0,.25])
-    .range(['white', 'purple'])
+    .domain([0,.18])
+    .range(['lavender', 'purple'])
 
 function initialize(error, results) {
     if (error) { throw error }
@@ -66,14 +66,17 @@ function initialize(error, results) {
 }
 
 function scatterplot(onBrush) {
-    var margin = { top: 10, right: 15, bottom: 40, left: 75 }
-    var width = 480 - margin.left - margin.right
+    var margin = { top: 10, right: 20, bottom: 40, left: 75 }
+    var width = 500 - margin.left - margin.right
     var height = 350 - margin.top - margin.bottom
 
     var x = d3.scaleLinear()
         .range([0, width])
     var y = d3.scaleLinear()
         .range([height, 0])
+
+        
+
 
     var xAxis = d3.axisBottom()
         .scale(x)
@@ -109,7 +112,7 @@ function scatterplot(onBrush) {
     var gy = svg.append('g')
         .attr('class', 'y axis')
 
-    gx.append('text')
+        gx.append('text')
         .attr('x', width)
         .attr('y', 35)
         .style('text-anchor', 'end')
@@ -120,11 +123,20 @@ function scatterplot(onBrush) {
     gy.append('text')
         .attr('transform', 'rotate(-90)')
         .attr('x', 0)
-        .attr('y', -40)
+        .attr('y', -50)
         .style('text-anchor', 'end')
         .style('fill', '#000')
         .style('font-weight', 'bold')
         .text('Difference from Final Polling Average')
+
+        gy.append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('x', -width/2)
+        .attr('y', -30)
+        .style('text-anchor', 'middle')
+        .style('fill', '#000')
+        //.style('font-weight', 'bold')
+        .text('<--More Rep --- More Dem -->')
 
     svg.append('g')
         .attr('class', 'brush')
@@ -160,9 +172,13 @@ function scatterplot(onBrush) {
     return function update(data) {
         x.domain([-1,1]).nice()
         y.domain(d3.extent(data, function (d) { return d.difference })).nice()
+        let tickLabels = ['R+100%',"R+50%","0%","D+50%","D+100%"]
+        gx.call(xAxis
+        .ticks(6)
+        .tickFormat((d,i)=> tickLabels[i]))
 
-        gx.call(xAxis)
-        gy.call(yAxis)
+        gy.call(yAxis
+        .ticks(8))
 
         var bgRect = bg.selectAll('rect')
             .data(d3.pairs(d3.merge([[y.domain()[0]], color.domain(), [y.domain()[1]]])))
@@ -217,11 +233,12 @@ function choropleth(features) {
         .attr('d', path)
         .style('stroke', '#fff')
         .style('stroke-width', 1)
+        ///.style("fill","#fff")
 
     return function update(data) {
         svg.selectAll('path')
             .data(data, function (d) { return d.name || d.properties.name })
-            .style('fill', function (d) { return d.filtered ? '#ddd' : color(d.absDiff) })
+            .style('fill', function (d) { return d.filtered ? 'lightgrey' : color(d.absDiff) })
     }
 }
 </script>
