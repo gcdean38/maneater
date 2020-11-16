@@ -100,7 +100,7 @@ var path = d3.geo.path()               // path generator that will convert GeoJS
 // Define linear scale for output
 var color = d3.scale.linear()
 //.interpolate(d3.interpolateHcl)
-      .range([d3.rgb("white"), d3.rgb('Navy')]);
+      .range([d3.rgb("red"), d3.rgb('blue')]);
 	  
 	  
 
@@ -161,7 +161,7 @@ for (var i = 0; i < data.length; i++) {
 			.style("stroke-width","2px")             
     		.style("opacity", 0);
 console.log(data)
-color.domain([-.25,.25])
+color.domain([-.1,.25])
 formatNum = d3.format(",.2f")
 formatPct = d3.format(".2%")
 
@@ -249,7 +249,7 @@ var gradient = defs.append("linearGradient")
 gradient.append("stop")
    .attr('class', 'start')
    .attr("offset", "0%")
-   .attr("stop-color", "white")
+   .attr("stop-color", "red")
    .attr("stop-opacity", 1);
 
 gradient.append("stop")
