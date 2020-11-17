@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script src="https://d3js.org/d3.v3.min.js"></script>
+
+<style type="text/css">
+
+/* On mouse hover, lighten state color */
+path:hover {
+	stroke-width: 4px;
+}
+
+.legend-axis path{
+    stroke: black;
+    display: none;
+}
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+/* Style for Custom Tooltip */
+div.tooltip {   
+ 	position: absolute;           
+	text-align: left;           
+	max-width: 160px;                  
+	max-height: 100px;                 
+	padding: 4px;             
+	font: 12px sans-serif;        
+	background: lightgray;   
+	border-top: black;
+	border-color: black;  
+	border-radius: 8px;           
+	pointer-events: none;         
+}
+
+        
+/* Legend Font Style */
+body {
+	font: 11px sans-serif;
+}
+        
+/* Legend Position Style */
+
+
+</style>
+</head>
+<body>
+<script type="text/javascript">
+
+/*  This visualization was made possible by modifying code provided by:
+Scott Murray, Choropleth example from "Interactive Data Visualization for the Web" 
+https://github.com/alignedleft/d3-book/blob/master/chapter_12/05_choropleth.html   
+		
+Malcolm Maclean, tooltips example tutorial
+http://www.d3noob.org/2013/01/adding-tooltips-to-d3js-graph.html
+Mike Bostock, Pie Chart Legend
+http://bl.ocks.org/mbostock/3888852  */
+
+		
+//Width and height of map
+var width = 730;
+var height = 520;
+
+// D3 Projection
+var projection = d3.geo.albersUsa()
+				   .translate([width/2, height/2])    // translate to center of screen
+				   .scale([1000]);          // scale things down so see entire US
+        
+// Define path generator
+var path = d3.geo.path()               // path generator that will convert GeoJSON to SVG paths
+		  	 .projection(projection);  // tell path generator to use albersUsa projection
+
+		
+// Define linear scale for output
+var color = d3.scale.linear()
+//.interpolate(d3.interpolateHcl)
+      .range([d3.rgb("white"), d3.rgb('teal')]);
+	  
+	  
+
+
+
+
+//Create SVG element and append map to the SVG
+var svg = d3.select("body")
+			.append("svg")
+			.attr("width", width)
+			.attr("height", height)
+           // .attr("fill","lightblue")
+        
+// Append Div for tooltip to SVG
+
+
+// Load in my states data!
+d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/earlyVote.csv", function(d) {
+; // setting the range of the input data
+return { States: d.States, pct2016: +d.pct2016, cannibPct: +d.cannibPct}
+      },function(data) {
+// Load GeoJSON data and merge with states data
+d3.json("https://gist.githubusercontent.com/michellechandra/0b2ce4923dc9b5809922/raw/a476b9098ba0244718b496697c5b350460d32f99/us-states.json", function(json) {
+
+// Loop through each state data value in the .csv file
+for (var i = 0; i < data.length; i++) {
+
+	// Grab State Name
+	var dataState = data[i].States;
+
+	// Grab data value 
+	var dataValue = data[i].cannibPct;
+	
+ var dataStatus = data[i].pct2016
+
+	// Find the corresponding state inside the GeoJSON
+	for (var j = 0; j < json.features.length; j++)  {
+		var jsonState = json.features[j].properties.name;
+
+		if (dataState == jsonState) {
+
+		// Copy the data value into the JSON
+		json.features[j].properties.cannibPct = dataValue; 
+		json.features[j].properties.pct2016 = dataStatus
+
+		// Stop looking through the JSON
+		break;
+		}
+	}
+}
+
+
+			var tooltip = d3.select("body")
+		    .append("div")   
+    		.attr("class", "tooltip") 
+			.style("stroke","black") 
+			.style("stroke-width","2px")             
+    		.style("opacity", 0);
+console.log(data)
+color.domain([0,1])
+formatNum = d3.format(",.2f")
+formatPct = d3.format(".2%")
+
+
+
+var mousemove = function(d){
+  tooltip
+          .style("opacity", 1)
+          .html("<b><u>"+(d.properties.name)+":</b></u> <br>Percent of 2016: "+formatPct(d.properties.cannibPct))
+          .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+          .style("top", (d3.mouse(this)[1]-30) + "px")
+		  
+ }
+
+ var mouseout = function(d){
+   tooltip
+   .transition()
+   .duration(200)
+   .style("opacity",0)
+ }
+
+ var mouseover = function(d){
+   tooltip
+   .transition()
+   .duration(200)
+   .style("opacity",1)
+ }		
+// Bind the data to the SVG and create one path per GeoJSON feature
+svg.selectAll("path")
+	.data(json.features)
+	.enter()
+	.append("path")
+	.attr("d", path)
+	.style("stroke", "black")
+    //.style("pattern id","diagonal-stripe-2")
+	.style("stroke-width", "1")
+	.style("fill", function(d) {
+
+	// Get data value
+	var cannibPct = d.properties.cannibPct;
+//var cat = d.properties.cat;
+
+	if (cannibPct) {
+	//If value exists…
+	return color(cannibPct);
+	} else {
+	//If value is undefined…
+	return "grey";
+	}
+})
+.on("mouseover", mouseover)   
+.on("mousemove",mousemove)
+    // fade out tooltip on mouse out               
+    .on("mouseout",mouseout)
+	.on("click",mousemove);;
+
+		 
+// Map the cities I have lived in!
+var x = d3.scale.linear()
+    .range([width*.55, width*.55+150])
+    .domain([0,1])
+
+    
+    let tickLabels = ["0%","50%","100%"]
+    var xAxis = d3.svg.axis()
+    .ticks(3)
+    .tickSize(0)
+    .orient("bottom")
+    .scale(x)
+    .tickFormat((d,i)=> tickLabels[i])
+    svg.append("g")
+    .attr("class","legend-axis")
+    .attr("transform","translate(0,"+height*.935+")")
+    .attr("stroke","black")
+    .call(xAxis)
+// Modified Legend Code from Mike Bostock: http://bl.ocks.org/mbostock/3888852
+var defs = svg.append("defs");
+
+var gradient = defs.append("linearGradient")
+   .attr("id", "svgGradient")
+   .attr("x1", "0%")
+   .attr("x2", "100%")
+   .attr("y1", "0%")
+   .attr("y2", "0%");
+
+gradient.append("stop")
+   .attr('class', 'start')
+   .attr("offset", "0%")
+   .attr("stop-color", "white")
+   .attr("stop-opacity", 1);
+
+gradient.append("stop")
+   .attr('class', 'end')
+   .attr("offset", "100%")
+   .attr("stop-color", "teal")
+   .attr("stop-opacity", 1);
+
+   var legend = svg.append("rect")
+              .attr("x", width*.55)
+              .attr('y',height*.885)
+              .attr("height",20)
+              .attr("width",150)
+              .attr("stroke","black")
+              .attr("fill", "url(#svgGradient)");
+    });
+
+   /* */
+svg.append("text")
+.text("Cannibilization Rate")
+.attr("x",width*.55+75)
+.attr("y",height*.88)
+.attr("text-anchor","middle")
+	svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.05)
+    .attr('text-anchor',"middle")
+    .text("Cannibilization of 2020 Election Vote")
+
+
+
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr("y1",height*.97)
+.attr("y2",height*.97)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+    svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+});
+</script>
+</body>
+</html>
