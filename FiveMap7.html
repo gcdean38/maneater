@@ -169,7 +169,7 @@ formatPct = d3.format(".2%")
 var mousemove = function(d){
   tooltip
           .style("opacity", 1)
-          .html("<b><u>"+(d.properties.name)+":</b></u> <br>Percent of 2016: "+formatPct(d.properties.cannibPct))
+          .html("<b><u>"+(d.properties.name)+":</b></u> <br>Cannibalization rate: "+formatPct(d.properties.cannibPct))
           .style("left", (d3.mouse(this)[0]+30) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
           .style("top", (d3.mouse(this)[1]-30) + "px")
 		  
@@ -279,6 +279,13 @@ svg.append("text")
     .attr("y",height*.05)
     .attr('text-anchor',"middle")
     .text("Cannibalization of 2020 Election Vote")
+
+    svg.append("text")
+    .attr("class","subtitle")
+    .attr("x",width/2)
+    .attr("y",height*.075)
+    .attr('text-anchor',"middle")
+    .text("Percent of ballots cast before Election Day")
 
 
 
