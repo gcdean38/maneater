@@ -296,10 +296,46 @@ svg.append("text")
 
     svg.append("text")
 		.attr('class', 'byline')
-		.attr('y', height)
+		.attr('y', height*.995)
 		.attr('x', width)
 		.attr('text-anchor', "end")
     .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr("y",height*.99)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*.99)
+		.attr('x', width*.05)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('NBC News')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*.99)
+		.attr('x', width*.12)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://www.nbcnews.com/politics/2020-elections/president-results")
+    .append("rect")  
+    .attr('y', height-9)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.12- width*.04)
+    .style("fill", "white")
+    .style("opacity",.1)
+    .style("stroke","black")
 });
 </script>
 </body>

@@ -291,12 +291,48 @@ svg.append("text")
 .attr("stroke-width","1px")
 
 
-    svg.append("text")
+svg.append("text")
 		.attr('class', 'byline')
-		.attr('y', height)
+		.attr('y', height*.995)
 		.attr('x', width)
 		.attr('text-anchor', "end")
     .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr("y",height*.99)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*.99)
+		.attr('x', width*.05)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('CNN')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*.99)
+		.attr('x', width*.08)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+
+	svg.append("a")
+    .attr("xlink:href", "http://www.electproject.org/home/voter-turnout/voter-turnout-data")
+    .append("rect")  
+    .attr('y', height-12)
+	.attr('x', width*.05)
+    .attr("height", 9)
+    .attr("width",width*.13- width*.05)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
 });
 </script>
 </body>
