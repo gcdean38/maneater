@@ -88,7 +88,7 @@ d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/georgiaRunoff
 
   // format the data
   data.forEach(function(d) {
-    d.total = +d.total;
+    d.active = +d.active;
   });
 
 var age1 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0) 
@@ -149,8 +149,8 @@ var age10 = d3.select("body").append("div").attr("class", "age").style("stroke",
       .attr("class", "bar")
       .attr("x", function(d) { return x(d.year); })
       .attr("width", x.bandwidth())
-      .attr("y", function(d) { return y(d.total); })
-      .attr("height", function(d) { return height - y(d.total); })
+      .attr("y", function(d) { return y(d.active); })
+      .attr("height", function(d) { return height - y(d.active); })
       .on("mouseover", mouseover)   
 //.on("mousemove",mousemove)
     // fade out tooltip on mouse out               
