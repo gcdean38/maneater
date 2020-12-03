@@ -3,7 +3,43 @@
 <style> /* set the CSS */
 
 .bar { fill: steelblue; }
+path:hover {
+	stroke-width: 4px;
+}
 
+.legend-axis path{
+    stroke: black;
+    display: none;
+}
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
 </style>
 <body>
 	
@@ -64,6 +100,14 @@ var milForm = d3.format(".1s")
   // add the y Axis
   svg.append("g")
       .call(d3.axisLeft(y).tickFormat(milForm));
+      
+      svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.05)
+    .attr('text-anchor',"middle")
+    .text("Registered Voters in Georgia")
+
 
 });
 

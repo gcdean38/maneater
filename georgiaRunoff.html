@@ -18,15 +18,8 @@ body {
 }
 
 .bar {
-  fill: orange;
-}
-
-.bar:hover {
-  fill: orangered ;
-}
-
-.x.axis path {
-  display: none;
+    stroke: black;
+    border-radius: 30px;
 }
 
 .d3-tip {
@@ -113,6 +106,7 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 //Regular Election
 svg.append('rect')
+.attr("class","bar")
 .attr("x",100)
 .attr("y",100)
 .attr("height",50)
@@ -125,6 +119,7 @@ svg.append('text')
 .attr("text-anchor","middle")
 
 svg.append('rect')
+.attr("class","bar")
 .attr("x",100+47.9*2)
 .attr("y",100)
 .attr("height",50)
@@ -137,6 +132,7 @@ svg.append('text')
 .attr("text-anchor","middle")
 
 svg.append('rect')
+.attr("class","bar")
 .attr("x",100+47.9*2+49.7*2)
 .attr("y",100)
 .attr("height",50)
@@ -144,6 +140,7 @@ svg.append('rect')
 .attr("fill","grey")
 //Special Election
 svg.append('rect')
+.attr("class","bar")
 .attr("x",100)
 .attr("y",200)
 .attr("height",50)
@@ -156,6 +153,7 @@ svg.append('text')
 .attr("text-anchor","middle")
 
 svg.append('rect')
+.attr("class","bar")
 .attr("x",100+32.9*2)
 .attr("y",200)
 .attr("height",50)
@@ -168,6 +166,7 @@ svg.append('text')
 .attr("text-anchor","middle")
 
 svg.append('rect')
+.attr("class","bar")
 .attr("x",100+32.9*2+25.9*2)
 .attr("y",200)
 .attr("height",50)
