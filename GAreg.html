@@ -2,7 +2,19 @@
 <meta charset="utf-8">
 <title>Registered Voters in Georgia over Time</title>
 <style> /* set the CSS */
-
+div.age {   
+ 	position: absolute;           
+	text-align: left;           
+	width: 66.94px;                  
+	height: 100px;                 
+	padding: 0px;             
+	font: 12px sans-serif;        
+	background: none;   
+	 
+border: solid black;
+	    
+	pointer-events: none;         
+}
 .bar { fill: steelblue; }
 path:hover {
 	stroke-width: 4px;
@@ -79,9 +91,56 @@ d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/georgiaRunoff
     d.total = +d.total;
   });
 
+var age1 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0) 
+.style("left", "870.5px").style("top", "69.110900000000015px").style("height","50.76501456px")
+var age2 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+.style("top", "119.8759146px").style("height","38.92022705px").style("left", "870.5px")
+var age3 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+.style("top", "158.7961416px").style("height","36.80661056px").style("left", "870.5px")
+var age4 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+.style("top", "195.6027522px").style("height","33.54977591px").style("left", "870.5px")
+var age5 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+.style("top", "229.1525281px").style("height","32.23396078px").style("left", "870.5px")
+var age6 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+.style("top", "261.3864889px").style("height","33.15399512px").style("left", "870.5px")
+var age7 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+.style("top", "294.540484px").style("height","34.00204905px").style("left", "870.5px")
+var age8 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+.style("top", "328.542533px").style("height","34.53376807px").style("left", "870.5px")
+var age9 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+.style("top", "363.0763011px").style("height","31.26367387px").style("left", "870.5px")
+var age10 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+.style("top", "394.339975px").style("height","77.77092505px").style("left", "870.5px")
+
   // Scale the range of the data in the domains
   x.domain(data.map(function(d) { return d.year; }));
   y.domain([0, 8000000]);
+
+  var mouseout = function(d){
+   age1.transition().duration(200).style("opacity",0)
+   age2.transition().duration(200).style("opacity",0)
+   age3.transition().duration(200).style("opacity",0)
+   age4.transition().duration(200).style("opacity",0)
+   age5.transition().duration(200).style("opacity",0)
+   age6.transition().duration(200).style("opacity",0)
+   age7.transition().duration(200).style("opacity",0)
+   age8.transition().duration(200).style("opacity",0)
+   age9.transition().duration(200).style("opacity",0)
+   age10.transition().duration(200).style("opacity",0)   
+ }
+
+ var mouseover = function(d){
+    age1.transition().duration(200).style("opacity",1)
+    age2.transition().duration(200).style("opacity",1)
+    age3.transition().duration(200).style("opacity",1)
+    age4.transition().duration(200).style("opacity",1)
+    age5.transition().duration(200).style("opacity",1)
+    age6.transition().duration(200).style("opacity",1)
+    age7.transition().duration(200).style("opacity",1)
+    age8.transition().duration(200).style("opacity",1)
+    age9.transition().duration(200).style("opacity",1)
+    age10.transition().duration(200).style("opacity",1)
+ }		
 
   // append the rectangles for the bar chart
   svg.selectAll(".bar")
@@ -91,7 +150,12 @@ d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/georgiaRunoff
       .attr("x", function(d) { return x(d.year); })
       .attr("width", x.bandwidth())
       .attr("y", function(d) { return y(d.total); })
-      .attr("height", function(d) { return height - y(d.total); });
+      .attr("height", function(d) { return height - y(d.total); })
+      .on("mouseover", mouseover)   
+//.on("mousemove",mousemove)
+    // fade out tooltip on mouse out               
+    .on("mouseout",mouseout)
+	.on("click",mouseover);;
 
   // add the x Axis
   svg.append("g")
