@@ -19,7 +19,7 @@ border: solid black ;
 div.help {   
  	position: absolute;           
 	text-align: center;           
-	width: 150px;                  
+	width: 160px;                  
 	max-height: 100px;                 
 	padding: 05px;             
 	font: 12px sans-serif;        
@@ -68,6 +68,12 @@ text.source {
             text-anchor: middle;
 
         }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
 </style>
 <body>
 	
@@ -77,7 +83,7 @@ text.source {
 
 // set the dimensions and margins of the graph
 var margin = {top: 20, right: 20, bottom: 50, left: 40},
-    width = 960 - margin.left - margin.right,
+    width = 750 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 // set the ranges
@@ -189,16 +195,112 @@ svg.append("text")
 .attr("y",130)
 .attr("text-anchor","middle")
 .text("White")
+svg.append("text")
+.attr("class","labels")
+.attr("x",120+189.74)
+.attr("y",40+189.74)
+.text("90%")
+.attr("text-anchor","middle")
+
+svg.append("text")
+.attr("class","labels")
+.attr("x",180+189.74)
+.attr("y",40+189.74)
+.text("8%")
+.attr("text-anchor","middle")
+
+svg.append("text")
+.attr("class","labels")
+.attr("x",120+189.74)
+.attr("y",80+189.74)
+.text("34%")
+.attr("text-anchor","middle")
+
+svg.append("text")
+.attr("class","labels")
+.attr("x",180+189.74)
+.attr("y",80+189.74)
+.text("62%")
+.attr("text-anchor","middle")
+
+var help = d3.select("body").append("div").attr("class","help")
+.html("Dotted line would be a 50-50 split in voting behavior")
+.style("top","120px").style("left","420.74px")
+
+var mouseover = function(d){
+    help.transition().duration(200).style("opacity",0)
+ }		
+
+
 
 svg.append("rect")
-.attr("x",139.74)
-.attr("y",39.74)
-.attr("height",400)
-.attr("width",400)
+.attr("x",239.74)
+.attr("y",139.74)
+.attr("height",200)
+.attr("width",200)
 .attr("stroke","black")
 .attr("fill","white")
 .attr("opacity",0)
+.on("mouseover",mouseover)
 
+svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.0)
+    .attr('text-anchor',"middle")
+    .text("How Black and White Voters Age 18-29 Voted in 2020")
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.05)
+.attr('y2', height*1.05)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.075)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.075)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.075)
+		.attr('x', width*.045)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Tufts University CIRCLE')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.075)
+		.attr('x', width*.192)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://circle.tufts.edu/latest-research/election-week-2020#black-youth-put-georgia-in-play-for-biden" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.075-12)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.155- width*.04)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
 
 
 
