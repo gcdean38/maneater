@@ -11,7 +11,22 @@ div.age {
 	font: 12px sans-serif;        
 	background: none;   
 	 
-border: solid black;
+border: solid black ;
+	    
+	pointer-events: none;         
+}
+
+div.help {   
+ 	position: absolute;           
+	text-align: center;           
+	width: 150px;                  
+	max-height: 100px;                 
+	padding: 05px;             
+	font: 12px sans-serif;        
+	background: none;   
+    border-radius: 5px;
+	border: dashed black 2px;
+
 	    
 	pointer-events: none;         
 }
@@ -110,8 +125,11 @@ var age8 = d3.select("body").append("div").attr("class", "age").style("stroke","
 var age9 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
 .style("background","#01579B").html("<br>60-64").style("top", "363.0763011px").style("height","31.26367387px").style("left", "870.5px")
 var age10 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
-.style("background","NAVY").html("<br>65+").style("top", "394.339975px").style("height","77.77092505px").style("left", "870.5px")
+.style("background","blue").html("<br>65+").style("top", "394.339975px").style("height","77.77092505px").style("left", "870.5px")
 
+var help = d3.select("body").append("div").attr("class","help")
+.html("Hover over 2020 to see how registered voters broke down by age group! ")
+.style("top","50px").style("left","700px")
   // Scale the range of the data in the domains
   x.domain(data.map(function(d) { return d.year; }));
   y.domain([0, 8000000]);
@@ -140,6 +158,7 @@ var age10 = d3.select("body").append("div").attr("class", "age").style("stroke",
     age8.transition().duration(200).style("opacity",1)
     age9.transition().duration(200).style("opacity",1)
     age10.transition().duration(200).style("opacity",1)
+    help.transition().duration(200).style("opacity",0)
  }		
 
   // append the rectangles for the bar chart
@@ -151,11 +170,22 @@ var age10 = d3.select("body").append("div").attr("class", "age").style("stroke",
       .attr("width", x.bandwidth())
       .attr("y", function(d) { return y(d.active); })
       .attr("height", function(d) { return height - y(d.active); })
-      .on("mouseover", mouseover)   
+      .on("mouseover", mouseover )   
 //.on("mousemove",mousemove)
     // fade out tooltip on mouse out               
     .on("mouseout",mouseout)
 	.on("click",mouseover);;
+
+    svg.append("rect")
+    .attr("x", function(d) { return x(1998); })
+    .attr("width", x.bandwidth()*12.2)
+    .attr("y", function(d) { return y(7233584); })
+    .attr("height", function(d) { return height - y(7233584); })
+    .attr("stroke","black")
+    .attr("opacity",0)
+    //.on("mouseover", mouseover )   
+
+
 
   // add the x Axis
   svg.append("g")
