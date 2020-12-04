@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Youth Vote in Georgia by Race</title>
+<style> /* set the CSS */
+div.age {   
+ 	position: absolute;           
+	text-align: center;           
+	width: 66.94px;                  
+	height: 100px;                 
+	padding: 0px;             
+	font: 12px sans-serif;        
+	background: none;   
+	 
+border: solid black ;
+	    
+	pointer-events: none;         
+}
+
+div.help {   
+ 	position: absolute;           
+	text-align: center;           
+	width: 150px;                  
+	max-height: 100px;                 
+	padding: 05px;             
+	font: 12px sans-serif;        
+	background: none;   
+    border-radius: 5px;
+	border: dashed black 2px;
+
+	    
+	pointer-events: none;         
+}
+.bar { fill: steelblue; }
+path:hover {
+	stroke-width: 4px;
+}
+
+.legend-axis path{
+    stroke: black;
+    display: none;
+}
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+</style>
+<body>
+	
+<!-- load the d3.js library -->    	
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 20, bottom: 50, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+// set the ranges
+var x = d3.scaleBand()
+          .range([0, width])
+          .padding(0.1);
+var y = d3.scaleLinear()
+          .range([height, 0]);
+          
+// append the svg object to the body of the page
+// append a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// get the data
+svg.append("rect")
+.attr("height",189.74)
+.attr("width",189.74)
+.attr("x",150)
+.attr("y",50)
+.attr("fill","blue")
+.attr("opacity",.6)
+
+svg.append("rect")
+.attr("height",116.62)
+.attr("width",116.62)
+.attr("x",150+(189.74-116.62))
+.attr("y",50+189.74)
+.attr("fill","blue")
+.attr("opacity",.6)
+
+svg.append("rect")
+.attr("height",56.57)
+.attr("width",56.57)
+.attr("x",150+189.74)
+.attr("y",50+(189.74-56.57))
+.attr("fill","red")
+.attr("opacity",.6)
+
+svg.append("rect")
+.attr("height",157.48)
+.attr("width",157.48)
+.attr("x",150+189.74)
+.attr("y",50+189.74)
+.attr("fill","red")
+.attr("opacity",.6)
+
+svg.append("rect")
+.attr("x",139.74)
+.attr("y",39.74)
+.attr("height",400)
+.attr("width",400)
+.attr("stroke","black")
+.attr("fill","none")
+
+svg.append("rect")
+.attr("class","tie")
+.attr("x",239.74)
+.attr("y",139.74)
+.attr("height",200)
+.attr("width",200)
+.style("stroke-dasharray", ("3, 3"))
+.attr("stroke","black")
+.attr("fill","none")
+
+svg.append("line")
+.attr("x1",339.74)
+.attr("x2",339.74)
+.attr("y1",39.74)
+.attr("y2",439.74)
+.attr("stroke","black")
+
+svg.append("line")
+.attr("x1",139.74)
+.attr("x2",539.74)
+.attr("y1",239.74)
+.attr("y2",239.74)
+.attr("stroke","black")
+
+
+
+;
+
+</script>
+</body>
