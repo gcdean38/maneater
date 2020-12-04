@@ -25,7 +25,7 @@ div.help {
 	font: 12px sans-serif;        
 	background: none;   
     border-radius: 5px;
-	border: dashed black 2px;
+	border: solid black 2px;
 
 	    
 	pointer-events: none;         
@@ -224,7 +224,7 @@ svg.append("text")
 .attr("text-anchor","middle")
 
 var help = d3.select("body").append("div").attr("class","help")
-.html("Dotted line would be a 50-50 split in voting behavior")
+.html("Dotted line represents a 50-50 split in voting behavior")
 .style("top","80px").style("left","410px")
 
 var mouseover = function(d){
