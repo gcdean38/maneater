@@ -137,6 +137,7 @@ svg.append("rect")
 .attr("width",400)
 .attr("stroke","black")
 .attr("fill","none")
+//.attr("opacity",0)
 
 svg.append("rect")
 .attr("class","tie")
@@ -161,6 +162,43 @@ svg.append("line")
 .attr("y1",239.74)
 .attr("y2",239.74)
 .attr("stroke","black")
+.attr("stroke-width","3px")
+
+svg.append("text")
+.attr("x",239.74)
+.attr("y",35)
+.text("Democrat")
+.attr("text-anchor","middle")
+
+svg.append("text")
+.attr("x",439.74)
+.attr("y",35)
+.text("Republican")
+.attr("text-anchor","middle")
+
+svg.append("text")
+.attr("transform","translate(0,280)rotate(270)")
+.attr("x",139.74)
+.attr("y",130)
+.attr("text-anchor","middle")
+.text("Black")
+
+svg.append("text")
+.attr("transform","translate(0,480)rotate(270)")
+.attr("x",139.74)
+.attr("y",130)
+.attr("text-anchor","middle")
+.text("White")
+
+svg.append("rect")
+.attr("x",139.74)
+.attr("y",39.74)
+.attr("height",400)
+.attr("width",400)
+.attr("stroke","black")
+.attr("fill","white")
+.attr("opacity",0)
+
 
 
 
