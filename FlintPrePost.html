@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<title>Flint Blood Levels</title>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<style>
+    text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+</style>
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 50, right: 50, bottom: 50, left: 50},
+        width = 600 - margin.left - margin.right,
+        height = 450 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    // Parse the Data
+    d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/FlintPrePost.csv", function(data) {
+    
+      // List of subgroups = header of the csv files = soil condition here
+      var subgroups = data.columns.slice(1)
+    
+      // List of groups = species here = value of the first column called group -> I show them on the X axis
+      var groups = d3.map(data, function(d){return(d.area)}).keys()
+    
+      // Add X axis
+      var x = d3.scaleBand()
+          .domain(groups)
+          .range([0, width])
+          .padding([0.2])
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x).tickSize(0));
+        var formatPercent = d3.format(".0%")
+
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, .08])
+        .range([ height, 0 ]);
+      svg.append("g")
+        .call(d3.axisLeft(y).tickFormat(formatPercent));
+    
+      // Another scale for subgroup position?
+      var xSubgroup = d3.scaleBand()
+        .domain(subgroups)
+        .range([0, x.bandwidth()])
+        .padding([0.05])
+    
+      // color palette = one color per subgroup
+      var color = d3.scaleOrdinal()
+        .domain(subgroups)
+        .range(['#5AB299','#8C6445'])
+    
+      // Show the bars
+      svg.append("g")
+        .selectAll("g")
+        // Enter in data = loop group per group
+        .data(data)
+        .enter()
+        .append("g")
+          .attr("transform", function(d) { return "translate(" + x(d.area) + ",0)"; })
+        .selectAll("rect")
+        .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
+        .enter().append("rect")
+          .attr("x", function(d) { return xSubgroup(d.key); })
+          .attr("y", function(d) { return y(d.value); })
+          .attr("width", xSubgroup.bandwidth())
+          .attr("height", function(d) { return height - y(d.value); })
+          .attr("fill", function(d) { return color(d.key); });
+
+svg.append("rect")
+.attr("x",width*.8)
+.attr("y",height*.1)
+.attr("width",18)
+.attr("height",18)
+.attr("fill","#5AB299")
+svg.append("text")
+.attr("x",width*.8+20)
+.attr("y",height*.1+15)
+.text("Pre Water Change")
+
+svg.append("rect")
+.attr("x",width*.8)
+.attr("y",height*.1+23)
+.attr("width",18)
+.attr("height",18)
+.attr("fill","#8C6445")
+svg.append("text")
+.attr("x",width*.8+20)
+.attr("y",height*.1+38)
+.text("Post Water Change")
+
+
+          svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.0-30)
+    .attr('text-anchor',"middle")
+    .text("Flint Blood Levels, 2013-2015")
+
+    svg.append("text")
+    .attr("class","subtitle")
+    .attr("x",width/2)
+    .attr("y",height*.0-10)
+    .attr('text-anchor',"middle")
+    .text("Changes in Elevated Blood Levels in Flint Children before and after water switch")
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.05)
+.attr('y2', height*1.05)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.09)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.085)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.085)
+		.attr('x', width*.06)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('M. Hanna-Attisha, et al.')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.085)
+		.attr('x', width*.25)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://www.ncbi.nlm.nih.gov/core/lw/2.0/html/tileshop_pmc/tileshop_pmc_inline.html?title=Click%20on%20image%20to%20zoom&p=PMC3&id=4985856_AJPH.2015.303003f1.jpg" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.08-12)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.25- width*.04)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
+    
+    })
+    
+    </script>
