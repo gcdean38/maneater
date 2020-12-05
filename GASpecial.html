@@ -2,12 +2,29 @@
 <meta charset="utf-8">
 <title>Historical Outcomes of Special Elections</title>
 <!-- Load d3.js -->
+<!--<meta http-equiv="refresh" content=".30">-->
+
 <script src="https://d3js.org/d3.v4.js"></script>
 <style>
-    .presBox {   
- 	
-stroke-dasharray: 3,3;
+    .presBox {   	
+stroke-dasharray: 3,3;	    
+}
+
+div.tooltip {   
+ 	position: absolute;           
+	text-align: left;           
+	width: 140px;                  
+	height: 110px;                 
+	padding: 3px;             
+	font: 12px sans-serif;        
+	background: none;   
+	 
+border: solid black ;
 	    
+	pointer-events: none;         
+}
+hr{
+    stroke: black;
 }
 </style>
 <!-- Create a div where the graph will take place -->
@@ -55,6 +72,30 @@ stroke-dasharray: 3,3;
       svg.append("g")
         .call(d3.axisLeft(y))
     
+
+        var tooltip = d3.select("body")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("stroke","black")
+        .style("stroke-width","2px")
+        .style("opacity", 1)   
+//.style("background","blue")
+.html("Hover over bars for more information")
+.style("top", "20px")
+.style("left", "350px")
+
+var mouseover = function(d){
+    tooltip
+    .html("<b><u>"+(d.state)+" ('"+(d.yearShort)+")</b></u><br>Special Election Margin:<b> "
+    +(d.senSMargin)+"<hr>"+(d.state)+"'s</b> previous presidential election was in <b>"+(d.presYear)
+    +"</b> and the margin was <b>"+(d.LastPresMargin)+"</b>.")
+}
+
+var mouseout = function(d){
+tooltip.attr("opacity",0)
+}
+
+
       //Bars
       svg.selectAll("myRect")
         .data(data)
@@ -87,8 +128,23 @@ stroke-dasharray: 3,3;
         .attr("width", function(d) { return lx(Math.abs(d.presMargin)); })
         .attr("height", y.bandwidth() )
         .attr("fill", "none")
-        .attr("opacity",0.6)
+        .attr("opacity",1)
         .attr("stroke","black")
+       
+        svg.selectAll("myRect")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", x(-50))
+        .attr("y", function(d) { return y(d.state); })
+        .attr("width", x(50)-x(-50))
+        .attr("height", y.bandwidth() )
+        .attr("fill", "black")
+        .attr("opacity",0.0)
+        .on("mouseover",mouseover)
+        .on("mouseout",mouseout)
+
+        
     
 
         /*svg.selectAll("myLines")
