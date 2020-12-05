@@ -80,7 +80,7 @@
 
       // Add Y axis
       var y = d3.scaleLinear()
-        .domain([0, 80])
+        .domain([0, .8])
         .range([ height, 0 ]);
       svg.append("g")
         .call(d3.axisLeft(y).tickFormat(formatPercent));
@@ -94,7 +94,7 @@
       // color palette = one color per subgroup
       var color = d3.scaleOrdinal()
         .domain(subgroups)
-        .range(['#e41a1c','#377eb8'])
+        .range(['#FF6F61FF','#963CBDFF'])
     
       // Show the bars
       svg.append("g")
@@ -112,6 +112,29 @@
           .attr("width", xSubgroup.bandwidth())
           .attr("height", function(d) { return height - y(d.value); })
           .attr("fill", function(d) { return color(d.key); });
+
+svg.append("rect")
+.attr("x",width*.8)
+.attr("y",height*.1)
+.attr("width",18)
+.attr("height",18)
+.attr("fill","#FF6F61FF")
+svg.append("text")
+.attr("x",width*.8+20)
+.attr("y",height*.1+15)
+.text("Men")
+
+svg.append("rect")
+.attr("x",width*.8)
+.attr("y",height*.1+23)
+.attr("width",18)
+.attr("height",18)
+.attr("fill","#963CBDFF")
+svg.append("text")
+.attr("x",width*.8+20)
+.attr("y",height*.1+38)
+.text("Women")
+
 
           svg.append("text")
     .attr("class","title")
@@ -168,7 +191,7 @@ svg.append('text')
 		.text(', 2020.')
 
 	svg.append("a")
-    .attr("xlink:href", "https://circle.tufts.edu/latest-research/election-week-2020#black-youth-put-georgia-in-play-for-biden" )
+    .attr("xlink:href", "https://www.bls.gov/news.release/atus.t01.htm" )
     .attr("target","_blank")
     .append("rect")  
     .attr('y', height*1.08-12)
