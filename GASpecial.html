@@ -9,7 +9,35 @@
     .presBox {   	
 stroke-dasharray: 3,3;	    
 }
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
 div.tooltip {   
  	position: absolute;           
 	text-align: left;           
@@ -33,9 +61,9 @@ hr{
 
 
     // set the dimensions and margins of the graph
-    var margin = {top: 20, right: 30, bottom: 40, left: 90},
-        width = 460 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+    var margin = {top: 65, right: 65, bottom: 40, left: 90},
+        width = 500 - margin.left - margin.right,
+        height = 540 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -54,15 +82,36 @@ hr{
       var lx = d3.scaleLinear()
         .domain([0, 50])
         .range([ 0, width/2]);
-      var x = d3.scaleLinear()
+
+        var x = d3.scaleLinear()
         .domain([-50, 50])
-        .range([ 0, width]);
+        .range([ 0, width])
+
+      var dx = d3.scaleLinear()
+        .domain([50, 0])
+        .range([ 0, width/2]);
+
+        var rx = d3.scaleLinear()
+        .domain([0, 50])
+        .range([ width/2, width]);
       svg.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
-        .selectAll("text")
-          .attr("transform", "translate(-10,0)rotate(-45)")
-          .style("text-anchor", "end");
+        .call(d3.axisBottom(rx))
+
+        svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(dx))
+        
+
+        svg.append("text")
+        .attr("transform", "translate("+width*.25+"," + height*1.075 + ")")
+        .text("Democrat Margin")
+        .attr("text-anchor","middle")
+
+        svg.append("text")
+        .attr("transform", "translate("+width*.75+"," + height*1.075 + ")")
+        .text("Republican Margin")
+        .attr("text-anchor","middle")
     
       // Y axis
       var y = d3.scaleBand()
@@ -81,7 +130,7 @@ hr{
         .style("opacity", 1)   
 //.style("background","blue")
 .html("Hover over bars for more information")
-.style("top", "20px")
+.style("top", "70px")
 .style("left", "350px")
 
 var mouseover = function(d){
@@ -170,12 +219,73 @@ tooltip.attr("opacity",0)
         .attr("y2",height)
         .attr("stroke","black")
 
+        svg.append("rect")
+        .attr("y",height*-.075)
+        .attr("x",width*.25)
+        .attr("height",20)
+        .attr("width",80)
+        .attr("fill","none")
+        .style("stroke-dasharray",(3,3))
+        .attr("stroke","black")
+
+        svg.append("text")
+        .attr("y",height*-.075+15)
+        .attr("x",width*.25+2)
+        .text("Presidential")
+
     
-        // .attr("x", function(d) { return x(d.Country); })
-        // .attr("y", function(d) { return y(d.Value); })
-        // .attr("width", x.bandwidth())
-        // .attr("height", function(d) { return height - y(d.Value); })
-        // .attr("fill", "#69b3a2")
+        svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*-.1)
+    .attr('text-anchor',"middle")
+    .text("Historical Outcomes of Special Elections")
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.05)
+.attr('y2', height*1.05)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.2)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.2)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.2)
+		.attr('x', width*.037)
+		.attr('text-anchor', 'start')
+        //.style("fill","blue")
+       // .style("text-decoration","underline")
+		.text('Various Sources')
+
+		
+
+	svg.append("a")
+    .attr("xlink:href", "https://sos.ga.gov/admin/files/Voter%20Registration%20Statistics%20Historical%20-%20Updated%2011-26-18.pdf" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.075-12)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.155- width*.04)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
     
     })
     
