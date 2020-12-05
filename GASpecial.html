@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-
+<title>Historical Outcomes of Special Elections</title>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
-
+<style>
+    .presBox {   
+ 	
+stroke-dasharray: 3,3;
+	    
+}
+</style>
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 <script>
@@ -12,7 +18,7 @@
     // set the dimensions and margins of the graph
     var margin = {top: 20, right: 30, bottom: 40, left: 90},
         width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        height = 500 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -61,8 +67,53 @@
         .attr("y", function(d) { return y(d.state); })
         .attr("width", function(d) { return lx(Math.abs(d.senMargin)); })
         .attr("height", y.bandwidth() )
-        .attr("fill", "#69b3a2")
+        .attr("fill", function(d){
+            if (d.senMargin >= 0){return "Red"}
+            else{return "blue"}
+        })
+        .attr("opacity",0.6)
+
+
+        svg.selectAll("myRect")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("class","presBox")
+        .attr("x", function(d) {
+            if(d.presMargin >= 0){return x(0)}
+            else{return (x(-50)-lx(Math.abs(d.presMargin)))+x(0)}
+        } )
+        .attr("y", function(d) { return y(d.state); })
+        .attr("width", function(d) { return lx(Math.abs(d.presMargin)); })
+        .attr("height", y.bandwidth() )
+        .attr("fill", "none")
+        .attr("opacity",0.6)
+        .attr("stroke","black")
     
+
+        /*svg.selectAll("myLines")
+        .data(data)
+        .enter()
+        .append("line")
+        .attr("x1", function(d) {
+            if(d.presMargin >= 0){return (x(-50)+lx(Math.abs(d.presMargin)))+x(0)}
+            else{return (x(-50)-lx(Math.abs(d.presMargin)))+x(0)}
+        } )
+        .attr("x2", function(d) {
+            if(d.presMargin >= 0){return (x(-50)+lx(Math.abs(d.presMargin)))+x(0)}
+            else{return (x(-50)-lx(Math.abs(d.presMargin)))+x(0)}
+        } )
+        .attr("y1", function(d) { return y(d.state)-5; })
+        .attr("y2", function(d) { return y(d.state)+y.bandwidth()+5 ; })
+        .attr("stroke","black")*/
+
+        svg.append("line")
+        .attr("x1",x(0))
+        .attr("x2",x(0))
+        .attr("y1",0)
+        .attr("y2",height)
+        .attr("stroke","black")
+
     
         // .attr("x", function(d) { return x(d.Country); })
         // .attr("y", function(d) { return y(d.Value); })
