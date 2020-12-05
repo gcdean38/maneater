@@ -6,6 +6,10 @@
 
 <script src="https://d3js.org/d3.v4.js"></script>
 <style>
+    rect.info{
+        stroke-opacity: 1;
+        fill-opacity: .6;
+    }
     .presBox {   	
 stroke-dasharray: 3,3;	    
 }
@@ -150,6 +154,7 @@ tooltip.attr("opacity",0)
         .data(data)
         .enter()
         .append("rect")
+        .attr("class","info")
         .attr("x", function(d) {
             if(d.senMargin >= 0){return x(0)}
             else{return (x(-50)-lx(Math.abs(d.senMargin)))+x(0)}
@@ -161,7 +166,8 @@ tooltip.attr("opacity",0)
             if (d.senMargin >= 0){return "Red"}
             else{return "blue"}
         })
-        .attr("opacity",0.6)
+        //.attr("opacity",0.6)
+        .attr("stroke","black")
 
 
         svg.selectAll("myRect")
@@ -219,9 +225,25 @@ tooltip.attr("opacity",0)
         .attr("y2",height)
         .attr("stroke","black")
 
+
         svg.append("rect")
         .attr("y",height*-.075)
-        .attr("x",width*.25)
+        .attr("x",width*.25-40)
+        .attr("height",20)
+        .attr("width",80)
+        .attr("fill","none")
+        //.style("stroke-dasharray",(3,3))
+        .attr("stroke","black")
+
+        svg.append("text")
+        .attr("y",height*-.075+15)
+        .attr("x",width*.25+20-40)
+        .text("Senate")
+
+
+        svg.append("rect")
+        .attr("y",height*-.075)
+        .attr("x",width*.75-40)
         .attr("height",20)
         .attr("width",80)
         .attr("fill","none")
@@ -230,8 +252,10 @@ tooltip.attr("opacity",0)
 
         svg.append("text")
         .attr("y",height*-.075+15)
-        .attr("x",width*.25+2)
+        .attr("x",width*.75+2-40)
         .text("Presidential")
+
+        
 
     
         svg.append("text")
@@ -239,7 +263,7 @@ tooltip.attr("opacity",0)
     .attr("x",width/2)
     .attr("y",height*-.1)
     .attr('text-anchor',"middle")
-    .text("Historical Outcomes of Special Elections")
+    .text("Senate Special Elections Since 2012")
     svg.append("line")
 .attr("x1",0)
 .attr("x2",width)
