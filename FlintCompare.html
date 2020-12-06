@@ -5,7 +5,7 @@
 div.info {   
  	position: absolute;           
 	text-align: left;           
-	width: 180px;                  
+	width: 200px;                  
 	max-height: 100px;                 
 	padding: 05px;             
 	font: 12px serif;        
@@ -94,22 +94,24 @@ div.info {
 
 
 
-var click = function(d){
-  pollution.transition().duration(800).style("opacity",1).attr("r", function(d){return Math.sqrt(d.recorded)*5})
-}
 
 var info = d3.select("body").append("div").attr("class", "info")
 .style("left","100px")
 .style("top","58px")
 .style("position","absolute")
 .style("opacity",1)
-.html("Click to see pollution levels -->")
+.html("Click to see pollution levels --><hr>Dotted circles are the EPA Maximum Contaminant Level (MCL) for the contaminant affecting each location.")
 //.style("background","red")
 var f = d3.format(".1f");
 
 var mouseover = function(d){
 info.html("<b>"+(d.city)+"</b> had "+(d.pollutant)+" concentrations "+f((d.recorded)/(d.mcl))+"x the EPA Maximum Contaminant Level"
 +"<hr>Concentration: "+(d.recorded)+" ppb<br>MCL: "+(d.mcl)+" ppb").style("opacity",1)
+}
+var click = function(d){
+  info.html("Hover over circles for more information.<hr>Dotted circles are the EPA Maximum Contaminant Level (MCL) for the contaminant affecting each location.")
+  pollution.transition().duration(800).style("opacity",1).attr("r", function(d){return Math.sqrt(d.recorded)*5})
+
 }
 console.log(y(500))
 var pollution =   svg.append('g')
