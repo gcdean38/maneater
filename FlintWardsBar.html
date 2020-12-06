@@ -22,6 +22,42 @@
             stroke: #000;
             shape-rendering: crispEdges;
         }
+
+        text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
         </style>
     </head>
     <body>
@@ -48,9 +84,9 @@
 
             var makeVis = function(cerealMap) {
                 // Define dimensions of vis
-                var margin = { top: 30, right: 50, bottom: 30, left: 50 },
+                var margin = { top: 50, right: 50, bottom: 40, left: 50 },
                     width  = 550 - margin.left - margin.right,
-                    height = 250 - margin.top  - margin.bottom;
+                    height = 300 - margin.top  - margin.bottom;
 
                 // Make x scale
                 var xScale = d3.scale.ordinal()
@@ -147,6 +183,72 @@ var formatPct = d3.format(".0%")
 
                 var initialData = cerealMap[ cereals[0] ];
                 updateBars(initialData);
+
+                canvas.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.0-30)
+    .attr('text-anchor',"middle")
+    .text("Lead in Water by Ward")
+
+    canvas.append("text")
+    .attr("class","subtitle")
+    .attr("x",width/2)
+    .attr("y",height*0-10)
+    .attr('text-anchor',"middle")
+    .text("Percent of homes in each ward with varying concentrations of lead in water")
+    canvas.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.1)
+.attr('y2', height*1.1)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+canvas.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.15)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
+
+   
+canvas.append("text")
+.attr("class","source")
+.attr('y', height*1.15)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+canvas.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.15)
+		.attr('x', width*.08)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('FlintWaterStudy.org')
+
+		canvas.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.15)
+		.attr('x', width*.275)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+
+	canvas.append("a")
+    .attr("xlink:href", "http://i0.wp.com/flintwaterstudy.org/wp-content/uploads/2015/09/Flint-Ward-Map_252-989x1280-2.jpg" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.15-12)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.275- width*.08)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
             };
         </script>
     </body>
