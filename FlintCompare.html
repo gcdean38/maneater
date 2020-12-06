@@ -68,7 +68,11 @@ var click = function(d){
           .style("fill", "none")
           .style("stroke","black")
           .style("stroke-dasharray",(3,3))
-
+          svg.append("text")
+          .attr("x",width/2+50)
+          .attr("y",function(d){return y(500)+25})
+          .text("See Pollution")
+          .attr("text-anchor","middle")
           svg.append("rect")
           .attr("x",width/2)
           .attr("y",function(d){return y(500)})
@@ -77,11 +81,9 @@ var click = function(d){
           .on("click",click)
           .attr("fill","white")
           .attr("stroke","black")
-          svg.append("text")
-          .attr("x",width/2+50)
-          .attr("y",function(d){return y(500)+25})
-          .text("See Pollution")
-          .attr("text-anchor","middle")
+          .attr("fill-opacity",0)
+          .attr("stroke-opacity",1)
+          
     
     })
     
