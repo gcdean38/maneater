@@ -66,9 +66,9 @@ div.results {
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 80, right: 60, bottom: 30, left: 60},
-        width = 500 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+    var margin = {top: 80, right: 60, bottom: 50, left: 60},
+        width = 550 - margin.left - margin.right,
+        height = 450 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -85,7 +85,7 @@ div.results {
       // Add X axis
       var y = d3.scaleBand()
           .domain(["18-29","30-44","45-64","65+"])
-          .range([0,height])
+          .range([50,height])
           .padding([0.2])
           svg.append("g")
         .call(d3.axisLeft(y));
@@ -104,18 +104,22 @@ div.results {
         .append("div").attr("class", "results").
         style("stroke","black").style("opacity", 1)
         .style("left",(width/2-40)+"px")
-        .style("top","0px") 
+        .style("top","50px") 
         .attr("height",100)
         .attr("width",250).html("<b><u>Georgia Presidential Election 2020</b></u><br>Hover for more information")
 
 var mouseover = function(d){
     results.html("<b><u>Georgia Presidential Election 2020</b></u><br><i>"+(d.age)+" Age Group</i><br>"
     +"<b> <span style='color: blue'>Biden: "+(d.biden)
-    +"</span><span style='color: red'><br>Trump: "+(d.trump))
+    +"%</span><span style='color: red'><br>Trump: "+(d.trump)+"%")
     .style("left",(width/2-40)+"px")
-        .style("top","0px") 
+        .style("top","50px") 
         .attr("height",100)
         .attr("width",250)
+}
+
+var mouseoff = function(d){
+    results.html("<b><u>Georgia Presidential Election 2020</b></u><br>Hover for more information")
 }
     
       // Add dots
@@ -132,6 +136,8 @@ var mouseover = function(d){
           .style("opacity",1)
           .on("mouseover",mouseover)
           .on("click",mouseover)
+          .on("mouseout",mouseoff)
+
           
           svg.append('g')
         .selectAll("rect")
@@ -146,6 +152,7 @@ var mouseover = function(d){
           .style("opacity",1)
           .on("mouseover",mouseover)
           .on("click",mouseover)
+          .on("mouseout",mouseoff)
 
           svg.append('g')
         .selectAll("rect")
@@ -160,16 +167,75 @@ var mouseover = function(d){
           .style("opacity",1)
           .on("mouseover",mouseover)
           .on("click",mouseover)
+          .on("mouseout",mouseoff)
+
 
           svg.append("line")
           .attr("x1",function(d){return x(50)})
           .attr("x2",function(d){return x(50)})
-          .attr("y1",0)
+          .attr("y1",50)
           .attr("y2",height)
           .attr("stroke","black")
 
           
+          svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*-.15)
+    .attr('text-anchor',"middle")
+    .text("2020 Presidential Election Results by Age Group")
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.075)
+.attr('y2', height*1.075)
+.attr("stroke","black")
+.attr("stroke-width","1px")
 
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.12)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.12)
+.attr("x",width*-.05)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.12)
+		.attr('x', width*0.03)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Tufts University CIRCLE')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.12)
+		.attr('x', width*.26)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://sos.ga.gov/admin/files/Voter%20Registration%20Statistics%20Historical%20-%20Updated%2011-26-18.pdf" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.12-12)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.26- width*.04)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
          
           
     
