@@ -20,7 +20,7 @@ div.help {
 	width: 150px;                  
 	max-height: 100px;                 
 	padding: 05px;             
-	font: 12px sans-serif;        
+	font: 12px serif;        
 	background: none;   
     border-radius: 5px;
 	border: dashed black 2px;
@@ -37,15 +37,24 @@ path:hover {
     stroke: black;
     display: none;
 }
-text.source {
+text {
+    font-family: sans-serif;
+    font-size: 10px;
+}
+    text.source {
             font-size: 10px;
             font-style: italic;
+            font-family: 'Times New Roman', Times, serif
         }
         text.sources {
             font-size: 10px;
             font-style: italic;
+            font-family: 'Times New Roman', Times, serif
+
         }
-        
+        text.label {
+            font-size: 14px;
+        }
         text.byline {
             font-size: 12px;
             font-style: italic;
@@ -126,7 +135,7 @@ var age10 = d3.select("body").append("div").attr("class", "age").style("stroke",
 .style("background","blue").html("<br>65+").style("top", "394.339975px").style("height","64.77092505px").style("left", "726.8429752066115px")
 
 var help = d3.select("body").append("div").attr("class","help")
-.html("Hover over 2020 to see how registered voters broke down by age group! ")
+.html("Hover over 2020 to see how registered voters broke down by age group")
 .style("top","70px").style("left","490px")
   // Scale the range of the data in the domains
   x.domain(data.map(function(d) { return d.year; }));
@@ -158,6 +167,20 @@ var help = d3.select("body").append("div").attr("class","help")
     age10.transition().duration(200).style("opacity",1)
     help.transition().duration(200).style("opacity",0)
  }		
+
+ var mouseout = function(d){
+     help.transition().duration(200).style("opacity",1)
+     age1.transition().duration(200).style("opacity",0)
+    age2.transition().duration(200).style("opacity",0)
+    age3.transition().duration(200).style("opacity",0)
+    age4.transition().duration(200).style("opacity",0)
+    age5.transition().duration(200).style("opacity",0)
+    age6.transition().duration(200).style("opacity",0)
+    age7.transition().duration(200).style("opacity",0)
+    age8.transition().duration(200).style("opacity",0)
+    age9.transition().duration(200).style("opacity",0)
+    age10.transition().duration(200).style("opacity",0)
+ }
 
   // append the rectangles for the bar chart
   svg.selectAll(".bar")
@@ -199,7 +222,7 @@ var milForm = d3.format(".1s")
     .attr("x",width/2)
     .attr("y",height*.05)
     .attr('text-anchor',"middle")
-    .text("Registered Voters in Georgia")
+    .text("Registered Voters in Georgia 1998-2020")
     svg.append("line")
 .attr("x1",0)
 .attr("x2",width)

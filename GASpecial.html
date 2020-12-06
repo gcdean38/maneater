@@ -15,7 +15,8 @@ stroke-dasharray: 3,3;
 }
 
 text {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: sans-serif;
+    font-size: 10px;
 }
     text.source {
             font-size: 10px;
@@ -28,7 +29,9 @@ text {
             font-family: 'Times New Roman', Times, serif
 
         }
-        
+        text.label {
+            font-size: 14px;
+        }
         text.byline {
             font-size: 12px;
             font-style: italic;
@@ -55,16 +58,14 @@ div.tooltip {
 	width: 140px;                  
 	height: 110px;                 
 	padding: 3px;             
-	font: 12px sans-serif;        
+	font: 12px serif;        
 	background: none;   
 	 
 border: solid black ;
 	    
 	pointer-events: none;         
 }
-hr{
-    stroke: black;
-}
+
 
 
 </style>
@@ -74,7 +75,7 @@ hr{
 
 
     // set the dimensions and margins of the graph
-    var margin = {top: 65, right: 65, bottom: 60, left: 100},
+    var margin = {top: 65, right: 65, bottom: 60, left: 110},
         width = 500 - margin.left - margin.right,
         height = 540 - margin.top - margin.bottom;
     
@@ -117,11 +118,13 @@ hr{
         
 
         svg.append("text")
+        .attr("class","label")
         .attr("transform", "translate("+width*.25+"," + height*1.075 + ")")
         .text("Democrat Margin")
         .attr("text-anchor","middle")
 
         svg.append("text")
+        .attr("class","label")
         .attr("transform", "translate("+width*.75+"," + height*1.075 + ")")
         .text("Republican Margin")
         .attr("text-anchor","middle")
@@ -256,6 +259,7 @@ tooltip.attr("opacity",0)
         .attr("y",height*-.075+15)
         .attr("x",width*.25+20-40)
         .text("Senate")
+        .attr("class","label")
 
 
         svg.append("rect")
@@ -269,8 +273,10 @@ tooltip.attr("opacity",0)
 
         svg.append("text")
         .attr("y",height*-.075+15)
-        .attr("x",width*.75+2-40)
+        .attr("x",width*.75+2-38)
         .text("Presidential")
+        .attr("class","label")
+
 
         
 
