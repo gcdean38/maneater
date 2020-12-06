@@ -5,8 +5,8 @@
 div.results {   
  	position: absolute;           
 	text-align: center;           
-	width: 150px;                  
-	max-height: 100px;                 
+	width: 200px;                  
+	height: 55px;           
 	padding: 05px;             
 	font: 12px serif;        
 	background: none;   
@@ -65,8 +65,8 @@ div.results {
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 50, right: 30, bottom: 30, left: 60},
-        width = 460 - margin.left - margin.right,
+    var margin = {top: 80, right: 60, bottom: 30, left: 60},
+        width = 500 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
@@ -100,17 +100,21 @@ div.results {
         .call(d3.axisBottom(x));
 
         var results = d3.select("body")
-        .append("div").attr("class", "age").
+        .append("div").attr("class", "results").
         style("stroke","black").style("opacity", 1)
-        .attr("left",100)
-        .attr("top",0) 
+        .style("left",(width/2-40)+"px")
+        .style("top","0px") 
         .attr("height",100)
-        .attr("width",200)
+        .attr("width",250).html("<b><u>Georgia Presidential Election 2020</b></u><br>Hover for more information")
 
 var mouseover = function(d){
-    results.html("Georgia Presidential Election 2020<br>"+(d.age)+" Age Group<br>"
-    +"Biden: "+(d.biden)
-    +"<br>Trump: "+(d.trump))
+    results.html("<b><u>Georgia Presidential Election 2020</b></u><br><i>"+(d.age)+" Age Group</i><br>"
+    +"<b> <span style='color: blue'>Biden: "+(d.biden)
+    +"</span><span style='color: red'><br>Trump: "+(d.trump))
+    .style("left",(width/2-40)+"px")
+        .style("top","0px") 
+        .attr("height",100)
+        .attr("width",250)
 }
     
       // Add dots
@@ -126,6 +130,7 @@ var mouseover = function(d){
           .style("fill", "blue")
           .style("opacity",1)
           .on("mouseover",mouseover)
+          .on("click",mouseover)
           
           svg.append('g')
         .selectAll("rect")
@@ -138,6 +143,8 @@ var mouseover = function(d){
           .attr('height',function(d){return y.bandwidth()})
           .style("fill", "grey")
           .style("opacity",1)
+          .on("mouseover",mouseover)
+          .on("click",mouseover)
 
           svg.append('g')
         .selectAll("rect")
@@ -150,6 +157,8 @@ var mouseover = function(d){
           .attr('height',function(d){return y.bandwidth()})
           .style("fill", "red")
           .style("opacity",1)
+          .on("mouseover",mouseover)
+          .on("click",mouseover)
 
           svg.append("line")
           .attr("x1",function(d){return x(50)})
