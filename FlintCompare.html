@@ -1,6 +1,55 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<style>
 
+div.info {   
+ 	position: absolute;           
+	text-align: center;           
+	width: 150px;                  
+	height: 100px;                 
+	padding: 05px;             
+	font: 12px serif;        
+	border: solid black 2px;
+
+	    
+	pointer-events: none;         
+}
+  text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+</style>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 
@@ -9,9 +58,9 @@
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 50, right: 30, bottom: 30, left: 60},
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+    var margin = {top: 50, right: 30, bottom: 40, left: 60},
+        width = 600 - margin.left - margin.right,
+        height = 430 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -23,11 +72,11 @@
               "translate(" + margin.left + "," + margin.top + ")");
     
     //Read the data
-    d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/FlintCompare.csv", function(data) {
+    d3.csv("FlintCompare.csv", function(data) {
     
       // Add X axis
       var x = d3.scaleBand()
-          .domain(["Flint, MI","Hinkley, CA","Woburn, MA"])
+          .domain(["Flint, MI","Washington, DC","Hinkley, CA","Woburn, MA"])
           .range([0, width])
           .padding([0.2])
       svg.append("g")
@@ -50,13 +99,28 @@
           .attr("cx", function (d) { return x(d.city)+50; } )
           .attr("cy", function (d) { return y(250); } )
           .attr("r", 0)//function(d){return Math.sqrt(d.recorded)*5})
-          .style("fill", "#69b3a2")
+          .style("fill", "#5A6988")
           .style("opacity",1)
 
 
 var click = function(d){
   pollution.transition().duration(800).style("opacity",1).attr("r", function(d){return Math.sqrt(d.recorded)*5})
 }
+
+var info = d3.select("body").append("div").attr("class", "info")
+.style("border","black")
+.style("border-width","2px")
+.style("left","100px")
+.style("top","100px")
+.style("position","absolute")
+.style("opacity",1)
+.style("background","red")
+var f = d3.format(".1f");
+
+var mouseover = function(d){
+info.html((d.city)+"<br>Had "+(d.pollutant)+" concentrations "+f((d.recorded)/(d.mcl))+"x the EPA Maximum Contaminant Level")
+}
+
           svg.append('g')
         .selectAll("dot")
         .data(data)
@@ -65,9 +129,11 @@ var click = function(d){
           .attr("cx", function (d) { return x(d.city)+50; } )
           .attr("cy", function (d) { return y(250); } )
           .attr("r", function(d){return Math.sqrt(d.mcl)*5})
-          .style("fill", "none")
+          .style("fill", "white")
+          .style("fill-opacity",0)
           .style("stroke","black")
           .style("stroke-dasharray",(3,3))
+          .on('mouseover',mouseover)
           svg.append("text")
           .attr("x",width/2+50)
           .attr("y",function(d){return y(500)+25})
@@ -83,6 +149,72 @@ var click = function(d){
           .attr("stroke","black")
           .attr("fill-opacity",0)
           .attr("stroke-opacity",1)
+
+          svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.0-30)
+    .attr('text-anchor',"middle")
+    .text("Flint Blood Lead Levels, 2013-2015")
+
+    svg.append("text")
+    .attr("class","subtitle")
+    .attr("x",width/2)
+    .attr("y",height*.0-10)
+    .attr('text-anchor',"middle")
+    .text("Contamination in Flint compared with other water poisoning cases")
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.07)
+.attr('y2', height*1.07)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.11)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.11)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.11)
+		.attr('x', width*.08)
+		.attr('text-anchor', 'start')
+        //.style("fill","blue")
+        //.style("text-decoration","underline")
+		.text('Various sources')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.11)
+		.attr('x', width*.235)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+/*
+	svg.append("a")
+    .attr("xlink:href", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4985856/figure/fig1/" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.08-12)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.25- width*.04)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")*/
           
     
     })
