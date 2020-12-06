@@ -87,8 +87,7 @@ div.info {
       var y = d3.scaleLinear()
         .domain([0, 500])
         .range([ height, 0]);
-      svg.append("g")
-        .call(d3.axisLeft(y));
+      
     
       // Add dots
 
@@ -101,14 +100,16 @@ var click = function(d){
 
 var info = d3.select("body").append("div").attr("class", "info")
 .style("left","100px")
-.style("top","55px")
+.style("top","58px")
 .style("position","absolute")
-.style("opacity",0)
+.style("opacity",1)
+.html("Click to see pollution levels -->")
 //.style("background","red")
 var f = d3.format(".1f");
 
 var mouseover = function(d){
-info.html("<b>"+(d.city)+"</b> had "+(d.pollutant)+" concentrations "+f((d.recorded)/(d.mcl))+"x the EPA Maximum Contaminant Level").style("opacity",1)
+info.html("<b>"+(d.city)+"</b> had "+(d.pollutant)+" concentrations "+f((d.recorded)/(d.mcl))+"x the EPA Maximum Contaminant Level"
++"<hr>Concentration: "+(d.recorded)+" ppb<br>MCL: "+(d.mcl)+" ppb").style("opacity",1)
 }
 console.log(y(500))
 var pollution =   svg.append('g')
@@ -117,7 +118,7 @@ var pollution =   svg.append('g')
         .enter()
         .append("circle")
           .attr("cx", function (d) { return x(d.city)+50; } )
-          .attr("cy", function (d) { return y(250); } )
+          .attr("cy", function (d) { return y(200); } )
           .attr("r", 0)//function(d){return Math.sqrt(d.recorded)*5})
           .style("fill", "#5A6988")
           .style("opacity",1)         
@@ -129,7 +130,7 @@ var pollution =   svg.append('g')
         .enter()
         .append("circle")
           .attr("cx", function (d) { return x(d.city)+50; } )
-          .attr("cy", function (d) { return y(250); } )
+          .attr("cy", function (d) { return y(200); } )
           .attr("r", function(d){return Math.sqrt(d.mcl)*5})
           .style("fill", "white")
           .style("fill-opacity",0)
@@ -191,7 +192,7 @@ svg.append("text")
 svg.append('text')
 		.attr('class', 'sources')
 		.attr('y', height*1.11)
-		.attr('x', width*.08)
+		.attr('x', width*.065)
 		.attr('text-anchor', 'start')
         //.style("fill","blue")
         //.style("text-decoration","underline")
@@ -200,7 +201,7 @@ svg.append('text')
 		svg.append('text')
 		.attr('class', 'sources')
 		.attr('y', height*1.11)
-		.attr('x', width*.235)
+		.attr('x', width*.19)
 		.attr('text-anchor', 'start')
         .style("fill","black")
 		.text(', 2020.')
