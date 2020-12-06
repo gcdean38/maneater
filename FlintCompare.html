@@ -4,9 +4,9 @@
 
 div.info {   
  	position: absolute;           
-	text-align: center;           
-	width: 150px;                  
-	height: 100px;                 
+	text-align: left;           
+	width: 180px;                  
+	max-height: 100px;                 
 	padding: 05px;             
 	font: 12px serif;        
 	border: solid black 2px;
@@ -91,7 +91,27 @@ div.info {
         .call(d3.axisLeft(y));
     
       // Add dots
-    var pollution =   svg.append('g')
+
+
+
+
+var click = function(d){
+  pollution.transition().duration(800).style("opacity",1).attr("r", function(d){return Math.sqrt(d.recorded)*5})
+}
+
+var info = d3.select("body").append("div").attr("class", "info")
+.style("left","100px")
+.style("top","55px")
+.style("position","absolute")
+.style("opacity",0)
+//.style("background","red")
+var f = d3.format(".1f");
+
+var mouseover = function(d){
+info.html("<b>"+(d.city)+"</b> had "+(d.pollutant)+" concentrations "+f((d.recorded)/(d.mcl))+"x the EPA Maximum Contaminant Level").style("opacity",1)
+}
+console.log(y(500))
+var pollution =   svg.append('g')
         .selectAll("dot")
         .data(data)
         .enter()
@@ -100,26 +120,8 @@ div.info {
           .attr("cy", function (d) { return y(250); } )
           .attr("r", 0)//function(d){return Math.sqrt(d.recorded)*5})
           .style("fill", "#5A6988")
-          .style("opacity",1)
-
-
-var click = function(d){
-  pollution.transition().duration(800).style("opacity",1).attr("r", function(d){return Math.sqrt(d.recorded)*5})
-}
-
-var info = d3.select("body").append("div").attr("class", "info")
-.style("border","black")
-.style("border-width","2px")
-.style("left","100px")
-.style("top","100px")
-.style("position","absolute")
-.style("opacity",1)
-.style("background","red")
-var f = d3.format(".1f");
-
-var mouseover = function(d){
-info.html((d.city)+"<br>Had "+(d.pollutant)+" concentrations "+f((d.recorded)/(d.mcl))+"x the EPA Maximum Contaminant Level")
-}
+          .style("opacity",1)         
+          .on('mouseover',mouseover)
 
           svg.append('g')
         .selectAll("dot")
@@ -133,7 +135,6 @@ info.html((d.city)+"<br>Had "+(d.pollutant)+" concentrations "+f((d.recorded)/(d
           .style("fill-opacity",0)
           .style("stroke","black")
           .style("stroke-dasharray",(3,3))
-          .on('mouseover',mouseover)
           svg.append("text")
           .attr("x",width/2+50)
           .attr("y",function(d){return y(500)+25})
