@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 50, right: 30, bottom: 30, left: 60},
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("GABiden.csv", function(data) {
+    
+      // Add X axis
+      var y = d3.scaleBand()
+          .domain(["18-29","30-44","45-64","65+"])
+          .range([0,height])
+          .padding([0.2])
+          svg.append("g")
+        .call(d3.axisLeft(y));
+          
+    
+      // Add Y axis
+      var x = d3.scaleLinear()
+        .domain([0, 100])
+        .range([ 0,width]);
+        svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+
+        .call(d3.axisBottom(x));
+       
+    
+      // Add dots
+        svg.append('g')
+        .selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+          .attr("x", function (d) { return x(0); } )
+          .attr("y", function (d) { return y(d.age); } )
+          .attr("width", function(d){return x(d.biden)})
+          .attr('height',function(d){return y.bandwidth()})
+          .style("fill", "blue")
+          .style("opacity",1)
+          
+          svg.append('g')
+        .selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+          .attr("x", function (d) { return x(0)+x(d.biden); } )
+          .attr("y", function (d) { return y(d.age); } )
+          .attr("width", function(d){return x(d.other)})
+          .attr('height',function(d){return y.bandwidth()})
+          .style("fill", "grey")
+          .style("opacity",1)
+
+          svg.append('g')
+        .selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+          .attr("x", function (d) { return x(0)+x(d.biden)+x(d.other); } )
+          .attr("y", function (d) { return y(d.age); } )
+          .attr("width", function(d){return x(d.trump)})
+          .attr('height',function(d){return y.bandwidth()})
+          .style("fill", "red")
+          .style("opacity",1)
+
+          svg.append("line")
+          .attr("x1",function(d){return x(50)})
+          .attr("x2",function(d){return x(50)})
+          .attr("y1",0)
+          .attr("y2",height)
+          .attr("stroke","black")
+
+         
+          
+    
+    })
+    
+    </script>
