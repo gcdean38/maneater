@@ -10,8 +10,7 @@ div.age {
 	padding: 0px;             
 	font: 12px sans-serif;        
 	background: none;   
-	 
-	    
+	
 	pointer-events: none;         
 }
 
@@ -107,7 +106,7 @@ d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/georgiaRunoff
 
 var age1 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("opacity", 0) 
 .style("background","#B3E5FC").html("<br>18-22").style("left", "726.8429752066115px").style("top", "69.110900000000015px").style("height","50.76501456px")
-var age2 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
+var age2 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","1px").style("opacity", 0)   
 .style("background","#81D4FA").html("<br>25-29").style("top", "119.8759146px").style("height","38.92022705px").style("left", "726.8429752066115px")
 var age3 = d3.select("body").append("div").attr("class", "age").style("stroke","black").style("stroke-width","2px").style("opacity", 0)   
 .style("background","#4FC3F7").html("<br>30-34").style("top", "158.7961416px").style("height","36.80661056px").style("left", "726.8429752066115px")
@@ -228,7 +227,7 @@ svg.append("text")
 svg.append('text')
 		.attr('class', 'sources')
 		.attr('y', height*1.075)
-		.attr('x', width*.037)
+		.attr('x', width*.044)
 		.attr('text-anchor', 'start')
         .style("fill","blue")
         .style("text-decoration","underline")
@@ -237,7 +236,7 @@ svg.append('text')
 		svg.append('text')
 		.attr('class', 'sources')
 		.attr('y', height*1.075)
-		.attr('x', width*.155)
+		.attr('x', width*.188)
 		.attr('text-anchor', 'start')
         .style("fill","black")
 		.text(', 2020.')
