@@ -215,7 +215,7 @@ function scatterplot(onBrush) {
             .merge(bgRect)
             .attr('y', function (d) { return y(d[1]) })
             .attr('height', function (d) { return y(d[0]) - y(d[1]) })
-            .style('fill', "lightgrey")//function (d) { return color(d[0]) })
+            .style('fill', "white")//function (d) { return color(d[0]) })
 
         var circle = svg.selectAll('circle')
             .data(data, function (d) { return d.name })
