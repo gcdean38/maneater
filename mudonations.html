@@ -6,7 +6,7 @@
 
 div.tooltip {   
  	position: absolute;           
-	text-align: center;           
+	text-align: left;           
 	width: 200px;                  
 	height: 150px;                 
 	padding: 05px;             
@@ -72,9 +72,9 @@ text.source {
 
 
     // set the dimensions and margins of the graph
-    var margin = {top: 20, right: 30, bottom: 40, left: 90},
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+    var margin = {top: 30, right: 30, bottom: 40, left: 90},
+        width = 500 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -93,7 +93,7 @@ text.source {
         .domain([0, 20000])
         .range([ 0, width]);
       svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
+        .attr("transform", "translate(0," + 400 + ")")
         .call(d3.axisBottom(x))
         .selectAll("text")
           .attr("transform", "translate(-10,0)rotate(-45)")
@@ -101,17 +101,17 @@ text.source {
     
       // Y axis
       var y = d3.scaleBand()
-        .range([ 0, height ])
+        .range([ 0, 400 ])
         .domain(data.map(function(d) { return d.canAbbr; }))
         .padding(.1);
       svg.append("g")
         .call(d3.axisLeft(y))
 
         var tooltip = d3.select("body").append("div").attr("class","tooltip").style("left","200px")
-        .style("top","50px").style("opacity",1)
+        .style("top","50px").style("opacity",1).html("Hover over bars for more information")
      var money=   d3.format("$,.2f") // localized fixed-point currency
     mouseover = function (d) {
-tooltip.html("Employees at the University of Missouri donated <b>"+ money(d.amount)+"</b> to <b>" + (d.canFull) + "</b> during the 2020 election cycle.")
+tooltip.html("Individuals at the University of Missouri donated <b>"+ money(d.amount)+"</b> to <b>" + (d.canFull) + "</b> during the 2020 election cycle.")
     }
       //Bars
       svg.selectAll("myRect")
@@ -123,15 +123,16 @@ tooltip.html("Employees at the University of Missouri donated <b>"+ money(d.amou
         .attr("width", function(d) { return x(d.amount); })
         .attr("height", y.bandwidth() )
         .attr("fill", "red")
+        .style("border-radius","5px")
         .on("mouseover",mouseover)
     
     
         svg.append("text")
     .attr("class","title")
     .attr("x",width/2)
-    .attr("y",height*.0)
+    .attr("y",height*-.025)
     .attr('text-anchor',"middle")
-    .text("MU Donations to Political Candidates and Organizations, 2020")
+    .text("MU Employee Political Donations, 2020")
     svg.append("line")
 .attr("x1",0)
 .attr("x2",width)
