@@ -58,9 +58,7 @@ text.source {
         }
 
         text.labels {
-            font-size: 28px;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+font-family: sans-serif;
         }
 </style>
 <!-- Load d3.js -->
@@ -94,10 +92,10 @@ text.source {
         .range([ 0, width]);
       svg.append("g")
         .attr("transform", "translate(0," + 400 + ")")
-        .call(d3.axisBottom(x).tickFormat(d3.format("$,.0f")))
+        .call(d3.axisBottom(x).ticks(4).tickFormat(d3.format("$,.0f")))
         .selectAll("text")
-          .attr("transform", "translate(-10,0)rotate(-45)")
-          .style("text-anchor", "end");
+          .attr("transform", "translate(0,0)")
+          .style("text-anchor", "middle");
     
       // Y axis
       var y = d3.scaleBand()
@@ -126,7 +124,13 @@ tooltip.html("Individuals at the University of Missouri donated <b>"+ money(d.am
         .style("border-radius","5px")
         .on("mouseover",mouseover)
     
-    
+    svg.append("text")
+    .attr('class',"labels")
+    .attr("y",-75)
+    .attr("x",-height/2)
+    .attr("transform","rotate(-90)")
+    .text("Recipient")
+
         svg.append("text")
     .attr("class","title")
     .attr("x",width/2)
