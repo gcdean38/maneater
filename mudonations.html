@@ -94,7 +94,7 @@ text.source {
         .range([ 0, width]);
       svg.append("g")
         .attr("transform", "translate(0," + 400 + ")")
-        .call(d3.axisBottom(x))
+        .call(d3.axisBottom(x).tickFormat(d3.format("$,.0f")))
         .selectAll("text")
           .attr("transform", "translate(-10,0)rotate(-45)")
           .style("text-anchor", "end");
@@ -109,7 +109,7 @@ text.source {
 
         var tooltip = d3.select("body").append("div").attr("class","tooltip").style("left","200px")
         .style("top","50px").style("opacity",1).html("Hover over bars for more information")
-     var money=   d3.format("$,.2f") // localized fixed-point currency
+     var money=   d3.format("$,.0f") // localized fixed-point currency
     mouseover = function (d) {
 tooltip.html("Individuals at the University of Missouri donated <b>"+ money(d.amount)+"</b> to <b>" + (d.canFull) + "</b> during the 2020 election cycle.")
     }
