@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<title>MU Employee Political Donations</title>
 <style>
 
 
@@ -110,7 +111,7 @@ text.source {
         .style("top","50px").style("opacity",1)
      var money=   d3.format("$,.2f") // localized fixed-point currency
     mouseover = function (d) {
-tooltip.html("The University of Missouri donated "+ money(d.amount)+" to " + (d.canFull))
+tooltip.html("Employees at the University of Missouri donated <b>"+ money(d.amount)+"</b> to <b>" + (d.canFull) + "</b> during the 2020 election cycle.")
     }
       //Bars
       svg.selectAll("myRect")
@@ -125,11 +126,64 @@ tooltip.html("The University of Missouri donated "+ money(d.amount)+" to " + (d.
         .on("mouseover",mouseover)
     
     
-        // .attr("x", function(d) { return x(d.Country); })
-        // .attr("y", function(d) { return y(d.Value); })
-        // .attr("width", x.bandwidth())
-        // .attr("height", function(d) { return height - y(d.Value); })
-        // .attr("fill", "#69b3a2")
+        svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.0)
+    .attr('text-anchor',"middle")
+    .text("MU Donations to Political Candidates and Organizations, 2020")
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.05)
+.attr('y2', height*1.05)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.075)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.075)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.075)
+		.attr('x', width*.045)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('OpenSecrets')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.075)
+		.attr('x', width*.192)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2021.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://www.opensecrets.org/orgs/recipients?id=D000030673&cycle=2020" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.075-12)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.155- width*.04)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
     
     })
     
