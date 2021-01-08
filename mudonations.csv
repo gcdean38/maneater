@@ -1,8 +1,8 @@
-﻿candidate,amount
-Josh Hawley,1410
-Donald Trump,16578
-Vicky Hartzler,3852
-RNC,9930
-RCSC,5680
-NRCC,4186
-Lincoln Project,4909
+﻿canAbbr,canFull,amount
+Hawley,Josh D. Hawley,1410
+Trump,Donald J. Trump,16578
+Hartzler,Vicky Hartzler,3852
+RNC,Republican National Committee,9930
+RNSC,Republican National Senatorial Committee,5680
+NRCC,National Republican Congressional Committee,4186
+Lincoln Proj.,The Lincoln Project,4909
