@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+div.info {   
+ 	position: absolute;           
+	text-align: left;           
+	width: 200px;                  
+	max-height: 100px;                 
+	padding: 05px;             
+	font: 12px serif;        
+	border: solid black 2px;
+
+	    
+	pointer-events: none;         
+}
+  text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+</style>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 50, right: 30, bottom: 40, left: 60},
+        width = 600 - margin.left - margin.right,
+        height = 430 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/downs.csv", function(data) {
+    
+      // Add X axis
+      var x = d3.scaleBand()
+          .domain(["First","Second","Third","Fourth"])
+          .range([0, width])
+          .padding([0.2])
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, 500])
+        .range([ height, 0]);
+      
+    
+      // Add dots
+
+
+
+
+
+var info = d3.select("body").append("div").attr("class", "info")
+.style("left","100px")
+.style("top","58px")
+.style("position","absolute")
+.style("opacity",1)
+.html("Click to see pollution levels --><hr>Dotted circles are the EPA Maximum Contaminant Level (MCL) for the contaminant affecting each location.")
+//.style("background","red")
+var f = d3.format(".1f");
+
+
+var pollution =   svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.down)+50; } )
+          .attr("cy", function (d) { return y(100); } )
+          .attr("r", function(d){return Math.sqrt(d.yards)*5})
+          .style("fill", "#5A6988")
+          .style("opacity",1)         
+
+          svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.down)+50; } )
+          .attr("cy", function (d) { return y(100); } )
+          .attr("r", function(d){return Math.sqrt(d.plays)*5})
+          .style("fill", "white")
+          .style("fill-opacity",0)
+          .style("stroke","black")
+          .style("stroke-dasharray",(3,3))
+          svg.append("text")
+          .attr("x",width/2+50)
+          .attr("y",function(d){return y(500)+25})
+          .text("See Pollution")
+          .attr("text-anchor","middle")
+          svg.append("rect")
+          .attr("x",width/2)
+          .attr("y",function(d){return y(500)})
+          .attr("width",100)
+          .attr("height",40)
+          
+          svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.0-30)
+    .attr('text-anchor',"middle")
+    .text("Historical Water Pollution Problems")
+
+    
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.07)
+.attr('y2', height*1.07)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.11)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.11)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.11)
+		.attr('x', width*.065)
+		.attr('text-anchor', 'start')
+        //.style("fill","blue")
+        //.style("text-decoration","underline")
+		.text('Various sources')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.11)
+		.attr('x', width*.19)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2020.')
+/*
+	svg.append("a")
+    .attr("xlink:href", "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4985856/figure/fig1/" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.08-12)
+	.attr('x', width*.04)
+    .attr("height", 9)
+    .attr("width",width*.25- width*.04)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")*/
+          
+    
+    })
+    
+    </script>
