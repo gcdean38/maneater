@@ -1,6 +1,67 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<style>
 
+
+div.tooltip {   
+ 	position: absolute;           
+	text-align: center;           
+	width: 200px;                  
+	height: 150px;                 
+	padding: 05px;             
+	font: 12px sans-serif;        
+	background: none;   
+    border-radius: 5px;
+	border: solid black 2px;
+
+	    
+	pointer-events: none;         
+}
+.bar { fill: steelblue; }
+path:hover {
+	stroke-width: 4px;
+}
+
+.legend-axis path{
+    stroke: black;
+    display: none;
+}
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+</style>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 
@@ -40,21 +101,28 @@
       // Y axis
       var y = d3.scaleBand()
         .range([ 0, height ])
-        .domain(data.map(function(d) { return d.candidate; }))
+        .domain(data.map(function(d) { return d.canAbbr; }))
         .padding(.1);
       svg.append("g")
         .call(d3.axisLeft(y))
-    
+
+        var tooltip = d3.select("body").append("div").attr("class","tooltip").style("left","200px")
+        .style("top","50px").style("opacity",1)
+     var money=   d3.format("$,.2f") // localized fixed-point currency
+    mouseover = function (d) {
+tooltip.html("The University of Missouri donated "+ money(d.amount)+" to " + (d.canFull))
+    }
       //Bars
       svg.selectAll("myRect")
         .data(data)
         .enter()
         .append("rect")
         .attr("x", x(0) )
-        .attr("y", function(d) { return y(d.candidate); })
+        .attr("y", function(d) { return y(d.canAbbr); })
         .attr("width", function(d) { return x(d.amount); })
         .attr("height", y.bandwidth() )
-        .attr("fill", "#69b3a2")
+        .attr("fill", "red")
+        .on("mouseover",mouseover)
     
     
         // .attr("x", function(d) { return x(d.Country); })
