@@ -8,7 +8,7 @@ div.tooltip {
  	position: absolute;           
 	text-align: left;           
 	width: 200px;                  
-	height: 150px;                 
+	height: 75px;                 
 	padding: 05px;             
 	font: 12px sans-serif;        
 	background: none;   
@@ -72,8 +72,8 @@ text.source {
 
 
     // set the dimensions and margins of the graph
-    var margin = {top: 30, right: 30, bottom: 40, left: 90},
-        width = 500 - margin.left - margin.right,
+    var margin = {top: 30, right: 65, bottom: 40, left: 90},
+        width = 520 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
@@ -132,7 +132,7 @@ tooltip.html("Individuals at the University of Missouri donated <b>"+ money(d.am
     .attr("x",width/2)
     .attr("y",height*-.025)
     .attr('text-anchor',"middle")
-    .text("MU Employee Political Donations, 2020")
+    .text("MU Employee GOP Political Donations, 2020")
     svg.append("line")
 .attr("x1",0)
 .attr("x2",width)
