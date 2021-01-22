@@ -262,8 +262,35 @@ gradient.append("stop")
               .attr("width",150)
               .attr("stroke","black")
               .attr("fill", "url(#svgGradient)");
+
+              var cover = svg.append("rect")
+                .attr("x", width*.55-10)
+              .attr('y',height*.885+22)
+              .attr("height",20)
+              .attr("width",150)
+              .attr("fill","white")
+              .attr("stroke","white")
+
+              var wages = svg.append("text")
+              .attr("x",width*.55)
+              .attr("y",height*.885+30)
+              .text("$5.15")
+              .attr("text-anchor","middle")
+              var wages1 = svg.append("text")
+              .attr("x",width*.55+150)
+              .attr("y",height*.885+30)
+              .attr('text-anchor',"middle")
+              .text("$15.00")
+
+              var wages1 = svg.append("text")
+              .attr("x",width*.55+75)
+              .attr("y",height*.885+30)
+              .attr('text-anchor',"middle")
+              .text("$10.00")
     });
 
+
+   
    /* */
 svg.append("text")
 .text("Wage per hour")
