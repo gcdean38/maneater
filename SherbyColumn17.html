@@ -99,7 +99,7 @@ var mouseover = function(d){
     div.transition()
          .duration(200)
          .style("opacity", .9);
-       div.html("Year: "+formatTime(d.year) + "<br/>Wages: " + formatNum(d.wage)+
+       div.html("<u>Year: "+formatTime(d.year) + "</u><br/>Wages: " + formatNum(d.wage)+
        "<br/>Productivity: "+formatNum(d.productivity)+"<br/>Difference: "+formatNum(d.wage-d.productivity))
          .style("left", (d3.event.pageX)-60 + "px")
          .style("top", (y(d.productivity) - 58) + "px");
