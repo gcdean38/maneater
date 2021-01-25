@@ -3,6 +3,7 @@
 <head>
     <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
   </head>
+  <title> Productivity and Wages over Time</title>
 <style> /* set the CSS */
 
 .line {
@@ -13,7 +14,7 @@ div.tooltip {
   position: absolute;
   text-align: center;
   width: 120px;
-  height: 60px;
+  height: 75px;
   padding: 2px;
   font: 12px sans-serif;
   background: lightsteelblue;
@@ -22,6 +23,47 @@ div.tooltip {
   pointer-events: none;
 }
 
+path:hover {
+	stroke-width: 4px;
+}
+
+.legend-axis path{
+    stroke: black;
+    display: none;
+}
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+        }
+        text.label {
+            font-family: sans-serif;
+font-size: 12px;
+text-anchor: end;
+        }
 </style>
 <body>
 
@@ -30,7 +72,7 @@ div.tooltip {
 <script>
 
 // set the dimensions and margins of the graph
-var margin = {top: 20, right: 20, bottom: 30, left: 50},
+var margin = {top: 70, right: 20, bottom: 40, left: 50},
     width = 700 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -67,7 +109,7 @@ var svg = d3.select("body").append("svg")
           "translate(" + margin.left + "," + margin.top + ")");
 
 // Get the data
-d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/SherbyColumn17.csv", function(error, data) {
+d3.csv("SherbyColumn17.csv", function(error, data) {
   if (error) throw error;
 
   // format the data
@@ -79,7 +121,7 @@ d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/SherbyColumn1
 
   // scale the range of the data
   x.domain(d3.extent(data, function(d) { return d.year; }));
-  y.domain([0, d3.max(data, function(d) { return d.productivity; })]);
+  y.domain([1, d3.max(data, function(d) { return d.productivity; })]);
 
   // add the valueline path.
   svg.append("path")
@@ -103,9 +145,9 @@ var mouseover = function(d){
          .duration(200)
          .style("opacity", .9);
        div.html("<u>Year: "+formatTime(d.year) + "</u><br/>Wages: " + formatNum(d.wage)+
-       "<br/>Productivity: "+formatNum(d.productivity)+"<br/>Difference: "+formatNum(d.wage-d.productivity))
+       "<br/>Productivity: "+formatNum(d.productivity)+"<hr/><b>Difference: "+formatNum(d.wage-d.productivity))
          .style("left", (d3.event.pageX)-60 + "px")
-         .style("top", (y(d.productivity) - 58) + "px");
+         .style("top", (y(d.productivity) - 5) + "px");
 }
   // add the dots with tooltips
   svg.selectAll("dot")
@@ -147,6 +189,88 @@ var mouseover = function(d){
   svg.append("g")
       .call(d3.axisLeft(y).tickFormat(d3.format(".0%")));
 
+svg.append("text")
+.attr("class","label")
+.text("Percent of 1948 levels")
+.attr("x",80)
+.attr("y",0)
+
+
+
+	svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.05-60)
+    .attr('text-anchor',"middle")
+    .text("Growth in Wages and Productivity over Time")
+
+svg.append("text")
+.attr("class","label")
+.attr("x",width)
+.attr("y",y(3.529)-5)
+.text("Productivity")
+.attr("text-anchor","end")
+
+svg.append("text")
+.attr("class","label")
+.attr("x",width)
+.attr("y",y(2.1562)-5)
+.text("Wages")
+.attr("text-anchor","end")
+
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr("y1",height+20)
+.attr("y2",height+20)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height+35)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr("y",height+35)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height+35)
+		.attr('x', width*.05)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Economic Politcy Institute')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height+35)
+		.attr('x', width*.22)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2021.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://www.epi.org/productivity-pay-gap/")
+    .attr("target","_blank")
+
+    .append("rect")  
+    .attr('y', height+27)
+	.attr('x', width*.05)
+    .attr("height", 9)
+    .attr("width",width*.22- width*.05)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
 });
 
 </script>
