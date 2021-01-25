@@ -1,73 +1,150 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<style> /* set the CSS */
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v4.js"></script>
+.line {
+  fill: none;
+  }
 
-<!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 120px;
+  height: 60px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+</style>
+<body>
+
+<!-- load the d3.js library -->    	
+<script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-    // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 30, bottom: 30, left: 60},
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
-    
-    // append the svg object to the body of the page
-    var svg = d3.select("#my_dataviz")
-      .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-        .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")");
-    
-    //Read the data
-    d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/SherbyColumn17.csv",
-    
-      // When reading the csv, I must format variables:
-      function(d){
-        return { year : d3.timeParse("%Y")(d.year), wage : +d.wage, productivity: +d.productivity }
-      },
-    
-      // Now I can use this dataset:
-      function(data) {
-    
-        // Add X axis --> it is a date format
-        var x = d3.scaleTime()
-          .domain(d3.extent(data, function(d) { return d.year; }))
-          .range([ 0, width ]);
-        svg.append("g")
-          .attr("transform", "translate(0," + height + ")")
-          .call(d3.axisBottom(x));
-    
-        // Add Y axis
-        var y = d3.scaleLinear()
-          .domain([0, d3.max(data, function(d) { return +d.productivity; })])
-          .range([ height, 0 ]);
-        svg.append("g")
-          .call(d3.axisLeft(y));
-    
-        // Add the line
-        svg.append("path")
-          .datum(data)
-          .attr("fill", "none")
-          .attr("stroke", "steelblue")
-          .attr("stroke-width", 1.5)
-          .attr("d", d3.line()
-            .x(function(d) { return x(d.year) })
-            .y(function(d) { return y(d.productivity) })
-            )
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 700 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-            svg.append("path")
-          .datum(data)
-          .attr("fill", "none")
-          .attr("stroke", "red")
-          .attr("stroke-width", 1.5)
-          .attr("d", d3.line()
-            .x(function(d) { return x(d.year) })
-            .y(function(d) { return y(d.wage) }))
-    
-    })
-    
-    </script>
+// parse the date / time
+var parseTime = d3.timeParse("%Y");
+var formatTime = d3.timeFormat("%Y");
+var formatNum = d3.format(".2%")
+
+// set the ranges
+var x = d3.scaleTime().range([0, width]);
+var y = d3.scaleLinear().range([height, 0]);
+
+// define the line
+var valueline = d3.line()
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.wage); });
+
+    var valueline1 = d3.line()
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.productivity); });
+
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+// append the svg obgect to the body of the page
+// appends a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Get the data
+d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/SherbyColumn17.csv", function(error, data) {
+  if (error) throw error;
+
+  // format the data
+  data.forEach(function(d) {
+      d.year = parseTime(d.year);
+      d.wage = +d.wage;
+      d.productivity = +d.productivity;
+  });
+
+  // scale the range of the data
+  x.domain(d3.extent(data, function(d) { return d.year; }));
+  y.domain([0, d3.max(data, function(d) { return d.productivity; })]);
+
+  // add the valueline path.
+  svg.append("path")
+     .data([data])
+     .attr("class", "line")
+     .attr("stroke-width","3px")
+     .attr("stroke","red")
+     .attr("d", valueline);
+
+     svg.append("path")
+     .data([data])
+     .attr("class", "line")
+     .attr("stroke-width","3px")
+     .attr("stroke",'blue')
+     .attr("d", valueline1);
+
+
+
+var mouseover = function(d){
+    div.transition()
+         .duration(200)
+         .style("opacity", .9);
+       div.html("Year: "+formatTime(d.year) + "<br/>Wages: " + formatNum(d.wage)+
+       "<br/>Productivity: "+formatNum(d.productivity)+"<br/>Difference: "+formatNum(d.wage-d.productivity))
+         .style("left", (d3.event.pageX)-60 + "px")
+         .style("top", (y(d.productivity) - 58) + "px");
+}
+  // add the dots with tooltips
+  svg.selectAll("dot")
+     .data(data)
+   .enter().append("circle")
+     .attr("r", 5)
+     .attr("cx", function(d) { return x(d.year); })
+     .attr("cy", function(d) { return y(d.wage); })
+     .attr("opacity",0)
+     .on("mouseover", mouseover)
+     .on("mouseout", function(d) {
+       div.transition()
+         .duration(500)
+         .style("opacity", 0);
+       });
+
+
+
+       svg.selectAll("dot")
+     .data(data)
+   .enter().append("circle")
+     .attr("r", 5)
+     .attr("cx", function(d) { return x(d.year); })
+     .attr("cy", function(d) { return y(d.productivity); })
+     .attr("opacity",0)
+     .on("mouseover", mouseover)
+     .on("mouseout", function(d) {
+       div.transition()
+         .duration(500)
+         .style("opacity", 0);
+       });
+
+  // add the X Axis
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // add the Y Axis
+  svg.append("g")
+      .call(d3.axisLeft(y).tickFormat(d3.format(".0%")));
+
+});
+
+</script>
+</body>
