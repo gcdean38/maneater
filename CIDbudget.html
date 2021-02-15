@@ -109,7 +109,7 @@ body {
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 var svg = d3.select("svg"),
-    margin = {top: 20, right: 100, bottom: 50, left: 80},
+    margin = {top: 20, right: 100, bottom: 55, left: 80},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -153,7 +153,7 @@ d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/CIDbuget.csv"
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Total Balance");
+        .text("Total Surplus/Deficit");
 
     g.append("path")
         .datum(data)
@@ -179,7 +179,7 @@ d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/CIDbuget.csv"
 
     focus.append("text")
        // .attr("x", 15)
-        .attr("y",-25)
+        .attr("y",-20)
         .attr("text-anchor","middle")
       	.attr("dy", ".31em");
 
@@ -204,24 +204,24 @@ svg.append("rect")
           d1 = data[i],
           d = x0 - d0.year > d1.year - x0 ? d1 : d0;
       focus.attr("transform", "translate(" + x(d.year) + "," + y(d.diff) + ")");
-      focus.select("text").text(function() { return "Total Balance: -"+monFormat(-1*d.diff); });
+      focus.select("text").text(function() { return "Total Deficit: -"+monFormat(-1*d.diff); });
       focus.select(".x-hover-line").attr("y2", height - y(d.diff));
       focus.select(".y-hover-line").attr("x2", width + width);
     }
 
     svg.append("text")
     .attr("class","title")
-    .attr("x",width/2+50)
+    .attr("x",width/2+85)
     .attr("y",height*0+20)
     .attr('text-anchor',"middle")
     .text("Columbia Small Business Performance")
 
     svg.append("text")
     .attr("class","subtitle")
-    .attr("x",width/2+50)
-    .attr("y",height*0)
+    .attr("x",width/2+85)
+    .attr("y",height*0+35)
     .attr('text-anchor',"middle")
-    .text("Top 10 country artists over the last 10 years by demographic")
+    .text("Total Surplus/Deficit from Columbia Improvement District, 2016-2020 ")
     svg.append("line")
 .attr("x1",80)
 .attr("x2",width+100)
@@ -253,12 +253,12 @@ svg.append('text')
 		.attr('text-anchor', 'start')
         .style("fill","blue")
         .style("text-decoration","underline")
-		.text('Billboard')
+		.text('Discover the District')
 
 		svg.append('text')
 		.attr('class', 'sources')
 		.attr('y', height*1.2)
-		.attr('x', width*.17+84)
+		.attr('x', width*.29+84)
 		.attr('text-anchor', 'start')
         .style("fill","black")
 		.text(', 2021.')
