@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+    <head>   <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+
+        <meta charset="utf-8">
+        <title>Country music has a lack of diversity</title>
+        <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <style>
+        body {
+            font: 10px sans-serif;
+        }
+        select {
+            display: block;
+        }
+        .bar {
+            fill: #143D59;
+            opacity: 0.8;
+        }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+
+        text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+        </style>
+    </head>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 50, right: 30, bottom: 80, left: 60},
+        width = 500 - margin.left - margin.right,
+        height = 450 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("mutvSaints.csv", function(data) {
+    
+      // Add X axis
+      var x = d3.scaleLinear()
+        .domain([0, 2.5])
+        .range([ 0, width ]);
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, 2])
+        .range([ height, 0]);
+      svg.append("g")
+        .call(d3.axisLeft(y));
+    
+      // Add dots
+      svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.td); } )
+          .attr("cy", function (d) { return y(d.int); } )
+          .attr("r", 5)
+          .style("fill", function(d){return d.fill})
+
+          svg.append('g')
+        .selectAll("text")
+        .data(data)
+        .enter()
+        .append("text")
+          .attr("x", function (d) { return x(d.td)+5; } )
+          .attr("y", function (d) { return y(d.int)+2.5; } )
+          .text(function(d){return d.player})
+
+          svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*0-20)
+    .attr('text-anchor',"middle")
+    .text("Touchdown/Interception Ratio")
+
+    svg.append("text")
+    .attr("class","subtitle")
+    .attr("x",width/2)
+    .attr("y",height*0-5)
+    .attr('text-anchor',"middle")
+    .text("Quarterbacks likely on the move Summer 2021")
+    svg.append("line")
+.attr("x1",00)
+.attr("x2",width)
+.attr('y1', height*1.15)
+.attr('y2', height*1.15)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.2)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
+
+   
+    svg.append("text")
+.attr("class","source")
+.attr('y', height*1.2)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.2)
+		.attr('x', width*.08+2)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Sports Reference')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.2)
+		.attr('x', width*.29-6)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2021.')
+
+        svg.append("a")
+    .attr("xlink:href", "https://www.billboard.com/charts/year-end/2020/top-country-artists" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.2-9)
+	.attr('x', width*.08)
+    .attr("height", 9)
+    .attr("width",width*.18- width*.08)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
+    })
+    
+    </script>
