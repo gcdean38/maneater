@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>   <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+
+    <meta charset="utf-8">
+    <title>QBs on the move 2021</title>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <style>
+    body {
+        font: 10px sans-serif;
+    }
+    select {
+        display: block;
+    }
+    .bar {
+        fill: #143D59;
+        opacity: 0.8;
+    }
+
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+    }
+
+    text.source {
+        font-size: 10px;
+        font-style: italic;
+    }
+    text.sources {
+        font-size: 10px;
+        font-style: italic;
+    }
+    
+    text.byline {
+        font-size: 12px;
+        font-style: italic;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    text.title {
+        font-size: 24px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        text-decoration: underline;
+        font-weight: bold;
+        text-anchor: middle;
+    }
+    text.subtitle {
+        font-size: 12px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-style: italic;
+        text-anchor: middle;
+
+    }
+
+    text.labels {
+        font-size: 28px;
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    }
+    </style>
+</head>
+<body>
+	
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
+
+<script>
+
+var margin = {top: 50, right: 20, bottom: 70, left: 40},
+    width = 600 - margin.left - margin.right,
+    height = 330 - margin.top - margin.bottom;
+
+// Parse the date / time
+
+var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+
+var y = d3.scale.linear().range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    //.tickFormat(d3.time.format("%Y-%m"));
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(5);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/mutvSaints1.csv", function(error, data) {
+
+    data.forEach(function(d) {
+        d.player = d.player;
+        d.ratio = +d.ratio;
+    });
+	
+  x.domain(data.map(function(d) { return d.player; }));
+  y.domain([0, 5.5]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .style("text-anchor", "middle")
+      //.attr("dx", "-.8em")
+      //.attr("dy", "-.55em")
+     // .attr("transform", "rotate(-90)" );
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Touchdown/Interception Ratio");
+
+  svg.selectAll("bar")
+      .data(data)
+    .enter().append("rect")
+      .style("fill", "#D3BC8D")
+      .attr("x", function(d) { return x(d.player); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.ratio); })
+      .attr("height", function(d) { return height - y(d.ratio); });
+
+
+      svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*0-20)
+    .attr('text-anchor',"middle")
+    .text("Saints Touchdown/Interception Ratio")
+
+    svg.append("text")
+    .attr("class","subtitle")
+    .attr("x",width/2)
+    .attr("y",height*0-5)
+    .attr('text-anchor',"middle")
+    .text("Quarterbacks on Saints 2020 Roster")
+    svg.append("line")
+.attr("x1",00)
+.attr("x2",width)
+.attr('y1', height*1.15)
+.attr('y2', height*1.15)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.2)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
+
+   
+    svg.append("text")
+.attr("class","source")
+.attr('y', height*1.2)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.2)
+		.attr('x', width*.07)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Sports Reference')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.2)
+		.attr('x', width*.22)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2021.')
+
+        svg.append("a")
+    .attr("xlink:href", "https://www.billboard.com/charts/year-end/2020/top-country-artists" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.2-9)
+	.attr('x', width*.08)
+    .attr("height", 9)
+    .attr("width",width*.18- width*.08)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
+});
+
+</script>
+
+</body>
