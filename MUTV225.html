@@ -121,9 +121,15 @@
 
           svg.append("text")
           .attr('x',x(1))
-          .attr("y",y(0.3))
+          .attr("y",y(0.3)-5)
           .text("Win Percent")
           .attr("text-anchor","end")
+
+          svg.append("text")
+          .attr("x",x(0)+5)
+          .attr("y",y(0.44))
+          .text("Three Point Percent")
+          .attr('text-anchor',"beginning")
           svg.append("text")
     .attr("class","title")
     .attr("x",width/2)
