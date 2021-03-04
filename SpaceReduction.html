@@ -156,6 +156,21 @@ var div = d3.select("body").append("div")
                 .style("height",d.r+"px")
                 .style("width",d.r+"px");	
             })
+        .on("click",function(d) {		
+            div.transition()		
+                .duration(200)		
+                .style("opacity", .9);		
+            div	.html("<b><u>" +(d.building)+ "</b></u><br/>Annual Savings: $"  + d.annual +"K/year <br/> Removal from budget: $"+d.savings+"M")	
+                .style("left", "300px")		
+                .style("top", "250px");	
+
+                circles.transition()		
+                .style("opacity", .9)	
+                .style("left", (d.cx-15)+"px")		
+                .style("top", (d.cy-15)+"px")
+                .style("height",d.r+"px")
+                .style("width",d.r+"px");	
+            })
         .on("mouseout", function(d) {		
             div.transition()		
                 .duration(500)		
