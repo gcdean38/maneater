@@ -1,127 +1,127 @@
-﻿team,seed,score,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
-Duke  ,1,133.6614972,0.982946935,1,1,1,1,1,east,east1,
-North Dakota State  ,16,38.35365507,0.017053065,2,2,1,0,1,east,east16,down
-Virginia Commonwealth  ,8,116.4507763,0.619376959,4,4,1,1,1,east,east8,
-Central Florida  ,9,110.9426854,0.380623041,5,5,1,0,1,east,east9,up
-Mississippi State  ,5,96.46947859,0.512673765,7,7,1,1,1,east,east5,
-Liberty  ,12,101.9417662,0.487326235,8,8,1,0,1,east,east12,down
-Virginia Tech  ,4,134.2786551,0.874346687,10,10,1,1,1,east,east4,
-Saint Louis  ,13,92.19321062,0.125653313,11,11,1,0,1,east,east13,up
-Maryland  ,6,113.6827139,0.890406118,13,13,1,1,1,east,east6,
-Belmont  ,11,67.69683688,0.109593882,14,14,1,0,1,east,east11,down
-Louisiana State  ,3,88.95665507,0.804222527,16,16,1,1,1,east,east3,
-Yale  ,14,60.13865507,0.195777473,17,17,1,0,1,east,east14,up
-Louisville  ,7,106.6233609,0.70707225,19,19,1,1,1,east,east7,
-Minnesota  ,10,91.18954395,0.29292775,20,20,1,0,1,east,east10,down
-Michigan State  ,2,138.5053987,0.944534612,22,22,1,1,1,east,east2,
-Bradley  ,15,73.89065507,0.055465388,23,23,1,0,1,east,east15,up
-Duke  ,1,133.6614972,0.721475998,2.5,2.5,2,1,1,east,east1,
-Virginia Commonwealth  ,8,116.4507763,0.278524002,3.5,3.5,2,0,1,east,east8,down
-Mississippi State  ,5,96.46947859,0.225501978,8.5,8.5,2,1,1,east,east5,
-Virginia Tech  ,4,134.2786551,0.774498022,9.5,9.5,2,0,1,east,east4,up
-Maryland  ,6,113.6827139,0.77735937,14.5,14.5,2,1,1,east,east6,
-Louisiana State  ,3,88.95665507,0.22264063,15.5,15.5,2,0,1,east,east3,down
-Louisville  ,7,106.6233609,0.26925043,20.5,20.5,2,1,1,east,east7,
-Michigan State  ,2,138.5053987,0.73074957,21.5,21.5,2,0,1,east,east2,up
-Duke  ,1,133.6614972,0.560595036,5.5,5.5,3,1,1,east,east1,
-Virginia Tech  ,4,134.2786551,0.439404964,6.5,6.5,3,0,1,east,east4,down
-Maryland  ,6,113.6827139,0.327834848,17.5,17.5,3,1,1,east,east6,
-Michigan State  ,2,138.5053987,0.672165152,18.5,18.5,3,0,1,east,east2,up
-Duke  ,1,133.6614972,0.518908163,11.5,11.5,4,1,1,east,east1,
-Michigan State  ,2,138.5053987,0.481091837,12.5,12.5,4,1,1,east,east2,
-Duke  ,1,133.6614972,0.441550223,1,102,1,0,5,east,east1,down
-Gonzaga  ,1,146.322628,0.990542274,1,26,1,1,2,west,west1,
-Fairleigh Dickinson  ,16,35.98165507,0.009457726,2,27,1,0,2,west,west16,down
-Syracuse  ,8,105.7777727,0.629916427,4,29,1,1,2,west,west8,
-Baylor  ,9,99.13806683,0.370083573,5,30,1,0,2,west,west9,up
-Marquette  ,5,96.83065507,0.65955717,7,32,1,1,2,west,west5,
-Murray State  ,12,86.9319884,0.34044283,8,33,1,0,2,west,west12,down
-Florida State  ,4,113.3500875,0.729855561,10,35,1,1,2,west,west4,
-Vermont  ,13,95.07971389,0.270144439,11,36,1,0,2,west,west13,up
-Buffalo  ,6,94.8459884,0.764342457,13,38,1,1,2,west,west6,
-Arizona State  ,11,71.97536095,0.235657543,14,39,1,0,2,west,west11,down
-Texas Tech  ,3,152.2956551,0.967081638,16,41,1,1,2,west,west3,
-Northern Kentucky  ,14,73.95365507,0.032918362,17,42,1,0,2,west,west14,up
-Nevada  ,7,110.0421845,0.482646011,19,44,1,1,2,west,west7,
-Florida  ,10,118.5389884,0.517353989,20,45,1,0,2,west,west10,down
-Michigan  ,2,153.9655199,0.976101903,22,47,1,1,2,west,west2,
-Montana  ,15,67.32865507,0.023898097,23,48,1,0,2,west,west15,up
-Gonzaga  ,1,146.322628,0.867467482,2.5,27.5,2,1,2,west,west1,
-Syracuse  ,8,105.7777727,0.132532518,3.5,28.5,2,0,2,west,west8,down
-Marquette  ,5,96.83065507,0.404163923,8.5,33.5,2,1,2,west,west5,
-Florida State  ,4,113.3500875,0.595836077,9.5,34.5,2,0,2,west,west4,up
-Buffalo  ,6,94.8459884,0.117729381,14.5,39.5,2,1,2,west,west6,
-Texas Tech  ,3,152.2956551,0.882270619,15.5,40.5,2,0,2,west,west3,down
-Florida  ,10,118.5389884,0.242460857,20.5,45.5,2,1,2,west,west10,
-Michigan  ,2,153.9655199,0.757539143,21.5,46.5,2,0,2,west,west2,up
-Gonzaga  ,1,146.322628,0.828912239,5.5,30.5,3,1,2,west,west1,
-Florida State  ,4,113.3500875,0.171087761,6.5,31.5,3,0,2,west,west4,down
-Texas Tech  ,3,152.2956551,0.550269153,17.5,42.5,3,1,2,west,west3,
-Michigan  ,2,153.9655199,0.449730847,18.5,43.5,3,0,2,west,west2,up
-Gonzaga  ,1,146.322628,0.507702867,11.5,36.5,4,1,2,west,west1,
-Texas Tech  ,3,152.2956551,0.492297133,12.5,37.5,4,1,2,west,west3,
-Gonzaga  ,1,146.322628,0.558449777,1,101,1,1,2,west,west1,
-Virginia  ,1,171.272234,0.993947269,1,51,1,1,3,south,south1,
-Gardner-Webb  ,16,49.60965507,0.006052731,2,52,1,0,3,south,south16,down
-Mississippi  ,8,84.60641264,0.393068634,4,54,1,1,3,south,south8,
-Oklahoma  ,9,102.291008,0.606931366,5,55,1,0,3,south,south9,up
-Wisconsin  ,5,131.6871257,0.67465539,7,57,1,1,3,south,south5,
-Oregon  ,12,120.076813,0.32534461,8,58,1,0,3,south,south12,down
-Kansas State  ,4,133.2657727,0.855103128,10,60,1,1,3,south,south4,
-UC-Irvine  ,13,95.32757398,0.144896872,11,61,1,0,3,south,south13,up
-Villanova  ,6,103.2557662,0.505822307,13,63,1,1,3,south,south6,
-Saint Mary's (CA)  ,11,109.4181845,0.494177693,14,64,1,0,3,south,south11,down
-Purdue  ,3,121.3196551,0.754328038,16,66,1,1,3,south,south3,
-Old Dominion  ,14,99.82865507,0.245671962,17,67,1,0,3,south,south14,up
-Cincinnati  ,7,120.4316551,0.866446359,19,69,1,1,3,south,south7,
-Iowa  ,10,80.10965507,0.133553641,20,70,1,0,3,south,south10,down
-Tennessee  ,2,113.479601,0.91526227,22,72,1,1,3,south,south2,
-Colgate  ,15,60.32565507,0.08473773,23,73,1,0,3,south,south15,up
-Virginia  ,1,171.272234,0.952951853,2.5,52.5,2,1,3,south,south1,
-Oklahoma  ,9,102.291008,0.047048147,3.5,53.5,2,0,3,south,south9,down
-Wisconsin  ,5,131.6871257,0.551165745,8.5,58.5,2,1,3,south,south5,
-Kansas State  ,4,133.2657727,0.448834255,9.5,59.5,2,0,3,south,south4,up
-Villanova  ,6,103.2557662,0.389479886,14.5,64.5,2,1,3,south,south6,
-Purdue  ,3,121.3196551,0.610520114,15.5,65.5,2,0,3,south,south3,down
-Cincinnati  ,7,120.4316551,0.632804337,20.5,70.5,2,1,3,south,south7,
-Tennessee  ,2,113.479601,0.367195663,21.5,71.5,2,0,3,south,south2,up
-Virginia  ,1,171.272234,0.863022463,5.5,55.5,3,1,3,south,south1,
-Wisconsin  ,5,131.6871257,0.136977537,6.5,56.5,3,0,3,south,south5,down
-Purdue  ,3,121.3196551,0.575266171,17.5,67.5,3,1,3,south,south3,
-Cincinnati  ,7,120.4316551,0.424733829,18.5,68.5,3,0,3,south,south7,up
-Virginia  ,1,171.272234,0.904863765,11.5,61.5,4,1,3,south,south1,
-Purdue  ,3,121.3196551,0.095136235,12.5,62.5,4,1,3,south,south3,
-Virginia  ,1,171.272234,0.833066563,1,104,1,1,3,south,south1,
-North Carolina  ,1,107.1028773,0.972154077,1,76,1,1,4,midwest,midwest1,
-Iona  ,16,24.41665507,0.027845923,2,77,1,0,4,midwest,midwest16,down
-Utah State  ,8,98.55665507,0.486086851,4,79,1,1,4,midwest,midwest8,
-Washington  ,9,106.7066551,0.513913149,5,80,1,0,4,midwest,midwest9,up
-Auburn  ,5,114.7816551,0.676498484,7,82,1,1,4,midwest,midwest5,
-New Mexico State  ,12,102.9596551,0.323501516,8,83,1,0,4,midwest,midwest12,down
-Kansas  ,4,103.583544,0.857236745,10,85,1,1,4,midwest,midwest4,
-Northeastern  ,13,65.20918448,0.142763255,11,86,1,0,4,midwest,midwest13,up
-Iowa State  ,6,109.6096551,0.606047832,13,88,1,1,4,midwest,midwest6,
-Ohio State  ,11,105.5156551,0.393952168,14,89,1,0,4,midwest,midwest11,down
-Houston  ,3,137.5550605,0.974290444,16,91,1,1,4,midwest,midwest3,
-Georgia State  ,14,52.80418448,0.025709556,17,92,1,0,4,midwest,midwest14,up
-Wofford  ,7,109.0346551,0.824724452,19,94,1,1,4,midwest,midwest7,
-Seton Hall  ,10,76.79836095,0.175275548,20,95,1,0,4,midwest,midwest10,down
-Kentucky  ,2,130.6661956,0.919065894,22,97,1,1,4,midwest,midwest2,
-Abilene Christian  ,15,76.25177271,0.080934106,23,98,1,0,4,midwest,midwest15,up
-North Carolina  ,1,107.1028773,0.570485963,2.5,77.5,2,1,4,midwest,midwest1,
-Washington  ,9,106.7066551,0.429514037,3.5,78.5,2,0,4,midwest,midwest9,down
-Auburn  ,5,114.7816551,0.671050962,8.5,83.5,2,1,4,midwest,midwest5,
-Kansas  ,4,103.583544,0.328949038,9.5,84.5,2,0,4,midwest,midwest4,up
-Iowa State  ,6,109.6096551,0.301104244,14.5,89.5,2,1,4,midwest,midwest6,
-Houston  ,3,137.5550605,0.698895756,15.5,90.5,2,0,4,midwest,midwest3,down
-Wofford  ,7,109.0346551,0.356353834,20.5,95.5,2,1,4,midwest,midwest7,
-Kentucky  ,2,130.6661956,0.643646166,21.5,96.5,2,0,4,midwest,midwest2,up
-North Carolina  ,1,107.1028773,0.490764168,5.5,80.5,3,1,4,midwest,midwest1,
-Auburn  ,5,114.7816551,0.509235832,6.5,81.5,3,0,4,midwest,midwest5,down
-Houston  ,3,137.5550605,0.632220863,17.5,92.5,3,1,4,midwest,midwest3,
-Kentucky  ,2,130.6661956,0.367779137,18.5,93.5,3,0,4,midwest,midwest2,up
-Auburn  ,5,114.7816551,0.346018709,11.5,86.5,4,1,4,midwest,midwest5,
-Houston  ,3,137.5550605,0.653981291,12.5,87.5,4,1,4,midwest,midwest3,
-Houston  ,3,137.5550605,0.166933437,1,105,1,0,4,midwest,midwest3,up
-Gonzaga  ,1,146.322628,0.326724767,,102.5,2,1,5,,,
-Virginia  ,1,171.272234,0.673275233,,103.5,2,1,5,,,
+﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
+Gonzaga,1,0.981506613,1,1,1,1,1,east,east1,
+App State/Norfolk State,16,0.018493387,2,2,1,0,1,east,east16,down
+Oklahoma,8,0.283566952,4,4,1,1,1,east,east8,
+Missouri,9,0.716433048,5,5,1,0,1,east,east9,up
+Creighton,5,0.32393557,7,7,1,1,1,east,east5,
+UC Santa Barbara,12,0.67606443,8,8,1,0,1,east,east12,down
+Virginia,4,0.62107512,10,10,1,1,1,east,east4,
+Ohio,13,0.37892488,11,11,1,0,1,east,east13,up
+Southern California,6,0.738279312,13,13,1,1,1,east,east6,
+Wichita State/Drake,11,0.261720688,14,14,1,0,1,east,east11,down
+Kansas,3,0.907927182,16,16,1,1,1,east,east3,
+Eastern Washington,14,0.092072818,17,17,1,0,1,east,east14,up
+Oregon,7,0.268279564,19,19,1,1,1,east,east7,
+Virginia Commonwealth,10,0.731720436,20,20,1,0,1,east,east10,down
+Iowa,2,0.80450108,22,22,1,1,1,east,east2,
+Grand Canyon,15,0.19549892,23,23,1,0,1,east,east15,up
+Gonzaga,1,0.969670934,2.5,2.5,2,1,1,east,east1,
+Missouri,9,0.030329066,3.5,3.5,2,0,1,east,east8,down
+UC Santa Barbara,12,0.560147969,8.5,8.5,2,1,1,east,east5,
+Virginia,4,0.439852031,9.5,9.5,2,0,1,east,east4,up
+Southern California,6,0.226549507,14.5,14.5,2,1,1,east,east6,
+Kansas,3,0.773450493,15.5,15.5,2,0,1,east,east3,down
+Virginia Commonwealth,10,0.488282185,20.5,20.5,2,1,1,east,east7,
+Iowa,2,0.511717815,21.5,21.5,2,0,1,east,east2,up
+Gonzaga,1,0.894366688,5.5,5.5,3,1,1,east,east1,
+UC Santa Barbara,12,0.105633312,6.5,6.5,3,0,1,east,east4,down
+Kansas,3,0.309230826,17.5,17.5,3,1,1,east,east6,
+Iowa,2,0.690769174,18.5,18.5,3,0,1,east,east2,up
+Gonzaga,1,0.974031401,11.5,11.5,4,1,1,east,east1,
+Iowa,2,0.025968599,12.5,12.5,4,1,1,east,east2,
+Gonzaga,1,0.943030558,1,102,1,0,5,east,east1,down
+Baylor,1,0.888703879,1,26,1,1,2,west,west1,
+Hartford,16,0.111296121,2,27,1,0,2,west,west16,down
+North Carolina,8,0.39005783,4,29,1,1,2,west,west8,
+Wisconsin,9,0.60994217,5,30,1,0,2,west,west9,up
+Villanova,5,0.178935469,7,32,1,1,2,west,west5,
+Winthrop,12,0.821064531,8,33,1,0,2,west,west12,down
+Purdue,4,0.510825223,10,35,1,1,2,west,west4,
+North Texas,13,0.489174777,11,36,1,0,2,west,west13,up
+Texas Tech,6,0.433652509,13,38,1,1,2,west,west6,
+Utah State,11,0.566347491,14,39,1,0,2,west,west11,down
+Arkansas,3,0.443890218,16,41,1,1,2,west,west3,
+Colgate,14,0.556109782,17,42,1,0,2,west,west14,up
+Florida,7,0.381472811,19,44,1,1,2,west,west7,
+Virginia Tech,10,0.618527189,20,45,1,0,2,west,west10,down
+Ohio State,2,0.925144924,22,47,1,1,2,west,west2,
+Oral Roberts,15,0.074855076,23,48,1,0,2,west,west15,up
+Baylor,1,0.958893342,2.5,27.5,2,1,2,west,west1,
+Wisconsin,9,0.041106658,3.5,28.5,2,0,2,west,west8,down
+Winthrop,12,0.836896525,8.5,33.5,2,1,2,west,west5,
+Purdue,4,0.163103475,9.5,34.5,2,0,2,west,west4,up
+Utah State,11,0.056552733,14.5,39.5,2,1,2,west,west6,
+Colgate,14,0.943447267,15.5,40.5,2,0,2,west,west3,down
+Virginia Tech,10,0.171294432,20.5,45.5,2,1,2,west,west10,
+Ohio State,2,0.828705568,21.5,46.5,2,0,2,west,west2,up
+Baylor,1,0.677561754,5.5,30.5,3,1,2,west,west1,
+Winthrop,12,0.322438246,6.5,31.5,3,0,2,west,west4,down
+Colgate,14,0.58655617,17.5,42.5,3,1,2,west,west3,
+Ohio State,2,0.41344383,18.5,43.5,3,0,2,west,west2,up
+Baylor,1,0.756730892,11.5,36.5,4,1,2,west,west1,
+Colgate,14,0.243269108,12.5,37.5,4,1,2,west,west3,
+Baylor,1,0.658192398,1,105,1,0,2,west,west1,up
+Illinois,1,0.858781834,1,51,1,1,3,south,south1,
+Drexel,16,0.141218166,2,52,1,0,3,south,south16,down
+Loyola-Chicago,8,0.383298121,4,54,1,1,3,south,south8,
+Georgia Tech,9,0.616701879,5,55,1,0,3,south,south9,up
+Tennessee,5,0.779614914,7,57,1,1,3,south,south5,
+Oregon State,12,0.220385086,8,58,1,0,3,south,south12,down
+Oklahoma State,4,0.430069891,10,60,1,1,3,south,south4,
+Liberty,13,0.569930109,11,61,1,0,3,south,south13,up
+San Diego State,6,0.636859879,13,63,1,1,3,south,south6,
+Syracuse,11,0.363140121,14,64,1,0,3,south,south11,down
+West Virginia,3,0.771370349,16,66,1,1,3,south,south3,
+Morehead State,14,0.228629651,17,67,1,0,3,south,south14,up
+Clemson,7,0.325707726,19,69,1,1,3,south,south7,
+Rutgers,10,0.674292274,20,70,1,0,3,south,south10,down
+Houston,2,0.893602572,22,72,1,1,3,south,south2,
+Cleveland State,15,0.106397428,23,73,1,0,3,south,south15,up
+Illinois,1,0.719967207,2.5,52.5,2,1,3,south,south1,
+Georgia Tech,9,0.280032793,3.5,53.5,2,0,3,south,south9,down
+Tennessee,5,0.334653355,8.5,58.5,2,1,3,south,south5,
+Liberty,13,0.665346645,9.5,59.5,2,0,3,south,south4,up
+San Diego State,6,0.723907662,14.5,64.5,2,1,3,south,south6,
+West Virginia,3,0.276092338,15.5,65.5,2,0,3,south,south3,down
+Rutgers,10,0.141969334,20.5,70.5,2,1,3,south,south7,
+Houston,2,0.858030666,21.5,71.5,2,0,3,south,south2,up
+Illinois,1,0.725763297,5.5,55.5,3,1,3,south,south1,
+Liberty,13,0.274236703,6.5,56.5,3,0,3,south,south5,down
+San Diego State,6,0.336619085,17.5,67.5,3,1,3,south,south3,
+Houston,2,0.663380915,18.5,68.5,3,0,3,south,south7,up
+Illinois,1,0.457277792,11.5,61.5,4,1,3,south,south1,
+Houston,2,0.542722208,12.5,62.5,4,1,3,south,south3,
+Houston,2,0.341807602,1,104,1,1,3,south,south1,
+Michigan,1,0.974684373,1,76,1,1,4,midwest,midwest1,
+MSM/Texas So,16,0.025315627,2,77,1,0,4,midwest,midwest16,down
+Louisiana State,8,0.143725315,4,79,1,1,4,midwest,midwest8,
+St. Bonaventure,9,0.856274685,5,80,1,0,4,midwest,midwest9,up
+Colorado,5,0.858636074,7,82,1,1,4,midwest,midwest5,
+Georgetown,12,0.141363926,8,83,1,0,4,midwest,midwest12,down
+Florida State,4,0.412962289,10,85,1,1,4,midwest,midwest4,
+UNC Greensboro,13,0.587037711,11,86,1,0,4,midwest,midwest13,up
+Brigham Young,6,0.847593337,13,88,1,1,4,midwest,midwest6,
+Michigan State/UCLA,11,0.152406663,14,89,1,0,4,midwest,midwest11,down
+Texas,3,0.307076792,16,91,1,1,4,midwest,midwest3,
+Abilene Christian,14,0.692923208,17,92,1,0,4,midwest,midwest14,up
+Connecticut,7,0.654867161,19,94,1,1,4,midwest,midwest7,
+Maryland,10,0.345132839,20,95,1,0,4,midwest,midwest10,down
+Alabama,2,0.866253205,22,97,1,1,4,midwest,midwest2,
+Iona,15,0.133746795,23,98,1,0,4,midwest,midwest15,up
+Michigan,1,0.725680557,2.5,77.5,2,1,4,midwest,midwest1,
+St. Bonaventure,9,0.274319443,3.5,78.5,2,0,4,midwest,midwest9,down
+Colorado,5,0.358768941,8.5,83.5,2,1,4,midwest,midwest5,
+UNC Greensboro,13,0.641231059,9.5,84.5,2,0,4,midwest,midwest4,up
+Brigham Young,6,0.201883279,14.5,89.5,2,1,4,midwest,midwest6,
+Abilene Christian,14,0.798116721,15.5,90.5,2,0,4,midwest,midwest3,down
+Connecticut,7,0.1461348,20.5,95.5,2,1,4,midwest,midwest7,
+Alabama,2,0.8538652,21.5,96.5,2,0,4,midwest,midwest2,up
+Michigan,1,0.358768941,5.5,80.5,3,1,4,midwest,midwest1,
+UNC Greensboro,13,0.641231059,6.5,81.5,3,0,4,midwest,midwest5,down
+Alabama,2,0.201883279,17.5,92.5,3,1,4,midwest,midwest3,
+Abilene Christian,14,0.798116721,18.5,93.5,3,0,4,midwest,midwest2,up
+Michigan,1,0.589870134,11.5,86.5,4,1,4,midwest,midwest5,
+Abilene Christian,14,0.410129866,12.5,87.5,4,1,4,midwest,midwest3,
+Michigan,1,0.056969442,1,101,1,1,4,midwest,midwest3,
+Gonzaga,1,0.643524482,,102.5,2,1,5,,,
+Baylor,1,0.356475518,,103.5,2,1,5,,,

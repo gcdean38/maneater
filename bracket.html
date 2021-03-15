@@ -27,7 +27,7 @@
             .domain([0,100])
             .range(["#b3b5ff","#0008ff"])
         var formatDecimal = d3.format(".1f")
-        d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/bracketDataPredictive.csv", function(error, data) {
+        d3.csv("MarchMadness.csv", function(error, data) {
             data.forEach(function(d) {
                 d.seed = +d.seed;
             d.position = +d.newPos*30;
@@ -110,10 +110,10 @@ const bracket = g.append("g")
       //regions
 
       regions = [
-  {region: "EAST",x: 720,   position: 12.5*30+10},
-  {region: "WEST",x: 720,  position: 37.5*30+10},
-  {region: "SOUTH",x: 720, position: 62.5*30+10},
-  {region: "MIDWEST",x: 700, position:87.5*30+10},
+  {region: "WEST",x: 700,   position: 12.5*30+10},
+  {region: "SOUTH",x: 700,  position: 37.5*30+10},
+  {region: "MIDWEST",x: 700, position: 62.5*30+10},
+  {region: "EAST",x: 700, position:87.5*30+10},
   {region: "FINAL FOUR",x: 850, position: 103.5*30+12}
 ]
       console.log(regions)
