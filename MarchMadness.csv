@@ -1,14 +1,14 @@
 ﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
 Gonzaga,1,0.981506613,1,1,1,1,1,east,east1,
-App State/Norfolk State,16,0.018493387,2,2,1,0,1,east,east16,down
+Norfolk State,16,0.018493387,2,2,1,0,1,east,east16,down
 Oklahoma,8,0.283566952,4,4,1,1,1,east,east8,
 Missouri,9,0.716433048,5,5,1,0,1,east,east9,up
 Creighton,5,0.32393557,7,7,1,1,1,east,east5,
 UC Santa Barbara,12,0.67606443,8,8,1,0,1,east,east12,down
 Virginia,4,0.62107512,10,10,1,1,1,east,east4,
 Ohio,13,0.37892488,11,11,1,0,1,east,east13,up
-Southern California,6,0.738279312,13,13,1,1,1,east,east6,
-Wichita State/Drake,11,0.261720688,14,14,1,0,1,east,east11,down
+Southern California,6,0.136500592,13,13,1,1,1,east,east6,
+Drake,11,0.863499408,14,14,1,0,1,east,east11,down
 Kansas,3,0.907927182,16,16,1,1,1,east,east3,
 Eastern Washington,14,0.092072818,17,17,1,0,1,east,east14,up
 Oregon,7,0.268279564,19,19,1,1,1,east,east7,
@@ -19,16 +19,16 @@ Gonzaga,1,0.969670934,2.5,2.5,2,1,1,east,east1,
 Missouri,9,0.030329066,3.5,3.5,2,0,1,east,east8,down
 UC Santa Barbara,12,0.560147969,8.5,8.5,2,1,1,east,east5,
 Virginia,4,0.439852031,9.5,9.5,2,0,1,east,east4,up
-Southern California,6,0.226549507,14.5,14.5,2,1,1,east,east6,
-Kansas,3,0.773450493,15.5,15.5,2,0,1,east,east3,down
+Drake,11,0.790524116,14.5,14.5,2,1,1,east,east6,
+Kansas,3,0.209475884,15.5,15.5,2,0,1,east,east3,down
 Virginia Commonwealth,10,0.488282185,20.5,20.5,2,1,1,east,east7,
 Iowa,2,0.511717815,21.5,21.5,2,0,1,east,east2,up
 Gonzaga,1,0.894366688,5.5,5.5,3,1,1,east,east1,
 UC Santa Barbara,12,0.105633312,6.5,6.5,3,0,1,east,east4,down
-Kansas,3,0.309230826,17.5,17.5,3,1,1,east,east6,
-Iowa,2,0.690769174,18.5,18.5,3,0,1,east,east2,up
-Gonzaga,1,0.974031401,11.5,11.5,4,1,1,east,east1,
-Iowa,2,0.025968599,12.5,12.5,4,1,1,east,east2,
+Drake,11,0.730695802,17.5,17.5,3,1,1,east,east6,
+Iowa,2,0.269304198,18.5,18.5,3,0,1,east,east2,up
+Gonzaga,1,0.733044849,11.5,11.5,4,1,1,east,east1,
+Drake,11,0.266955151,12.5,12.5,4,1,1,east,east2,
 Gonzaga,1,0.943030558,1,102,1,0,5,east,east1,down
 Baylor,1,0.888703879,1,26,1,1,2,west,west1,
 Hartford,16,0.111296121,2,27,1,0,2,west,west16,down
@@ -93,7 +93,7 @@ Illinois,1,0.457277792,11.5,61.5,4,1,3,south,south1,
 Houston,2,0.542722208,12.5,62.5,4,1,3,south,south3,
 Houston,2,0.341807602,1,104,1,1,3,south,south1,
 Michigan,1,0.974684373,1,76,1,1,4,midwest,midwest1,
-MSM/Texas So,16,0.025315627,2,77,1,0,4,midwest,midwest16,down
+Texas Southern,16,0.025315627,2,77,1,0,4,midwest,midwest16,down
 Louisiana State,8,0.143725315,4,79,1,1,4,midwest,midwest8,
 St. Bonaventure,9,0.856274685,5,80,1,0,4,midwest,midwest9,up
 Colorado,5,0.858636074,7,82,1,1,4,midwest,midwest5,
