@@ -92,16 +92,16 @@ Houston,2,0.663380915,18.5,68.5,3,0,3,south,south7,up
 Illinois,1,0.457277792,11.5,61.5,4,1,3,south,south1,
 Houston,2,0.542722208,12.5,62.5,4,1,3,south,south3,
 Houston,2,0.341807602,1,104,1,1,3,south,south1,
-Michigan,1,0.974684373,1,76,1,1,4,midwest,midwest1,
-Texas Southern,16,0.025315627,2,77,1,0,4,midwest,midwest16,down
+Michigan,1,0.97324456,1,76,1,1,4,midwest,midwest1,
+Texas Southern,16,0.02675544,2,77,1,0,4,midwest,midwest16,down
 Louisiana State,8,0.143725315,4,79,1,1,4,midwest,midwest8,
 St. Bonaventure,9,0.856274685,5,80,1,0,4,midwest,midwest9,up
 Colorado,5,0.858636074,7,82,1,1,4,midwest,midwest5,
 Georgetown,12,0.141363926,8,83,1,0,4,midwest,midwest12,down
 Florida State,4,0.412962289,10,85,1,1,4,midwest,midwest4,
 UNC Greensboro,13,0.587037711,11,86,1,0,4,midwest,midwest13,up
-Brigham Young,6,0.847593337,13,88,1,1,4,midwest,midwest6,
-Michigan State/UCLA,11,0.152406663,14,89,1,0,4,midwest,midwest11,down
+Brigham Young,6,0.824769771,13,88,1,1,4,midwest,midwest6,
+UCLA,11,0.175230229,14,89,1,0,4,midwest,midwest11,down
 Texas,3,0.307076792,16,91,1,1,4,midwest,midwest3,
 Abilene Christian,14,0.692923208,17,92,1,0,4,midwest,midwest14,up
 Connecticut,7,0.654867161,19,94,1,1,4,midwest,midwest7,
