@@ -1,0 +1,31 @@
+﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
+Gonzaga,1,0.903265815,1,1,1,1,1,east,east1,
+Creighton,5,0.096734185,2,2,1,0,1,east,east16,down
+Southern California,6,0.293764938,4,4,1,1,1,east,east8,
+Oregon,7,0.706235062,5,5,1,0,1,east,east9,up
+Michigan,1,0.891244724,7,7,1,1,1,east,east5,
+Florida State,4,0.108755276,8,8,1,0,1,east,east12,down
+UCLA,11,0.059090445,10,10,1,1,1,east,east4,
+Alabama,2,0.940909555,11,11,1,0,1,east,east13,up
+Baylor,1,0.955359809,13,13,1,1,1,east,east6,
+Villanova,5,0.044640191,14,14,1,0,1,east,east11,down
+Arkansas,3,0.933314506,16,16,1,1,1,east,east3,
+Oral Roberts,15,0.066685494,17,17,1,0,1,east,east14,up
+Loyola Chicago,8,0.818169908,19,19,1,1,1,east,east7,
+Oregon State,12,0.181830092,20,20,1,0,1,east,east10,down
+Syracuse,11,0.137368397,22,22,1,1,1,east,east2,
+Houston,2,0.862631603,23,23,1,0,1,east,east15,up
+Gonzaga,1,0.878427466,2.5,2.5,2,1,1,east,east1,
+Oregon,7,0.121572534,3.5,3.5,2,0,1,east,east8,down
+Michigan,1,0.81446414,8.5,8.5,2,1,1,east,east5,
+Alabama,2,0.18553586,9.5,9.5,2,0,1,east,east4,up
+Baylor,1,0.895733664,14.5,14.5,2,1,1,east,east6,
+Arkansas,3,0.104266336,15.5,15.5,2,0,1,east,east3,down
+Loyola Chicago,8,0.31582344,20.5,20.5,2,1,1,east,east7,
+Houston,2,0.68417656,21.5,21.5,2,0,1,east,east2,up
+Gonzaga,1,0.943030558,5.5,5.5,3,1,1,east,east1,
+Michigan,1,0.056969442,6.5,6.5,3,0,1,east,east4,down
+Baylor,1,0.658192398,17.5,17.5,3,1,1,east,east6,
+Houston,2,0.341807602,18.5,18.5,3,0,1,east,east2,up
+Gonzaga,1,0.643524482,11.5,11.5,4,1,1,east,east1,
+Baylor,1,0.356475518,12.5,12.5,4,1,1,east,east2,
