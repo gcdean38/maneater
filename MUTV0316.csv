@@ -1,0 +1,127 @@
+﻿team,seed,,position,newPos,round,favorite,regionVal,region,rs,direction
+Olives,1,,1,1,1,1,1,east,east1,
+Pickles,16,,2,2,1,0,1,east,east16,down
+Mayo,8,,4,4,1,1,1,east,east8,
+Mushrooms,9,,5,5,1,0,1,east,east9,up
+Sour cream,5,,7,7,1,1,1,east,east5,
+Black licorice,12,,8,8,1,0,1,east,east12,down
+Cream cheese,4,,10,10,1,1,1,east,east4,
+Zucchini,13,,11,11,1,0,1,east,east13,up
+Lima beans,6,,13,13,1,1,1,east,east6,
+Beets,11,,14,14,1,0,1,east,east11,down
+Cilantro,3,,16,16,1,1,1,east,east3,
+Squash,14,,17,17,1,0,1,east,east14,up
+Spinach,7,,19,19,1,1,1,east,east7,
+Salmon,10,,20,20,1,0,1,east,east10,down
+Ketchup,2,,22,22,1,1,1,east,east2,
+Tuna,15,,23,23,1,0,1,east,east15,up
+Pickles,1,,2.5,2.5,2,1,1,east,east1,
+Mayo,8,,3.5,3.5,2,0,1,east,east8,down
+Sour cream,5,,8.5,8.5,2,1,1,east,east5,
+Cream cheese,4,,9.5,9.5,2,0,1,east,east4,up
+Lima beans,6,,14.5,14.5,2,1,1,east,east6,
+Cilantro,3,,15.5,15.5,2,0,1,east,east3,down
+Salmon,10,,20.5,20.5,2,1,1,east,east7,
+Ketchup,2,,21.5,21.5,2,0,1,east,east2,up
+Pickles,16,,5.5,5.5,3,1,1,east,east1,
+Cream cheese,4,,6.5,6.5,3,0,1,east,east4,down
+Cilantro,3,,17.5,17.5,3,1,1,east,east6,
+Salmon,10,,18.5,18.5,3,0,1,east,east2,up
+Cream cheese,4,,11.5,11.5,4,1,1,east,east1,
+Salmon,10,,12.5,12.5,4,1,1,east,east2,
+Cream cheese,4,,1,102,1,0,5,east,east1,down
+Bleu cheese,1,,1,26,1,1,2,west,west1,
+Asparagus,16,,2,27,1,0,2,west,west16,down
+Peanut butter,8,,4,29,1,1,2,west,west8,
+Almonds,9,,5,30,1,0,2,west,west9,up
+Oatmeal,5,,7,32,1,1,2,west,west5,
+Cottage Cheese,12,,8,33,1,0,2,west,west12,down
+Greek Yogurt,4,,10,35,1,1,2,west,west4,
+Bananas,13,,11,36,1,0,2,west,west13,up
+Pineapple,6,,13,38,1,1,2,west,west6,
+Dark chocolate,11,,14,39,1,0,2,west,west11,down
+Mustard,3,,16,41,1,1,2,west,west3,
+Gogurt,14,,17,42,1,0,2,west,west14,up
+String cheese,7,,19,44,1,1,2,west,west7,
+Diet Coke,10,,20,45,1,0,2,west,west10,down
+Hard boiled eggs,2,,22,47,1,1,2,west,west2,
+Tomato juice,15,,23,48,1,0,2,west,west15,up
+Asparagus,16,,2.5,27.5,2,1,2,west,west1,
+Almonds,9,,3.5,28.5,2,0,2,west,west8,down
+Oatmeal,5,,8.5,33.5,2,1,2,west,west5,
+Bananas,13,,9.5,34.5,2,0,2,west,west4,up
+Pineapple,6,,14.5,39.5,2,1,2,west,west6,
+Gogurt,14,,15.5,40.5,2,0,2,west,west3,down
+Diet Coke,10,,20.5,45.5,2,1,2,west,west10,
+Hard boiled eggs,2,,21.5,46.5,2,0,2,west,west2,up
+Asparagus,16,,5.5,30.5,3,1,2,west,west1,
+Oatmeal,5,,6.5,31.5,3,0,2,west,west4,down
+Pineapple,6,,17.5,42.5,3,1,2,west,west3,
+Diet Coke,10,,18.5,43.5,3,0,2,west,west2,up
+Oatmeal,5,,11.5,36.5,4,1,2,west,west1,
+Pineapple,6,,12.5,37.5,4,1,2,west,west3,
+Pineapple,6,,1,105,1,0,2,west,west1,up
+Cherry tomatoes,1,,1,51,1,1,3,south,south1,
+Jelly beans,16,,2,52,1,0,3,south,south16,down
+Jello,8,,4,54,1,1,3,south,south8,
+Pudding,9,,5,55,1,0,3,south,south9,up
+Rice Cakes,5,,7,57,1,1,3,south,south5,
+Ramen,12,,8,58,1,0,3,south,south12,down
+Brussell Sprouts,4,,10,60,1,1,3,south,south4,
+Candy Corn,13,,11,61,1,0,3,south,south13,up
+Hot dogs,6,,13,63,1,1,3,south,south6,
+Celery,11,,14,64,1,0,3,south,south11,down
+Marshmallows,3,,16,66,1,1,3,south,south3,
+Peeps,14,,17,67,1,0,3,south,south14,up
+Hummus,7,,19,69,1,1,3,south,south7,
+Tofu,10,,20,70,1,0,3,south,south10,down
+Garbanzo beans,2,,22,72,1,1,3,south,south2,
+Sushi,15,,23,73,1,0,3,south,south15,up
+Cherry tomatoes,1,,2.5,52.5,2,1,3,south,south1,
+Pudding,9,,3.5,53.5,2,0,3,south,south9,down
+Ramen,5,,8.5,58.5,2,1,3,south,south5,
+Brussell Sprouts,4,,9.5,59.5,2,0,3,south,south4,up
+Hot dogs,6,,14.5,64.5,2,1,3,south,south6,
+Peeps,14,,15.5,65.5,2,0,3,south,south3,down
+Hummus,7,,20.5,70.5,2,1,3,south,south7,
+Sushi,15,,21.5,71.5,2,0,3,south,south2,up
+Pudding,9,,5.5,55.5,3,1,3,south,south1,
+Brussell Sprouts,4,,6.5,56.5,3,0,3,south,south5,down
+Peeps,14,,17.5,67.5,3,1,3,south,south3,
+Sushi,15,,18.5,68.5,3,0,3,south,south7,up
+Brussell Sprouts,4,,11.5,61.5,4,1,3,south,south1,
+Sushi,15,,12.5,62.5,4,1,3,south,south3,
+Brussell Sprouts,4,,1,104,1,1,3,south,south1,
+Okra,1,,1,76,1,1,4,midwest,midwest1,
+Brie,16,,2,77,1,0,4,midwest,midwest16,down
+Salami,8,,4,79,1,1,4,midwest,midwest8,
+Eggplant,9,,5,80,1,0,4,midwest,midwest9,up
+Balogna,5,,7,82,1,1,4,midwest,midwest5,
+Ginger,12,,8,83,1,0,4,midwest,midwest12,down
+Wasabi,4,,10,85,1,1,4,midwest,midwest4,
+Bell peppers,13,,11,86,1,0,4,midwest,midwest13,up
+Cantaloupe,6,,13,88,1,1,4,midwest,midwest6,
+Broccoli,11,,14,89,1,0,4,midwest,midwest11,down
+Peas,3,,16,91,1,1,4,midwest,midwest3,
+Kiwi,14,,17,92,1,0,4,midwest,midwest14,up
+Baked beans,7,,19,94,1,1,4,midwest,midwest7,
+Whole milk,10,,20,95,1,0,4,midwest,midwest10,down
+Whole wheat bread,2,,22,97,1,1,4,midwest,midwest2,
+White bread,15,,23,98,1,0,4,midwest,midwest15,up
+Brie,16,,2.5,77.5,2,1,4,midwest,midwest1,
+Eggplant,9,,3.5,78.5,2,0,4,midwest,midwest9,down
+Ginger,12,,8.5,83.5,2,1,4,midwest,midwest5,
+Bell peppers,13,,9.5,84.5,2,0,4,midwest,midwest4,up
+Broccoli,11,,14.5,89.5,2,1,4,midwest,midwest6,
+Kiwi,14,,15.5,90.5,2,0,4,midwest,midwest3,down
+Whole milk,10,,20.5,95.5,2,1,4,midwest,midwest7,
+Whole wheat bread,15,,21.5,96.5,2,0,4,midwest,midwest2,up
+Brie,16,,5.5,80.5,3,1,4,midwest,midwest1,
+Bell peppers,13,,6.5,81.5,3,0,4,midwest,midwest5,down
+Broccoli,11,,17.5,92.5,3,1,4,midwest,midwest3,
+Whole wheat bread,15,,18.5,93.5,3,0,4,midwest,midwest2,up
+Brie,16,,11.5,86.5,4,1,4,midwest,midwest5,
+Broccoli,11,,12.5,87.5,4,1,4,midwest,midwest3,
+Broccoli,11,,1,101,1,1,4,midwest,midwest3,
+Cream cheese,4,,,102.5,2,1,5,,,
+Pineapple,6,,,103.5,2,1,5,,,
