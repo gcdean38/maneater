@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>d3 Updating Bar Chart With Dropdown</title>
+        <title>AA Bill</title>
         <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <style>
-        body {
+               body {
             font: 10px sans-serif;
         }
         select {
@@ -21,6 +21,42 @@
             fill: none;
             stroke: #000;
             shape-rendering: crispEdges;
+        }
+
+        text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
         }
         </style>
     </head>
@@ -153,14 +189,9 @@
     .attr("x",width/2)
     .attr("y",height*.0-30)
     .attr('text-anchor',"middle")
-    .text("Lead in Water by Ward")
+    .text("Asian American Population in Missouri")
 
-    canvas.append("text")
-    .attr("class","subtitle")
-    .attr("x",width/2)
-    .attr("y",height*0-10)
-    .attr('text-anchor',"middle")
-    .text("Percent of homes in each ward with varying concentrations of lead in water")
+   
     canvas.append("line")
 .attr("x1",0)
 .attr("x2",width)
@@ -192,7 +223,7 @@ canvas.append('text')
 		.attr('text-anchor', 'start')
         .style("fill","blue")
         .style("text-decoration","underline")
-		.text('FlintWaterStudy.org')
+		.text('Multiple Sources')
 
 		canvas.append('text')
 		.attr('class', 'sources')
@@ -202,17 +233,7 @@ canvas.append('text')
         .style("fill","black")
 		.text(', 2020.')
 
-	canvas.append("a")
-    .attr("xlink:href", "http://i0.wp.com/flintwaterstudy.org/wp-content/uploads/2015/09/Flint-Ward-Map_252-989x1280-2.jpg" )
-    .attr("target","_blank")
-    .append("rect")  
-    .attr('y', height*1.15-12)
-	.attr('x', width*.04)
-    .attr("height", 9)
-    .attr("width",width*.275- width*.08)
-    .style("fill", "white")
-    .style("opacity",.0)
-    .style("stroke","black")
+	
             };
         </script>
     </body>
