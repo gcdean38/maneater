@@ -86,7 +86,7 @@
                 // Define dimensions of vis
                 var margin = { top: 30, right: 50, bottom: 50, left: 50 },
                     width  = 550 - margin.left - margin.right,
-                    height = 260 - margin.top  - margin.bottom;
+                    height = 250 - margin.top  - margin.bottom;
 
                 // Make x scale
                 var xScale = d3.scale.ordinal()
@@ -133,7 +133,7 @@
 
                 var updateBars = function(data) {
                     // First update the y-axis domain to match data
-                    yScale.domain([0,1]);
+                    yScale.domain([0,100]);
                     yAxisHandleForUpdate.call(yAxis);
 
                     var bars = canvas.selectAll(".bar").data(data);
@@ -177,9 +177,9 @@
                   .enter().append("option")
                     .attr("value", function (d) { return d; })
                     .text(function (d) {
-                        return d[0].toUpperCase() + d.slice(1,d.length); // capitalize 1st letter
+                        return d[0] + d.slice(1,d.length);; // capitalize 1st letter
                     });
-
+console.log(cereals)
                 var initialData = cerealMap[ cereals[0] ];
                 updateBars(initialData);
 
@@ -203,7 +203,7 @@
 
 canvas.append("text")
 		.attr('class', 'byline')
-		.attr('y', height*1.16)
+		.attr('y', height*1.17)
 		.attr('x', width)
 		.attr('text-anchor', "end")
     .text('GEOFFREY DEAN/ASST. GRAPHICS EDITOR')
@@ -211,22 +211,22 @@ canvas.append("text")
    
 canvas.append("text")
 .attr("class","source")
-.attr('y', height*1.16)
+.attr('y', height*1.17)
 .attr("x",0)
 .attr('text-anchor',"start")
 .text("Source: ")
 
 canvas.append('text')
 		.attr('class', 'sources')
-		.attr('y', height*1.16)
+		.attr('y', height*1.17)
 		.attr('x', width*.08)
 		.attr('text-anchor', 'start')
 
-		.text('Multiple Sources')
+		.text('Multiple sources')
 
 		canvas.append('text')
 		.attr('class', 'sources')
-		.attr('y', height*1.16)
+		.attr('y', height*1.17)
 		.attr('x', width*.245)
 		.attr('text-anchor', 'start')
         .style("fill","black")
