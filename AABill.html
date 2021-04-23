@@ -5,15 +5,6 @@
         <title>AA Bill</title>
         <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <style>
-            p {
-                font-size: 24px;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            text-decoration: underline;
-            font-weight: bold;
-            text-anchor: middle;
-            text-indent: 50px;
-            
-            }
                body {
             font: 10px sans-serif;
         }
@@ -69,15 +60,13 @@
         }
         </style>
     </head>
-   
-   <p id="selected-dropdown" class="title">  </p>
     <body>
         <div id='vis-container'></div>
         <script type="text/javascript">
             // Load and munge data, then make the visualization.
             var fileName = "AABill.csv";
-            var nutritionFields = ["American Indian", "Asian", "Black", "Hisp/Latino", "Pac. Islander",
-                                   "Two+ races", "White"];
+            var nutritionFields = ["American Indian", "Asian", "Black", "Hispanic", "PI",
+                                   "Multi", "White"];
 
             d3.csv(fileName, function(error, data) {
                 var cerealMap = {};
@@ -181,17 +170,7 @@
 
                 var dropdown = d3.select("#vis-container")
                     .insert("select", "svg")
-                    .attr("id","d3-dropdown")
                     .on("change", dropdownChange);
-
-                    d3.select("#selected-dropdown").text("Asian American Population: Missouri");
-
-d3.select("select")
-  .on("change",function(d){
-    var selected = d3.select("#d3-dropdown").node().value;
-    console.log( selected );
-    d3.select("#selected-dropdown").text("Asian American Population: " + selected);
-})
 
                 dropdown.selectAll("option")
                     .data(cereals)
@@ -204,13 +183,13 @@ console.log(cereals)
                 var initialData = cerealMap[ cereals[0] ];
                 updateBars(initialData);
 
-          
-  /*              canvas.append("text")
+
+                canvas.append("text")
     .attr("class","title")
     .attr("x",width/2)
     .attr("y",height*.0-5)
     .attr('text-anchor',"middle")
-    .text("Asian American Population in Missouri")*/
+    .text("Population by Race")
 
    
     canvas.append("line")
