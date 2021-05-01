@@ -30,9 +30,7 @@
         pointer-events: none;         
     }
     .bar { fill: steelblue; }
-    path:hover {
-        stroke-width: 4px;
-    }
+
     
     .legend-axis path{
         stroke: black;
@@ -69,7 +67,7 @@
             }
     
             text.labels {
-                font-size: 28px;
+                font-size: 16px;
                 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     
             }
@@ -82,7 +80,7 @@
 <script>
 
     // set the dimensions and margins of the graph
-    var margin = {top: 50, right: 30, bottom: 40, left: 60},
+    var margin = {top: 50, right: 30, bottom: 80, left: 60},
         width = 500 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
     
@@ -122,8 +120,14 @@
           .attr("cx", function (d) { return x(d.total); } )
           .attr("cy", function (d) { return y(d.zscore); } )
           .attr("r", 2.5)
-          .style("fill", "#69b3a2")
-
+          .style("fill", "navy")
+svg.append("text")
+.attr("class","labels")
+.attr("x",x(-200))
+.attr("y",y(33))
+.attr("text-anchor","middle")
+.attr("transform","rotate(270)")
+.text("Z-Score")
         svg.append("line")
         .attr("x1",x(0))
         .attr('x2',x(550))
@@ -141,15 +145,21 @@
     svg.append("line")
 .attr("x1",0)
 .attr("x2",width)
-.attr('y1', height*1.06)
-.attr('y2', height*1.06)
+.attr('y1', height*1.155)
+.attr('y2', height*1.155)
 .attr("stroke","black")
 .attr("stroke-width","1px")
 
+svg.append("text")
+.attr('x',x(275))
+.attr("y",y(-5.5))
+.text("Number of stops")
+.attr("text-anchor",'middle')
+.attr("class","labels")
 
 svg.append("text")
 		.attr('class', 'byline')
-		.attr('y', height*1.1)
+		.attr('y', height*1.2)
 		.attr('x', width)
 		.attr('text-anchor', "end")
     .text('GEOFFREY DEAN/DATA EDITOR')
@@ -157,14 +167,14 @@ svg.append("text")
    
 svg.append("text")
 .attr("class","source")
-.attr('y', height*1.1)
+.attr('y', height*1.2)
 .attr("x",0)
 .attr('text-anchor',"start")
 .text("Source: ")
 
 svg.append('text')
 		.attr('class', 'sources')
-		.attr('y', height*1.1)
+		.attr('y', height*1.2)
 		.attr('x', width*.08)
 		.attr('text-anchor', 'start')
         //.style("fill","blue")
@@ -173,7 +183,7 @@ svg.append('text')
 
 		svg.append('text')
 		.attr('class', 'sources')
-		.attr('y', height*1.1)
+		.attr('y', height*1.2)
 		.attr('x', width*.235)
 		.attr('text-anchor', 'start')
         .style("fill","black")
