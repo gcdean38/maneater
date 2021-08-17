@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+div.info {   
+ 	position: absolute;           
+	text-align: left;           
+	width: 200px;                  
+	max-height: 100px;                 
+	padding: 05px;             
+	font: 12px serif;        
+	border: solid black 2px;
+
+	    
+	pointer-events: none;         
+}
+  text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+</style>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 50, right: 30, bottom: 40, left: 60},
+        width = 750 - margin.left - margin.right,
+        height = 430 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("LtCdispind.csv", function(data) {
+    
+      // Add X axis
+      var x = d3.scaleBand()
+          .domain(["White","Black","Hispanic","Asian","Other"])
+          .range([0, width])
+          .padding([0.2])
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, 500])
+        .range([ height, 0]);
+      
+    
+      // Add dots
+
+
+
+
+console.log(data)
+
+var f = d3.format(".1f");
+
+
+
+var disparity = svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.Demographic)+50; } )
+          .attr("cy", function (d) { return y(150); } )
+          .attr("r", function(d){return Math.sqrt(+d.ForcePct)*8})
+          .style("fill", "lightblue")
+
+          .style("opacity",1)         
+          
+
+          svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.Demographic)+50; } )
+          .attr("cy", function (d) { return y(150); } )
+          .attr("r", function(d){return Math.sqrt(+d.CoMoPct)*8})
+          .style("fill", "none")
+          .style("fill-opacity",0)
+          .style("stroke","black")
+
+
+
+          
+
+
+svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.4)
+    .attr('text-anchor',"middle")
+    .text("CPD Traffic Stop Racial Disparity Indicies")
+
+    
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.07)
+.attr('y2', height*1.07)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.11)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/DATA EDITOR')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.11)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.11)
+		.attr('x', width*.05)
+		.attr('text-anchor', 'start')
+        //.style("fill","blue")
+        //.style("text-decoration","underline")
+		.text('Columbia Police Department')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.11)
+		.attr('x', width*.23)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2021.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://www.como.gov/police/data-reporting-forms/" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.1-12)
+	.attr('x', width*.05)
+    .attr("height", 9)
+    .attr("width",width*.215- width*.05)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
+          
+    
+    })
+    
+    </script>

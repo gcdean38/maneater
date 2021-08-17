@@ -1,4 +1,4 @@
 ﻿time_frame,poc_fd,white_fd,percent_poc_fd,disparity
-Punishment (June 10-June 23),17,7,0.708333333,1.983333333
-Volunteer (June 24-June 30),11,23,0.323529412,0.905882353
-Res Tours (July 1-EOS),3,9,0.25,0.7
+Punishment,17,7,0.708333333,1.983333333
+Volunteer,11,23,0.323529412,0.905882353
+Res Tours,3,9,0.25,0.7

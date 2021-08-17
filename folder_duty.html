@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+div.info {   
+ 	position: absolute;           
+	text-align: left;           
+	width: 200px;                  
+	max-height: 100px;                 
+	padding: 05px;             
+	font: 12px serif;        
+	border: solid black 2px;
+
+	    
+	pointer-events: none;         
+}
+  text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+
+        }
+
+        text.labels {
+            font-size: 28px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+</style>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 50, right: 30, bottom: 40, left: 60},
+        width = 800 - margin.left - margin.right,
+        height = 430 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    //Read the data
+    d3.csv("LtCdispind.csv", function(data) {
+    
+      // Add X axis
+      var x = d3.scaleBand()
+          .domain(["White","Black","Hispanic","Asian","Other"])
+          .range([0, width])
+          .padding([0.2])
+      svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+    
+      // Add Y axis
+      var y = d3.scaleLinear()
+        .domain([0, 500])
+        .range([ height, 0]);
+      
+    
+      // Add dots
+
+
+
+
+console.log(data)
+var info = d3.select("body").append("div").attr("class", "info")
+.style("left","100px")
+.style("top","58px")
+.style("position","absolute")
+.style("opacity",1)
+.html("Click to see traffic stop data --><hr>Dotted circles are the population for each demographic as a percentage of the Columbia, MO population in 2019.")
+//.style("background","red")
+var f = d3.format(".1f");
+
+var mouseover = function(d){
+info.html("The disparity index for <b>"+(d.Demographic)+"</b> individuals in Columbia, MO was <b>"+f(+d.DispIndex)+"</b> in 2020.<hr>Columbia, MO percent: "+(d.CoMoPct)+"%<br>Traffic stop percent: "+(d.ForcePct)+"%").style("opacity",1)
+}
+
+var click1 = function(d){
+    info.html("The disparity index for <b>"+(d.Demographic)+"</b> individuals in Columbia, MO was <b>"+f(+d.DispIndex)+"</b> in 2020.<hr>Columbia, MO percent: "+(d.CoMoPct)+"%<br>Traffic stop percent: "+(d.ForcePct)+"%").style("opacity",1)
+
+}
+var click = function(d){
+  info.html("Hover over circles for more information.<hr>Sold circles are the population for each demographic as a percentage of the CPD traffic stops in 2019.")
+  disparity.transition().duration(800).style("opacity",1).attr("r", function(d){return Math.sqrt(+d.ForcePct)*8}).style("stroke","black")
+
+}
+var disparity = svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.Demographic)+50; } )
+          .attr("cy", function (d) { return y(200); } )
+          .attr("r", 0)//function(d){return Math.sqrt(d.recorded)*5})
+          .style("fill", "#5A6988")
+          .style("opacity",1)         
+          .on('mouseover',mouseover)
+          
+
+          svg.append('g')
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+          .attr("cx", function (d) { return x(d.Demographic)+50; } )
+          .attr("cy", function (d) { return y(200); } )
+          .attr("r", function(d){return Math.sqrt(+d.CoMoPct)*8})
+          .style("fill", "none")
+          .style("fill-opacity",0)
+          .style("stroke","black")
+          .style("stroke-dasharray",(3,3))
+          .on('mousover',mouseover)
+
+
+          
+          svg.append("text")
+          .attr("x",width/2+50)
+          .attr("y",function(d){return y(500)+25})
+          .text("See Disparities")
+          .attr("text-anchor","middle")
+          svg.append("rect")
+          .attr("x",width/2)
+          .attr("y",function(d){return y(500)})
+          .attr("width",100)
+          .attr("height",40)
+          .on("click",click)
+          .attr("fill","white")
+          .attr("stroke","black")
+          .attr("fill-opacity",0)
+          .attr("stroke-opacity",1)
+
+          svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.0-30)
+    .attr('text-anchor',"middle")
+    .text("Traffic Stop Racial Disparity Indicies")
+
+    
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr('y1', height*1.07)
+.attr('y2', height*1.07)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height*1.11)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/DATA EDITOR')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr('y', height*1.11)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.11)
+		.attr('x', width*.05)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Columbia Police Department')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height*1.11)
+		.attr('x', width*.215)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2021.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://www.como.gov/police/data-reporting-forms/" )
+    .attr("target","_blank")
+    .append("rect")  
+    .attr('y', height*1.1-12)
+	.attr('x', width*.05)
+    .attr("height", 9)
+    .attr("width",width*.215- width*.05)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
+          
+    
+    })
+    
+    </script>
