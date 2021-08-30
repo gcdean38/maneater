@@ -68,33 +68,33 @@
 
 // This exmaple is enlighten by http://bl.ocks.org/mbostock/1087001
 
-var url = 'https://raw.githubusercontent.com/gcdean38/maneater/master/WeathermanColumnData.csv'
+var url = 'operating_margin.csv'
 
 d3.csv(url, function(error, data){
     data.forEach(function (d) {
-      d.cost = +d.cost;
-      d.pctIncrease = +d.pctIncrease
+      d.profit_margin = +d.profit_margin;
+      d.company = d.company
     });
     // console.log(data)
     var margin = {top: 65, bottom: 100, left: 90, right: 30}, axisPadding = 10;
     var Width = 500, Height = 300;
     var svgWidth = Width + margin.left + margin.right,
         svgHeight = Height + margin.top + margin.bottom;
-    var maxCost = d3.max(data, function(d){ return d.cost; });
-    var minCost = d3.min(data, function(d){ return d.cost; });
+    var max_profit_margin = d3.max(data, function(d){ return d.profit_margin; });
+    var min_profit_margin = d3.min(data, function(d){ return d.profit_margin; });
     
-    var formatPct = d3.format(".2%")
-    var formatMon = function(d) { return "$" + d3.format(".0f")(d); } 
+    // var formatPct = d3.format(".2%")
+    // var formatMon = function(d) { return "$" + d3.format(".0f")(d); } 
     // define scales and axises
     var xScale = d3.scale.ordinal()
-        .domain(data.map(function(d){ return d.year; }))
+        .domain(data.map(function(d){ return d.company; }))
         .rangeBands([0, Width], 0.1);
     var yScale = d3.scale.linear()
-        .domain([250, 310])
+        .domain([0, .40])
         .range([0, Height]);
 
     var color = d3.scale.linear()
-    .domain([minCost,maxCost])
+    .domain([min_profit_margin,max_profit_margin])
     .range(['#E3242B',"maroon"]);
     
     var xAxis = d3.svg.axis()
@@ -102,7 +102,7 @@ d3.csv(url, function(error, data){
         .tickSize(0,0)
         .orient('bottom');
     var yAxis = d3.svg.axis()
-        .scale(yScale.copy().domain([310, 250]))
+        .scale(yScale.copy().domain([40, 0]))
         .tickSize(6,0)
         .ticks(5)
         .tickFormat(function(d) { return "$" + d3.format(".0f")(d); } )
@@ -158,15 +158,15 @@ d3.csv(url, function(error, data){
         .data(data)
         .enter()
         .append('g')
-        .attr('transform', function(d,i){ return 'translate(' + [xScale(d.year), -1 * yScale(d.cost)] + ')'; });
+        .attr('transform', function(d,i){ return 'translate(' + [xScale(d.company), -1 * yScale(d.profit_margin)] + ')'; });
     bars.append('rect')
         .each(function(d,i){
             d3.select(this).attr({
                 fill: function(d){
-                return color(d.cost)
+                return color(d.profit_margin)
             },
                 width: xScale.rangeBand(),
-                height: yScale(d.cost),
+                height: yScale(d.profit_margin),
             })
         })
         .on('mouseover', mouseover)
@@ -174,11 +174,11 @@ d3.csv(url, function(error, data){
         .on('mouseout', mouseout);
     
     bars.append('text')
-    .text(function(d){ return d.cost; })
+    .text(function(d){ return d.profit_margin; })
     .each(function(d,i){
         d3.select(this).attr({
             fill: function(d){
-                return color(d.cost)
+                return color(d.profit_margin)
             },
             stroke: 'none',
             x: xScale.rangeBand() / 2,
@@ -266,8 +266,7 @@ svg.append("a")
     function mousemove(){
         var d = d3.select(this).data()[0]
         div
-            .html("<b><u>Year: "+d.year + '</b></u><br/>Cost: ' + formatMon(d.cost)+
-            "/hour <i>(+"+formatPct(d.pctIncrease)+")</i>")
+            .html("<b><u>Year: "+d.company + '</b></u><br/>Profit Margin: ' + (d.profit_margin)*100+"%")
             .style('left', (d3.event.pageX - 34) + 'px')
             .style('top', (d3.event.pageY - 12) + 'px');
     }
