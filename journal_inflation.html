@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+  </head>
+  <title> Productivity and Wages over Time</title>
+<style> /* set the CSS */
+
+.line {
+  fill: none;
+  }
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 180px;
+  height: 55px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+path:hover {
+	stroke-width: 4px;
+}
+
+.legend-axis path{
+    stroke: black;
+    display: none;
+}
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+        }
+        text.label {
+            font-family: sans-serif;
+font-size: 12px;
+text-anchor: end;
+        }
+</style>
+<body>
+
+<!-- load the d3.js library -->    	
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 70, right: 20, bottom: 40, left: 50},
+    width = 700 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+// parse the date / time
+var parseTime = d3.timeParse("%Y");
+var formatTime = d3.timeFormat("%Y");
+var formatNum = d3.format(".2")
+
+// set the ranges
+var x = d3.scaleTime().range([0, width]);
+var y = d3.scaleLinear().range([height, 0]);
+
+// define the line
+var valueline = d3.line()
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.journal_cost_change); });
+
+    var valueline1 = d3.line()
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.inflation_rate); });
+
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
+// append the svg obgect to the body of the page
+// appends a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// Get the data
+d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/journal_inflation.csv", function(error, data) {
+  if (error) throw error;
+
+  // format the data
+  data.forEach(function(d) {
+      d.year = parseTime(d.year);
+      d.journal_cost_change = +d.journal_cost_change;
+      d.inflation_rate = +d.inflation_rate;
+  });
+
+  // scale the range of the data
+  x.domain(d3.extent(data, function(d) { return d.year; }));
+  y.domain([0, d3.max(data, function(d) { return d.journal_cost_change; })]);
+
+  // add the valueline path.
+  svg.append("path")
+     .data([data])
+     .attr("class", "line")
+     .attr("stroke-width","3px")
+     .attr("stroke","red")
+     .attr("d", valueline);
+
+     svg.append("path")
+     .data([data])
+     .attr("class", "line")
+     .attr("stroke-width","3px")
+     .attr("stroke",'blue')
+     .attr("d", valueline1);
+
+
+
+var mouseover = function(d){
+    div.transition()
+         .duration(200)
+         .style("opacity", .9);
+       div.html("<u>Year: "+formatTime(d.year) + "</u><br/>Change in journal cost: " + formatNum(d.journal_cost_change)+
+       "%<br/>Inflation rate: "+formatNum(d.inflation_rate)+"%")
+         .style("left", (d3.event.pageX)-60 + "px")
+         .style("top", (y(d.inflation_rate) - 5) + "px");
+}
+  // add the dots with tooltips
+  svg.selectAll("dot")
+     .data(data)
+   .enter().append("circle")
+     .attr("r", 5)
+     .attr("cx", function(d) { return x(d.year); })
+     .attr("cy", function(d) { return y(d.journal_cost_change); })
+     .attr("opacity",0)
+     .on("mouseover", mouseover)
+     .on("click",mouseover)
+     .on("mouseout", function(d) {
+       div.transition()
+         .duration(500)
+         .style("opacity", 0);
+       });
+
+
+
+       svg.selectAll("dot")
+     .data(data)
+   .enter().append("circle")
+     .attr("r", 5)
+     .attr("cx", function(d) { return x(d.year); })
+     .attr("cy", function(d) { return y(d.inflation_rate); })
+     .attr("opacity",0)
+     .on("mouseover", mouseover)
+     .on("mouseout", function(d) {
+       div.transition()
+         .duration(500)
+         .style("opacity", 0);
+       });
+
+  // add the X Axis
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // add the Y Axis
+  svg.append("g")
+      .call(d3.axisLeft(y))//.tickFormat(d3.format(".0%")));
+
+svg.append("text")
+.attr("class","label")
+.text("Percent of 1948 levels")
+.attr("x",80)
+.attr("y",0)
+
+
+
+	svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",height*.05-60)
+    .attr('text-anchor',"middle")
+    .text("Growth in Wages and Productivity over Time")
+
+svg.append("text")
+.attr("class","label")
+.attr("x",width)
+.attr("y",y(3.529)-5)
+.text("Productivity")
+.attr("text-anchor","end")
+
+svg.append("text")
+.attr("class","label")
+.attr("x",width)
+.attr("y",y(2.1562)-5)
+.text("Wages")
+.attr("text-anchor","end")
+
+    svg.append("line")
+.attr("x1",0)
+.attr("x2",width)
+.attr("y1",height+20)
+.attr("y2",height+20)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height+35)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr("y",height+35)
+.attr("x",0)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height+35)
+		.attr('x', width*.05)
+		.attr('text-anchor', 'start')
+        .style("fill","blue")
+        .style("text-decoration","underline")
+		.text('Economic Politcy Institute')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height+35)
+		.attr('x', width*.22)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2021.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://www.epi.org/productivity-pay-gap/")
+    .attr("target","_blank")
+
+    .append("rect")  
+    .attr('y', height+27)
+	.attr('x', width*.05)
+    .attr("height", 9)
+    .attr("width",width*.22- width*.05)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
+});
+
+</script>
+</body>
