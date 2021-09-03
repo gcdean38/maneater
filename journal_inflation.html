@@ -14,7 +14,7 @@ div.tooltip {
   position: absolute;
   text-align: center;
   width: 180px;
-  height: 55px;
+  height: 45px;
   padding: 2px;
   font: 12px sans-serif;
   background: lightsteelblue;
@@ -23,9 +23,6 @@ div.tooltip {
   pointer-events: none;
 }
 
-path:hover {
-	stroke-width: 4px;
-}
 
 .legend-axis path{
     stroke: black;
@@ -97,6 +94,7 @@ var valueline = d3.line()
 var div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
+var formatPct = d3.format(".2%")
 
 // append the svg obgect to the body of the page
 // appends a 'group' element to 'svg'
@@ -121,7 +119,9 @@ d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/journal_infla
 
   // scale the range of the data
   x.domain(d3.extent(data, function(d) { return d.year; }));
-  y.domain([0, d3.max(data, function(d) { return d.journal_cost_change; })]);
+  y.domain([0, d3.max(data, function(d) { return d.journal_cost_change; })])
+  
+  y.tickFormat(function(d) { return d3.format(".0f")(d)+"%"; } );;
 
   // add the valueline path.
   svg.append("path")
@@ -147,7 +147,7 @@ var mouseover = function(d){
        div.html("<u>Year: "+formatTime(d.year) + "</u><br/>Change in journal cost: " + formatNum(d.journal_cost_change)+
        "%<br/>Inflation rate: "+formatNum(d.inflation_rate)+"%")
          .style("left", (d3.event.pageX)-60 + "px")
-         .style("top", (y(d.inflation_rate) - 5) + "px");
+         .style("top", (y(d.inflation_rate)-y(d.journal_cost_change))/2 + "px");
 }
   // add the dots with tooltips
   svg.selectAll("dot")
@@ -188,11 +188,11 @@ var mouseover = function(d){
 
   // add the Y Axis
   svg.append("g")
-      .call(d3.axisLeft(y))//.tickFormat(d3.format(".0%")));
+      .call(d3.axisLeft(y).tickFormat(function(d) { return d3.format(".0f")(d)+"%"; } ))
 
 svg.append("text")
 .attr("class","label")
-.text("Percent of 1948 levels")
+.text("Percent of 2011 levels")
 .attr("x",80)
 .attr("y",0)
 
@@ -203,20 +203,20 @@ svg.append("text")
     .attr("x",width/2)
     .attr("y",height*.05-60)
     .attr('text-anchor',"middle")
-    .text("Growth in Wages and Productivity over Time")
+    .text("Rate of inflation vs. Rise of Journal prices since 2011")
 
 svg.append("text")
 .attr("class","label")
-.attr("x",width)
-.attr("y",y(3.529)-5)
-.text("Productivity")
+.attr("x",width*.97)
+.attr("y",y(55)-5)
+.text("Journal prices")
 .attr("text-anchor","end")
 
 svg.append("text")
 .attr("class","label")
 .attr("x",width)
 .attr("y",y(2.1562)-5)
-.text("Wages")
+.text("Inflation rate")
 .attr("text-anchor","end")
 
     svg.append("line")
@@ -233,7 +233,7 @@ svg.append("text")
 		.attr('y', height+35)
 		.attr('x', width)
 		.attr('text-anchor', "end")
-    .text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+    .text('GEOFFREY DEAN/DATA EDITOR')
 
    
 svg.append("text")
