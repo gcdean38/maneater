@@ -83,7 +83,7 @@ d3.csv(url, function(error, data){
     var max_profit_margin = d3.max(data, function(d){ return d.profit_margin; });
     var min_profit_margin = d3.min(data, function(d){ return d.profit_margin; });
     
-    // var formatPct = d3.format(".2%")
+    var formatPct = d3.format(".2%")
     // var formatMon = function(d) { return "$" + d3.format(".0f")(d); } 
     // define scales and axises
     var xScale = d3.scale.ordinal()
@@ -105,7 +105,7 @@ d3.csv(url, function(error, data){
         .scale(yScale.copy().domain([40, 0]))
         .tickSize(6,0)
         .ticks(5)
-        .tickFormat(function(d) { return "$" + d3.format(".0f")(d); } )
+        .tickFormat(function(d) { return d3.format(".0f")(d)+"%"; } )
         .orient('left');
     
     // create a svg canvas
@@ -131,7 +131,7 @@ d3.csv(url, function(error, data){
     var label = svg.append('g')
         .attr('transform', 'translate(' + [margin.left - axisPadding, margin.top] + ')');
     label.append('text')
-        .text('Cost per Credit Hour')
+        .text('Operating profit margin')
         .attr('transform', 'rotate(-90)')
         .attr({
             'text-anchor': 'start',
@@ -174,7 +174,7 @@ d3.csv(url, function(error, data){
         .on('mouseout', mouseout);
     
     bars.append('text')
-    .text(function(d){ return d.profit_margin; })
+    .text(function(d){ return formatPct(d.profit_margin); })
     .each(function(d,i){
         d3.select(this).attr({
             fill: function(d){
@@ -222,9 +222,9 @@ svg.append('text')
 svg.append("text")
 		.attr('class', 'byline')
 		.attr('y', svgHeight*.89)
-		.attr('x', svgWidth*.575)
-		.attr('text-anchor', 'start')
-		.text('GEOFFREY DEAN/GRAPHIC DESIGNER')
+		.attr('x', svgWidth*.95)
+		.attr('text-anchor', 'END')
+		.text('GEOFFREY DEAN/DATA EDITOR')
 
 svg.append("line")
 .attr("x1",svgWidth*.05)
@@ -266,7 +266,7 @@ svg.append("a")
     function mousemove(){
         var d = d3.select(this).data()[0]
         div
-            .html("<b><u>Year: "+d.company + '</b></u><br/>Profit Margin: ' + (d.profit_margin)*100+"%")
+            .html("<b><u>Company: "+d.company + '</b></u><br/>Profit Margin: ' + formatPct(d.profit_margin))
             .style('left', (d3.event.pageX - 34) + 'px')
             .style('top', (d3.event.pageY - 12) + 'px');
     }
