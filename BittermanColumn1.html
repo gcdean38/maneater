@@ -60,7 +60,11 @@
     
       var div = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .style("opacity", 0);
+    .style("opacity", 1)
+    .style("left", (x('Unbroken')) + "px")
+         .style("top", (y(550) - 5) + "px")
+         .html('Hover over bars to get more information.');
+
     var mouseover = function(d){
     div.transition()
          .duration(200)
@@ -86,9 +90,8 @@
         .on("mouseover", mouseover)
      .on("click",mouseover)
      .on("mouseout", function(d) {
-       div.transition()
-         .duration(500)
-         .style("opacity", 0);
+       div
+         .html('Hover over bars to get more information.');
        });
 
 
