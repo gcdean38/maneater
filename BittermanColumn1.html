@@ -1,298 +1,99 @@
 <!DOCTYPE html>
-<head>
-    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
-
-  <meta charset="utf-8">
-  <script src="https://d3js.org/d3.v3.min.js"></script>
-  <style>
-    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; font:  sans-serif;}
-    .xGroup line, .xGroup path{
-    	visibility: hidden;
-		}
-  .tooltip{
-      position      : absolute;
-      text-align    : left;
-      max-width     : 120px;
-      max-height    : 50px;
-      padding       : 5px;
-      border        : solid ;
-      border-width: 2px;
-     
-      margin-top    : -30px;
-      font          : 10px sans-serif;
-      background    : white;
-      color         : black;
-      
-      pointer-events: none;
-  }
-  text.source {
-    font-size: 10px;
-            font-style: italic;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        text.sources {
-            font-size: 10px;
-            font-style: italic;
-            font-family: Arial, Helvetica, sans-serif;
-
-        }
-        
-        text.byline {
-            font-size: 12px;
-            font-style: italic;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        text.title {
-            font-size: 24px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            text-decoration: underline;
-            font-weight: bold;
-            text-anchor: middle;
-        }
-        text.subtitle {
-            font-size: 12px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-style: italic;
-            text-anchor: middle;
-
-        }
-  </style>
-</head>
-
-<body>
-
-<div id='container'></div>
-
-<script id='codeExcute'>
-
-// This exmaple is enlighten by http://bl.ocks.org/mbostock/1087001
-
-var url = 'https://raw.githubusercontent.com/gcdean38/maneater/master/BittermanColumn1.csv'
-
-d3.csv(url, function(error, data){
-    data.forEach(function (d) {
-      d.box_office = +d.box_office;
-      d.title = d.title;
-      d.year = d.year;
-      d.defense_help = d.defense_help;
-    });
-    // console.log(data)
-    var margin = {top: 65, bottom: 100, left: 90, right: 30}, axisPadding = 10;
-    var Width = 500, Height = 300;
-    var svgWidth = Width + margin.left + margin.right,
-        svgHeight = Height + margin.top + margin.bottom;
-    var max_profit_margin = d3.max(data, function(d){ return d.box_office; });
-    var min_profit_margin = d3.min(data, function(d){ return d.box_office; });
-    
-    var formatPct = d3.format(".2%")
-    // var formatMon = function(d) { return "$" + d3.format(".0f")(d); } 
-    // define scales and axises
-    var xScale = d3.scale.ordinal()
-        .domain(data.map(function(d){ return d.title; }))
-        .rangeBands([0, Width], 0.1);
-    var yScale = d3.scale.linear()
-        .domain([0, 600])
-        .range([0, Height]);
-
-    var color = d3.scale.linear()
-    .domain(['yes','no'])
-    .range(['#446418',"#5ca08e"]);
-    
-    var xAxis = d3.svg.axis()
-        .scale(xScale)
-        .tickSize(0,0)
-        .orient('bottom');
-    var yAxis = d3.svg.axis()
-        .scale(yScale.copy().domain([40, 0]))
-        .tickSize(6,0)
-        .ticks(5)
-        .tickFormat(function(d) { return d3.format(".1$")(d)+"B"; } )
-        .orient('left');
-    
-    // create a svg canvas
-    var svg = d3.select('#container')
-        .append('svg')
-        .attr({width: svgWidth, height: svgHeight})
-    
-    
-    // Drawing for axises
-    var xGroup = svg.append('g')
-        .attr('class', 'xGroup')
-        .attr('transform', 'translate(' + [margin.left, margin.top + Height + axisPadding] + ')');
-    xGroup.call(xAxis);
-    styleAxis(xGroup);
-    var yGroup = svg.append('g')
-        .attr('class', 'yGroup')
-        .attr('transform', 'translate(' + [margin.left - axisPadding, margin.top] + ')');
-    yGroup.call(yAxis);
-    styleAxis(yGroup);
-
-
-    // Label layer
-    var label = svg.append('g')
-        .attr('transform', 'translate(' + [margin.left - axisPadding, margin.top] + ')');
-    label.append('text')
-        .text('Operating profit margin')
-        .attr('transform', 'rotate(-90)')
-        .attr({
-            'text-anchor': 'start',
-            x: -135,
-            y: 20,
-        })
-    label.append('text')
-    .attr("class","title")
-        .text('Increases in MU Tuition')
-        .attr('transform', 'translate(' + [Width / 2, - margin.top / 2] + ')')
-
-        label.append('text')
-    .attr("class","subtitle")
-        .text('2016-2020')
-        .attr('transform', 'translate(' + [Width / 2, - margin.top / 4] + ')')
-        
-
-
-    // Drawing for graph body
-    var graph = svg.append('g')
-        .attr('class', 'graph')
-        .attr('transform', 'translate(' + [margin.left, margin.top + Height] + ')');
-    var bars = graph.selectAll('g')
-        .data(data)
-        .enter()
-        .append('g')
-        .attr('transform', function(d,i){ return 'translate(' + [xScale(d.title), -1 * yScale(d.box_office)] + ')'; });
-    bars.append('rect')
-        .each(function(d,i){
-            d3.select(this).attr({
-                fill: function(d){
-                if (d.defense_help= 'yes'){return '#446418'}
-                else {return "#5ca08e"}
-            },
-                width: xScale.rangeBand(),
-                height: yScale(d.box_office),
-            })
-        })
-        .on('mouseover', mouseover)
-        .on('mousemove', mousemove)
-        .on('mouseout', mouseout);
-    
-    bars.append('text')
-    .text(function(d){ return (d.box_office); })
-    .each(function(d,i){
-        d3.select(this).attr({
-            fill: function(d){
-                return color(d.defense_help)
-            },
-            stroke: 'none',
-            x: xScale.rangeBand() / 2,
-            y: -5,
-            'text-anchor': 'middle',
-        });
-    })
-    
-    svg.append('text')
-		.attr('class', 'sources')
-		.attr('y', svgHeight*.89)
-		.attr('x', svgWidth*.05)
-		.attr('text-anchor', 'start')
-		.text('Sources: ')
-svg.append('text')
-		.attr('class', 'sources')
-		.attr('y', svgHeight*.89)
-		.attr('x', svgWidth*.12)
-		.attr('text-anchor', 'start')
-        .style("fill","blue")
-        .style("text-decoration","underline")
-		.text('UM System Tuition History,')
-
-svg.append('text')
-		.attr('class', 'source')
-		.attr('y', svgHeight*.92)
-		.attr('x', svgWidth*.05)
-		.attr('text-anchor', 'start')
-        .style("fill","blue")
-        .style("text-decoration","underline")
-		.text('MU Cashiers Office,')
-        svg.append('text')
-
-		.attr('class', 'source')
-		.attr('y', svgHeight*.92)
-		.attr('x', svgWidth*.1955)
-		.attr('text-anchor', 'start')
-        .style("fill","blue")
-        .style("text-decoration","underline")
-		.text('2020')
-svg.append("text")
-		.attr('class', 'byline')
-		.attr('y', svgHeight*.89)
-		.attr('x', svgWidth*.95)
-		.attr('text-anchor', 'END')
-		.text('GEOFFREY DEAN/DATA EDITOR')
-
-svg.append("line")
-.attr("x1",svgWidth*.05)
-.attr("x2",svgWidth*.94)
-.attr("y1",svgHeight*0.85)
-.attr("y2",svgHeight*.85)
-.attr("stroke","black")
-.attr("stroke-width","1px")
-
-svg.append("a")
-    .attr("xlink:href", "https://www.umsystem.edu/media/fa/budget/resident-undergraduate.pdf")
-    .append("rect")  
-    .attr('y', svgHeight*.85)
-	.attr('x', svgWidth*.12)
-    .attr("height", 12)
-    .attr("width", 120)
-    .style("fill", "white")
-    .style("opacity",.0)
-    .style("stroke","black")
-
-    svg.append("a")
-    .attr("xlink:href", "https://cashiers.missouri.edu/cost/")
-    .append("rect")  
-    .attr('y', svgHeight*0.88)
-	.attr('x', svgWidth*.05)
-    .attr("height", 12)
-    .attr("width", 125)
-    .style("fill", "white")
-    .style("opacity",.0)
-    .style("stroke","black")
-    
-    // tooltips
-    var div = d3.select('#container').append('div')
-        .attr('class', 'tooltip')
-        .style('display', 'none');
-    function mouseover(){
-        div.style('display', 'inline');
-    }
-    function mousemove(){
-        var d = d3.select(this).data()[0]
-        div
-            .html("<b><u>Company: "+d.title + '</b></u><br/>Profit Margin: ' + (d.box_office))
-            .style('left', (d3.event.pageX - 34) + 'px')
-            .style('top', (d3.event.pageY - 12) + 'px');
-    }
-    function mouseout(){
-        div.style('display', 'none');
-    }
-})
-
-
-function styleAxis(axis){
-    // style path
-    axis.select('.domain').attr({
-        fill: 'none',
-        stroke: '#888',
-        'stroke-width': 1
-    });
-    // style tick
-    axis.selectAll('.tick line').attr({
-        stroke: '#000',
-        'stroke-width': 1,
-    })
-
-
+<meta charset="utf-8">
+<style>
+    div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 230px;
+  height: 90px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightgray;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
 }
-</script>
-</body>
+</style>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="my_dataviz"></div>
+<script>
+
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 30, right: 30, bottom: 70, left: 60},
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+    
+    // append the svg object to the body of the page
+    var svg = d3.select("#my_dataviz")
+      .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform",
+              "translate(" + margin.left + "," + margin.top + ")");
+    
+    // Parse the Data
+    d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/BittermanColumn1.csv", function(data) {
+    
+    // X axis
+    var x = d3.scaleBand()
+      .range([ 0, width ])
+      .domain(data.map(function(d) { return d.title; }))
+      .padding(0.2);
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+        .attr("transform", "translate(-10,0)rotate(-45)")
+        .style("text-anchor", "end");
+    
+    // Add Y axis
+    var y = d3.scaleLinear()
+      .domain([0, 600])
+      .range([ height, 0]);
+    svg.append("g")
+      .call(d3.axisLeft(y));
+    
+      var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+    var mouseover = function(d){
+    div.transition()
+         .duration(200)
+         .style("opacity", .9);
+       div.html("<b><u>"+(d.title) + "</u></b><br/>Release year: " + (d.release_year)+
+       "<br/>Intl. box office revenue (USD): $"+(d.box_office)+"B<hr/>The Department of Defense <b>"+(d.defense_help)+"</b> help with "+(d.title)+".")
+         .style("left", (x('Unbroken')) + "px")
+         .style("top", (y(550) - 5) + "px");
+       } 
+    // Bars
+    svg.selectAll("mybar")
+      .data(data)
+      .enter()
+      .append("rect")
+        .attr("x", function(d) { return x(d.title); })
+        .attr("y", function(d) { return y(+d.box_office); })
+        .attr("width", x.bandwidth())
+        .attr("height", function(d) { return height - y(d.box_office); })
+        .style("fill", function(d) {
+            if (d.defense_help == 'did not') {return "#446418"}
+            else 	{ return "#5ca08e" }
+        ;})
+        .on("mouseover", mouseover)
+     .on("click",mouseover)
+     .on("mouseout", function(d) {
+       div.transition()
+         .duration(500)
+         .style("opacity", 0);
+       });
+
+
+
+
+    })
+    
+    </script>
