@@ -13,6 +13,51 @@
   border-radius: 8px;
   pointer-events: none;
 }
+
+
+.line {
+  fill: none;
+  }
+
+
+
+.legend-axis path{
+    stroke: black;
+    display: none;
+}
+text.source {
+            font-size: 10px;
+            font-style: italic;
+        }
+        text.sources {
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        text.byline {
+            font-size: 12px;
+            font-style: italic;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        text.title {
+            font-size: 24px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            text-decoration: underline;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+        text.subtitle {
+            font-size: 12px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            text-anchor: middle;
+        }
+        text.label {
+            font-family: sans-serif;
+font-size: 12px;
+text-anchor: end;
+        }
 </style>
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
@@ -23,9 +68,9 @@
 
 
     // set the dimensions and margins of the graph
-    var margin = {top: 30, right: 30, bottom: 70, left: 60},
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+    var margin = {top: 30, right: 30, bottom: 150, left: 60},
+        width = 540 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
     
     // append the svg object to the body of the page
     var svg = d3.select("#my_dataviz")
@@ -55,14 +100,17 @@
     var y = d3.scaleLinear()
       .domain([0, 600])
       .range([ height, 0]);
+
+  y.tickFormat(function(d) { return d3.format("$,.3s")(d); } )
     svg.append("g")
       .call(d3.axisLeft(y));
+    
     
       var div = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 1)
     .style("left", (x('Unbroken')) + "px")
-         .style("top", (y(550) - 5) + "px")
+         .style("top", (y(450) - 5) + "px")
          .html('Hover over bars to get more information.');
 
     var mouseover = function(d){
@@ -72,7 +120,7 @@
        div.html("<b><u>"+(d.title) + "</u></b><br/>Release year: " + (d.release_year)+
        "<br/>Intl. box office revenue (USD): $"+(d.box_office)+"B<hr/>The Department of Defense <b>"+(d.defense_help)+"</b> help with "+(d.title)+".")
          .style("left", (x('Unbroken')) + "px")
-         .style("top", (y(550) - 5) + "px");
+         .style("top", (y(450) - 5) + "px");
        } 
     // Bars
     svg.selectAll("mybar")
@@ -89,13 +137,93 @@
         ;})
         .on("mouseover", mouseover)
      .on("click",mouseover)
-     .on("mouseout", function(d) {
-       div
-         .html('Hover over bars to get more information.');
-       });
+     //.on("mouseout", function(d) {
+       //div
+        // .html('Hover over bars to get more information.');
+       ;
 
 
+       svg.append("text")
+    .attr("class","title")
+    .attr("x",width/2)
+    .attr("y",-10)
+    .attr('text-anchor',"middle")
+    .text("Dept. of Defense Consultation on War Movies")
 
+/*svg.append("text")
+.attr("class","label")
+.attr("x",width*.97)
+.attr("y",y(55)-5)
+.text("Journal prices")
+.attr("text-anchor","end")
+
+svg.append("text")
+.attr("class","label")
+.attr("x",width)
+.attr("y",y(2.1562)-5)
+.text("Inflation rate")
+.attr("text-anchor","end")*/
+svg.append("text")
+    .attr('class',"labels")
+    .attr("text-anchor",'middle')
+    .attr("y",-40)
+    .attr("x",-height/2)
+    .attr("transform","rotate(-90)")
+    .text("Box office revenue (B USD)")
+
+    svg.append("line")
+.attr("x1",-30)
+.attr("x2",width)
+.attr("y1",height+65)
+.attr("y2",height+65)
+.attr("stroke","black")
+.attr("stroke-width","1px")
+
+
+svg.append("text")
+		.attr('class', 'byline')
+		.attr('y', height+80)
+		.attr('x', width)
+		.attr('text-anchor', "end")
+    .text('GEOFFREY DEAN/DATA EDITOR')
+
+   
+svg.append("text")
+.attr("class","source")
+.attr("y",height+80)
+.attr("x",-30)
+.attr('text-anchor',"start")
+.text("Source: ")
+
+svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height+80)
+		.attr('x', width*.01)
+		.attr('text-anchor', 'start')
+    //    .style("fill","blue")
+      //  .style("text-decoration","underline")
+		.text('Various sources')
+
+		svg.append('text')
+		.attr('class', 'sources')
+		.attr('y', height+80)
+		.attr('x', width*.15)
+		.attr('text-anchor', 'start')
+        .style("fill","black")
+		.text(', 2021.')
+
+	svg.append("a")
+    .attr("xlink:href", "https://www.epi.org/productivity-pay-gap/")
+    .attr("target","_blank")
+
+    .append("rect")  
+    .attr('y', height+27)
+	.attr('x', width*.05)
+    .attr("height", 9)
+    .attr("width",width*.22- width*.05)
+    .style("fill", "white")
+    .style("opacity",.0)
+    .style("stroke","black")
 
     })
     
