@@ -117,8 +117,7 @@ text-anchor: end;
     div.transition()
          .duration(200)
          .style("opacity", .9);
-       div.html("<b><u>"+(d.title) + "</u></b><br/>Release year: " + (d.release_year)+
-       "<br/>Intl. box office revenue (USD): $"+(d.box_office)+"B<hr/>The Department of Defense <b>"+(d.defense_help)+"</b> help with "+(d.title)+".")
+       div.html("<b><u>"+(d.title) + " ("+ d.release_year+")"+"</u></b><br/>Intl. box office revenue (USD): $"+(d.box_office)+"B<hr/>The Department of Defense <b>"+(d.defense_help)+"</b> help with "+(d.title)+".")
          .style("left", (x('Unbroken')) + "px")
          .style("top", (y(450) - 5) + "px");
        } 
@@ -132,7 +131,7 @@ text-anchor: end;
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.box_office); })
         .style("fill", function(d) {
-            if (d.defense_help == 'did not') {return "#446418"}
+            if (d.defense_help == 'did') {return "#446418"}
             else 	{ return "#5ca08e" }
         ;})
         .on("mouseover", mouseover)
