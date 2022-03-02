@@ -1,7 +1,7 @@
 ﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
 Northwestern,12,0.102,8.5,8.5,1,1,1,east,east1,
 Minnesota,13,0.898,9.5,9.5,1,0,1,east,east16,up
-Maryland,11,0.238,14.5,14.5,1,1,,,,down
+Maryland,11,0.238,14.5,14.5,1,1,,,,
 Nebraska,14,0.762,15.5,15.5,1,0,,,,up
 Rutgers,8,0.242,4,4,2,1,1,east,east8,
 Indiana,9,0.758,5,5,2,0,1,east,east9,up
