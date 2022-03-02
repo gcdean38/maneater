@@ -1,7 +1,7 @@
 ﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
 Ole Miss,12,0.592,8.5,8.5,1,1,1,east,east1,
 Missouri,13,0.408,9.5,9.5,1,0,1,east,east16,up
-Vanderbilt,11,0.4,14.5,14.5,1,1,,,,down
+Vanderbilt,11,0.4,14.5,14.5,1,1,,,,
 Georgia,14,0.6,15.5,15.5,1,0,,,,up
 LSU,8,0.895,4,4,2,1,1,east,east8,
 Mississippi St.,9,0.105,5,5,2,0,1,east,east9,up
