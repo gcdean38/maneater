@@ -1,0 +1,25 @@
+﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
+Vanderbilt,12,0.70167164,8.5,8.5,1,1,1,east,east1,
+Texas A&M,13,0.29832836,9.5,9.5,1,0,1,east,east16,up
+Kentucky,8,0.07171928,4,4,2,1,1,east,east8,
+Mississippi State,9,0.92828072,5,5,2,0,1,east,east9,up
+Florida,5,0.29832836,7,7,2,1,1,east,east5,
+Vanderbilt,12,0.70167164,8,8,2,0,1,east,east12,down
+Ole Miss,6,0.93737621,13,13,2,1,1,east,east6,
+South Carolina,11,0.06262379,14,14,2,0,1,east,east11,down
+Missouri,7,0.75920286,19,19,2,1,1,east,east7,
+Georgia,10,0.24079714,20,20,2,0,1,east,east10,down
+Alabama,1,0.55364972,2.5,2.5,3,1,1,east,east1,
+Kentucky,8,0.44635028,3.5,3.5,3,0,1,east,east8,down
+Florida,5,0.84782763,8.5,8.5,3,1,1,east,east5,
+Tennesee,4,0.15217238,9.5,9.5,3,0,1,east,east4,up
+Ole Miss,6,0.86695452,14.5,14.5,3,1,1,east,east6,
+LSU,3,0.13304548,15.5,15.5,3,0,1,east,east3,down
+Missouri,7,0.18419362,20.5,20.5,3,1,1,east,east7,
+Arkansas,2,0.81580638,21.5,21.5,3,0,1,east,east2,up
+Alabama,1,0.22717692,5.5,5.5,4,1,1,east,east1,
+Tennesee,4,0.77282308,6.5,6.5,4,0,1,east,east4,down
+,,,17.5,17.5,4,1,1,east,east6,
+,,,18.5,18.5,4,0,1,east,east2,up
+,,,11.5,11.5,5,1,1,east,east1,
+,,,12.5,12.5,5,1,1,east,east2,
