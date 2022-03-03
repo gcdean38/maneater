@@ -1,6 +1,6 @@
 ﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
-Northwestern,12,0.77,8.5,8.5,1,1,1,east,east1,
-Minnesota,13,0.23,9.5,9.5,1,0,1,east,east16,up
+Northwestern,12,0.077,8.5,8.5,1,1,1,east,east1,
+Minnesota,13,0.923,9.5,9.5,1,0,1,east,east16,up
 Penn State,11,0.141,14.5,14.5,1,1,,,,
 Nebraska,14,0.859,15.5,15.5,1,0,,,,up
 Michigan State,8,0.198,4,4,2,1,1,east,east8,
