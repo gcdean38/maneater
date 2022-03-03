@@ -1,21 +1,21 @@
 ﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
-Xavier,8,0.464,4,4,1,1,1,east,east8,
-Butler,9,0.536,5,5,1,0,1,east,east9,up
-Seton Hall,6,0.765,13,13,1,1,1,east,east6,
-Georgetown,11,0.235,14,14,1,0,1,east,east11,down
-St. John's,7,0.525,19,19,1,1,1,east,east7,
-DePaul,10,0.475,20,20,1,0,1,east,east10,down
+Xavier,8,0.467,4,4,1,1,1,east,east8,
+Butler,9,0.533,5,5,1,0,1,east,east9,up
+Seton Hall,6,0.715,13,13,1,1,1,east,east6,
+Georgetown,11,0.285,14,14,1,0,1,east,east11,down
+St. John's,7,0.441,19,19,1,1,1,east,east7,
+DePaul,10,0.559,20,20,1,0,1,east,east10,down
 Villanova,1,0.495,2.5,2.5,2,1,1,east,east1,
 Butler,9,0.505,3.5,3.5,2,0,1,east,east8,down
-Marquette,5,0.575,8.5,8.5,2,1,1,east,east5,
-Creighton,4,0.425,9.5,9.5,2,0,1,east,east4,up
-Seton Hall,6,0.355,14.5,14.5,2,1,1,east,east6,
-UConn,3,0.645,15.5,15.5,2,0,1,east,east3,down
-St. John's,7,0.888,20.5,20.5,2,1,1,east,east7,
-Providence,2,0.112,21.5,21.5,2,0,1,east,east2,up
-Butler,9,0.577,5.5,5.5,3,1,1,east,east1,
-Marquette,5,0.423,6.5,6.5,3,0,1,east,east4,down
-St. John's,7,0.662,17.5,17.5,3,1,1,east,east6,
-UConn,3,0.338,18.5,18.5,3,0,1,east,east2,up
-Butler,7,0.213,11.5,11.5,4,1,1,east,east1,
-St. John's,9,0.787,12.5,12.5,4,1,1,east,east2,
+Marquette,5,0.655,8.5,8.5,2,1,1,east,east5,
+Creighton,4,0.345,9.5,9.5,2,0,1,east,east4,up
+Seton Hall,6,0.372,14.5,14.5,2,1,1,east,east6,
+UConn,3,0.628,15.5,15.5,2,0,1,east,east3,down
+DePaul,10,0.893,20.5,20.5,2,1,1,east,east7,
+Providence,2,0.107,21.5,21.5,2,0,1,east,east2,up
+Butler,9,0.527,5.5,5.5,3,1,1,east,east1,
+Marquette,5,0.473,6.5,6.5,3,0,1,east,east4,down
+DePaul,10,0.642,17.5,17.5,3,1,1,east,east6,
+UConn,3,0.358,18.5,18.5,3,0,1,east,east2,up
+Butler,9,0.059,11.5,11.5,4,1,1,east,east1,
+DePaul,10,0.941,12.5,12.5,4,1,1,east,east2,
