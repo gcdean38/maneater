@@ -3,25 +3,25 @@ Ole Miss,12,0.592,8.5,8.5,1,1,1,east,east1,
 Missouri,13,0.408,9.5,9.5,1,0,1,east,east16,up
 Vanderbilt,11,0.4,14.5,14.5,1,1,,,,
 Georgia,14,0.6,15.5,15.5,1,0,,,,up
-LSU,8,0.895,4,4,2,1,1,east,east8,
-Mississippi St.,9,0.105,5,5,2,0,1,east,east9,up
-Alabama,5,0.757,7,7,2,1,1,east,east5,
-Ole Miss,12,0.243,8,8,2,0,1,east,east12,down
+LSU,8,0.863,4,4,2,1,1,east,east8,
+Mississippi St.,9,0.137,5,5,2,0,1,east,east9,up
+Alabama,5,0.733,7,7,2,1,1,east,east5,
+Ole Miss,12,0.267,8,8,2,0,1,east,east12,down
 Florida,6,0.406,13,13,2,1,1,east,east6,
 Georgia,14,0.594,14,14,2,0,1,east,east11,down
-South Carolina,7,0.559,19,19,2,1,1,east,east7,
-Texas A&M,10,0.441,20,20,2,0,1,east,east10,down
-Auburn,1,0.847,2.5,2.5,3,1,1,east,east1,
-LSU,8,0.153,3.5,3.5,3,0,1,east,east8,down
-Alabama,5,0.594,8.5,8.5,3,1,1,east,east5,
-Arkansas,4,0.406,9.5,9.5,3,0,1,east,east4,up
-Georgia,14,0.534,14.5,14.5,3,1,1,east,east6,
-Tennessee,3,0.466,15.5,15.5,3,0,1,east,east3,down
-South Carolina,7,0.114,20.5,20.5,3,1,1,east,east7,
-Kentucky,2,0.886,21.5,21.5,3,0,1,east,east2,up
-Auburn,1,0.608,5.5,5.5,4,1,1,east,east1,
-Alabama,5,0.392,6.5,6.5,4,0,1,east,east4,down
-Kentucky,2,0.969,17.5,17.5,4,1,1,east,east6,
-Georgia,14,0.031,18.5,18.5,4,0,1,east,east2,up
-Auburn,1,0.747,11.5,11.5,5,1,1,east,east1,
-Kentucky,2,0.253,12.5,12.5,5,1,1,east,east2,
+South Carolina,7,0.512,19,19,2,1,1,east,east7,
+Texas A&M,10,0.488,20,20,2,0,1,east,east10,down
+Auburn,1,0.811,2.5,2.5,3,1,1,east,east1,
+LSU,8,0.189,3.5,3.5,3,0,1,east,east8,down
+Alabama,5,0.896,8.5,8.5,3,1,1,east,east5,
+Tennessee,4,0.104,9.5,9.5,3,0,1,east,east4,up
+Georgia,14,0.032,14.5,14.5,3,1,1,east,east6,
+Kentucky,3,0.968,15.5,15.5,3,0,1,east,east3,down
+South Carolina,7,0.508,20.5,20.5,3,1,1,east,east7,
+Arkansas,2,0.492,21.5,21.5,3,0,1,east,east2,up
+Auburn,1,0.533,5.5,5.5,4,1,1,east,east1,
+Alabama,5,0.467,6.5,6.5,4,0,1,east,east4,down
+Kentucky,3,0.886,17.5,17.5,4,1,1,east,east6,
+South Carolina,7,0.114,18.5,18.5,4,0,1,east,east2,up
+Auburn,1,0.738,11.5,11.5,5,1,1,east,east1,
+Kentucky,3,0.262,12.5,12.5,5,1,1,east,east2,
