@@ -1,8 +1,8 @@
 ﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
-East Carolina,8,0.252,4,4,1,1,1,east,east8,
-Wichita State,9,0.748,5,5,1,0,1,east,east9,up
-Tulane,6,0.754,13,13,1,1,1,east,east6,
-Tulsa,11,0.246,14,14,1,0,1,east,east11,down
+East Carolina,8,0.214,4,4,1,1,1,east,east8,
+Wichita State,9,0.786,5,5,1,0,1,east,east9,up
+Tulane,6,0.698,13,13,1,1,1,east,east6,
+Tulsa,11,0.302,14,14,1,0,1,east,east11,down
 Cincinnati,7,0.867,19,19,1,1,1,east,east7,
 South Florida,10,0.133,20,20,1,0,1,east,east10,down
 Houston,1,0.898,2.5,2.5,2,1,1,east,east1,
