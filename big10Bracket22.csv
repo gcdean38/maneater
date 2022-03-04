@@ -1,27 +1,27 @@
 ﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
 Northwestern,12,0.077,8.5,8.5,1,1,1,east,east1,
 Minnesota,13,0.923,9.5,9.5,1,0,1,east,east16,up
-Penn State,11,0.141,14.5,14.5,1,1,,,,
-Nebraska,14,0.859,15.5,15.5,1,0,,,,up
-Michigan State,8,0.198,4,4,2,1,1,east,east8,
-Indiana,9,0.802,5,5,2,0,1,east,east9,up
-Ohio State,5,0.195,7,7,2,1,1,east,east5,
-Minnesota,13,0.805,8,8,2,0,1,east,east12,down
+Penn State,11,0.142,14.5,14.5,1,1,,,,
+Nebraska,14,0.858,15.5,15.5,1,0,,,,up
+Michigan State,8,0.2,4,4,2,1,1,east,east8,
+Indiana,9,0.8,5,5,2,0,1,east,east9,up
+Ohio State,5,0.168,7,7,2,1,1,east,east5,
+Minnesota,13,0.832,8,8,2,0,1,east,east12,down
 Rutgers,6,0.118,13,13,2,1,1,east,east6,
 Nebraska,14,0.882,14,14,2,0,1,east,east11,down
-Michigan,7,0.611,19,19,2,1,1,east,east7,
-Penn State,10,0.389,20,20,2,0,1,east,east10,down
+Michigan,7,0.63,19,19,2,1,1,east,east7,
+Penn State,10,0.37,20,20,2,0,1,east,east10,down
 Wisconsin,1,0.549,2.5,2.5,3,1,1,east,east1,
 Indiana,9,0.451,3.5,3.5,3,0,1,east,east8,down
-Minnesota,13,0.494,8.5,8.5,3,1,1,east,east5,
-Iowa,4,0.506,9.5,9.5,3,0,1,east,east4,up
+Minnesota,13,0.471,8.5,8.5,3,1,1,east,east5,
+Iowa,4,0.529,9.5,9.5,3,0,1,east,east4,up
 Nebraska,14,0.611,14.5,14.5,3,1,1,east,east6,
 Purdue,3,0.389,15.5,15.5,3,0,1,east,east3,down
-Michigan,7,0.346,20.5,20.5,3,1,1,east,east7,
-Illinois,2,0.654,21.5,21.5,3,0,1,east,east2,up
-Wisconsin,1,0.358,5.5,5.5,4,1,1,east,east1,
-Iowa,4,0.642,6.5,6.5,4,0,1,east,east4,down
-Illinois,2,0.305,17.5,17.5,4,1,1,east,east6,
-Nebraska,14,0.695,18.5,18.5,4,0,1,east,east2,up
-Iowa,4,0.73,11.5,11.5,5,1,1,east,east1,
+Michigan,7,0.499,20.5,20.5,3,1,1,east,east7,
+Illinois,2,0.501,21.5,21.5,3,0,1,east,east2,up
+Wisconsin,1,0.324,5.5,5.5,4,1,1,east,east1,
+Iowa,4,0.676,6.5,6.5,4,0,1,east,east4,down
+Illinois,2,0.251,17.5,17.5,4,1,1,east,east6,
+Nebraska,14,0.749,18.5,18.5,4,0,1,east,east2,up
+Iowa,4,0.748,11.5,11.5,5,1,1,east,east1,
 Nebraska,14,0.27,12.5,12.5,5,1,1,east,east2,
