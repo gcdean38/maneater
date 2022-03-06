@@ -1,19 +1,19 @@
 ﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
-Kansas State,8,0.279,4,4,1,1,1,east,east8,
-Oklahoma,9,0.721,5,5,1,0,1,east,east9,up
-Oklahoma State,7,0.378,19,19,1,1,1,east,east7,
-West Virginia,10,0.622,20,20,1,0,1,east,east10,down
-Baylor,1,0.706,2.5,2.5,2,1,1,east,east1,
-Oklahoma,9,0.294,3.5,3.5,2,0,1,east,east8,down
-TCU,5,0.812,8.5,8.5,2,1,1,east,east5,
-Texas,4,0.188,9.5,9.5,2,0,1,east,east4,up
-Iowa State,6,0.679,14.5,14.5,2,1,1,east,east6,
-Texas Tech,3,0.321,15.5,15.5,2,0,1,east,east3,down
-West Virginia,10,0.242,20.5,20.5,2,1,1,east,east7,
-Kansas,2,0.758,21.5,21.5,2,0,1,east,east2,up
-Baylor,1,0.56,5.5,5.5,3,1,1,east,east1,
-TCU,5,0.44,6.5,6.5,3,0,1,east,east4,down
-Kansas,2,0.643,17.5,17.5,3,1,1,east,east6,
-Iowa State,6,0.357,18.5,18.5,3,0,1,east,east2,up
-Baylor,1,0.541,11.5,11.5,4,1,1,east,east1,
-Kansas,2,0.459,12.5,12.5,4,1,1,east,east2,
+Oklahoma,8,0.415,4,4,1,1,1,east,east8,
+Kansas State,9,0.585,5,5,1,0,1,east,east9,up
+Iowa State,7,0.119,19,19,1,1,1,east,east7,
+West Virginia,10,0.881,20,20,1,0,1,east,east10,down
+Baylor,1,0.75,2.5,2.5,2,1,1,east,east1,
+Kansas State,9,0.25,3.5,3.5,2,0,1,east,east8,down
+Oklahoma State,5,0.45,8.5,8.5,2,1,1,east,east5,
+Texas,4,0.55,9.5,9.5,2,0,1,east,east4,up
+TCU,6,0.662,14.5,14.5,2,1,1,east,east6,
+Texas Tech,3,0.338,15.5,15.5,2,0,1,east,east3,down
+West Virginia,10,0.311,20.5,20.5,2,1,1,east,east7,
+Kansas,2,0.689,21.5,21.5,2,0,1,east,east2,up
+Baylor,1,0.847,5.5,5.5,3,1,1,east,east1,
+Texas,4,0.153,6.5,6.5,3,0,1,east,east4,down
+Kansas,2,0.653,17.5,17.5,3,1,1,east,east6,
+TCU,6,0.347,18.5,18.5,3,0,1,east,east2,up
+Baylor,1,0.542,11.5,11.5,4,1,1,east,east1,
+Kansas,2,0.458,12.5,12.5,4,1,1,east,east2,
