@@ -1,23 +1,23 @@
 ﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
-Arizona State,8,0.291,4,4,1,1,1,east,east8,
-Stanford,9,0.709,5,5,1,0,1,east,east9,up
-Oregon,5,0.831,7,7,1,1,1,east,east5,
-Oregon State,12,0.169,8,8,1,0,1,east,east12,down
-Washington,6,0.619,13,13,1,1,1,east,east6,
-Utah,11,0.381,14,14,1,0,1,east,east11,down
-Washington State,7,0.581,19,19,1,1,1,east,east7,
-California,10,0.419,20,20,1,0,1,east,east10,down
-Arizona,1,0.602,2.5,2.5,2,1,1,east,east1,
-Stanford,9,0.398,3.5,3.5,2,0,1,east,east8,down
-Oregon,5,0.694,8.5,8.5,2,1,1,east,east5,
-Colorado,4,0.306,9.5,9.5,2,0,1,east,east4,up
-Washington,6,0.118,14.5,14.5,2,1,1,east,east6,
-UCLA,3,0.882,15.5,15.5,2,0,1,east,east3,down
-Washington State,7,0.172,20.5,20.5,2,1,1,east,east7,
-USC,2,0.828,21.5,21.5,2,0,1,east,east2,up
-Arizona,1,0.685,5.5,5.5,3,1,1,east,east1,
-Oregon,5,0.315,6.5,6.5,3,0,1,east,east4,down
-USC,2,0.635,17.5,17.5,3,1,1,east,east6,
-UCLA,3,0.365,18.5,18.5,3,0,1,east,east2,up
-Arizona,1,0.378,11.5,11.5,4,1,1,east,east1,
-USC,2,0.622,12.5,12.5,4,1,1,east,east2,
+Arizona State,8,0.236,4,4,1,1,1,east,east8,
+Stanford,9,0.764,5,5,1,0,1,east,east9,up
+Oregon,5,0.762,7,7,1,1,1,east,east5,
+Oregon State,12,0.238,8,8,1,0,1,east,east12,down
+Washington,6,0.556,13,13,1,1,1,east,east6,
+Utah,11,0.444,14,14,1,0,1,east,east11,down
+Washington State,7,0.481,19,19,1,1,1,east,east7,
+California,10,0.519,20,20,1,0,1,east,east10,down
+Arizona,1,0.555,2.5,2.5,2,1,1,east,east1,
+Stanford,9,0.445,3.5,3.5,2,0,1,east,east8,down
+Oregon,5,0.739,8.5,8.5,2,1,1,east,east5,
+Colorado,4,0.261,9.5,9.5,2,0,1,east,east4,up
+Washington,6,0.294,14.5,14.5,2,1,1,east,east6,
+UCLA,3,0.706,15.5,15.5,2,0,1,east,east3,down
+California,10,0.243,20.5,20.5,2,1,1,east,east7,
+USC,2,0.757,21.5,21.5,2,0,1,east,east2,up
+Arizona,1,0.619,5.5,5.5,3,1,1,east,east1,
+Oregon,5,0.381,6.5,6.5,3,0,1,east,east4,down
+USC,2,0.489,17.5,17.5,3,1,1,east,east6,
+UCLA,3,0.511,18.5,18.5,3,0,1,east,east2,up
+Arizona,1,0.354,11.5,11.5,4,1,1,east,east1,
+USC,2,0.646,12.5,12.5,4,1,1,east,east2,
