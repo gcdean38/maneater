@@ -5,14 +5,14 @@ Seton Hall,6,0.616,13,13,1,1,1,east,east6,
 Georgetown,11,0.384,14,14,1,0,1,east,east11,down
 St. John's,7,0.391,19,19,1,1,1,east,east7,
 DePaul,10,0.609,20,20,1,0,1,east,east10,down
-Villanova,1,0.44,2.5,2.5,2,1,1,east,east1,
-Butler,9,0.56,3.5,3.5,2,0,1,east,east8,down
+Providence,1,0.271,2.5,2.5,2,1,1,east,east1,
+Butler,9,0.729,3.5,3.5,2,0,1,east,east8,down
 Marquette,5,0.698,8.5,8.5,2,1,1,east,east5,
 Creighton,4,0.302,9.5,9.5,2,0,1,east,east4,up
 Seton Hall,6,0.417,14.5,14.5,2,1,1,east,east6,
 UConn,3,0.583,15.5,15.5,2,0,1,east,east3,down
-DePaul,10,0.911,20.5,20.5,2,1,1,east,east7,
-Providence,2,0.089,21.5,21.5,2,0,1,east,east2,up
+DePaul,10,0.829,20.5,20.5,2,1,1,east,east7,
+Villanova,2,0.171,21.5,21.5,2,0,1,east,east2,up
 Butler,9,0.59,5.5,5.5,3,1,1,east,east1,
 Marquette,5,0.41,6.5,6.5,3,0,1,east,east4,down
 DePaul,10,0.642,17.5,17.5,3,1,1,east,east6,
