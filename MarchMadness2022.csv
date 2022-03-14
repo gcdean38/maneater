@@ -1,0 +1,127 @@
+﻿team,seed,winPct,position,newPos,round,favorite,regionVal,region,rs,direction
+Gonzaga,1,0.994,1,1,1,1,1,west,east1,
+Georgia State,16,0.006,2,2,1,0,1,west,east16,down
+Boise State,8,0.888,4,4,1,1,1,west,east8,
+Memphis,9,0.112,5,5,1,0,1,west,east9,up
+Connecticut,5,0.597,7,7,1,1,1,west,east5,
+New Mexico St,12,0.403,8,8,1,0,1,west,east12,down
+Arkansas,4,0.483,10,10,1,1,1,west,east4,
+Vermont,13,0.517,11,11,1,0,1,west,east13,up
+Alabama,6,0.392,13,13,1,1,1,west,east6,
+Notre Dame*,11,0.608,14,14,1,0,1,west,east11,down
+Texas Tech,3,0.834,16,16,1,1,1,west,east3,
+Montana State,14,0.166,17,17,1,0,1,west,east14,up
+Michigan St,7,0.157,19,19,1,1,1,west,east7,
+Davidson,10,0.843,20,20,1,0,1,west,east10,down
+Duke,2,0.937,22,22,1,1,1,west,east2,
+CSU Fullerton,15,0.063,23,23,1,0,1,west,east15,up
+Gonzaga,1,0.977,2.5,2.5,2,1,1,west,east1,
+Boise State,8,0.023,3.5,3.5,2,0,1,west,east8,down
+Connecticut,5,0.68,8.5,8.5,2,1,1,west,east5,
+Vermont,13,0.32,9.5,9.5,2,0,1,west,east4,up
+Notre Dame*,11,0.165,14.5,14.5,2,1,1,west,east6,
+Texas Tech,3,0.835,15.5,15.5,2,0,1,west,east3,down
+Davidson,10,0.275,20.5,20.5,2,1,1,west,east7,
+Duke,2,0.725,21.5,21.5,2,0,1,west,east2,up
+Gonzaga,1,0.977,5.5,5.5,3,1,1,west,east1,
+Connecticut,5,0.023,6.5,6.5,3,0,1,west,east4,down
+Texas Tech,3,0.232,17.5,17.5,3,1,1,west,east6,
+Duke,2,0.768,18.5,18.5,3,0,1,west,east2,up
+Gonzaga,1,0.946,11.5,11.5,4,1,1,west,east1,
+Duke,2,0.054,12.5,12.5,4,1,1,west,east2,
+Gonzaga,1,0.591,1,101,1,1,5,west,east1,
+Baylor,1,0.917,1,26,1,1,2,east,west1,
+Norfolk State,16,0.083,2,27,1,0,2,east,west16,down
+North Carolina,8,0.498,4,29,1,1,2,east,west8,
+Marquette,9,0.502,5,30,1,0,2,east,west9,up
+Saint Mary's,5,0.819,7,32,1,1,2,east,west5,
+Wyoming*,12,0.181,8,33,1,0,2,east,west12,down
+UCLA,4,0.852,10,35,1,1,2,east,west4,
+Akron,13,0.148,11,36,1,0,2,east,west13,up
+Texas,6,0.252,13,38,1,1,2,east,west6,
+Virginia Tech,11,0.748,14,39,1,0,2,east,west11,down
+Purdue,3,0.952,16,41,1,1,2,east,west3,
+Yale,14,0.048,17,42,1,0,2,east,west14,up
+Murray State,7,0.909,19,44,1,1,2,east,west7,
+San Fransciso,10,0.091,20,45,1,0,2,east,west10,down
+Kentucky,2,0.978,22,47,1,1,2,east,west2,
+Saint Peter's,15,0.022,23,48,1,0,2,east,west15,up
+Baylor,1,0.822,2.5,27.5,2,1,2,east,west1,
+Marquette,9,0.178,3.5,28.5,2,0,2,east,west8,down
+Saint Mary's,5,0.177,8.5,33.5,2,1,2,east,west5,
+UCLA,4,0.823,9.5,34.5,2,0,2,east,west4,up
+Virginia Tech,11,0.788,14.5,39.5,2,1,2,east,west6,
+Purdue,3,0.212,15.5,40.5,2,0,2,east,west3,down
+Murray State,7,0.105,20.5,45.5,2,1,2,east,west10,
+Kentucky,2,0.895,21.5,46.5,2,0,2,east,west2,up
+Baylor,1,0.717,5.5,30.5,3,1,2,east,west1,
+UCLA,4,0.283,6.5,31.5,3,0,2,east,west4,down
+Virginia Tech,11,0.25,17.5,42.5,3,1,2,east,west3,
+Kentucky,2,0.75,18.5,43.5,3,0,2,east,west2,up
+Baylor,1,0.746,11.5,36.5,4,1,2,east,west1,
+Kentucky,2,0.254,12.5,37.5,4,1,2,east,west3,
+Baylor,1,0.409,1,102,1,0,2,east,west1,down
+Arizona,1,0.827,1,51,1,1,3,south,south1,
+Wright State*,16,0.173,2,52,1,0,3,south,south16,down
+Seton Hall,8,0.58,4,54,1,1,3,south,south8,
+TCU,9,0.42,5,55,1,0,3,south,south9,up
+Houston,5,0.841,7,57,1,1,3,south,south5,
+UAB,12,0.159,8,58,1,0,3,south,south12,down
+Illinois,4,0.287,10,60,1,1,3,south,south4,
+Chattanooga,13,0.713,11,61,1,0,3,south,south13,up
+Colorado State,6,0.765,13,63,1,1,3,south,south6,
+Michigan,11,0.235,14,64,1,0,3,south,south11,down
+Tennessee,3,0.712,16,66,1,1,3,south,south3,
+Longwood,14,0.288,17,67,1,0,3,south,south14,up
+Ohio State,7,0.334,19,69,1,1,3,south,south7,
+Loyola Chicago,10,0.666,20,70,1,0,3,south,south10,down
+Villanova,2,0.607,22,72,1,1,3,south,south2,
+Delaware,15,0.393,23,73,1,0,3,south,south15,up
+Arizona,1,0.571,2.5,52.5,2,1,3,south,south1,
+Seton Hall,8,0.429,3.5,53.5,2,0,3,south,south9,down
+Houston,5,0.789,8.5,58.5,2,1,3,south,south5,
+Chattanooga,13,0.211,9.5,59.5,2,0,3,south,south4,up
+Colorado State,6,0.774,14.5,64.5,2,1,3,south,south6,
+Tennessee,3,0.226,15.5,65.5,2,0,3,south,south3,down
+Loyola Chicago,10,0.595,20.5,70.5,2,1,3,south,south7,
+Villanova,2,0.405,21.5,71.5,2,0,3,south,south2,up
+Arizona,1,0.406,5.5,55.5,3,1,3,south,south1,
+Houston,5,0.594,6.5,56.5,3,0,3,south,south5,down
+Colorado State,6,0.437,17.5,67.5,3,1,3,south,south3,
+Loyola Chicago,10,0.563,18.5,68.5,3,0,3,south,south7,up
+Houston,5,0.76,11.5,61.5,4,1,3,south,south1,
+Loyola Chicago,10,0.24,12.5,62.5,4,1,3,south,south3,
+Houston,5,0.7,1,104,1,1,3,south,south1,
+Kansas,1,0.952,1,76,1,1,4,midwest,midwest1,
+Texas Southern*,16,0.048,2,77,1,0,4,midwest,midwest16,down
+San Diego State,8,0.584,4,79,1,1,4,midwest,midwest8,
+Creighton,9,0.416,5,80,1,0,4,midwest,midwest9,up
+Iowa,5,0.737,7,82,1,1,4,midwest,midwest5,
+Richmond,12,0.263,8,83,1,0,4,midwest,midwest12,down
+Providence,4,0.447,10,85,1,1,4,midwest,midwest4,
+South Dakota St.,13,0.553,11,86,1,0,4,midwest,midwest13,up
+LSU,6,0.367,13,88,1,1,4,midwest,midwest6,
+Iowa State,11,0.633,14,89,1,0,4,midwest,midwest11,down
+Wisconsin,3,0.911,16,91,1,1,4,midwest,midwest3,
+Colgate,14,0.089,17,92,1,0,4,midwest,midwest14,up
+USC,7,0.643,19,94,1,1,4,midwest,midwest7,
+Miami (FL),10,0.357,20,95,1,0,4,midwest,midwest10,down
+Auburn,2,0.935,22,97,1,1,4,midwest,midwest2,
+Jacksonville St.,15,0.065,23,98,1,0,4,midwest,midwest15,up
+Kansas,1,0.778,2.5,77.5,2,1,4,midwest,midwest1,
+San Diego State,8,0.222,3.5,78.5,2,0,4,midwest,midwest9,down
+Iowa,5,0.886,8.5,83.5,2,1,4,midwest,midwest5,
+South Dakota St.,13,0.114,9.5,84.5,2,0,4,midwest,midwest4,up
+Iowa State,6,0.776,14.5,89.5,2,1,4,midwest,midwest6,
+Wisconsin,3,0.224,15.5,90.5,2,0,4,midwest,midwest3,down
+USC,7,0.569,20.5,95.5,2,1,4,midwest,midwest7,
+Auburn,2,0.431,21.5,96.5,2,0,4,midwest,midwest2,up
+Kansas,1,0.504,5.5,80.5,3,1,4,midwest,midwest1,
+Iowa,5,0.496,6.5,81.5,3,0,4,midwest,midwest5,down
+Iowa State,11,0.755,17.5,92.5,3,1,4,midwest,midwest3,
+USC,7,0.245,18.5,93.5,3,0,4,midwest,midwest2,up
+Kansas,1,0.339,11.5,86.5,4,1,4,midwest,midwest5,
+Iowa State,11,0.661,12.5,87.5,4,1,4,midwest,midwest3,
+Iowa State,11,0.3,1,105,1,0,4,midwest,midwest3,up
+Gonzaga,1,0.55,,102.5,2,1,5,,,
+Houston,5,0.45,,103.5,2,1,5,,,
