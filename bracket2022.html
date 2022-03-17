@@ -29,7 +29,7 @@
             .domain([0,100])
             .range(["#b3b5ff","#0008ff"])
         var formatDecimal = d3.format(".1f")
-        d3.csv("MarchMadness2022.csv", function(error, data) {
+        d3.csv("https://raw.githubusercontent.com/gcdean38/maneater/master/MarchMadness2022.csv", function(error, data) {
             data.forEach(function(d) {
                 d.seed = +d.seed;
             d.position = +d.newPos*30;
