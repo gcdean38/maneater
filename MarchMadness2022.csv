@@ -19,7 +19,7 @@ Gonzaga,1,0.977,2.5,2.5,2,1,1,west,east1,
 Boise State,8,0.023,3.5,3.5,2,0,1,west,east8,down
 Connecticut,5,0.68,8.5,8.5,2,1,1,west,east5,
 Vermont,13,0.32,9.5,9.5,2,0,1,west,east4,up
-Notre Dame*,11,0.165,14.5,14.5,2,1,1,west,east6,
+Notre Dame,11,0.165,14.5,14.5,2,1,1,west,east6,
 Texas Tech,3,0.835,15.5,15.5,2,0,1,west,east3,down
 Davidson,10,0.275,20.5,20.5,2,1,1,west,east7,
 Duke,2,0.725,21.5,21.5,2,0,1,west,east2,up
@@ -62,7 +62,7 @@ Baylor,1,0.746,11.5,36.5,4,1,2,east,west1,
 Kentucky,2,0.254,12.5,37.5,4,1,2,east,west3,
 Baylor,1,0.409,1,102,1,0,2,east,west1,down
 Arizona,1,0.827,1,51,1,1,3,south,south1,
-Wright State*,16,0.173,2,52,1,0,3,south,south16,down
+Wright State,16,0.173,2,52,1,0,3,south,south16,down
 Seton Hall,8,0.58,4,54,1,1,3,south,south8,
 TCU,9,0.42,5,55,1,0,3,south,south9,up
 Houston,5,0.841,7,57,1,1,3,south,south5,
