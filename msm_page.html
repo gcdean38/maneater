@@ -22,9 +22,7 @@ p {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
 }
-p.contact {
-  
-}
+
 .grid-container {
   display: grid;
   height: 40px;
@@ -39,6 +37,8 @@ p.contact {
   text-align: center;
   padding: 0;
   font-size: 20px;
+  margin: auto;
+
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -48,7 +48,8 @@ p.contact {
  float: center;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
-  
+  margin: auto;
+
   padding: 20px;
 }
 
@@ -59,12 +60,50 @@ p.contact {
   width: 300;
   height: 200;
   padding: 20px 0;
+  margin: auto;
   font-size: 30px;
 }
+
+.leadership-grid {
+  display: grid;
+  height: 200px;
+  float: center;
+  grid-template-columns: repeat(3, center);
+  vertical-align: middle ;
+  gap: 10px;
+  padding: 20px;
+}
+
+.leadership-grid > div {
+  background-color: #c2c1c1;
+  text-align: center;
+  vertical-align: middle;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 225;
+  height: 250;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+h3.leadership-grid {
+  color: red;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0px;
+}
+
 .image-small {
     border-radius: 50%;
    /* display: block;*/
    width: 50px;
+}
+.headshot {
+    border-radius: 50%;
+   /* display: block;*/
+   height: 80px;
+   width: 80px;
+   vertical-align: middle;
+
 }
 .know_us_about {
   background-color: #c2c1c1;
@@ -92,8 +131,10 @@ p.contact {
 <div class="grid-container">
     <div>
         <a href="#the_outlets">The Outlets</a></div>
-    <div> <a href="#get_to_know_us">Get to know MSM</a></div>
-    <div>Leadership</div>  
+    <div> 
+      <a href="#get_to_know_us">Get to know MSM</a></div>
+    <div>
+      <a href="#leadership">Leadership</a></div>  
     <div>Unique Opportunities</div>
     <div>Bylaws</div>
 </div>
@@ -164,4 +205,19 @@ p.contact {
 <img style="vertical-align:middle" class = "image-small" src="https://w7.pngwing.com/pngs/298/243/png-transparent-email-address-computer-icons-mail-miscellaneous-angle-triangle-thumbnail.png">
 <p>msm@msm.com</p>
 
+</div>
+<br>
+<br>
+<br>
+<a id="leadership"><h2>Leadership</h2></a>
+<div class="leadership-grid">
+  <div>
+    <img class = "headshot" src="https://studentaffairs.missouri.edu/wp-content/uploads/2019/12/20210309-PFL-Becky-Diehl-SEO-0047-200x300.jpg">
+    <h3 class="leadership-grid">Becky Diehl</h3>
+    <p>Becky's bio goes here. Becky's bio goes here.
+      Becky's bio goes here. Becky's bio goes here.
+      Becky's bio goes here. Becky's bio goes here.
+      Becky's bio goes here. Becky's bio goes here.</p>
+
+</div>
 </div>
