@@ -68,7 +68,7 @@ p {
   display: grid;
   height: 200px;
   float: center;
-  grid-template-columns: repeat(3, center);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   vertical-align: middle ;
   gap: 10px;
   padding: 20px;
@@ -78,10 +78,11 @@ p {
   background-color: #c2c1c1;
   text-align: center;
   vertical-align: middle;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   width: 225;
   height: 250;
   padding: 20px 0;
+  margin: auto;
   font-size: 30px;
 }
 
@@ -104,6 +105,36 @@ h3.leadership-grid {
    width: 80px;
    vertical-align: middle;
 
+}
+.mentorship {
+  width: 30%;
+  margin-left: 65%
+}
+.mentorship-image {
+  float: left;
+  height: 150;
+  width: 200;
+  margin-left: 5%;
+}
+.training {
+  width: 30%;
+  margin-left: 5%
+}
+.training-image {
+  float: right;
+  height: 150;
+  width: 200;
+  margin-right: 5%;
+}
+.community {
+  width: 30%;
+  margin-left: 65%
+}
+.community-image {
+  float: left;
+  height: 150;
+  width: 200;
+  margin-left: 5%;
 }
 .know_us_about {
   background-color: #c2c1c1;
@@ -135,7 +166,7 @@ h3.leadership-grid {
       <a href="#get_to_know_us">Get to know MSM</a></div>
     <div>
       <a href="#leadership">Leadership</a></div>  
-    <div>Unique Opportunities</div>
+    <div><a href= "#opportunities">Unique Opportunities</a></div>
     <div>Bylaws</div>
 </div>
 <a id="the_outlets"><h2>The Outlets</h2></a>
@@ -211,13 +242,55 @@ h3.leadership-grid {
 <br>
 <a id="leadership"><h2>Leadership</h2></a>
 <div class="leadership-grid">
-  <div>
+    <div>
     <img class = "headshot" src="https://studentaffairs.missouri.edu/wp-content/uploads/2019/12/20210309-PFL-Becky-Diehl-SEO-0047-200x300.jpg">
     <h3 class="leadership-grid">Becky Diehl</h3>
-    <p>Becky's bio goes here. Becky's bio goes here.
-      Becky's bio goes here. Becky's bio goes here.
-      Becky's bio goes here. Becky's bio goes here.
-      Becky's bio goes here. Becky's bio goes here.</p>
+    </div>
 
+    <div>
+    <img class = "headshot" src="https://pbs.twimg.com/profile_images/1533994375361052672/mfMiuZsH_400x400.jpg">
+    <h3 class="leadership-grid">Sydney Lewis</h3>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<a id="opportunities"><h2>Unique Opportunities</h2></a>
+
+<div class="mentorship-div">
+<img class = "mentorship-image" src="https://images2.minutemediacdn.com/image/fetch/w_2000,h_2000,c_fit/https%3A%2F%2Fjaysjournal.com%2Fwp-content%2Fuploads%2Fgetty-images%2F2017%2F07%2F1167635584.jpeg">
+<div class = "mentorship">
+
+  <h3>Mentorship</h3>
+
+  <p>
+    COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY 
+    COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY 
+    COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY 
+  </p>
+</div>
+</div>
+<div class="training-div">
+  <img class = "training-image" src="https://i.ytimg.com/vi/-bQziKvDao8/maxresdefault.jpg">
+
+<div class = "training">
+  <h3>Training</h3>
+
+  <p>
+    COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY 
+    COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY 
+    COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY 
+  </p>
+</div>
+</div>
+<div class="mentorship-div">
+  <img class = "mentorship-image" src="https://www.thestar.com/content/dam/thestar/sports/bluejays/2021/09/17/everything-you-needed-to-know-about-the-blue-jacket-and-the-blue-jays-that-have-worn-it/jacketespinal.jpg">
+<div class = "community">
+  <h3>Community</h3>
+  <p>
+    COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY 
+    COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY 
+    COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY COPY 
+  </p>
 </div>
 </div>
