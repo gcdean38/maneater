@@ -6,33 +6,83 @@
 </head>
 <style>
 .header {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: -10px;
-
+  padding-top: .5%;
+  padding-bottom: .5%;
+  margin: auto;
+  height: 20%;
   text-align: center;
   background: #7c93fb;
   color: white;
   font-size: 30px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.footer {
+  padding-top: .5%;
+  padding-bottom: .5%;
+  margin: auto;
+  height: 80%;
+  text-align: center;
+  background: #7c93fb;
+  color: white;
+  font-size: 30px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1 {
+  font-size: 80px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center; 
+}
+
+
 h2{
     font-size: 60px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center; 
 }
-h3{
+h3.outlet {
     font-size: 20px;
+    margin-top: -1.5%;
+    margin-bottom: -2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
+}
+
+h3{
+    font-size: 20px;
+    margin-top: -1.5%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+h3.title {
+  margin-top: 100px
+}
+h4 {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0px;
+  margin-top: .5%;
+  margin-bottom: 2%;
+
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 h5{
     font-size: 30px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
 }
-p {
+
+h6 {
+  text-align: center;
   font-size: 12px;
+  margin-top: 2%;
+  margin-bottom: 0%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+p {
+  font-size: 16px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
 }
@@ -41,10 +91,24 @@ p.about {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: left;
 }
+p.staff {
+  font-size: 14px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
+    margin-top: 1%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+p.opportunities {
+  font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: justify;
+    margin-top: -6%;
+}
 
 .grid-container {
   display: grid;
-  height: 40px;
+  height: 60px;
   align-content: space-evenly;
   grid-template-columns:  repeat(5, minmax(0, 1fr));
   gap: 0px;
@@ -62,6 +126,24 @@ p.about {
 
 }
 
+.grid-container-footer {
+  display: grid;
+  height: 60px;
+  align-content: space-evenly;
+  grid-template-columns:  repeat(6, minmax(0, 1fr));
+  gap: 0px;
+  background-color: #7c93fb;
+  padding: 0px;
+}
+
+.grid-container-footer > div {
+  text-align: center;
+  padding: 8px;
+  font-size: 16px;
+  margin: auto;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .grid-outlet {
   display: grid;
   height: 200px;
@@ -69,7 +151,7 @@ p.about {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin: auto;
-
+  padding-bottom: 10%;
   padding: 20px;
 }
 
@@ -77,8 +159,8 @@ p.about {
   background-color: #c2c1c1;
   text-align: center;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: 60%;
-  height: 90%;
+  width: 80%;
+  height: 95%;
   padding: 20px 10px;
   margin: auto;
   margin-top: -30px;
@@ -91,31 +173,24 @@ p.about {
   float: center;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   vertical-align: middle ;
-  gap: 10px;
-  padding: 20px;
+  gap: 2%;
+  padding: 1%;
   text-align: center;
+  margin-bottom: 10%;
 }
 
 .leadership-grid > div {
   background-color: #c2c1c1;
   vertical-align: middle;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  width: 70%;
+  width: 90%;
   height: 80%;
-  padding: 20px 0;
+  padding: 6% 0;
   margin: auto;
   align-items: middle;
 }
 
-h4 {
-  text-align: center;
-  vertical-align: middle;
-  padding: 0px;
-  margin-top: 2px;
-  font-size: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-}
 
 .image-small {
    /* display: block;*/
@@ -130,10 +205,9 @@ h4 {
 
 }
 .mentorship {
-  width: 30%;
+  width: 40%;
   height: 300px;
-
-  margin-left: 65%
+  margin-left: 55%
 }
 .mentorship-image {
   float: left;
@@ -142,15 +216,19 @@ h4 {
   margin-left: 5%;
 }
 .training {
-  width: 30%;
+  width: 40%;
   height: 300px;
-
   margin-left: 5%
 }
 a {
   color: black;
   text-decoration: none;
 }
+a.email {
+  color: blue;
+  text-decoration: underline;
+}
+
 .training-image {
   float: right;
   height: 300px;
@@ -158,9 +236,9 @@ a {
   margin-right: 5%;
 }
 .community {
-  width: 30%;
+  width: 40%;
   height: 300px;
-  margin-left: 65%
+  margin-left: 55%
 }
 .community-image {
   float: left;
@@ -190,11 +268,14 @@ a {
 
 }
 .header-photo {
-  height: 120px;
-  width: 120px;
+  height: 150px;
+  width: 150px;
   float: left;
-  padding: 15px;
+  padding: 10px;
   margin-left: 10px;
+  padding-right: -5px;
+
+  
 }
 .twitter-icon {
   height: 30px;
@@ -219,20 +300,7 @@ a {
   margin-top: 110px;
 
 }
-h6 {
-  text-align: center;
-  font-size: 12px;
-  margin-top: -15px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-p.staff {
-  font-size: 12px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-align: center;
-    margin-top: -15px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
+
 .bylaws{
   height: 800px;
   width:50%;
@@ -243,18 +311,17 @@ p.contact {
   text-align: left;
   vertical-align: middle;
 }
-a.email {
-  color: blue;
-  text-decoration: underline;
-}
 
 .break {
   height: 100px;
   fill: black;
 }
+.button {
+  margin-top: -150px;
+}
 
-h3.title {
-  margin-top: 100px
+.video {
+  margin-top: 10%;
 }
 </style>
 
@@ -270,7 +337,7 @@ h3.title {
 <a href="https://www.facebook.com/zoustudentmedia/" target="_blank">
   <img class="fb-icon" src="https://github.com/gcdean38/maneater/blob/master/fb-logo.png?raw=true"> 
 </a>  
-  <h1>Mizzou Student Media</h1>
+  <h1>MIZZOU STUDENT MEDIA</h1>
 </div>
 <div class="grid-container">
     <div>
@@ -279,7 +346,7 @@ h3.title {
       <a href="#get_to_know_us">Get to know MSM</a></div>
     <div>
       <a href="#leadership">Leadership</a></div>  
-    <div><a href= "#opportunities">Unique Opportunities</a></div>
+    <div><a href= "#opportunities">Opportunities</a></div>
     <div><a href="#bylaws">Bylaws</div></a>
 </div>
 <a id="the_outlets"><h2>The Outlets</h2></a>
@@ -287,7 +354,9 @@ h3.title {
 <div class="grid-outlet">
     <div>
       <img class = "image-small" src="https://github.com/gcdean38/maneater/blob/master/KCOU%20logo.png?raw=true">
-      <h3>KCOU</h3>
+      <h3 class="outlet">KCOU</h3>
+      <button class = "button" onclick="location.href='https://kcou.fm/about/'" type="button">
+        Join</button>
       <p>
         KCOU is the University of Missouri’s only 
         student-led radio station. We have many unique opportunities 
@@ -297,10 +366,13 @@ h3.title {
         community of creatives, music and sports lovers, and journalists. 
         Listen at 88.1FM or on our website, kcou.fm.
       </p>
+      
     </div>
     <div>
       <img class = "image-small" src="https://github.com/gcdean38/maneater/blob/master/MUTV%20Logo%20Color.png?raw=true">
-      <h3>MUTV</h3>
+      <h3 class="outlet">MUTV</h3>
+      <button class = "button" onclick="location.href='https://mutv.missouri.edu/about-us/join-mutv/'" type="button">
+        Join</button>
       <p>
         MUTV is the University of Missouri’s only 
         student-led video news outlet. We focus on
@@ -310,13 +382,15 @@ h3.title {
          by exploring innovative ways to tell stories in video 
          and digital formats. We’re proud to collaborate with 
          the other MSM outlets to build content that speaks to
-          our audience, Mizzou students. 
-
+          our audience, Mizzou students.
       </p>
+
     </div>
     <div>
         <img class = "image-small" src="https://github.com/gcdean38/maneater/blob/master/Maneater%20logo.png?raw=true">
-        <h3>The Maneater</h3>
+        <h3 class="outlet">The Maneater</h3>
+        <button class = "button" onclick="location.href='https://themaneater.com/applications/'" type="button">
+          Join</button>
         <p>
           The Maneater is the University of Missouri’s only 
           student-led newspaper. We have been serving as 
@@ -325,9 +399,9 @@ h3.title {
           and opinions for both print and digital platforms, creating 
           graphics, taking photos, producing audio and video pieces, 
           designing the print edition, data and investigative journalism, 
-          breaking news, rapid leadership advancement, and more. 
-
+          breaking news, rapid leadership advancement, and more.
         </p>
+
     </div>
 </div>
 <br>
@@ -340,12 +414,10 @@ h3.title {
 <br>
 <br>
 <div align="center">
-  <iframe width="100%" height="900" src="https://www.youtube.com/embed/1kKTnc49Noc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-  </iframe>
+  <iframe src="https://player.vimeo.com/video/728940065?h=736f84f04a" width="640" height="360" class="video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
-<br>
-<br>
+
 <a id="get_to_know_us"><h2>Get to know us</h2></a>
 <div class="know_us_about">
 <h3>About Us</h2>
@@ -382,7 +454,7 @@ h3.title {
   <p class="contact">Email: <a class=email href="mailto:mizzoustudentmedia@gmail.com">mizzoustudentmedia@gmail.com</a></p>
   <p class="contact">Phone: (573) 882-6288</p>
   <p class="contact">Address: 2509 MU Student Center, Columbia, MO 65211</p>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12412.72822022855!2d-92.3267708!3d38.9426691!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x273b6679ee0df050!2sMU%20Student%20Center!5e0!3m2!1sen!2sus!4v1657150370612!5m2!1sen!2sus" width="100%" height="115" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12412.72822022855!2d-92.3267708!3d38.9426691!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x273b6679ee0df050!2sMU%20Student%20Center!5e0!3m2!1sen!2sus!4v1657150370612!5m2!1sen!2sus" width="100%" height="30%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 
 
@@ -423,6 +495,22 @@ h3.title {
 
       </div>
 
+      <div>
+        <img class = "headshot" src="https://pbs.twimg.com/profile_images/1289423987945156608/OJtYHnfF_400x400.jpg">
+        <h4>Izzy Colon</h4>
+        <h6>General Manager, KCOU</h6>
+        <p class="staff">Izzy Colon is a senior studying sociology. Previously, she was the Communications Director for KCOU. Their goal is to solidify KCOU as an integral part of the Mizzou and Columbia communities. She wants to build KCOU into a place where members can learn about radio, meet friends, and have a great time!</p>
+  
+  
+        </div>
+      
+    <div>
+      <img class = "headshot" src="https://bloximages.newyork1.vip.townnews.com/komu.com/content/tncms/avatars/b/7e/e48/b7ee4842-1ae0-11eb-8aaa-5cb9017b3637.8229b45c845a646eac9364f153301115.png?_dc=1606401521">
+      <h4>Ryan Cohen</h4>
+      <h6>General Manager, MUTV</h6>
+      <p class="staff">Ryan Cohen is a junior pursuing degrees in religious studies and theatre. Previously, he was the Executive Producer for MUTV’s News Department. His goal is to help MUTV pursue a digital-first content strategy while providing undergraduate students with hands-on journalism experience.</p>
+
+      </div>
     <div>
       <img class = "headshot" src="https://pbs.twimg.com/profile_images/1394432497061179393/0kfi_JPy_400x400.jpg">
       <h4 >Anna Colletto</h4>
@@ -431,7 +519,20 @@ h3.title {
 
       </div>
 
-
+      <div>
+        <img class = "headshot" src="https://media-exp2.licdn.com/dms/image/C5603AQEnpfDlSZEsgQ/profile-displayphoto-shrink_400_400/0/1635543873072?e=1661990400&v=beta&t=4Or5qstUqtk2g1XZwf16mCDGty89J5hMuzaACBxsO84">
+        <h4>Gillian Koptik</h4>
+        <h6>Asst. General Manager, KCOU</h6>
+        <p class="staff">Gillian Koptik is a junior studying journalism and film studies. Previously, she was a Radio DJ at KCOU. Her goal is to establish a strong community within KCOU, build brand recognition and host more events on and off campus for the Mizzou community. </p>
+  
+        </div>
+        <div>
+          <img class = "headshot" src="https://pbs.twimg.com/profile_images/1430578138619076608/vRMFMAT6_400x400.jpg">
+          <h4>Heather Wang</h4>
+          <h6>Asst. General Manager, MUTV</h6>
+          <p class="staff">Heather Wang is an international student studying journalism and business. Previously, she was the Technical Director at MUTV. She plans to move MUTV in a digital-focused direction and use data to inform how content is published on digital and social platforms. </p>
+    
+          </div>
     <div>
       <img class = "headshot" src="https://media-exp1.licdn.com/dms/image/C4E03AQEf6lNGb2knmA/profile-displayphoto-shrink_200_200/0/1643661928869?e=2147483647&v=beta&t=S_jBnkLfw09dxp0pNX9TS9wMEAOZuJN1MbSb_Sub-YQ">
       <h4>Cam Bauman</h4>
@@ -440,38 +541,12 @@ h3.title {
 
       </div>
 
-    <div>
-      <img class = "headshot" src="https://pbs.twimg.com/profile_images/1289423987945156608/OJtYHnfF_400x400.jpg">
-      <h4>Izzy Colon</h4>
-      <h6>General Manager, KCOU</h6>
-      <p class="staff">Izzy Colon is a senior studying sociology. Previously, she was the Communications Director for KCOU. Their goal is to solidify KCOU as an integral part of the Mizzou and Columbia communities. She wants to build KCOU into a place where members can learn about radio, meet friends, and have a great time!</p>
 
 
-      </div>
 
-    <div>
-      <img class = "headshot" src="https://media-exp2.licdn.com/dms/image/C5603AQEnpfDlSZEsgQ/profile-displayphoto-shrink_400_400/0/1635543873072?e=1661990400&v=beta&t=4Or5qstUqtk2g1XZwf16mCDGty89J5hMuzaACBxsO84">
-      <h4>Gillian Koptik</h4>
-      <h6>Asst. General Manager, KCOU</h6>
-      <p class="staff">Gillian Koptik is a junior studying journalism and film studies. Previously, she was a Radio DJ at KCOU. Her goal is to establish a strong community within KCOU, build brand recognition and host more events on and off campus for the Mizzou community. </p>
 
-      </div>
 
-    <div>
-      <img class = "headshot" src="https://bloximages.newyork1.vip.townnews.com/komu.com/content/tncms/avatars/b/7e/e48/b7ee4842-1ae0-11eb-8aaa-5cb9017b3637.8229b45c845a646eac9364f153301115.png?_dc=1606401521">
-      <h4>Ryan Cohen</h4>
-      <h6>General Manager, MUTV</h6>
-      <p class="staff">Ryan Cohen is a junior pursuing degrees in religious studies and theatre. Previously, he was the Executive Producer for MUTV’s News Department. His goal is to help MUTV pursue a digital-first content strategy while providing undergraduate students with hands-on journalism experience.</p>
 
-      </div>
-
-    <div>
-      <img class = "headshot" src="https://pbs.twimg.com/profile_images/1430578138619076608/vRMFMAT6_400x400.jpg">
-      <h4>Heather Wang</h4>
-      <h6>Asst. General Manager, MUTV</h6>
-      <p class="staff">Heather Wang is an international student studying journalism and business. Previously, she was the Technical Director at MUTV. She plans to move MUTV in a digital-focused direction and use data to inform how content is published on digital and social platforms. </p>
-
-      </div>
 </div>
 <br>
 <br>
@@ -509,7 +584,7 @@ h3.title {
 
   <h5>Mentorship</h5>
 
-  <p>
+  <p class="opportunities">
     Our mentorship program aims to connect 
     current students with our alumni who work
      at publications like The New York Times, 
@@ -528,7 +603,7 @@ h3.title {
 <div class = "training">
   <h5>Training</h5>
 
-  <p>
+  <p class="opportunities">
     Mizzou Student Media hosts 1-2 workshops
      per month for staff to learn from alumni
       and industry professionals. These 
@@ -545,7 +620,7 @@ h3.title {
   <img class = "community-image" src="https://github.com/gcdean38/maneater/blob/master/Image%20from%20iOS%20(3).jpg?raw=true">
 <div class = "community">
   <h5>Community</h5>
-  <p>
+  <p class="opportunities">
     None of our outlets can 
     function without community. 
     To support this goal, we offer
@@ -560,3 +635,16 @@ h3.title {
 </div>
 <a id="bylaws"><h2>Bylaws</h2></a>
 <iframe class="bylaws" src="https://docs.google.com/document/d/e/2PACX-1vQY2b46xWlsMC-ETAPHZhNkiZaYghsihr_4trvWeBfaOVGzcwrIc6bKigCGzl3Xb-DryVgt2g7sFHuZ/pub?embedded=true" width="100%" height="800px"></iframe>
+<div class="footer">
+  <div class="grid-container-footer">
+    <div>
+        <a href="#the_outlets">The Outlets</a></div>
+    <div> 
+      <a href="#get_to_know_us">Get to know MSM</a></div>
+    <div>
+      <a href="#leadership">Leadership</a></div>  
+    <div><a href= "#opportunities">Opportunities</a></div>
+    <div><a href="#bylaws">Bylaws</div></a>
+    <div><a href="">DONATE NOW</a></div>
+</div>
+</div>
