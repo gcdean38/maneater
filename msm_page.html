@@ -19,6 +19,7 @@
 
 .footer {
   padding-top: .5%;
+  margin-top: 3%;
   padding-bottom: .5%;
   margin: auto;
   height: 80%;
@@ -32,6 +33,8 @@ h1 {
   font-size: 80px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center; 
+    margin-left: 5%;
+    margin-right: 5%
 }
 
 
@@ -41,7 +44,7 @@ h2{
     text-align: center; 
 }
 h3.outlet {
-    font-size: 20px;
+    font-size: 30px;
     margin-top: -1.5%;
     margin-bottom: -2%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -87,7 +90,7 @@ p {
     text-align: center;
 }
 p.about {
-  font-size: 12px;
+  font-size: 16px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: left;
 }
@@ -110,7 +113,8 @@ p.opportunities {
   display: grid;
   height: 60px;
   align-content: space-evenly;
-  grid-template-columns:  repeat(5, minmax(0, 1fr));
+  /**grid-template-columns:  repeat(5, minmax(0, 1fr));**/
+  grid-template-columns:  repeat(4, minmax(0, 1fr));
   gap: 0px;
   background-color: #c2c1c1;
   padding: 0px;
@@ -130,7 +134,9 @@ p.opportunities {
   display: grid;
   height: 60px;
   align-content: space-evenly;
-  grid-template-columns:  repeat(6, minmax(0, 1fr));
+  grid-template-columns:  repeat(4, minmax(0, 1fr));
+    /**grid-template-columns:  repeat(6, minmax(0, 1fr));**/
+
   gap: 0px;
   background-color: #7c93fb;
   padding: 0px;
@@ -146,7 +152,7 @@ p.opportunities {
 
 .grid-outlet {
   display: grid;
-  height: 200px;
+  height: 40%;
  float: center;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
@@ -160,7 +166,7 @@ p.opportunities {
   text-align: center;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 80%;
-  height: 95%;
+  height: 110%;
   padding: 20px 10px;
   margin: auto;
   margin-top: -30px;
@@ -194,7 +200,7 @@ p.opportunities {
 
 .image-small {
    /* display: block;*/
-   width: 50px;
+   width: 20%;
 }
 .headshot {
     border-radius: 50%;
@@ -212,13 +218,13 @@ p.opportunities {
 .mentorship-image {
   float: left;
   height: 300px;
-  width: 500px;
+  width: 45%;
   margin-left: 5%;
 }
 .training {
   width: 40%;
   height: 300px;
-  margin-left: 5%
+  margin-right: 55%;
 }
 a {
   color: black;
@@ -232,7 +238,7 @@ a.email {
 .training-image {
   float: right;
   height: 300px;
-  width: 500px;
+  width: 45%;
   margin-right: 5%;
 }
 .community {
@@ -243,12 +249,13 @@ a.email {
 .community-image {
   float: left;
   height: 300px;
-  width: 500px;
+  width: 45%;
   margin-left: 5%;
+
 }
 .know_us_about {
   background-color: #c2c1c1;
-  height: 250px;
+  height: 40%;
   width: 65%;
   float: left;
   padding: 1.5%;
@@ -257,7 +264,7 @@ a.email {
 }
 .know_us_social {
   background-color: #c2c1c1;
-  height: 250px;
+  height: 40%;
   width: 25%;
   float: right;
   padding: 1.5%;
@@ -317,11 +324,15 @@ p.contact {
   fill: black;
 }
 .button {
-  margin-top: -150px;
+  margin-bottom: 15%;
+  height: 20%;
+  width: 35%;
+  font-size: 20px;
 }
 
 .video {
   margin-top: 10%;
+margin-bottom: 10%;
 }
 </style>
 
@@ -331,12 +342,10 @@ p.contact {
  <a href="https://twitter.com/ZouStudentMedia" target="_blank"> 
   <img class="twitter-icon" src="https://github.com/gcdean38/maneater/blob/master/twitter-logo.png?raw=true">
 </a>
-<a href="https://www.instagram.com/mizstudentmedia/" target="_blank">
+<a href="https://www.instagram.com/zoustudentmedia/" target="_blank">
   <img class="insta-icon" src="https://github.com/gcdean38/maneater/blob/master/ig-logo.png?raw=true">
 </a>
-<a href="https://www.facebook.com/zoustudentmedia/" target="_blank">
-  <img class="fb-icon" src="https://github.com/gcdean38/maneater/blob/master/fb-logo.png?raw=true"> 
-</a>  
+
   <h1>MIZZOU STUDENT MEDIA</h1>
 </div>
 <div class="grid-container">
@@ -347,7 +356,7 @@ p.contact {
     <div>
       <a href="#leadership">Leadership</a></div>  
     <div><a href= "#opportunities">Opportunities</a></div>
-    <div><a href="#bylaws">Bylaws</div></a>
+   <!-- <div><a href="#bylaws">Bylaws</div></a>-->
 </div>
 <a id="the_outlets"><h2>The Outlets</h2></a>
 
@@ -355,8 +364,7 @@ p.contact {
     <div>
       <img class = "image-small" src="https://github.com/gcdean38/maneater/blob/master/KCOU%20logo.png?raw=true">
       <h3 class="outlet">KCOU</h3>
-      <button class = "button" onclick="location.href='https://kcou.fm/about/'" type="button">
-        Join</button>
+
       <p>
         KCOU is the University of Missouri’s only 
         student-led radio station. We have many unique opportunities 
@@ -366,13 +374,13 @@ p.contact {
         community of creatives, music and sports lovers, and journalists. 
         Listen at 88.1FM or on our website, kcou.fm.
       </p>
-      
+      <button class = "button" onclick="location.href='https://kcou.fm/about/'" type="button">
+        Join</button>
     </div>
     <div>
       <img class = "image-small" src="https://github.com/gcdean38/maneater/blob/master/MUTV%20Logo%20Color.png?raw=true">
       <h3 class="outlet">MUTV</h3>
-      <button class = "button" onclick="location.href='https://mutv.missouri.edu/about-us/join-mutv/'" type="button">
-        Join</button>
+    
       <p>
         MUTV is the University of Missouri’s only 
         student-led video news outlet. We focus on
@@ -384,13 +392,13 @@ p.contact {
          the other MSM outlets to build content that speaks to
           our audience, Mizzou students.
       </p>
-
+      <button class = "button" onclick="location.href='https://mutv.missouri.edu/about-us/join-mutv/'" type="button">
+        Join</button>
     </div>
     <div>
         <img class = "image-small" src="https://github.com/gcdean38/maneater/blob/master/Maneater%20logo.png?raw=true">
         <h3 class="outlet">The Maneater</h3>
-        <button class = "button" onclick="location.href='https://themaneater.com/applications/'" type="button">
-          Join</button>
+
         <p>
           The Maneater is the University of Missouri’s only 
           student-led newspaper. We have been serving as 
@@ -401,24 +409,18 @@ p.contact {
           designing the print edition, data and investigative journalism, 
           breaking news, rapid leadership advancement, and more.
         </p>
-
+        <button class = "button" onclick="location.href='https://themaneater.com/applications/'" type="button">
+          Join</button>
     </div>
 </div>
 <br>
-<br>
-<br>
-<br><br>
-<br>
-<br><br>
-<br>
-<br>
-<br>
+
 <div align="center">
-  <iframe src="https://player.vimeo.com/video/728940065?h=736f84f04a" width="640" height="360" class="video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/728940065?h=736f84f04a" style="position:absolute;top:0;left:0;width:100%;height:100%;" class="video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 </div>
 <br>
 
-<a id="get_to_know_us"><h2>Get to know us</h2></a>
+<a id="get_to_know_us"><h2 style="margin-top: 10%">Get to know us</h2></a>
 <div class="know_us_about">
 <h3>About Us</h2>
 <p  class="about">Mizzou Student Media is the official student media 
@@ -479,7 +481,7 @@ p.contact {
     </div>
 
     <div>
-    <img class = "headshot" src="https://pbs.twimg.com/profile_images/1533994375361052672/mfMiuZsH_400x400.jpg">
+    <img class = "headshot" src="https://github.com/gcdean38/maneater/blob/master/SydneyLewisHeadshot2.png?raw=true">
     <h4>Sydney Lewis</h4>
     <h6>General Manager, MSM</h6>
     <p class="staff"> Sydney Lewis is a junior studying strategic communication and political science. She founded the position of General Manager and built the Mizzou Student Media team and its infrastructure from scratch. Her focus is assisting the outlets in pursuing innovation within student journalism.</p>
@@ -488,7 +490,7 @@ p.contact {
 
 
     <div>
-      <img class = "headshot" src="https://i2.wp.com/smeharbinger.net/wp-content/uploads/2020/02/ftimage-patd.jpg?fit=300%2C169&ssl=1">
+      <img class = "headshot" src="https://media-exp1.licdn.com/dms/image/C4E03AQEbSU7uaf3HRw/profile-displayphoto-shrink_200_200/0/1644342235609?e=1664409600&v=beta&t=Sb2O5G_4FSVFDMxA7-AkOodmSHGpI3qzUpJaaGoYriw">
       <h4>Phoebe Hendon</h4>
       <h6>Asst. General Manager, MSM</h6>
       <p class="staff">Phoebe Hendon is a sophomore studying strategic communication. Her work centers around building a collaborative infrastructure for the three outlets and consulting with outlets on diversity, equity, and inclusion, along with legal and copyright-related issues.</p>
@@ -598,7 +600,7 @@ p.contact {
 </div>
 </div>
 <div class="training-div">
-  <img class = "training-image" src="https://github.com/gcdean38/maneater/blob/master/Screen%20Shot%202022-06-13%20at%206.15.43%20PM%20(1).png?raw=true">
+  <img class = "training-image" src="https://github.com/gcdean38/maneater/blob/master/workshopweek-3%20(1).jpg?raw=true">
 
 <div class = "training">
   <h5>Training</h5>
@@ -633,8 +635,9 @@ p.contact {
   </p>
 </div>
 </div>
-<a id="bylaws"><h2>Bylaws</h2></a>
-<iframe class="bylaws" src="https://docs.google.com/document/d/e/2PACX-1vQY2b46xWlsMC-ETAPHZhNkiZaYghsihr_4trvWeBfaOVGzcwrIc6bKigCGzl3Xb-DryVgt2g7sFHuZ/pub?embedded=true" width="100%" height="800px"></iframe>
+<br>
+<!--<a id="bylaws"><h2>Bylaws</h2></a>
+<iframe class="bylaws" src="https://docs.google.com/document/d/e/2PACX-1vQY2b46xWlsMC-ETAPHZhNkiZaYghsihr_4trvWeBfaOVGzcwrIc6bKigCGzl3Xb-DryVgt2g7sFHuZ/pub?embedded=true" width="100%" height="800px"></iframe>-->
 <div class="footer">
   <div class="grid-container-footer">
     <div>
@@ -644,7 +647,6 @@ p.contact {
     <div>
       <a href="#leadership">Leadership</a></div>  
     <div><a href= "#opportunities">Opportunities</a></div>
-    <div><a href="#bylaws">Bylaws</div></a>
-    <div><a href="">DONATE NOW</a></div>
+   <!-- <div><a href="#bylaws">Bylaws</div></a>-->
 </div>
 </div>
